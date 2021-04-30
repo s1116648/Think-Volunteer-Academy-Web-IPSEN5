@@ -12,7 +12,7 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
-    "curly": true,
+    "curly": false,
     "deprecation": {
       "severity": "warning"
     },
@@ -24,7 +24,9 @@
     "import-spacing": true,
     "indent": {
       "options": [
-        "spaces"
+        true,
+        "tabs",
+        4
       ]
     },
     "max-classes-per-file": false,
@@ -54,7 +56,8 @@
     "no-empty": false,
     "no-inferrable-types": [
       true,
-      "ignore-params"
+      "ignore-params",
+      "ignore-properties"
     ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
@@ -66,7 +69,7 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
     "semicolon": {
       "options": [
