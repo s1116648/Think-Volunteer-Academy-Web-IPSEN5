@@ -109,6 +109,37 @@
         }
       }
     }
+
+    .right-content{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .title-desc-holder{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1{
+          font-size: 32px;
+          font-weight: bolder;
+          color: white;
+        }
+
+        p{
+          font-weight: 100;
+          font-size: 18px;
+          color: white;
+        }
+      }
+
+      .lesson-progress{
+        height: 125px;
+        width: 100%;
+        background-color: #1C2B40;
+        border-radius: 7px;
+      }
+    }
   }
 
 
