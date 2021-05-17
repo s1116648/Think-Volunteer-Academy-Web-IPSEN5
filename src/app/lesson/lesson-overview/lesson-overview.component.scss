@@ -1,0 +1,113 @@
+*{
+  font-family: Bahnschrift, sans-serif;
+}
+
+.lesson-overview-holder{
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  max-width: 1200px;
+  gap: 30px;
+  //background-color: red;
+
+  .img-holder{
+    max-width: 1200px;
+    max-height: 360px;
+    overflow: hidden;
+    border-radius: 15px;
+
+    img{
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      max-height: 860px;
+    }
+  }
+
+  .content-holder{
+    display: flex;
+    gap: 30px;
+
+    .left-content{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .general-information{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        min-width: 300px;
+        min-height: 110px;
+        background-color: #1C2B40;
+        border-radius: 10px;
+        padding: 15px;
+
+        h1{
+          font-size: 18px;
+          color: white;
+          font-weight: 1;
+        }
+
+        .general-info-holder{
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          hr{
+            border: 1px solid #2B3D55;
+            background-color: #2B3D55;
+          }
+          .text-and-numbers{
+            display: flex;
+            justify-content: space-between;
+
+            >p{
+              font-weight: 1;
+              color: white;
+            }
+          }
+        }
+      }
+
+      .recommendation-info{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        min-width: 300px;
+        min-height: 220px;
+        background-color: #1C2B40;
+        border-radius: 10px;
+        padding: 15px;
+        width: auto;
+
+        h1{
+          font-size: 18px;
+          color: white;
+          font-weight: 1;
+        }
+
+        .img-title-holder{
+          display: flex;
+          gap: 15px;
+
+          figure{
+            max-height: 70px;
+            max-width: 80px;
+
+            img {
+              max-height: 70px;
+              max-width: 80px;
+            }
+          }
+
+          h1{
+            align-self: center;
+          }
+        }
+      }
+    }
+  }
+
+
+}
