@@ -62,11 +62,7 @@
       <section class="lesson-progress">
 
       </section>
-      <app-lesson-overview-card></app-lesson-overview-card>
-      <app-lesson-overview-card></app-lesson-overview-card>
-      <app-lesson-overview-card></app-lesson-overview-card>
-      <app-lesson-overview-card></app-lesson-overview-card>
-      <app-lesson-overview-card></app-lesson-overview-card>
+      <app-lesson-overview-card *ngFor="let lesson of lessons" [lesson]="lesson"></app-lesson-overview-card>
     </section>
   </section>
 

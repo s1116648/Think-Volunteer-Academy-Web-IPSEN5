@@ -4,12 +4,12 @@
     <div class="line"></div>
   </section>
   <section class="lesson-content">
-    <h1>Lesson 01</h1>
+    <h1>Lesson 0{{lesson.id}}</h1>
     <section class="img-content-holder">
-      <img src="/assets/images/nature.jpeg" alt="lesson-thumbnail">
+      <img [src]="lesson.image" alt="lesson-thumbnail">
       <section class="title-desc-holder">
-        <h3>Introduction</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3>{{lesson.name}}</h3>
+          <p>{{lesson.description}}</p>
           <section class="button-eta-holder">
             <button class="to-lesson">
               To lesson
