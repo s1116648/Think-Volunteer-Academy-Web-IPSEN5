@@ -15,6 +15,7 @@
     max-height: 360px;
     overflow: hidden;
     border-radius: 15px;
+    user-select: none;
 
     img{
       width: 100%;
@@ -134,10 +135,27 @@
       }
 
       .lesson-progress{
+        display: flex;
+        flex-direction: column;
         height: 125px;
-        width: 100%;
+        max-width: 840px;
+        width: auto;
         background-color: #1C2B40;
         border-radius: 7px;
+        padding: 15px;
+        gap: 20px;
+
+        h1{
+          font-size: 18px;
+          color: white;
+          font-weight: 1;
+        }
+
+        .progress-circles{
+          display: flex;
+          gap: 20px;
+          justify-self: center;
+        }
       }
     }
   }
