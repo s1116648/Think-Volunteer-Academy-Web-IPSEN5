@@ -35,68 +35,70 @@ h1{
       border-radius: 10px;
     }
   }
-}
 
-.lesson-content{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  .img-content-holder {
-    display: flex;
-    gap: 10px;
-  }
-
-  .img-content-holder > img {
-    width: 140px;
-    height: 126px;
-    border-radius: 10px;
-  }
-
-  .title-desc-holder{
+  .lesson-content{
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    justify-content: space-between;
+    gap: 10px;
 
-    .button-eta-holder{
+    .img-content-holder {
       display: flex;
       gap: 10px;
+    }
 
-      .to-lesson{
+    .img-content-holder > img {
+      width: 140px;
+      height: 126px;
+      border-radius: 10px;
+    }
+
+    .title-desc-holder{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: space-between;
+
+      .button-eta-holder{
         display: flex;
-        background-color: #1C2B40;
-        border: none;
-        padding: 10px;
-        border-radius: 8px;
-        color: white;
-        gap: 60px;
-      }
+        gap: 10px;
 
-      .to-lesson > p, img {
-        background-color: transparent;
-      }
+        .to-lesson{
+          display: flex;
+          background-color: #1C2B40;
+          border: none;
+          padding: 10px;
+          border-radius: 8px;
+          color: white;
+          gap: 60px;
+        }
+
+        .to-lesson > p, img {
+          background-color: transparent;
+        }
 
 
-      .to-lesson > img {
-        height: 15px;
-        width: 15px;
-      }
+        .to-lesson > img {
+          height: 15px;
+          width: 15px;
+        }
 
-      .eta{
-        align-self: center;
-        color: white;
+        .eta{
+          align-self: center;
+          color: white;
+        }
       }
     }
-  }
 
-  .title-desc-holder > h3 {
-    font-weight: bold;
-    color: white;
-  }
+    .title-desc-holder > h3 {
+      font-weight: bold;
+      color: white;
+    }
 
-  .title-desc-holder > p {
-    font-weight: 1;
-    color: white;
+    .title-desc-holder > p {
+      font-weight: 1;
+      color: white;
+    }
   }
 }
+
+
