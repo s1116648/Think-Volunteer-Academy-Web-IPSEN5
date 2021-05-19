@@ -73,7 +73,8 @@
     ],
     "semicolon": {
       "options": [
-        "always"
+        "always",
+        "ignore-bound-class-methods"
       ]
     },
     "space-before-function-paren": {
