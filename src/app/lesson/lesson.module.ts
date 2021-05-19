@@ -4,11 +4,12 @@ import { LessonOverviewComponent } from "./lesson-overview/lesson-overview.compo
 import { LessonOverviewCardComponent } from "./lesson-overview/lesson-overview-card/lesson-overview-card.component";
 import {LessonService} from "./lesson.service";
 import { ProgressCircleComponent } from "./lesson-overview/progress-circle/progress-circle.component";
+import { RecommendationCardComponent } from "./lesson-overview/recommendation-card/recommendation-card.component";
 
 
 
 @NgModule({
-  declarations: [LessonOverviewComponent, LessonOverviewCardComponent, ProgressCircleComponent],
+  declarations: [LessonOverviewComponent, LessonOverviewCardComponent, ProgressCircleComponent, RecommendationCardComponent],
   imports: [
     CommonModule
   ],

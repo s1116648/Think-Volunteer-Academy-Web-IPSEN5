@@ -1,0 +1,23 @@
+.img-title-holder{
+  display: flex;
+  gap: 15px;
+
+  figure{
+    max-height: 70px;
+    max-width: 80px;
+    border-radius: 10px;
+
+    img {
+      max-height: 70px;
+      max-width: 80px;
+      border-radius: 7px;
+    }
+  }
+
+  h1{
+    font-size: 18px;
+    color: white;
+    font-weight: 1;
+    align-self: center;
+  }
+}
