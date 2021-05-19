@@ -29,8 +29,8 @@
       <section class="recommendation-info">
         <h1>Similar Courses</h1>
         <app-recommendation-card></app-recommendation-card>
-        <app-recommendation-card></app-recommendation-card>
-        <app-recommendation-card></app-recommendation-card>
+<!--        <app-recommendation-card></app-recommendation-card>-->
+<!--        <app-recommendation-card></app-recommendation-card>-->
       </section>
 
     </section>
@@ -46,7 +46,10 @@
           <app-progress-circle *ngFor="let lesson of lessons" [lesson]="lesson"></app-progress-circle>
         </section>
       </section>
-      <app-lesson-overview-card *ngFor="let lesson of lessons" [lesson]="lesson"></app-lesson-overview-card>
+      <section class="cards-holder">
+        <app-lesson-overview-card *ngFor="let lesson of lessons" [lesson]="lesson"></app-lesson-overview-card>
+        <app-lesson-test-card></app-lesson-test-card>
+      </section>
     </section>
   </section>
 
