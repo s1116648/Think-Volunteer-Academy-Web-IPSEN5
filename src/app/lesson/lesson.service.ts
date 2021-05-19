@@ -1,15 +1,46 @@
 import {Injectable} from "@angular/core";
-import {Lesson} from "../shared/models/lesson.model";
+import {Lesson} from "./lesson.model";
 
 @Injectable()
 export class LessonService {
   private lessons: Lesson[] = [
-    new Lesson(1, "Culture of Bali", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123"),
-    new Lesson(2, "Culture of Indonesia", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123"),
-    new Lesson(3, "Culture of India", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123"),
-    new Lesson(4, "Test1", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123"),
-    new Lesson(5, "Test2", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123"),
-    new Lesson(6, "Test3", "/assets/images/nature.jpeg", "test", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "12-2-2010", "231123")
+    {
+      id: 1,
+      name: "Culture of Bali",
+      image: "/assets/images/nature.jpeg",
+      content: "test",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      updatedAt: "12-2-2010",
+      createdAt: "231123",
+    },
+    {
+      id: 2,
+      name: "Culture of Bali",
+      image: "/assets/images/nature.jpeg",
+      content: "test",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      updatedAt: "12-2-2010",
+      createdAt: "231123",
+    },
+    {
+      id: 3,
+      name: "Culture of Bali",
+      image: "/assets/images/nature.jpeg",
+      content: "test",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      updatedAt: "12-2-2010",
+      createdAt: "231123",
+    },
+    {
+      id: 4,
+      name: "Culture of Bali",
+      image: "/assets/images/nature.jpeg",
+      content: "test",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      updatedAt: "12-2-2010",
+      createdAt: "231123",
+    }
+
   ];
   constructor() {}
 

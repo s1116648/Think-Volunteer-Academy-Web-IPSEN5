@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Lesson} from "../../../shared/models/lesson.model";
+import {Lesson} from "../../lesson.model";
 
 @Component({
   selector: "app-lesson-overview-card",
