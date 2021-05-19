@@ -4,6 +4,6 @@ export interface Lesson{
   image: string;
   content: string;
   description: string;
-  updatedAt: string; // Change to Date
-  createdAt: string; // Change to Date
+  updatedAt: Date;
+  createdAt: Date;
 }

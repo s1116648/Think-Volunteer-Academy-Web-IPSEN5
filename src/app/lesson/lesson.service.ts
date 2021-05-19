@@ -4,14 +4,15 @@ import {Lesson} from "./lesson.model";
 @Injectable()
 export class LessonService {
   private lessons: Lesson[] = [
+    // Dummy data
     {
       id: 1,
       name: "Culture of Bali",
       image: "/assets/images/nature.jpeg",
       content: "test",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      updatedAt: "12-2-2010",
-      createdAt: "231123",
+      updatedAt: new Date("2021-11-01"),
+      createdAt: new Date("2020-11-01"),
     },
     {
       id: 2,
@@ -19,8 +20,8 @@ export class LessonService {
       image: "/assets/images/nature.jpeg",
       content: "test",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      updatedAt: "12-2-2010",
-      createdAt: "231123",
+      updatedAt: new Date("2021-11-01"),
+      createdAt: new Date("2020-11-01"),
     },
     {
       id: 3,
@@ -28,8 +29,8 @@ export class LessonService {
       image: "/assets/images/nature.jpeg",
       content: "test",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      updatedAt: "12-2-2010",
-      createdAt: "231123",
+      updatedAt: new Date("2021-11-01"),
+      createdAt: new Date("2020-11-01"),
     },
     {
       id: 4,
@@ -37,8 +38,8 @@ export class LessonService {
       image: "/assets/images/nature.jpeg",
       content: "test",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      updatedAt: "12-2-2010",
-      createdAt: "231123",
+      updatedAt: new Date("2021-11-01"),
+      createdAt: new Date("2020-11-01"),
     }
 
   ];
