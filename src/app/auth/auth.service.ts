@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 // import { HttpResult } from "../shared/http-result";
 import jwt_decode from "jwt-decode";
 import { DecodedJWT } from "./decoded-jwt";
+import { RegisterDTO } from "./dto/register.dto";
 
 @Injectable({
 	providedIn: "root",
@@ -37,6 +38,10 @@ export class AuthService {
 				map((loginInfo: LoginInfo): User => loginInfo.user)
 			);
 		return observer;
+	}
+
+	register(dto: RegisterDTO): Observable<User> {
+		return this.http.post<User>("/auth/register", dto);
 	}
 
 	isLoggedIn = (): boolean =>

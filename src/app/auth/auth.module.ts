@@ -7,9 +7,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-	declarations: [LoginComponent],
+	declarations: [LoginComponent, RegisterComponent],
 	imports: [
 		CommonModule,
 		FontAwesomeModule,
