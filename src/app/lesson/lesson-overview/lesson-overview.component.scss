@@ -136,7 +136,8 @@
       .lesson-progress{
         display: flex;
         flex-direction: column;
-        height: 150px;
+        min-height: 150px;
+        max-width: 870px;
         width: auto;
         background-color: #1C2B40;
         border-radius: 7px;
@@ -153,6 +154,7 @@
           display: flex;
           gap: 20px;
           justify-self: center;
+          flex-wrap: wrap;
         }
       }
 
