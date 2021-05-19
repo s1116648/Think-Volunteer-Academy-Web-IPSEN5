@@ -6,6 +6,7 @@ import {LessonService} from "./lesson.service";
 import { ProgressCircleComponent } from "./lesson-overview/progress-circle/progress-circle.component";
 import { RecommendationCardComponent } from "./lesson-overview/recommendation-card/recommendation-card.component";
 import { LessonTestCardComponent } from "./lesson-overview/lesson-test-card/lesson-test-card.component";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 
@@ -13,7 +14,8 @@ import { LessonTestCardComponent } from "./lesson-overview/lesson-test-card/less
   declarations: [LessonOverviewComponent, LessonOverviewCardComponent, ProgressCircleComponent,
     RecommendationCardComponent, LessonTestCardComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
     LessonOverviewComponent

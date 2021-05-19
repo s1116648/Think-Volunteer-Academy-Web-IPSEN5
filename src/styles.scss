@@ -1,9 +1,156 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-  margin: 0;
-  padding: 0;
+@import "/src/app/shared/variables";
+
+* {
+	padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body{
-  background-color: #2B3D55;
+html {
+    height: 100%;
+}
+
+body {
+	font-family: Bahnschrift, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $color-white;
+	background-color: $color-background;
+	overflow-x: hidden;
+	height: 100%;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $color-white;
+	display: inline-block;
+}
+
+h1 {
+    font-size: 1.6rem;
+    font-family: "Noto Sans JP", Helvetica, Arial, sans-serif;
+}
+
+a,
+p,
+li {
+	font-size: 14px;
+	text-decoration: none;
+	color: $color-black;
+	font-weight: 400;
+}
+
+hr {
+	opacity: 0.2;
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	max-width: 1000px;
+	height: auto;
+	padding: 0 20px;
+	overflow: visible;
+    min-height: 100vh;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: $border-radius;
+    transition: .3s;
+
+    max-width: max-content;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: $color-gray-200;
+    white-space: nowrap;
+
+    color: $color-white;
+
+    span.icon {
+        margin-left: 25px;
+        top: 1px;
+        position: relative;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &:not(:disabled) {
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(93%);
+        }
+    }
+
+    &.primary {
+        background-color: $color-primary;
+    }
+
+    &.danger {
+        background-color: $color-red-600;
+        color: $color-white;
+    }
+
+    &.warning {
+        background-color: $color-orange-500;
+        color: $color-white;
+    }
+}
+
+form {
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        label {
+            font-size: 11px;
+            margin-bottom: 5px;
+            color: $color-gray-500;
+            font-size: 14px;
+        }
+    }
+}
+
+input, textarea {
+    padding: 10px 15px;
+    border-radius: $border-radius;
+    border: 1px solid $color-gray-700;
+    color: $color-white;
+    font-family: inherit;
+    display: block;
+    background-color: transparent;
+
+    &::placeholder {
+        color: $color-gray-500;
+    }
+}
+
+textarea {
+    resize: none;
+    height: 100px;
 }

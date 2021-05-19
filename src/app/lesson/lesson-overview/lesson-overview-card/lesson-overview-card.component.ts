@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Lesson} from "../../lesson.model";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-lesson-overview-card",
@@ -8,6 +9,7 @@ import {Lesson} from "../../lesson.model";
 })
 export class LessonOverviewCardComponent implements OnInit {
   @Input() lesson!: Lesson;
+  icons = { faArrowRight };
   constructor() { }
 
   ngOnInit(): void {

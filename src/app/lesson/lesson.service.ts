@@ -10,7 +10,7 @@ export class LessonService {
       name: "Culture of Bali",
       image: "/assets/images/nature.jpeg",
       content: "test",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       updatedAt: new Date("2021-11-01"),
       createdAt: new Date("2020-11-01"),
     },
