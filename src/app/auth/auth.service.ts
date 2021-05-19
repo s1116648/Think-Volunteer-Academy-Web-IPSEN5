@@ -43,7 +43,11 @@ export class AuthService {
 		!!this.loginInfo.getValue() && !this.JWTIsExpired();
 
 	autoLogin(): void {
-		const loginInfo = JSON.parse(localStorage.getItem("loginInfo")!);
+		const loginInfoJson = localStorage.getItem("loginInfo");
+
+		if (!loginInfoJson) return;
+
+		const loginInfo = JSON.parse(loginInfoJson);
 		if (!loginInfo) return;
 		this.loginInfo.next(loginInfo);
 	}
