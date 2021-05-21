@@ -1,23 +1,25 @@
 <section class="lesson-card">
-  <section class="status-and-line">
-    <div class="status-bubble" style="background-color: #22E63C;"></div>
-    <div class="line"></div>
-  </section>
-  <section class="lesson-content">
-    <h1>Lesson 0{{lesson.id}}</h1>
-    <section class="img-content-holder">
-      <img [src]="lesson.image" alt="lesson-thumbnail">
-      <section class="title-desc-holder">
-        <h3>{{lesson.name}}</h3>
-          <p>{{lesson.description}}</p>
-          <section class="button-eta-holder">
-            <button class="to-lesson">
-              To lesson
-              <span class="icon"><fa-icon [icon]="icons.faArrowRight"></fa-icon></span>
-            </button>
-            <p class="eta">~25min</p>
-          </section>
-      </section>
-    </section>
-  </section>
+	<section class="status-and-line">
+		<div class="status-bubble" style="background-color: #22e63c"></div>
+		<div class="line"></div>
+	</section>
+	<section class="lesson-content">
+		<h1>Lesson 0{{ lesson.id }}</h1>
+		<section class="img-content-holder">
+			<img [src]="lesson.image" alt="lesson-thumbnail" />
+			<section class="title-desc-holder">
+				<h3>{{ lesson.name }}</h3>
+				<p>{{ lesson.description }}</p>
+				<section class="button-eta-holder">
+					<button class="to-lesson">
+						To lesson
+						<span class="icon"
+							><fa-icon [icon]="icons.faArrowRight"></fa-icon
+						></span>
+					</button>
+					<p class="eta">~25min</p>
+				</section>
+			</section>
+		</section>
+	</section>
 </section>
