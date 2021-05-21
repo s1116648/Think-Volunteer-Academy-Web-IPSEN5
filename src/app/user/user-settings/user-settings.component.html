@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="cards-section">
+    <app-profile-card></app-profile-card>
+    <app-profile-card></app-profile-card>
+  </div>
+  <div class="settings-section">
+    <h1>Settings</h1>
+    <div class="avatar-section">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="profile avatar" class="profile-avatar">
+      <button type="submit" class="btn-avatar">Change avatar</button>
+    </div>
+    <form class="form-section">
+
+      <div class="flex">
+        <div class="input-block">
+          <label for="firstName">First name</label>
+          <input class="text-input" type="text" id="firstName" value="Firstname">
+        </div>
+        <div class="input-block">
+          <label for="lastName">Last name</label>
+          <input class="text-input" type="text" id="lastName" value="Lastname">
+        </div>
+      </div>
+
+      <div class="input-block">
+        <label for="email">Email</label>
+        <input class="text-input" type="text" id="email" value="firstname@lastname.com">
+      </div>
+
+      <br>
+      <hr>
+
+      <div class="password-section">
+        <div class="input-block">
+          <label for="oldPassword">Old password</label>
+          <input class="text-input" type="password" id="oldPassword">
+        </div>
+        <div class="flex">
+          <div class="input-block">
+            <label for="newPassword">New password</label>
+            <input class="text-input" type="password" id="newPassword">
+          </div>
+          <div class="input-block">
+            <label for="passwordRepeat">Repeat new password</label>
+            <input class="text-input" type="password" id="passwordRepeat">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
