@@ -1,20 +1,21 @@
-<main>
+<main class="container">
     <div class="login-container">
-        <h1>Inloggen</h1>
+        <h1>Sign in</h1>
 
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="form-group">
-                <label for="email">E-mailadres</label>
-                <input type="email" id="email" name="email" placeholder="E-mailadres" ngModel email required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" ngModel email required>
             </div>
 
             <div class="form-group">
-                <label for="password">Wachtwoord</label>
-                <input type="password" id="password" name="password" placeholder="Wachtwoord" ngModel required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" ngModel required>
             </div>
 
-            <div class="form-group">
-                <button class="button primary" [disabled]="loginForm.invalid">Inloggen <span class="icon"><fa-icon [icon]="icons.faArrowRight"></fa-icon></span></button>
+            <div class="form-group columns last">
+                <button class="button primary" [disabled]="loginForm.invalid">Sign in <span class="icon"><fa-icon [icon]="icons.faArrowRight"></fa-icon></span></button>
+                <p class="link" routerLink="/register">Create an account</p>
             </div>
         </form>
     </div>
