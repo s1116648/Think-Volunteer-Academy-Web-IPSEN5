@@ -22,4 +22,8 @@ export class CourseService {
 	update(id: string, dto: UpdateCourseDTO): Observable<Course> {
 		return this.http.patch<Course>(`/courses/${id}`, dto);
 	}
+
+	remove(id: string): Observable<void> {
+		return this.http.delete<void>(`/courses/${id}`);
+	}
 }

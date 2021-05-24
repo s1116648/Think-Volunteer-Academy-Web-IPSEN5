@@ -1,14 +1,12 @@
-import { Route } from "@angular/compiler/src/core";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { ActivatedRoute, Router } from "@angular/router";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
-import { CreateCourseDTO } from "../dto/create-course.dto";
 import { UpdateCourseDTO } from "../dto/update-course.dto";
 
 @Component({
@@ -17,17 +15,17 @@ import { UpdateCourseDTO } from "../dto/update-course.dto";
 	styleUrls: ["./edit-course.component.scss"],
 })
 export class EditCourseComponent implements OnInit {
-	icons = { faCheck };
+	icons = { faCheck, faTrash };
 
 	course: Course;
 
 	categories: CourseCategory[] = [];
-	category: CourseCategory;
 
 	constructor(
 		private courseService: CourseService,
 		private courseCategoryService: CourseCategoryService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -45,12 +43,13 @@ export class EditCourseComponent implements OnInit {
 	}
 
 	update(form: NgForm) {
-		if (form.invalid) return;
+		const values = form.value;
 
 		const dto: UpdateCourseDTO = {
-			...form.value,
+			name: values.name,
+			description: values.description,
 			image: "testimage",
-			categoryId: this.category.id,
+			categoryId: values.category.id,
 		};
 
 		this.courseService
@@ -58,5 +57,11 @@ export class EditCourseComponent implements OnInit {
 			.subscribe((course: Course) => {
 				console.log(course);
 			});
+	}
+
+	remove() {
+		this.courseService.remove(this.course.id).subscribe(() => {
+			this.router.navigate(["/admin"]);
+		});
 	}
 }

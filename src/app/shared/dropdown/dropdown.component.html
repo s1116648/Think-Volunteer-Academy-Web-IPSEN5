@@ -1,5 +1,5 @@
 <div class="dropdown-container" [id]="name">
-    <div class="dropdown" [class.dark]="dark" (click)="showDropdown = !showDropdown">
+    <div class="dropdown" [class.dark]="dark" [class.open]="showDropdown" (click)="showDropdown = !showDropdown">
         <div class="selected-container" *ngIf="selected">
             <ng-container *ngTemplateOutlet="dropdownSelectedTemplate; context: { $implicit: selected }"></ng-container>
         </div>

@@ -1,74 +1,79 @@
-<div class="container">
-	<div class="content-holder">
-		<section class="left-sidebar">
-			<section class="general-information">
-				<h3>Side navbar</h3>
-			</section>
+<div class="container content-holder">
+	<section class="left-sidebar">
+		<section class="general-information">
+			<h3>Side navbar</h3>
 		</section>
+	</section>
 
-		<section class="main-content">
-			<h1>Edit course</h1>
+	<section class="main-content" *ngIf="course">
+		<h1>Edit course</h1>
 
-			<form #courseForm="ngForm" (ngSubmit)="update(courseForm)">
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						placeholder="Course name"
-						class="dark"
-						[ngModel]="course.name"
-						required
-					/>
-				</div>
+		<form #courseForm="ngForm" (ngSubmit)="update(courseForm)">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Course name"
+					class="dark"
+					[ngModel]="course.name"
+					required
+				/>
+			</div>
 
-				<div class="form-group">
-					<label for="description">Description</label>
-					<textarea
-						name="description"
-						id="description"
-						placeholder="Course description"
-						class="dark"
-						[ngModel]="course.description"
-						required
-					></textarea>
-				</div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea
+					name="description"
+					id="description"
+					placeholder="Course description"
+					class="dark"
+					[ngModel]="course.description"
+					required
+				></textarea>
+			</div>
 
-				<div class="form-group">
-					<label for="category">Category</label>
-					<app-dropdown
-						class="dropdown"
-						[ngModel]="category"
-						name="category"
-						id="category"
-						placeholder="Select a category"
-						ngDefaultControl
-						required
-						[dark]="true"
-						[options]="categories"
-					>
-						<ng-template appDropdownSelected let-selected>
-							<p>{{ selected.name }}</p>
-						</ng-template>
-						<ng-template appDropdownOption let-option>
-							<p>{{ option.name }}</p>
-						</ng-template>
-					</app-dropdown>
-				</div>
+			<div class="form-group">
+				<label for="category">Category</label>
+				<app-dropdown
+					class="dropdown"
+					name="category"
+					id="category"
+					placeholder="Select a category"
+                    [ngModel]="course.category"
+					ngDefaultControl
+					required
+					[dark]="true"
+					[options]="categories"
+				>
+					<ng-template appDropdownSelected let-selected>
+						<p>{{ selected.name }}</p>
+					</ng-template>
+					<ng-template appDropdownOption let-option>
+						<p>{{ option.name }}</p>
+					</ng-template>
+				</app-dropdown>
+			</div>
 
-				<div class="form-group">
-					<button
-						class="button primary"
-						[disabled]="courseForm.invalid"
-					>
-						Save course
-						<span class="icon"
-							><fa-icon [icon]="icons.faCheck"></fa-icon
-						></span>
-					</button>
-				</div>
-			</form>
-		</section>
-	</div>
+			<div class="form-group">
+                <div class="columns">
+                    <div class="column grow">
+                        <button class="button primary" [disabled]="courseForm.invalid">
+                            Save course
+                            <span class="icon"
+                                ><fa-icon [icon]="icons.faCheck"></fa-icon
+                            ></span>
+                        </button>
+                    </div>
+                    <button type="button" class="column button hover-danger" (click)="remove()">
+                        Delete course
+                        <span class="icon"
+                            ><fa-icon [icon]="icons.faTrash"></fa-icon
+                        ></span>
+                    </button>
+                </div>
+			</div>
+		</form>
+	</section>
 </div>

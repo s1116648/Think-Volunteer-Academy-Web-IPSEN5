@@ -47,7 +47,7 @@ li {
 	font-size: 14px;
 	text-decoration: none;
 	color: $color-white;
-	font-weight: 400;
+	font-weight: 100;
 }
 
 hr {
@@ -57,7 +57,7 @@ hr {
 .container {
 	position: relative;
 	margin: 0 auto;
-	max-width: 1000px;
+	max-width: 1200px;
 	height: auto;
 	padding: 0 20px;
 	overflow: visible;
@@ -81,6 +81,7 @@ button {
     font-weight: bold;
     background-color: $color-gray-200;
     white-space: nowrap;
+    background-color: $color-background-dark;
 
     color: $color-white;
 
@@ -106,7 +107,7 @@ button {
         background-color: $color-primary;
     }
 
-    &.danger {
+    &.danger, &.hover-danger:hover {
         background-color: $color-red-600;
         color: $color-white;
     }
@@ -187,6 +188,16 @@ textarea {
     & > * {
         margin-left: 20px;
     }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    .column {
+        &.grow {
+            flex-grow: 1;
+        }
+    }
 }
 
 .content-holder {
@@ -204,6 +215,14 @@ textarea {
 			padding: 15px;
         }
 	}
+
+    section.section {
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
 
     @media only screen and (max-width: 750px) {
         grid-template-columns: 1fr !important;

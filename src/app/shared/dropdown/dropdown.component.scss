@@ -13,6 +13,11 @@
         font-size: 13px;
         user-select: none;
         background-color: $color-background;
+        transition: .3s;
+
+        &.open {
+            border-color: $color-white;
+        }
 
         &.dark {
             background-color: $color-background-dark;

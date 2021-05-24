@@ -17,7 +17,6 @@ export class CreateCourseComponent implements OnInit {
 	icons = { faCheck };
 
 	categories: CourseCategory[] = [];
-	category: CourseCategory;
 
 	constructor(
 		private courseService: CourseService,
@@ -34,12 +33,13 @@ export class CreateCourseComponent implements OnInit {
 	}
 
 	create(form: NgForm) {
-		if (form.invalid) return;
+		const values = form.value;
 
 		const dto: CreateCourseDTO = {
-			...form.value,
+			name: values.name,
+			description: values.description,
 			image: "testimage",
-			categoryId: this.category.id,
+			categoryId: values.category.id,
 		};
 
 		this.courseService.create(dto).subscribe((course: Course) => {

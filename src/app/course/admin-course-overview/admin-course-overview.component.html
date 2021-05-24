@@ -1,0 +1,28 @@
+<div class="container">
+    <img class="header-image" src="/assets/images/test-banner.jpeg" alt="Course image">
+    <div class="content-holder">
+        <section class="left-sidebar">
+            <section class="general-information">
+                <h3>Side navbar</h3>
+            </section>
+        </section>
+    
+        <section class="main-content" *ngIf="course">
+            <section class="section">
+                <div class="columns">
+                    <h1 class="column grow">{{ course.name }}</h1>
+                    <button class="column button primary">Edit course <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
+                    <button class="column button primary">Edit test <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
+                </div>
+                <p class="course-description">{{ course.description }}</p>
+            </section>
+
+            <section>
+                <div class="columns">
+                    <h1 class="column grow">Lessons</h1>
+                    <button class="column button primary">New lesson <span class="icon"><fa-icon [icon]="icons.faPlus"></fa-icon></span></button>
+                </div>
+            </section>
+        </section>
+    </div>
+</div>

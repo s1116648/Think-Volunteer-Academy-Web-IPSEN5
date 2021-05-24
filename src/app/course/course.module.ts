@@ -6,9 +6,14 @@ import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
 
 @NgModule({
-	declarations: [CreateCourseComponent, EditCourseComponent],
+	declarations: [
+		CreateCourseComponent,
+		EditCourseComponent,
+		AdminCourseOverviewComponent,
+	],
 	imports: [
 		CommonModule,
 		CourseRoutingModule,
