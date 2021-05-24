@@ -12,6 +12,15 @@ export class LessonOverviewComponent implements OnInit {
 	constructor(private lessonService: LessonService) {}
 
 	ngOnInit(): void {
-		this.lessons = this.lessonService.getLessons();
+		this.onFetchLessons();
+		this.lessonService.lessonsChanged.subscribe((lessons) => {
+			this.lessons = lessons;
+		});
+	}
+
+	onFetchLessons(): void {
+		this.lessonService.fetchLessonsFromApi().subscribe((resArray) => {
+			this.lessonService.setLessons(resArray);
+		});
 	}
 }

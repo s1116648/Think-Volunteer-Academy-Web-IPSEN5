@@ -14,13 +14,12 @@ export class LessonOverviewCardComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {
-		this.convertLessonId(this.lesson.id);
+		this.convertLessonId(this.lesson.lessonNumber);
 	}
 
 	convertLessonId(lessonId): void {
 		if (lessonId <= 9) {
 			this.lessonNumber = `0${lessonId}`;
-			console.log(this.lessonNumber);
 		} else if (lessonId >= 10) {
 			this.lessonNumber = lessonId;
 		}

@@ -1,64 +1,37 @@
 import { Injectable } from "@angular/core";
 import { Lesson } from "./lesson.model";
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class LessonService {
-	private lessons: Lesson[] = [
-		// Dummy data
-		{
-			id: 1,
-			name: "Culture of Bali",
-			image: "/assets/images/nature.jpeg",
-			content: "test",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-			updatedAt: new Date("2021-11-01"),
-			createdAt: new Date("2020-11-01"),
-		},
-		{
-			id: 2,
-			name: "Culture of Bali",
-			image: "/assets/images/nature.jpeg",
-			content: "test",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			updatedAt: new Date("2021-11-01"),
-			createdAt: new Date("2020-11-01"),
-		},
-		{
-			id: 3,
-			name: "Culture of Bali",
-			image: "/assets/images/nature.jpeg",
-			content: "test",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			updatedAt: new Date("2021-11-01"),
-			createdAt: new Date("2020-11-01"),
-		},
-		{
-			id: 4,
-			name: "Culture of Bali",
-			image: "/assets/images/nature.jpeg",
-			content: "test",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			updatedAt: new Date("2021-11-01"),
-			createdAt: new Date("2020-11-01"),
-		},
-		{
-			id: 10,
-			name: "Culture of Bali",
-			image: "/assets/images/nature.jpeg",
-			content: "test",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			updatedAt: new Date("2021-11-01"),
-			createdAt: new Date("2020-11-01"),
-		},
-	];
-	constructor() {}
+	lessonsChanged = new Subject<Lesson[]>();
+	private lessons: Lesson[] = [];
+
+	constructor(private http: HttpClient) {}
+
+	setLessons(lessons: Lesson[]): void {
+		this.lessons = lessons;
+		this.setLessonNumbers();
+		this.lessonsChanged.next(this.lessons);
+	}
 
 	getLessons(): Lesson[] {
 		return this.lessons.slice();
+	}
+
+	fetchLessonsFromApi(): Observable<Lesson[]> {
+		return this.http.get<any>("/lessons").pipe(
+			map((responseData: { items: Lesson[] }) => {
+				return responseData.items;
+			})
+		);
+	}
+
+	setLessonNumbers(): void {
+		this.lessons.forEach((lesson) => {
+			lesson.lessonNumber = this.lessons.indexOf(lesson) + 1;
+		});
 	}
 }
