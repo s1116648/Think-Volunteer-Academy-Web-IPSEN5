@@ -5,10 +5,11 @@ import { APIInterceptor } from "./shared/api.interceptor";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CourseModule } from "./course/course.module";
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [BrowserModule, CourseModule, AppRoutingModule],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
