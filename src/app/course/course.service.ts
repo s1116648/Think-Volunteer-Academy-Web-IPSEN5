@@ -11,6 +11,10 @@ import { UpdateCourseDTO } from "./dto/update-course.dto";
 export class CourseService {
 	constructor(private http: HttpClient) {}
 
+	getByID(id: string): Observable<Course> {
+		return this.http.get<Course>(`/courses/${id}`);
+	}
+
 	create(dto: CreateCourseDTO): Observable<Course> {
 		return this.http.post<Course>("/courses", dto);
 	}
