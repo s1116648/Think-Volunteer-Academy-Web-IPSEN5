@@ -5,5 +5,5 @@ export interface HttpPaginatedResult<T> {
 		pageSize: number;
 		totalItems: number;
 	};
-	items: T;
+	items: T[];
 }

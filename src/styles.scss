@@ -150,6 +150,10 @@ input, textarea {
     background-color: transparent;
     transition: .3s;
 
+    &.dark {
+        background-color: $color-background-dark;
+    }
+
     &::placeholder {
         color: $color-gray-500;
     }
@@ -182,5 +186,26 @@ textarea {
 
     & > * {
         margin-left: 20px;
+    }
+}
+
+.content-holder {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 30px;
+
+	section.left-sidebar {
+        section {
+            display: flex;
+			gap: 10px;
+			flex-direction: column;
+			background-color: $color-background-dark;
+			border-radius: 10px;
+			padding: 15px;
+        }
+	}
+
+    @media only screen and (max-width: 750px) {
+        grid-template-columns: 1fr !important;
     }
 }
