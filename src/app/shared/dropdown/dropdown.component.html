@@ -4,6 +4,8 @@
             <ng-container *ngTemplateOutlet="dropdownSelectedTemplate; context: { $implicit: selected }"></ng-container>
         </div>
 
+        <p *ngIf="!selected" class="placeholder">{{ placeholder }}</p>
+
         <div class="right">
             <fa-icon [icon]="icons.faChevronDown"></fa-icon>
         </div>

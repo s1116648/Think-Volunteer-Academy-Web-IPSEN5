@@ -30,6 +30,7 @@ export class DropdownComponent<T> implements OnInit, ControlValueAccessor {
 	@Input() disabled: boolean = false;
 	@Input() name: string;
 	@Input() dark: boolean = false;
+	@Input() placeholder: string = "Choose an option";
 
 	@ContentChild(DropdownSelectedDirective, { read: TemplateRef })
 	dropdownSelectedTemplate: TemplateRef<DropdownSelectedDirective>;

@@ -29,7 +29,7 @@ export class CreateCourseComponent implements OnInit {
 			.get()
 			.subscribe((categories: HttpPaginatedResult<CourseCategory>) => {
 				this.categories = categories.items;
-				this.category = this.categories[0];
+				// this.category = this.categories[0];
 			});
 	}
 
