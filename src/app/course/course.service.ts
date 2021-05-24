@@ -1,20 +1,20 @@
 import { Injectable } from "@angular/core";
-import { Lesson } from "./lesson.model";
+import { Lesson } from "../lesson/lesson.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable()
-export class LessonService {
-	lessonsChanged = new Subject<Lesson[]>();
+export class CourseService {
+	lessonsCardsChanged = new Subject<Lesson[]>();
 	private lessons: Lesson[] = [];
 
 	constructor(private http: HttpClient) {}
 
-	setLessons(lessons: Lesson[]): void {
+	setLessonsCards(lessons: Lesson[]): void {
 		this.lessons = lessons;
-		this.setLessonNumbers();
-		this.lessonsChanged.next(this.lessons);
+		this.setLessonCardNumbers();
+		this.lessonsCardsChanged.next(this.lessons);
 	}
 
 	getLessons(): Lesson[] {
@@ -29,7 +29,7 @@ export class LessonService {
 		);
 	}
 
-	setLessonNumbers(): void {
+	setLessonCardNumbers(): void {
 		this.lessons.forEach((lesson) => {
 			lesson.lessonNumber = this.lessons.indexOf(lesson) + 1;
 		});

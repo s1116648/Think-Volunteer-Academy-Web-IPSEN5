@@ -2,7 +2,7 @@
 	<figure class="img-holder">
 		<img
 			class="banner-image"
-			src="/assets/images/test-banner.jpeg"
+			src="./assets/images/test-banner.jpeg"
 			alt=""
 		/>
 	</figure>
@@ -59,10 +59,10 @@
 				</section>
 			</section>
 			<section class="cards-holder">
-				<app-lesson-overview-card
+				<app-course-overview-card
 					*ngFor="let lesson of lessons"
 					[lesson]="lesson"
-				></app-lesson-overview-card>
+				></app-course-overview-card>
 				<app-lesson-test-card></app-lesson-test-card>
 			</section>
 		</section>

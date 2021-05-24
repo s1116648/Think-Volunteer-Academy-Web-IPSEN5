@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Lesson } from "../../lesson.model";
+import { Lesson } from "../../../lesson/lesson.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-	selector: "app-lesson-overview-card",
-	templateUrl: "./lesson-overview-card.component.html",
-	styleUrls: ["./lesson-overview-card.component.scss"],
+	selector: "app-course-overview-card",
+	templateUrl: "./course-overview-card.component.html",
+	styleUrls: ["./course-overview-card.component.scss"],
 })
-export class LessonOverviewCardComponent implements OnInit {
+export class CourseOverviewCardComponent implements OnInit {
 	@Input() lesson: Lesson;
 	lessonNumber: string;
 	icons = { faArrowRight };
