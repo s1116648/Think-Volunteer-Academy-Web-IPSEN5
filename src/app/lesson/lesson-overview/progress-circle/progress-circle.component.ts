@@ -1,17 +1,16 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Lesson} from "../../lesson.model";
+import { Component, Input, OnInit } from "@angular/core";
+import { Lesson } from "../../lesson.model";
 
 @Component({
   selector: "app-progress-circle",
   templateUrl: "./progress-circle.component.html",
-  styleUrls: ["./progress-circle.component.scss"]
+  styleUrls: ["./progress-circle.component.scss"],
 })
 export class ProgressCircleComponent implements OnInit {
-  @Input() lesson: Lesson;
+  @Input() lesson!: Lesson;
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   convertNumberToRoman(num: number): any {
     if (num < 1) {
@@ -37,3 +36,4 @@ export class ProgressCircleComponent implements OnInit {
     }
   }
 }
+

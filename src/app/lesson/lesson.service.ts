@@ -45,16 +45,16 @@ export class LessonService {
 			updatedAt: new Date("2021-11-01"),
 			createdAt: new Date("2020-11-01"),
 		},
-    {
-      id: 10,
-      name: "Culture of Bali",
-      image: "/assets/images/nature.jpeg",
-      content: "test",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      updatedAt: new Date("2021-11-01"),
-      createdAt: new Date("2020-11-01"),
-    },
+		{
+			id: 10,
+			name: "Culture of Bali",
+			image: "/assets/images/nature.jpeg",
+			content: "test",
+			description:
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			updatedAt: new Date("2021-11-01"),
+			createdAt: new Date("2020-11-01"),
+		},
 	];
 	constructor() {}
 
