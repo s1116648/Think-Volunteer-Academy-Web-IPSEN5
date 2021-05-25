@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Course } from "./course.model";
 import { CreateCourseDTO } from "./dto/create-course.dto";
 import { UpdateCourseDTO } from "./dto/update-course.dto";
@@ -25,5 +26,11 @@ export class CourseService {
 
 	remove(id: string): Observable<void> {
 		return this.http.delete<void>(`/courses/${id}`);
+	}
+
+	getSimilar(id: string): Observable<HttpPaginatedResult<Course>> {
+		return this.http.get<HttpPaginatedResult<Course>>(
+			`/courses/${id}/similar`
+		);
 	}
 }

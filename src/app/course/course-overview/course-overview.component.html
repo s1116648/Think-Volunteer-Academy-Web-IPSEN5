@@ -11,29 +11,20 @@
 		<section class="left-sidebar">
             <app-general-course-info [course]="course" [lessonCount]="lessons.length" [length]="totalLessonLength"></app-general-course-info>
 
-			<section>
+			<section *ngIf="similarCourses">
 				<h3>Similar Courses</h3>
                 <ul>
-                    <li>
-                        <app-recommendation-card></app-recommendation-card>
-                    </li>
-                    <li>
-                        <app-recommendation-card></app-recommendation-card>
+                    <li *ngFor="let course of similarCourses">
+                        <app-recommendation-card routerLink="../{{ course.id }}" [course]="course"></app-recommendation-card>
                     </li>
                 </ul>
 			</section>
 		</section>
 
 		<section class="main-content">
-			<h1>Culture and beliefs in Indonesia</h1>
+			<h1>{{ course.name }}</h1>
 			<p class="course-description">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
+				{{ course.description }}
 			</p>
 
 			<section class="course-progress">
@@ -46,7 +37,7 @@
 				</section>
 			</section>
 
-			<section class="cards-holder">
+			<section class="cards-holder" *ngIf="lessons">
 				<app-course-overview-card
 					*ngFor="let lesson of lessons; let index = index"
 					[lesson]="lesson"
