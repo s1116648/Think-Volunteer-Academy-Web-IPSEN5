@@ -1,7 +1,6 @@
 <div class="main">
   <div class="cards-section">
-    <app-profile-card></app-profile-card>
-    <app-profile-card></app-profile-card>
+    <app-profile-card *ngIf="!mobile"></app-profile-card>
   </div>
   <div class="settings-section">
     <h1>Settings</h1>
@@ -27,7 +26,6 @@
         <input class="text-input" type="text" id="email" [value]="email">
       </div>
 
-      <br>
       <hr>
 
       <div class="password-section">

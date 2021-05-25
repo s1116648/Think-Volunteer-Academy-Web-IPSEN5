@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {LoginInfo} from "../../auth/dto/login-info.dto";
 import {User} from "../user.model";
@@ -10,23 +10,32 @@ import {User} from "../user.model";
 })
 export class UserSettingsComponent implements OnInit {
 
-  firstname : string;
-  lastname : string;
-  email : string;
+  mobile : boolean
+
+  firstname : string
+  lastname : string
+  email : string
 
   ngOnInit(): void {
-    let currentUser : User = JSON.parse(localStorage.getItem("loginInfo")).user;
-    this.setName(currentUser.firstname, currentUser.lastname);
-    this.setEmail(currentUser.email);
+    this.mobile = window.screen.width < 768;
+
+    let currentUser : User = JSON.parse(localStorage.getItem("loginInfo")).user
+    this.setName(currentUser.firstname, currentUser.lastname)
+    this.setEmail(currentUser.email)
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.mobile = window.screen.width < 768;
   }
 
   setName(firstname: string, lastname: string): void {
-    this.firstname = firstname;
-    this.lastname = lastname;
+    this.firstname = firstname
+    this.lastname = lastname
   }
 
   setEmail(email: string) {
-    this.email = email;
+    this.email = email
   }
 
 }
