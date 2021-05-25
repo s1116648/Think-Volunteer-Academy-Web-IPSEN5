@@ -15,6 +15,8 @@ import { LoginDTO } from "../dto/login.dto";
 export class LoginComponent implements OnInit {
 	icons = { faArrowRight };
 
+	error: HttpErrorResponse;
+
 	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {}
@@ -25,10 +27,8 @@ export class LoginComponent implements OnInit {
 		const values: LoginDTO = form.value;
 
 		this.authService.login(values).subscribe(
-			(user: User) => this.router.navigate(["/"]),
-			(error: HttpErrorResponse) => {
-				console.log(error);
-			}
+			() => this.router.navigate(["/"]),
+			(error: HttpErrorResponse) => (this.error = error)
 		);
 	}
 }
