@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
+import {LoginInfo} from "../../auth/dto/login-info.dto";
+import {User} from "../user.model";
 
 @Component({
   selector: 'app-user-settings',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingsComponent implements OnInit {
 
-  constructor() { }
+  firstname : string;
+  lastname : string;
+  email : string;
 
   ngOnInit(): void {
+    let currentUser : User = JSON.parse(localStorage.getItem("loginInfo")).user;
+    this.setName(currentUser.firstname, currentUser.lastname);
+    this.setEmail(currentUser.email);
+  }
+
+  setName(firstname: string, lastname: string): void {
+    this.firstname = firstname;
+    this.lastname = lastname;
+  }
+
+  setEmail(email: string) {
+    this.email = email;
   }
 
 }
