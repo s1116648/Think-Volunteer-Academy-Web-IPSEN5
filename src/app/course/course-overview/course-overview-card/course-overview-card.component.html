@@ -6,7 +6,7 @@
 	<section class="lesson-content">
 		<h1>Lesson {{ lessonNumber | padStart : 2 : "0" }}</h1>
 		<section class="img-content-holder">
-			<img [src]="lesson.image" alt="lesson-thumbnail" />
+			<img src="./assets/images/nature.jpeg" alt="lesson-thumbnail" />
 			<section class="title-desc-holder">
 				<h3>{{ lesson.name }}</h3>
 				<p>{{ lesson.description }}</p>
@@ -17,7 +17,7 @@
 							><fa-icon [icon]="icons.faArrowRight"></fa-icon
 						></span>
 					</button>
-					<p class="eta">~25min</p>
+					<p class="eta">~{{ lesson.length }}min</p>
 				</section>
 			</section>
 		</section>
