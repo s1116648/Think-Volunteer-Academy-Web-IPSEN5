@@ -11,7 +11,7 @@
             <section class="section">
                 <div class="columns">
                     <h1 class="column grow">{{ course.name }}</h1>
-                    <button class="column button primary">Edit course <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
+                    <button class="column button primary" routerLink="edit">Edit course <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
                     <button class="column button primary">Edit test <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
                 </div>
                 <p class="course-description">{{ course.description }}</p>

@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -25,7 +26,8 @@ export class EditCourseComponent implements OnInit {
 		private courseService: CourseService,
 		private courseCategoryService: CourseCategoryService,
 		private route: ActivatedRoute,
-		private router: Router
+		private router: Router,
+		private location: Location
 	) {}
 
 	ngOnInit(): void {
@@ -54,14 +56,12 @@ export class EditCourseComponent implements OnInit {
 
 		this.courseService
 			.update(this.course.id, dto)
-			.subscribe((course: Course) => {
-				console.log(course);
-			});
+			.subscribe(() => this.location.back());
 	}
 
 	remove() {
-		this.courseService.remove(this.course.id).subscribe(() => {
-			this.router.navigate(["/admin"]);
-		});
+		this.courseService
+			.remove(this.course.id)
+			.subscribe(() => this.router.navigate(["/admin/courses"]));
 	}
 }
