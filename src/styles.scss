@@ -205,6 +205,10 @@ textarea {
     grid-gap: 30px;
 
 	section.left-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
         section {
             display: flex;
 			gap: 10px;
@@ -212,6 +216,22 @@ textarea {
 			background-color: $color-background-dark;
 			border-radius: 10px;
 			padding: 15px;
+
+            ul {
+                li {
+                    padding: 10px 0;
+                    border-bottom: 1px solid $color-gray-700;
+    
+                    &:first-of-type {
+                        padding-top: 0;
+                    }
+    
+                    &:last-of-type {
+                        border-bottom: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
         }
 	}
 

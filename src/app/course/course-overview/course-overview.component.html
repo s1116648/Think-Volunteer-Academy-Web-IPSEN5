@@ -1,0 +1,60 @@
+<main class="container" *ngIf="course">
+	<figure>
+		<img
+			class="header-image"
+			src="./assets/images/test-banner.jpeg"
+			alt="Course banner"
+		/>
+	</figure>
+
+	<div class="content-holder">
+		<section class="left-sidebar">
+            <app-general-course-info [course]="course" [lessonCount]="lessons.length" [length]="totalLessonLength"></app-general-course-info>
+
+			<section>
+				<h3>Similar Courses</h3>
+                <ul>
+                    <li>
+                        <app-recommendation-card></app-recommendation-card>
+                    </li>
+                    <li>
+                        <app-recommendation-card></app-recommendation-card>
+                    </li>
+                </ul>
+			</section>
+		</section>
+
+		<section class="main-content">
+			<h1>Culture and beliefs in Indonesia</h1>
+			<p class="course-description">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris
+				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+				sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+
+			<section class="course-progress">
+				<h2>My progress</h2>
+				<section class="progress-circles">
+					<app-progress-circle
+						*ngFor="let lesson of lessons; let index = index"
+						[number]="index + 1"
+					></app-progress-circle>
+				</section>
+			</section>
+
+			<section class="cards-holder">
+				<app-course-overview-card
+					*ngFor="let lesson of lessons; let index = index"
+					[lesson]="lesson"
+                    [lessonNumber]="index + 1"
+				></app-course-overview-card>
+
+				<app-lesson-test-card></app-lesson-test-card>
+			</section>
+		</section>
+	</div>
+</main>

@@ -14,6 +14,10 @@ export class AdminCourseOverviewComponent implements OnInit {
 
 	course: Course;
 
+	get totalLessonLength(): number {
+		return 0;
+	}
+
 	constructor(
 		private courseService: CourseService,
 		private route: ActivatedRoute

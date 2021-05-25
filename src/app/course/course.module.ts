@@ -1,25 +1,38 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CourseRoutingModule } from "./course.routing.module";
-import { CreateCourseComponent } from "./create-course/create-course.component";
-import { EditCourseComponent } from "./edit-course/edit-course.component";
-import { FormsModule } from "@angular/forms";
-import { SharedModule } from "../shared/shared.module";
+import { CourseOverviewComponent } from "./course-overview/course-overview.component";
+import { CourseOverviewCardComponent } from "./course-overview/course-overview-card/course-overview-card.component";
+import { ProgressCircleComponent } from "./course-overview/progress-circle/progress-circle.component";
+import { RecommendationCardComponent } from "./course-overview/recommendation-card/recommendation-card.component";
+import { LessonTestCardComponent } from "./course-overview/lesson-test-card/lesson-test-card.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { CourseService } from "./course.service";
+import { SharedModule } from "../shared/shared.module";
+import { FormsModule } from "@angular/forms";
+import { EditCourseComponent } from "./edit-course/edit-course.component";
+import { CreateCourseComponent } from "./create-course/create-course.component";
 import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
 
 @NgModule({
 	declarations: [
-		CreateCourseComponent,
+		CourseOverviewComponent,
+		CourseOverviewCardComponent,
+		ProgressCircleComponent,
+		RecommendationCardComponent,
+		LessonTestCardComponent,
 		EditCourseComponent,
+		CreateCourseComponent,
 		AdminCourseOverviewComponent,
 	],
 	imports: [
 		CommonModule,
-		CourseRoutingModule,
-		FormsModule,
-		SharedModule,
 		FontAwesomeModule,
+		CourseRoutingModule,
+		SharedModule,
+		FormsModule,
 	],
+	exports: [CourseOverviewComponent],
+	providers: [CourseService],
 })
 export class CourseModule {}

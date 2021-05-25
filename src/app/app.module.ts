@@ -15,11 +15,11 @@ import { CourseModule } from "./course/course.module";
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		CourseModule,
 		LessonModule,
 		FontAwesomeModule,
 		AuthModule,
 		AppRoutingModule,
+		CourseModule,
 	],
 	providers: [
 		{
