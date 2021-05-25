@@ -44,7 +44,7 @@ export class EditCourseComponent implements OnInit {
 			});
 	}
 
-	update(form: NgForm) {
+	update(form: NgForm): void {
 		const values = form.value;
 
 		const dto: UpdateCourseDTO = {
@@ -59,7 +59,7 @@ export class EditCourseComponent implements OnInit {
 			.subscribe(() => this.location.back());
 	}
 
-	remove() {
+	remove(): void {
 		this.courseService
 			.remove(this.course.id)
 			.subscribe(() => this.router.navigate(["/admin/courses"]));

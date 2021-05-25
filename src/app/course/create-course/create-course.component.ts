@@ -32,7 +32,7 @@ export class CreateCourseComponent implements OnInit {
 			});
 	}
 
-	create(form: NgForm) {
+	create(form: NgForm): void {
 		const values = form.value;
 
 		const dto: CreateCourseDTO = {
