@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
@@ -22,6 +22,7 @@ export class CreateCourseComponent implements OnInit {
 	constructor(
 		private courseService: CourseService,
 		private courseCategoryService: CourseCategoryService,
+		private route: ActivatedRoute,
 		private router: Router
 	) {}
 
@@ -43,10 +44,10 @@ export class CreateCourseComponent implements OnInit {
 			categoryId: values.category.id,
 		};
 
-		this.courseService
-			.create(dto)
-			.subscribe((course: Course) =>
-				this.router.navigate([`../${course.id}`])
-			);
+		this.courseService.create(dto).subscribe((course: Course) => {
+			this.router.navigate(["../", course.id], {
+				relativeTo: this.route,
+			});
+		});
 	}
 }

@@ -11,7 +11,7 @@
 		<section class="left-sidebar">
             <app-general-course-info [course]="course" [lessonCount]="lessons.length" [length]="totalLessonLength"></app-general-course-info>
 
-			<section *ngIf="similarCourses">
+			<section *ngIf="similarCourses?.length > 0">
 				<h3>Similar Courses</h3>
                 <ul>
                     <li *ngFor="let course of similarCourses">
