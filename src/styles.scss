@@ -46,7 +46,7 @@ p,
 li {
 	font-size: 14px;
 	text-decoration: none;
-	color: darken($color-white, 15%);
+	color: $color-white;
 	font-weight: 400;
 }
 
@@ -75,7 +75,7 @@ button {
     border: none;
     border-radius: $border-radius;
     transition: .3s;
-    
+
     max-width: max-content;
     font-size: 13px;
     font-weight: bold;
