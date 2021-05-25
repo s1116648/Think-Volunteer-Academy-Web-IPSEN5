@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
 		const values: LoginDTO = form.value;
 
 		this.authService.login(values).subscribe(
-			(user: User) => {
-				alert("Welcome " + user.firstname);
-			},
+			(user: User) => this.router.navigate(["/"]),
 			(error: HttpErrorResponse) => {
 				console.log(error);
 			}

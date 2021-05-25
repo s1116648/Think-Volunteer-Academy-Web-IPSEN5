@@ -1,37 +1,36 @@
-import { Injectable } from "@angular/core";
-import { Lesson } from "../lesson/lesson.model";
 import { HttpClient } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
-import { map } from "rxjs/operators";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { HttpPaginatedResult } from "../shared/http-paginated-result";
+import { Course } from "./course.model";
+import { CreateCourseDTO } from "./dto/create-course.dto";
+import { UpdateCourseDTO } from "./dto/update-course.dto";
 
-@Injectable()
+@Injectable({
+	providedIn: "root",
+})
 export class CourseService {
-	lessonsCardsChanged = new Subject<Lesson[]>();
-	private lessons: Lesson[] = [];
-
 	constructor(private http: HttpClient) {}
 
-	setLessonsCards(lessons: Lesson[]): void {
-		this.lessons = lessons;
-		this.setLessonCardNumbers();
-		this.lessonsCardsChanged.next(this.lessons);
+	getByID(id: string): Observable<Course> {
+		return this.http.get<Course>(`/courses/${id}`);
 	}
 
-	getLessons(): Lesson[] {
-		return this.lessons.slice();
+	create(dto: CreateCourseDTO): Observable<Course> {
+		return this.http.post<Course>("/courses", dto);
 	}
 
-	fetchLessonsFromApi(): Observable<Lesson[]> {
-		return this.http.get<any>("/lessons").pipe(
-			map((responseData: { items: Lesson[] }) => {
-				return responseData.items;
-			})
+	update(id: string, dto: UpdateCourseDTO): Observable<Course> {
+		return this.http.patch<Course>(`/courses/${id}`, dto);
+	}
+
+	remove(id: string): Observable<void> {
+		return this.http.delete<void>(`/courses/${id}`);
+	}
+
+	getSimilar(id: string): Observable<HttpPaginatedResult<Course>> {
+		return this.http.get<HttpPaginatedResult<Course>>(
+			`/courses/${id}/similar`
 		);
-	}
-
-	setLessonCardNumbers(): void {
-		this.lessons.forEach((lesson) => {
-			lesson.lessonNumber = this.lessons.indexOf(lesson) + 1;
-		});
 	}
 }

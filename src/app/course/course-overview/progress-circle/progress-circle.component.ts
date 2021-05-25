@@ -7,7 +7,8 @@ import { Lesson } from "../../../lesson/lesson.model";
 	styleUrls: ["./progress-circle.component.scss"],
 })
 export class ProgressCircleComponent implements OnInit {
-	@Input() lesson!: Lesson;
+	@Input() number: number;
+
 	constructor() {}
 
 	ngOnInit(): void {}

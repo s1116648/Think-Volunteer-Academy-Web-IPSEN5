@@ -1,70 +1,51 @@
-<main class="lesson-overview-holder container">
-	<figure class="img-holder">
+<main class="container" *ngIf="course">
+	<figure>
 		<img
-			class="banner-image"
+			class="header-image"
 			src="./assets/images/test-banner.jpeg"
-			alt=""
+			alt="Course banner"
 		/>
 	</figure>
-	<section class="content-holder">
-		<section class="left-content">
-			<section class="general-information">
-				<h3>General information</h3>
-				<section class="general-info-holder">
-					<div class="text-and-numbers">
-						<p>Lessons</p>
-						<p>1</p>
-					</div>
-					<hr />
-					<div class="text-and-numbers">
-						<p>Category</p>
-						<p>Indonesia, Culture</p>
-					</div>
-					<hr />
-					<div class="text-and-numbers">
-						<p>Length</p>
-						<p>~165 minutes</p>
-					</div>
-				</section>
-			</section>
 
-			<section class="recommendation-info">
+	<div class="content-holder">
+		<section class="left-sidebar">
+            <app-general-course-info [course]="course" [lessonCount]="lessons.length" [length]="totalLessonLength"></app-general-course-info>
+
+			<section *ngIf="similarCourses">
 				<h3>Similar Courses</h3>
-				<app-recommendation-card></app-recommendation-card>
-				<app-recommendation-card></app-recommendation-card>
+                <ul>
+                    <li *ngFor="let course of similarCourses">
+                        <app-recommendation-card routerLink="../{{ course.id }}" [course]="course"></app-recommendation-card>
+                    </li>
+                </ul>
 			</section>
 		</section>
 
-		<section class="right-content">
-			<section class="title-desc-holder">
-				<h1>Culture and beliefs in Indonesia</h1>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					Duis aute irure dolor in reprehenderit in voluptate velit
-					esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-					occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum.
-				</p>
-			</section>
-			<section class="lesson-progress">
-				<h1>My progress</h1>
+		<section class="main-content">
+			<h1>{{ course.name }}</h1>
+			<p class="course-description">
+				{{ course.description }}
+			</p>
+
+			<section class="course-progress">
+				<h2>My progress</h2>
 				<section class="progress-circles">
 					<app-progress-circle
-						*ngFor="let lesson of lessons"
-						[lesson]="lesson"
+						*ngFor="let lesson of lessons; let index = index"
+						[number]="index + 1"
 					></app-progress-circle>
 				</section>
 			</section>
-			<section class="cards-holder">
+
+			<section class="cards-holder" *ngIf="lessons">
 				<app-course-overview-card
-					*ngFor="let lesson of lessons"
+					*ngFor="let lesson of lessons; let index = index"
 					[lesson]="lesson"
+                    [lessonNumber]="index + 1"
 				></app-course-overview-card>
+
 				<app-lesson-test-card></app-lesson-test-card>
 			</section>
 		</section>
-	</section>
+	</div>
 </main>

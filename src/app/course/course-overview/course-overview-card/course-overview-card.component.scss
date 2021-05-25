@@ -1,145 +1,148 @@
-h1{
-  font-family: Bahnschrift, sans-serif;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+@import "/src/app/shared/variables";
+
+h1 {
+	font-family: Bahnschrift, sans-serif;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
 }
-.lesson-card{
-  display: flex;
-  flex-direction: row;
-  max-width: 600px;
-  height: 170px;
-  gap: 10px;
 
-  .status-and-line{
-    display: flex;
-    flex-direction: column;
-    /* background-color: red; */
-    gap: 10px;
-    max-width: 30px;
+.lesson-card {
+	display: flex;
+	flex-direction: row;
+	max-width: 600px;
+	height: 170px;
+	gap: 10px;
 
-    .status-bubble{
-      min-width: 22px;
-      min-height: 22px;
-      width: 22px;
-      height: 22px;
-      border-radius: 100%;
-      /* background-color: #22E63C; */
-    }
+	.status-and-line {
+		display: flex;
+		flex-direction: column;
+		/* background-color: red; */
+		gap: 10px;
+		max-width: 30px;
 
-    .line{
-      height: 136px;
-      background-color: white;
-      width: 3px;
-      align-self: center;
-      border-radius: 10px;
-    }
-  }
+		.status-bubble {
+			min-width: 22px;
+			min-height: 22px;
+			width: 22px;
+			height: 22px;
+			border-radius: 100%;
+			/* background-color: #22E63C; */
+		}
 
-  .lesson-content{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+		.line {
+			height: 136px;
+			background-color: white;
+			width: 3px;
+			align-self: center;
+			border-radius: 10px;
+		}
+	}
 
-    .img-content-holder {
-      display: flex;
-      gap: 10px;
-    }
+	.lesson-content {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 
-    .img-content-holder > img {
-      width: 140px;
-      height: 126px;
-      border-radius: 10px;
-    }
+		.img-content-holder {
+			display: flex;
+			gap: 10px;
+		}
 
-    .title-desc-holder{
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      justify-content: space-between;
+		.img-content-holder > img {
+			width: 140px;
+			height: 126px;
+			border-radius: 10px;
+		}
 
-      .button-eta-holder{
-        display: flex;
-        gap: 10px;
+		.title-desc-holder {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			justify-content: space-between;
 
-        .to-lesson{
-          display: flex;
-          background-color: #1C2B40;
-          border: none;
-          padding: 10px;
-          border-radius: 8px;
-          color: white;
-          gap: 60px;
-        }
+			.button-eta-holder {
+				display: flex;
+				gap: 10px;
 
-        .to-lesson > p, img {
-          background-color: transparent;
-        }
+				.to-lesson {
+					display: flex;
+					background-color: #1c2b40;
+					border: none;
+					padding: 10px;
+					border-radius: 8px;
+					color: white;
+					gap: 60px;
+				}
 
+				.to-lesson > p,
+				img {
+					background-color: transparent;
+				}
 
-        .to-lesson > img {
-          height: 15px;
-          width: 15px;
-        }
+				.to-lesson > img {
+					height: 15px;
+					width: 15px;
+				}
 
-        .eta{
-          align-self: center;
-          color: white;
-        }
-      }
-    }
+				.eta {
+					align-self: center;
+					color: white;
+				}
+			}
+		}
 
-    .title-desc-holder > h3 {
-      font-weight: bold;
-      color: white;
-    }
+		.title-desc-holder > h3 {
+			font-weight: bold;
+			color: white;
+		}
 
-    .title-desc-holder > p {
-      font-weight: 1;
-      color: white;
-    }
-  }
+		.title-desc-holder > p {
+			font-weight: 1;
+			color: $color-gray-400
+		}
+	}
 }
 @media only screen and (max-width: 900px) {
-  .title-desc-holder > p {
-    font-size: 12px;
-  }
+	.title-desc-holder > p {
+		font-size: 12px;
+	}
 }
 
 @media only screen and (max-width: 490px) {
-  .title-desc-holder > p {
-    font-size: 10px;
-  }
-  .eta {
-    font-size: 10px;
-  }
+	.title-desc-holder > p {
+		font-size: 10px;
+	}
+	.eta {
+		font-size: 10px;
+	}
 }
 
 @media only screen and (max-width: 420px) {
-  .title-desc-holder > p {
-    font-size: 9px;
-  }
-  .eta {
-    font-size: 10px;
-  }
-  .button-text{
-    display: none;
-  }
+	.title-desc-holder > p {
+		font-size: 9px;
+	}
+	.eta {
+		font-size: 10px;
+	}
+	.button-text {
+		display: none;
+	}
 
-  .img-content-holder > img {
-    width: 50px;
-    height: 70px;
-    border-radius: 10px;
-  }
+	.img-content-holder > img {
+		width: 50px;
+		height: 70px;
+		border-radius: 10px;
+	}
 
-  .to-lesson{
-    padding: 1px;
-  }
-  .icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10px;
-    width: 10px;
-  }
+	.to-lesson {
+		padding: 1px;
+	}
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 10px;
+		width: 10px;
+	}
 }

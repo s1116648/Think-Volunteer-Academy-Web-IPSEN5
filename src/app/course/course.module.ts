@@ -8,6 +8,11 @@ import { RecommendationCardComponent } from "./course-overview/recommendation-ca
 import { LessonTestCardComponent } from "./course-overview/lesson-test-card/lesson-test-card.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CourseService } from "./course.service";
+import { SharedModule } from "../shared/shared.module";
+import { FormsModule } from "@angular/forms";
+import { EditCourseComponent } from "./edit-course/edit-course.component";
+import { CreateCourseComponent } from "./create-course/create-course.component";
+import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
 
 @NgModule({
 	declarations: [
@@ -16,8 +21,17 @@ import { CourseService } from "./course.service";
 		ProgressCircleComponent,
 		RecommendationCardComponent,
 		LessonTestCardComponent,
+		EditCourseComponent,
+		CreateCourseComponent,
+		AdminCourseOverviewComponent,
 	],
-	imports: [CommonModule, FontAwesomeModule, CourseRoutingModule],
+	imports: [
+		CommonModule,
+		FontAwesomeModule,
+		CourseRoutingModule,
+		SharedModule,
+		FormsModule,
+	],
 	exports: [CourseOverviewComponent],
 	providers: [CourseService],
 })

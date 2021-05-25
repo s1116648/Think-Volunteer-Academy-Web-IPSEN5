@@ -9,19 +9,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 })
 export class CourseOverviewCardComponent implements OnInit {
 	@Input() lesson: Lesson;
-	lessonNumber: string;
+
+	@Input() lessonNumber: number;
+
 	icons = { faArrowRight };
+
 	constructor() {}
 
-	ngOnInit(): void {
-		this.convertLessonId(this.lesson.lessonNumber);
-	}
+	ngOnInit(): void {}
 
-	convertLessonId(lessonId): void {
-		if (lessonId <= 9) {
-			this.lessonNumber = `0${lessonId}`;
-		} else if (lessonId >= 10) {
-			this.lessonNumber = lessonId;
-		}
-	}
+	getLessonNumber = (): string => String(this.lessonNumber).padStart(2, "0");
 }

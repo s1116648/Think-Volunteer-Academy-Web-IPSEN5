@@ -4,7 +4,7 @@ export interface Lesson {
 	image: string;
 	content: string;
 	description: string;
-	lessonNumber: number;
+	length: number;
 	updatedAt: Date;
 	createdAt: Date;
 }

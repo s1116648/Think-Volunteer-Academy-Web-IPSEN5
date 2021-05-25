@@ -17,7 +17,6 @@ body {
 	color: $color-white;
 	background-color: $color-background;
 	overflow-x: hidden;
-	height: 100%;
     font-weight: normal;
     font-size: 14px;
 }
@@ -47,7 +46,7 @@ li {
 	font-size: 14px;
 	text-decoration: none;
 	color: $color-white;
-	font-weight: 400;
+	font-weight: 100;
 }
 
 hr {
@@ -57,11 +56,10 @@ hr {
 .container {
 	position: relative;
 	margin: 0 auto;
-	max-width: 1000px;
+	max-width: 1200px;
 	height: auto;
 	padding: 0 20px;
 	overflow: visible;
-    min-height: 100vh;
 }
 
 button {
@@ -81,6 +79,7 @@ button {
     font-weight: bold;
     background-color: $color-gray-200;
     white-space: nowrap;
+    background-color: $color-background-dark;
 
     color: $color-white;
 
@@ -106,7 +105,7 @@ button {
         background-color: $color-primary;
     }
 
-    &.danger {
+    &.danger, &.hover-danger:hover {
         background-color: $color-red-600;
         color: $color-white;
     }
@@ -149,6 +148,11 @@ input, textarea {
     display: block;
     background-color: transparent;
     transition: .3s;
+    font-weight: 100;
+
+    &.dark {
+        background-color: $color-background-dark;
+    }
 
     &::placeholder {
         color: $color-gray-500;
@@ -182,5 +186,64 @@ textarea {
 
     & > * {
         margin-left: 20px;
+    }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    .column {
+        &.grow {
+            flex-grow: 1;
+        }
+    }
+}
+
+.content-holder {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 30px;
+
+	section.left-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        section {
+            display: flex;
+			gap: 10px;
+			flex-direction: column;
+			background-color: $color-background-dark;
+			border-radius: 10px;
+			padding: 15px;
+
+            ul {
+                li {
+                    padding: 10px 0;
+                    border-bottom: 1px solid $color-gray-700;
+    
+                    &:first-of-type {
+                        padding-top: 0;
+                    }
+    
+                    &:last-of-type {
+                        border-bottom: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+	}
+
+    section.section {
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @media only screen and (max-width: 750px) {
+        grid-template-columns: 1fr !important;
     }
 }
