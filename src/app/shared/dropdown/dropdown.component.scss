@@ -1,0 +1,83 @@
+@import "/src/app/shared/variables";
+
+.dropdown-container {
+    position: relative;
+
+    .dropdown {
+        padding: 10px 20px;
+        border-radius: $border-radius;
+        border: 1px solid $color-gray-700;
+        display: flex;
+        position: relative;
+        cursor: pointer;
+        font-size: 13px;
+        user-select: none;
+        background-color: $color-background;
+        transition: .3s;
+
+        &.open {
+            border-color: $color-white;
+        }
+
+        &.dark {
+            background-color: $color-background-dark;
+        }
+
+        p.placeholder {
+            color: $color-gray-500;
+        }
+
+        .selected-container {
+            margin-right: 50px;
+        }
+
+        .right {
+            margin-left: auto;
+            width: 40px;
+            height: calc(100% + 2px);
+            display: block;
+            position: absolute;
+            right: -1px;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            fa-icon {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .options {
+        width: 100%;
+        padding: 0 20px;
+        background-color: $color-background-dark;
+        border-radius: $border-radius;
+        box-shadow: $shadow-dark;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        max-height: max(min(50vh, 300px), 300px);
+        overflow-y: auto;
+        z-index: 2;
+        
+        &::ng-deep {
+            white-space: initial;
+        }
+
+        li {
+            padding: 13px 0;
+            border-bottom: 1px solid $color-gray-700;
+            cursor: pointer;
+
+            &::ng-deep p {
+                font-size: 13px;
+            }
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+        }
+    }
+}

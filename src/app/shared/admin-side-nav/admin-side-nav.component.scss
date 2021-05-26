@@ -1,0 +1,17 @@
+@import "/src/app/shared/variables";
+
+.navigation {
+    ul li {
+        cursor: pointer;
+        display: flex;
+
+        p {
+            flex-grow: 1;
+        }
+
+        fa-icon {
+            font-size: 12px;
+            color: $color-gray-600;
+        }
+    }
+}
