@@ -15,8 +15,8 @@ export class CourseOverviewComponent implements OnInit {
 	readonly MAX_SIMILAR_COURSES = 10;
 
 	course: Course;
-	lessons: Lesson[];
-	similarCourses: Course[];
+	lessons: Lesson[] = [];
+	similarCourses: Course[] = [];
 
 	get totalLessonLength(): number {
 		return this.lessons.reduce((acc, lesson) => acc + lesson.length, 0);

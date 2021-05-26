@@ -14,6 +14,8 @@ import { RegisterDTO } from "../dto/register.dto";
 export class RegisterComponent implements OnInit {
 	icons = { faArrowRight };
 
+	error: HttpErrorResponse;
+
 	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {}
@@ -24,11 +26,10 @@ export class RegisterComponent implements OnInit {
 		const values: RegisterDTO = form.value;
 
 		this.authService.register(values).subscribe(
-			() => {
-				this.router.navigate(["/login"]);
-			},
+			() => this.router.navigate(["/login"]),
 			(error: HttpErrorResponse) => {
 				console.log(error);
+				this.error = error;
 			}
 		);
 	}
