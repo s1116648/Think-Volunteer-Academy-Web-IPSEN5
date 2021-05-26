@@ -1,0 +1,25 @@
+<section class="lesson-card">
+	<section class="status-and-line">
+		<div class="status-bubble" style="background-color: #22e63c"></div>
+		<div class="line"></div>
+	</section>
+	<section class="lesson-content">
+		<h1>Lesson {{ lessonNumber | padStart : 2 : "0" }}</h1>
+		<section class="img-content-holder">
+			<img src="./assets/images/nature.jpeg" alt="lesson-thumbnail" />
+			<section class="title-desc-holder">
+				<h3>{{ lesson.name }}</h3>
+				<p>{{ lesson.description | truncate : 190 }}</p>
+				<section class="button-eta-holder">
+					<button class="to-lesson">
+						<span class="button-text">To lesson</span>
+						<span class="icon"
+							><fa-icon [icon]="icons.faArrowRight"></fa-icon
+						></span>
+					</button>
+					<p class="eta">~{{ lesson.length }}min</p>
+				</section>
+			</section>
+		</section>
+	</section>
+</section>

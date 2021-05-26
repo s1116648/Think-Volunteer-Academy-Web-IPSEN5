@@ -1,0 +1,14 @@
+.general-information {
+    ul li {
+        display: flex;
+
+        p.value {
+            text-align: right;
+            font-weight: 400;
+        }
+
+        p.title {
+            flex-grow: 1;
+        }
+    }
+}

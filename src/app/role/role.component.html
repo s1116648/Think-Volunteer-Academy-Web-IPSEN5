@@ -1,13 +1,18 @@
 <main>
-  <div class="container" title="Welkom">
-    <button class="button primary">
-      Nieuwe rol
-    </button>
-  <ul>
-    <li *ngFor="let role of roles">
-      <app-role-row [role]="role" (editButtonClickedEvent)="openEditRoleModal($event)"></app-role-row>
-    </li>
-  </ul>
+  <div class="container">
+    <div>
+      <h1 style="width: 90%">Roles</h1>
+      <button class="button primary">
+        Nieuwe rol
+      </button>
+    </div>
+    <div class="content">
+      <ul>
+        <li *ngFor="let role of roles">
+          <app-role-row [role]="role" (editButtonClickedEvent)="openEditRoleModal($event)"></app-role-row>
+        </li>
+      </ul>
+    </div>
   </div>
 </main>
 <ng-container appPlaceholder></ng-container>

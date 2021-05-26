@@ -1,0 +1,18 @@
+@import "/src/app/shared/variables";
+
+.progress-circle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 62px;
+	height: 63px;
+	border-radius: 100%;
+	background-color: $color-background;
+
+	> h1 {
+		color: white;
+		font-size: 28px;
+		font-family: "Times New Roman", sans-serif;
+		font-weight: normal;
+	}
+}
