@@ -9,6 +9,7 @@ import { PadStartPipe } from "./pad-start.pipe";
 import { GeneralCourseInfoComponent } from "./general-course-info/general-course-info.component";
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
+import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from "@angular/forms";
 		PadStartPipe,
 		GeneralCourseInfoComponent,
 		ToggleComponent,
+		AdminSideNavComponent,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule],
 	exports: [
@@ -29,6 +31,7 @@ import { FormsModule } from "@angular/forms";
 		PadStartPipe,
 		GeneralCourseInfoComponent,
 		ToggleComponent,
+		AdminSideNavComponent,
 	],
 })
 export class SharedModule {}
