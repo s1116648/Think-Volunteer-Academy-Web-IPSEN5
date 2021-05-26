@@ -1,12 +1,12 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from "@angular/core";
 import {BehaviorSubject} from "rxjs";
 import {LoginInfo} from "../../auth/dto/login-info.dto";
 import {User} from "../user.model";
 
 @Component({
-  selector: 'app-user-settings',
-  templateUrl: './user-settings.component.html',
-  styleUrls: ['./user-settings.component.scss']
+  selector: "app-user-settings",
+  templateUrl: "./user-settings.component.html",
+  styleUrls: ["./user-settings.component.scss"]
 })
 export class UserSettingsComponent implements OnInit {
 
