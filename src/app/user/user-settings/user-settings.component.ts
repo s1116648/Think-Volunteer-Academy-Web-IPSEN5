@@ -15,7 +15,7 @@ export class UserSettingsComponent implements OnInit {
   email: string;
 
   ngOnInit(): void {
-    let currentUser: User = JSON.parse(localStorage.getItem("loginInfo")).user;
+    const currentUser: User = JSON.parse(localStorage.getItem("loginInfo")).user;
     this.setName(currentUser.firstname, currentUser.lastname);
     this.setEmail(currentUser.email);
   }
