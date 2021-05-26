@@ -43,7 +43,8 @@ export class UserSettingsComponent implements OnInit {
         } else {
             console.log(this.newPassword);
             console.log(this.repeatPassword);
-            if ((this.newPassword === "" || this.newPassword === undefined) && (this.repeatPassword === "" || this.repeatPassword === undefined)) {
+            if ((this.newPassword === "" || this.newPassword === undefined) &&
+                (this.repeatPassword === "" || this.repeatPassword === undefined)) {
                 document.getElementById("newPassword").removeAttribute("style");
                 document.getElementById("repeatPassword").removeAttribute("style");
                 this.changeMessage("Profile has been updated.");
@@ -71,12 +72,12 @@ export class UserSettingsComponent implements OnInit {
         this.messageString = newMessageString;
     }
 
-    keyPressCurrentPassword() {
+    keyPressCurrentPassword(): void {
         document.getElementById("currentPassword").removeAttribute("style");
         this.showMessage = false;
     }
 
-    keyPressNewPassword() {
+    keyPressNewPassword(): void {
         document.getElementById("newPassword").removeAttribute("style");
         document.getElementById("repeatPassword").removeAttribute("style");
         this.showMessage = false;
