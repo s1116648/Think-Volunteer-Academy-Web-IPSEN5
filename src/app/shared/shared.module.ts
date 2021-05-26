@@ -7,6 +7,8 @@ import { DropdownSelectedDirective } from "./dropdown/dropdown-selected.directiv
 import { TruncatePipe } from "./truncate.pipe";
 import { PadStartPipe } from "./pad-start.pipe";
 import { GeneralCourseInfoComponent } from "./general-course-info/general-course-info.component";
+import { ToggleComponent } from "./toggle/toggle.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
 	declarations: [
@@ -16,8 +18,9 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
+		ToggleComponent,
 	],
-	imports: [CommonModule, FontAwesomeModule],
+	imports: [CommonModule, FontAwesomeModule, FormsModule],
 	exports: [
 		DropdownComponent,
 		DropdownOptionDirective,
@@ -25,6 +28,7 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
+		ToggleComponent,
 	],
 })
 export class SharedModule {}

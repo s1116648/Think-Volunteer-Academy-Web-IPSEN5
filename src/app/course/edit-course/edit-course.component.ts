@@ -52,11 +52,12 @@ export class EditCourseComponent implements OnInit {
 			description: values.description,
 			image: "testimage",
 			categoryId: values.category.id,
+			active: values.active,
 		};
 
 		this.courseService
 			.update(this.course.id, dto)
-			.subscribe(() => this.location.back());
+			.subscribe(() => this.router.navigate(["../"]));
 	}
 
 	remove(): void {
