@@ -1,0 +1,5 @@
+<app-modal [title]="role ? 'Edit role' : 'Create role'" (closeModal)="close()">
+  <ng-container body>
+    {{ role.id}} {{ role.name }}
+  </ng-container>
+</app-modal>

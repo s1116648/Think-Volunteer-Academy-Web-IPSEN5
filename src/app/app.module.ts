@@ -8,10 +8,12 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthModule } from "./auth/auth.module";
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { PermissionModule } from "./role/permission/permission.module";
+import { RoleModule } from "./role/role.module";
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, FontAwesomeModule, AuthModule, AppRoutingModule],
+	imports: [BrowserModule, FontAwesomeModule, AuthModule, AppRoutingModule, RoleModule, PermissionModule],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
