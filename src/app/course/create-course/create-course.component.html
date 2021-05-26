@@ -1,8 +1,6 @@
 <div class="container content-holder">
 	<section class="left-sidebar">
-		<section class="general-information">
-			<h3>Side navbar</h3>
-		</section>
+		<app-admin-side-nav></app-admin-side-nav>
 	</section>
 
 	<section class="main-content">
@@ -43,7 +41,7 @@
 					placeholder="Select a category"
 					ngDefaultControl
 					required
-                    ngModel
+					ngModel
 					[dark]="true"
 					[options]="categories"
 				>

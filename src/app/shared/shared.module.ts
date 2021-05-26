@@ -7,6 +7,7 @@ import { DropdownSelectedDirective } from "./dropdown/dropdown-selected.directiv
 import { TruncatePipe } from "./truncate.pipe";
 import { PadStartPipe } from "./pad-start.pipe";
 import { GeneralCourseInfoComponent } from "./general-course-info/general-course-info.component";
+import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
 
 @NgModule({
 	declarations: [
@@ -16,6 +17,7 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
+		AdminSideNavComponent,
 	],
 	imports: [CommonModule, FontAwesomeModule],
 	exports: [
@@ -25,6 +27,7 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
+		AdminSideNavComponent,
 	],
 })
 export class SharedModule {}
