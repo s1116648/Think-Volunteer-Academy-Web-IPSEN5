@@ -10,32 +10,23 @@ import {User} from "../user.model";
 })
 export class UserSettingsComponent implements OnInit {
 
-  mobile : boolean
-
-  firstname : string
-  lastname : string
-  email : string
+  firstname: string;
+  lastname: string;
+  email: string;
 
   ngOnInit(): void {
-    this.mobile = window.screen.width < 768;
-
-    let currentUser : User = JSON.parse(localStorage.getItem("loginInfo")).user
-    this.setName(currentUser.firstname, currentUser.lastname)
-    this.setEmail(currentUser.email)
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.mobile = window.screen.width < 768;
+    let currentUser: User = JSON.parse(localStorage.getItem("loginInfo")).user;
+    this.setName(currentUser.firstname, currentUser.lastname);
+    this.setEmail(currentUser.email);
   }
 
   setName(firstname: string, lastname: string): void {
-    this.firstname = firstname
-    this.lastname = lastname
+    this.firstname = firstname;
+    this.lastname = lastname;
   }
 
-  setEmail(email: string) {
-    this.email = email
+  setEmail(email: string): void {
+    this.email = email;
   }
 
 }
