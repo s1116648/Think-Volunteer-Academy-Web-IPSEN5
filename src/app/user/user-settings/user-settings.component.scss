@@ -9,16 +9,7 @@
         border-radius: 200px;
         margin-right: 20px;
     }
-
-    .btn-avatar {
-        height: 56px;
-        width: 178px;
-        border-radius: 20px;
-        background-color: #1C2B40;
-        color: white;
-    }
 }
-
 
 form {
     margin-top: 20px;
@@ -30,4 +21,12 @@ form {
             color: white;
         }
     }
+}
+
+.btn {
+    height: 56px;
+    width: 178px;
+    border-radius: 20px;
+    background-color: #1C2B40;
+    color: white;
 }

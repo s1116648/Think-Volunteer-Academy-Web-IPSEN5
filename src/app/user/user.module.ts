@@ -4,6 +4,7 @@ import {UserSettingsComponent} from "./user-settings/user-settings.component";
 import {ProfileCardComponent} from "./profile-card/profile-card.component";
 import {UserRoutingModule} from "./user-routing.module";
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [UserSettingsComponent, ProfileCardComponent],
@@ -13,7 +14,8 @@ import {RouterModule} from "@angular/router";
     imports: [
         CommonModule,
         UserRoutingModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ]
 })
 export class UserModule {
