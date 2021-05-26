@@ -1,105 +1,33 @@
-.main {
-  display: grid;
-  grid-template-columns: 40% 29%;
-  margin-top: 50px;
-}
-
-.cards-section {
-  grid-column-start: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 20px;
-}
-
-.settings-section {
-  grid-column-start: 2;
-}
-
 .avatar-section {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.form-section {
-  margin-top: 35px;
-}
-
-.flex {
-  display: flex;
-}
-
-.password-section {
-  margin-top: 40px;
-}
-
-.input-block {
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
-.text-input {
-  box-sizing: border-box;
-  height: 32px;
-  width: 100%;
-  border-radius: 3px;
-  background-color: #1C2B40;
-  border: 1px solid #808080;
-}
-
-.profile-avatar {
-  height: 100px;
-  width: 100px;
-  border-radius: 200px;
-  margin-right: 20px;
-}
-
-.btn-avatar {
-  height: 56px;
-  width: 178px;
-  border-radius: 20px;
-  background-color: #1C2B40;
-  color: white;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .main {
     display: flex;
-  }
-}
+    align-items: center;
+    margin-top: 10px;
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .main {
-    grid-template-columns: 37% 55%;
-  }
-}
+    .profile-avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 200px;
+        margin-right: 20px;
+    }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .main {
-    grid-template-columns: 37% 60%;
-  }
-
-  .input-block {
-    width: 100%;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .main {
-    grid-template-columns: 28% 67%;
-  }
-}
-
-///* Extra large devices (large laptops and desktops, 1367px and up) */
-@media only screen and (min-width: 1367px) {
-  .main {
-    grid-template-columns: 40% 29%;
-  }
+    .btn-avatar {
+        height: 56px;
+        width: 178px;
+        border-radius: 20px;
+        background-color: #1C2B40;
+        color: white;
+    }
 }
 
 
+form {
+    margin-top: 20px;
+
+    .form-group {
+        flex-grow: 1;
+
+        label {
+            color: white;
+        }
+    }
+}

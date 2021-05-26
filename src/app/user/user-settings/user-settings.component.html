@@ -1,50 +1,49 @@
-<div class="main">
-  <div class="cards-section">
-    <app-profile-card></app-profile-card>
-  </div>
-  <div class="settings-section">
-    <h1>Settings</h1>
-    <div class="avatar-section">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="profile avatar" class="profile-avatar">
-      <button type="submit" class="btn-avatar">Change avatar</button>
+<div class="container">
+    <div class="content-holder">
+        <div class="left-sidebar">
+            <app-profile-card></app-profile-card>
+        </div>
+        <section class="main-content">
+            <h1>
+                Settings
+            </h1>
+            <section class="avatar-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                     alt="profile avatar" class="profile-avatar">
+                <button type="submit" class="btn-avatar">
+                    Change avatar
+                </button>
+            </section>
+            <form>
+                <div class="columns">
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" [value]="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName" [value]="lastname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" [value]="email">
+                </div>
+                <div class="form-group">
+                    <label for="oldPassword">Old password</label>
+                    <input type="password" id="oldPassword">
+                </div>
+                <div class="columns">
+                    <div class="form-group">
+                        <label for="newPassword">New password</label>
+                        <input type="password" id="newPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordRepeat">Repeat new password</label>
+                        <input type="password" id="passwordRepeat">
+                    </div>
+                </div>
+            </form>
+        </section>
     </div>
-    <form class="form-section">
-
-      <div class="flex">
-        <div class="input-block">
-          <label for="firstName">First name</label>
-          <input class="text-input" type="text" id="firstName" [value]="firstname">
-        </div>
-        <div class="input-block">
-          <label for="lastName">Last name</label>
-          <input class="text-input" type="text" id="lastName" [value]="lastname">
-        </div>
-      </div>
-
-      <div class="input-block">
-        <label for="email">Email</label>
-        <input class="text-input" type="text" id="email" [value]="email">
-      </div>
-
-      <hr>
-
-      <div class="password-section">
-        <div class="input-block">
-          <label for="oldPassword">Old password</label>
-          <input class="text-input" type="password" id="oldPassword">
-        </div>
-        <div class="flex">
-          <div class="input-block">
-            <label for="newPassword">New password</label>
-            <input class="text-input" type="password" id="newPassword">
-          </div>
-          <div class="input-block">
-            <label for="passwordRepeat">Repeat new password</label>
-            <input class="text-input" type="password" id="passwordRepeat">
-          </div>
-        </div>
-      </div>
-
-    </form>
-  </div>
 </div>

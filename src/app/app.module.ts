@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { LessonModule } from "./lesson/lesson.module";
 import { AuthModule } from "./auth/auth.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import {UserModule} from "./user/user.module";
+import { UserModule } from "./user/user.module";
 import { CourseModule } from "./course/course.module";
 
 @NgModule({
@@ -21,6 +21,7 @@ import { CourseModule } from "./course/course.module";
 		AuthModule,
 		AppRoutingModule,
 		CourseModule,
+    UserModule
 	],
 	providers: [
 		{
