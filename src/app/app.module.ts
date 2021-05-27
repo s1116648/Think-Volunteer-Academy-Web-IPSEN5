@@ -9,6 +9,8 @@ import { LessonModule } from "./lesson/lesson.module";
 import { AuthModule } from "./auth/auth.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CourseModule } from "./course/course.module";
+import { FormsModule } from "@angular/forms";
+import { CourseCategoryModule } from "./course-category/course-category.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -20,6 +22,8 @@ import { CourseModule } from "./course/course.module";
 		AuthModule,
 		AppRoutingModule,
 		CourseModule,
+		FormsModule,
+		CourseCategoryModule,
 	],
 	providers: [
 		{

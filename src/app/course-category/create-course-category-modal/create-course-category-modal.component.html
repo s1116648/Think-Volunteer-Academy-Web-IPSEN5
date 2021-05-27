@@ -1,0 +1,15 @@
+<app-modal title="New category" (closeModal)="close()">
+    <ng-container body>
+        <form #createCategoryForm="ngForm" (ngSubmit)="create(createCategoryForm)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="dark" type="text" name="name" id="name" placeholder="Culture" ngModel required>
+            </div>
+        </form>
+    </ng-container>
+    <ng-container footer>
+        <button [disabled]="createCategoryForm.invalid" class="button primary" (click)="create(createCategoryForm)">
+            Save
+        </button>
+    </ng-container>
+</app-modal>

@@ -32,7 +32,7 @@ import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-cour
 		SharedModule,
 		FormsModule,
 	],
-	exports: [CourseOverviewComponent],
+	exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}

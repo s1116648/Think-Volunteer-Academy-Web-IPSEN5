@@ -10,6 +10,8 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
+import { ModalComponent } from "./modals/modal/modal.component";
+import { PlaceholderDirective } from "./placeholder.directive";
 
 @NgModule({
 	declarations: [
@@ -21,6 +23,8 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
+		ModalComponent,
+		PlaceholderDirective,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule],
 	exports: [
@@ -32,6 +36,8 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
+		ModalComponent,
+		PlaceholderDirective,
 	],
 })
 export class SharedModule {}

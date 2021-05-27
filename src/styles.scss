@@ -146,7 +146,7 @@ input, textarea {
     color: $color-white;
     font-family: inherit;
     display: block;
-    background-color: transparent;
+    background-color: $color-background;
     transition: .3s;
     font-weight: 100;
 
