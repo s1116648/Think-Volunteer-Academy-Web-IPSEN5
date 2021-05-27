@@ -5,6 +5,7 @@ export interface Course {
 	name: string;
 	description: string;
 	image: string;
+	active: boolean;
 	category: CourseCategory;
 	createdAt: Date;
 	updatedAt: Date;
