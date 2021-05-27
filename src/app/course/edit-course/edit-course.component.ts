@@ -88,7 +88,7 @@ export class EditCourseComponent implements OnInit {
 		});
 	}
 
-	removeCategory(event: Event, category: CourseCategory) {
+	removeCategory(event: Event, category: CourseCategory): void {
 		event.stopPropagation();
 		this.courseCategoryService.remove(category.id).subscribe(() => {
 			const index = this.categories.findIndex(
