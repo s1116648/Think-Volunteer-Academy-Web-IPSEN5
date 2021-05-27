@@ -34,7 +34,7 @@ import { LessonModule } from "../lesson/lesson.module";
 		FormsModule,
 		LessonModule,
 	],
-	exports: [CourseOverviewComponent],
+	exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}

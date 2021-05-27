@@ -34,24 +34,34 @@
 
 			<div class="form-group">
 				<label for="category">Category</label>
-				<app-dropdown
-					class="dropdown"
-					name="category"
-					id="category"
-					placeholder="Select a category"
-                    [ngModel]="course.category"
-					ngDefaultControl
-					required
-					[dark]="true"
-					[options]="categories"
-				>
-					<ng-template appDropdownSelected let-selected>
-						<p>{{ selected.name }}</p>
-					</ng-template>
-					<ng-template appDropdownOption let-option>
-						<p>{{ option.name }}</p>
-					</ng-template>
-				</app-dropdown>
+				<div class="columns">
+					<app-dropdown
+						class="dropdown"
+						name="category"
+						id="category"
+						placeholder="Select a category"
+                        class="column grow"
+						ngDefaultControl
+						required
+						ngModel
+						[dark]="true"
+						[options]="categories"
+					>
+						<ng-template appDropdownSelected let-selected>
+							<p>{{ selected.name }}</p>
+						</ng-template>
+						<ng-template appDropdownOption let-option>
+                            <div class="columns">
+                                <p class="column grow">{{ option.name }}</p>
+                                <fa-icon (click)="removeCategory($event, option)" class="remove-category-icon" [icon]="icons.faTimes"></fa-icon>
+                            </div>
+						</ng-template>
+					</app-dropdown>
+
+                    <button type="button" class="button add-category-button" (click)="showCreateCategoryModal()">
+                        <fa-icon [icon]="icons.faPlus"></fa-icon>
+                    </button>
+				</div>
 			</div>
 
             <div class="form-group">
@@ -79,4 +89,6 @@
 			</div>
 		</form>
 	</section>
+
+    <ng-container appPlaceholder></ng-container>
 </div>

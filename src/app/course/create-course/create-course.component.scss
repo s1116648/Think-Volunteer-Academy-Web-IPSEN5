@@ -11,6 +11,23 @@
             textarea {
                 height: 300px;
             }
+
+            .add-category-button {
+                border: 1px solid $color-gray-700;
+
+                &:focus {
+                    border-color: $color-white;
+                }
+            }
+
+            .remove-category-icon {
+                color: $color-gray-700;
+                transition: .3s;
+
+                &:hover {
+                    color: $color-red-500;
+                }
+            }
         }
     }
 }
