@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Modal } from "src/app/shared/modals/modal.interface";
 import { Role } from "../../role.model";
 import { RoleService } from "../../role.service";
+import { Permission } from "../../permission/permission.model";
+import { PermissionService } from "../../permission/permission.service";
 
 @Component({
   selector: "app-set-role-modal",
@@ -14,9 +16,16 @@ export class SetRoleModalComponent implements OnInit, Modal {
 
   @Input() role?: Role;
 
-  constructor(private roleService: RoleService) {}
+  permissions: Permission[];
 
-  ngOnInit(): void {}
+  constructor(
+    private roleService: RoleService,
+    private permissionService: PermissionService
+  ) {}
+
+  ngOnInit(): void {
+    this.permissions = this.permissionService.fetchMock();
+  }
 
   close = (): void => this.closeModal.emit();
 }

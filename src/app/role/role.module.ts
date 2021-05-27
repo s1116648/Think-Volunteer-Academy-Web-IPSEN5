@@ -15,6 +15,9 @@ import { SharedModule } from "../shared/shared.module";
     RouterModule,
     RoleRoutingModule,
     SharedModule
+  ],
+  exports: [
+    RoleComponent
   ]
 })
 export class RoleModule { }

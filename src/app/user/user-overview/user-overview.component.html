@@ -1,0 +1,11 @@
+
+  <div>
+    <h1 style="margin-bottom: 3%; width: 90%">Users</h1>
+  </div>
+  <div class="content">
+    <ul>
+      <li *ngFor="let user of users">
+        <app-user-row [user]="user"></app-user-row>
+      </li>
+    </ul>
+  </div>

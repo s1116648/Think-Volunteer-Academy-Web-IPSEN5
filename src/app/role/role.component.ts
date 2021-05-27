@@ -26,4 +26,9 @@ export class RoleComponent implements OnInit {
     const modal = this.modalService.createModal(SetRoleModalComponent, this.modalHost);
     modal.instance.role = role;
   }
+
+  openNewRoleModal(): void {
+    const modal = this.modalService.createModal(SetRoleModalComponent, this.modalHost);
+    modal.instance.role = null;
+  }
 }

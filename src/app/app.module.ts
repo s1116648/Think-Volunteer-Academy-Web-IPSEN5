@@ -11,6 +11,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { PermissionModule } from "./role/permission/permission.module";
 import { RoleModule } from "./role/role.module";
 import { CourseModule } from "./course/course.module";
+import { ManageModule } from "./manage/manage.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { CourseModule } from "./course/course.module";
 		AppRoutingModule,
 		CourseModule,
     RoleModule,
-    PermissionModule
+    PermissionModule,
+    ManageModule
 	],
 	providers: [
 		{

@@ -24,13 +24,12 @@
 
   .walk-through-button {
     border: none;
-    width: 50px;
-    height: 30px;
-    border-radius: 15%;
+    width: 40px;
+    height: 40px;
+    border-radius: 5%;
     margin-left: auto;
     cursor: pointer;
     background-color: $color-primary;
-    color: white;
     transition: .3s;
 
     &:hover {
