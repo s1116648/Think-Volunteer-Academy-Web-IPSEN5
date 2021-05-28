@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ManageComponent } from './manage.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ManageComponent } from "./manage.component";
 import { RoleModule } from "../role/role.module";
 import { UserModule } from "../user/user.module";
 import { ManageRoutingModule } from "./manage-routing.module";
