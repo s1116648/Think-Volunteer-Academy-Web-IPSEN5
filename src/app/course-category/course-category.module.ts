@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../shared/shared.module";
-import { CreateCourseCategoryModalComponent } from "./create-course-category-modal/create-course-category-modal.component";
+import { SetCourseCategoryModalComponent } from "./set-course-category-modal/set-course-category-modal.component";
 import { FormsModule } from "@angular/forms";
 
 @NgModule({
-	declarations: [CreateCourseCategoryModalComponent],
+	declarations: [SetCourseCategoryModalComponent],
 	imports: [CommonModule, SharedModule, FormsModule],
-	exports: [CreateCourseCategoryModalComponent],
+	exports: [SetCourseCategoryModalComponent],
 })
 export class CourseCategoryModule {}

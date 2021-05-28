@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { faCheck, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
-import { CreateCourseCategoryModalComponent } from "src/app/course-category/create-course-category-modal/create-course-category-modal.component";
+import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
@@ -60,7 +60,7 @@ export class CreateCourseComponent implements OnInit {
 
 	showCreateCategoryModal(): void {
 		const modal = this.modalService.createModal(
-			CreateCourseCategoryModalComponent,
+			SetCourseCategoryModalComponent,
 			this.modalHost
 		);
 		modal.instance.created.subscribe((category: CourseCategory) => {

@@ -1,0 +1,15 @@
+<app-modal [title]="category ? 'Update category' : 'New category'" (closeModal)="close()">
+    <ng-container body>
+        <form #setCategoryForm="ngForm" id="set-category-form" (ngSubmit)="category ? update(setCategoryForm) : create(setCategoryForm)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="dark" type="text" name="name" id="name" placeholder="Culture" [ngModel]="category?.name" required>
+            </div>
+        </form>
+    </ng-container>
+    <ng-container footer>
+        <button [disabled]="setCategoryForm.invalid" class="button primary" form="set-category-form">
+            Save
+        </button>
+    </ng-container>
+</app-modal>
