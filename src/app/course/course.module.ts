@@ -13,6 +13,7 @@ import { FormsModule } from "@angular/forms";
 import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { CreateCourseComponent } from "./create-course/create-course.component";
 import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
+import { LessonModule } from "../lesson/lesson.module";
 
 @NgModule({
 	declarations: [
@@ -31,8 +32,9 @@ import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-cour
 		CourseRoutingModule,
 		SharedModule,
 		FormsModule,
+		LessonModule,
 	],
-	exports: [CourseOverviewComponent],
+	exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}

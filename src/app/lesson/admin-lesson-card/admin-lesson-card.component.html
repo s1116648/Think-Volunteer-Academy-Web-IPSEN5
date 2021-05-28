@@ -1,0 +1,27 @@
+<div class="lesson-card">
+	<figure>
+		<img src="./assets/images/nature.jpeg" alt="Lesson image" />
+	</figure>
+
+	<div class="lesson-info">
+		<div class="textual-info">
+			<h2>Lesson {{ number | padStart: 2:"0" }}</h2>
+			<p>{{ lesson.description | truncate: 190 }}</p>
+		</div>
+
+		<div class="bottom-container columns">
+			<button class="button">
+				Edit lesson
+				<span class="icon"
+					><fa-icon [icon]="icons.faArrowRight"></fa-icon
+				></span>
+			</button>
+			<button class="button">
+				Edit test
+				<span class="icon"
+					><fa-icon [icon]="icons.faArrowRight"></fa-icon
+				></span>
+			</button>
+		</div>
+	</div>
+</div>
