@@ -3,9 +3,6 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Role } from "./role.model";
-import { LoginDTO } from "../auth/dto/login.dto";
-import { User } from "../user/user.model";
-import { RoleDTO } from "./dto/role.dto";
 
 @Injectable({
   providedIn: "root"
@@ -42,10 +39,10 @@ export class RoleService {
     );
   }
 
-  create(dto: RoleDTO): Observable<Role> {
+  create(role: Role): Observable<Role> {
     return this.http
       .post<Role>("/roles", {
-        name: dto.name,
+        name: role.name,
       });
   }
 }
