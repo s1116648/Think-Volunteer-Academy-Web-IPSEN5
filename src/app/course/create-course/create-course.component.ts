@@ -1,7 +1,12 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { faCheck, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCheck,
+	faPlus,
+	faTimes,
+	faPen,
+} from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
@@ -18,7 +23,7 @@ import { CreateCourseDTO } from "../dto/create-course.dto";
 	styleUrls: ["./create-course.component.scss"],
 })
 export class CreateCourseComponent implements OnInit {
-	icons = { faCheck, faPlus, faTimes };
+	icons = { faCheck, faPlus, faTimes, faPen };
 
 	categories: CourseCategory[] = [];
 
@@ -75,6 +80,21 @@ export class CreateCourseComponent implements OnInit {
 				(c) => c.id === category.id
 			);
 			this.categories.splice(index, 1);
+		});
+	}
+
+	updateCategory(event: Event, category: CourseCategory): void {
+		event.stopPropagation();
+		const modal = this.modalService.createModal(
+			SetCourseCategoryModalComponent,
+			this.modalHost
+		);
+		modal.instance.category = category;
+		modal.instance.updated.subscribe((category: CourseCategory) => {
+			const index = this.categories.findIndex(
+				(c) => c.id === category.id
+			);
+			this.categories[index] = category;
 		});
 	}
 }
