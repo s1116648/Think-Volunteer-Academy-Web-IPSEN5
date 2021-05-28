@@ -10,6 +10,7 @@ import { AuthModule } from "./auth/auth.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { PermissionModule } from "./role/permission/permission.module";
 import { RoleModule } from "./role/role.module";
+import { UserModule } from "./user/user.module";
 import { CourseModule } from "./course/course.module";
 import { ManageModule } from "./manage/manage.module";
 
@@ -25,7 +26,8 @@ import { ManageModule } from "./manage/manage.module";
 		CourseModule,
     RoleModule,
     PermissionModule,
-    ManageModule
+    ManageModule,
+    UserModule
 	],
 	providers: [
 		{
