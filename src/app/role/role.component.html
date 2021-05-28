@@ -1,0 +1,21 @@
+<div class="columns title-container">
+    <h2 class="column grow">Roles</h2>
+    <button class="button primary" (click)="openNewRoleModal()">
+        Nieuwe rol
+        <span class="icon">
+            <fa-icon [icon]="icons.faPlus"></fa-icon>
+        </span>
+    </button>
+</div>
+<div class="content">
+	<ul>
+		<li *ngFor="let role of roles">
+			<app-role-row
+				[role]="role"
+				(editButtonClickedEvent)="openEditRoleModal($event)"
+			></app-role-row>
+		</li>
+	</ul>
+</div>
+
+<ng-container appPlaceholder></ng-container>
