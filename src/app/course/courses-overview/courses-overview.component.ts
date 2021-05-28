@@ -15,7 +15,6 @@ export class CoursesOverviewComponent implements OnInit {
 
     constructor(private courseCategoryService: CourseCategoryService) {}
 
-
     ngOnInit(): void {
         this.courseCategoryService.get().subscribe((categories) => {
             this.categories = categories.items;
