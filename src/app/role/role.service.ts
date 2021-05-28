@@ -12,19 +12,19 @@ export class RoleService {
 
   roles: Role[] = [
     {
-      id: 1,
+      id: "test",
       name: "admin",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      id: 2,
+      id: "test2",
       name: "contentcreator",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      id: 3,
+      id: "test3",
       name: "user",
       createdAt: new Date(),
       updatedAt: new Date()
