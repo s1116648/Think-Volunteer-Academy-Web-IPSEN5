@@ -41,6 +41,5 @@ export class RoleComponent implements OnInit {
 			SetRoleModalComponent,
 			this.modalHost
 		);
-		modal.instance.role = null;
 	}
 }
