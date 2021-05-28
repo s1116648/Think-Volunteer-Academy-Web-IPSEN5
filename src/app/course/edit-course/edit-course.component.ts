@@ -7,10 +7,11 @@ import {
 	faTrash,
 	faPlus,
 	faTimes,
+	faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
-import { CreateCourseCategoryModalComponent } from "src/app/course-category/create-course-category-modal/create-course-category-modal.component";
+import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
@@ -24,7 +25,7 @@ import { UpdateCourseDTO } from "../dto/update-course.dto";
 	styleUrls: ["./edit-course.component.scss"],
 })
 export class EditCourseComponent implements OnInit {
-	icons = { faCheck, faTrash, faPlus, faTimes };
+	icons = { faCheck, faTrash, faPlus, faTimes, faPen };
 
 	course: Course;
 
@@ -69,7 +70,9 @@ export class EditCourseComponent implements OnInit {
 
 		this.courseService
 			.update(this.course.id, dto)
-			.subscribe(() => this.router.navigate(["../"]));
+			.subscribe(() =>
+				this.router.navigate(["../"], { relativeTo: this.route })
+			);
 	}
 
 	remove(): void {
@@ -80,7 +83,7 @@ export class EditCourseComponent implements OnInit {
 
 	showCreateCategoryModal(): void {
 		const modal = this.modalService.createModal(
-			CreateCourseCategoryModalComponent,
+			SetCourseCategoryModalComponent,
 			this.modalHost
 		);
 		modal.instance.created.subscribe((category: CourseCategory) => {
@@ -95,6 +98,21 @@ export class EditCourseComponent implements OnInit {
 				(c) => c.id === category.id
 			);
 			this.categories.splice(index, 1);
+		});
+	}
+
+	updateCategory(event: Event, category: CourseCategory): void {
+		event.stopPropagation();
+		const modal = this.modalService.createModal(
+			SetCourseCategoryModalComponent,
+			this.modalHost
+		);
+		modal.instance.category = category;
+		modal.instance.updated.subscribe((category: CourseCategory) => {
+			const index = this.categories.findIndex(
+				(c) => c.id === category.id
+			);
+			this.categories[index] = category;
 		});
 	}
 }
