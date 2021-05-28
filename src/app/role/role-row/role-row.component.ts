@@ -1,23 +1,22 @@
-import { EventEmitter, Component, Input, OnInit, Output, ViewChild } from "@angular/core";
+import { EventEmitter, Component, Input, OnInit, Output } from "@angular/core";
 import { Role } from "../role.model";
-import { ModalService } from "../../shared/modal.service";
-import { SetRoleModalComponent } from "../modals/set-role-modal/set-role-modal.component";
-import { PlaceholderDirective } from "../../shared/placeholder.directive";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-role-row",
-  templateUrl: "./role-row.component.html",
-  styleUrls: ["./role-row.component.scss"]
+	selector: "app-role-row",
+	templateUrl: "./role-row.component.html",
+	styleUrls: ["./role-row.component.scss"],
 })
 export class RoleRowComponent implements OnInit {
-  @Input() role: Role;
-  @Output() editButtonClickedEvent = new EventEmitter<Role>();
-  constructor() { }
+	icons = { faPen };
 
-  ngOnInit(): void {
-  }
+	@Input() role: Role;
+	@Output() editButtonClickedEvent = new EventEmitter<Role>();
+	constructor() {}
 
-  open(): void {
-    this.editButtonClickedEvent.emit(this.role);
-  }
+	ngOnInit(): void {}
+
+	open(): void {
+		this.editButtonClickedEvent.emit(this.role);
+	}
 }

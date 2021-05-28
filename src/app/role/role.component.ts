@@ -4,31 +4,43 @@ import { RoleService } from "./role.service";
 import { PlaceholderDirective } from "../shared/placeholder.directive";
 import { ModalService } from "../shared/modal.service";
 import { SetRoleModalComponent } from "./modals/set-role-modal/set-role-modal.component";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-role",
-  templateUrl: "./role.component.html",
-  styleUrls: ["./role.component.scss"]
+	selector: "app-role",
+	templateUrl: "./role.component.html",
+	styleUrls: ["./role.component.scss"],
 })
 export class RoleComponent implements OnInit {
-  @ViewChild(PlaceholderDirective, { static: false })
-  modalHost: PlaceholderDirective;
+	icons = { faPlus };
 
-  roles: Role[];
+	@ViewChild(PlaceholderDirective, { static: false })
+	modalHost: PlaceholderDirective;
 
-  constructor(private roleService: RoleService, private modalService: ModalService) { }
+	roles: Role[];
 
-  ngOnInit(): void {
-    this.roles = this.roleService.fetchNonReal();
-  }
+	constructor(
+		private roleService: RoleService,
+		private modalService: ModalService
+	) {}
 
-  openEditRoleModal(role: Role): void {
-    const modal = this.modalService.createModal(SetRoleModalComponent, this.modalHost);
-    modal.instance.role = role;
-  }
+	ngOnInit(): void {
+		this.roles = this.roleService.fetchNonReal();
+	}
 
-  openNewRoleModal(): void {
-    const modal = this.modalService.createModal(SetRoleModalComponent, this.modalHost);
-    modal.instance.role = null;
-  }
+	openEditRoleModal(role: Role): void {
+		const modal = this.modalService.createModal(
+			SetRoleModalComponent,
+			this.modalHost
+		);
+		modal.instance.role = role;
+	}
+
+	openNewRoleModal(): void {
+		const modal = this.modalService.createModal(
+			SetRoleModalComponent,
+			this.modalHost
+		);
+		modal.instance.role = null;
+	}
 }

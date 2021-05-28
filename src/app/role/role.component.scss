@@ -1,5 +1,21 @@
-ul {
-  li {
-    margin-bottom: 10px;
-  }
+@import "/src/app/shared/variables";
+
+.title-container {
+    margin-bottom: 20px;
+}
+
+ul li {
+    overflow: hidden;
+    border-bottom: 1px solid $color-gray-700;
+
+    &:first-of-type {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+
+    &:last-of-type {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        border-bottom: none;
+    }
 }

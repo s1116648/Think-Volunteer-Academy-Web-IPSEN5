@@ -1,14 +1,19 @@
 <div class="container">
-  <div class="content-holder">
-    <section class="left-sidebar">
-      <app-admin-side-nav></app-admin-side-nav>
-    </section>
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-admin-side-nav></app-admin-side-nav>
+		</section>
 
-    <section class="main-content">
-      <h1 style="margin-bottom: 20px">Manage</h1>
-      <app-user-overview></app-user-overview>
-      <br>
-      <app-role></app-role>
-    </section>
-  </div>
+		<section class="main-content">
+			<h1 style="margin-bottom: 20px">Manage</h1>
+
+            <section class="section">
+                <app-user-overview></app-user-overview>
+            </section>
+			
+            <section class="section">
+                <app-role></app-role>
+            </section>
+		</section>
+	</div>
 </div>
