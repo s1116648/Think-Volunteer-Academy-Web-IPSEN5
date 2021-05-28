@@ -13,6 +13,11 @@ import { FormsModule } from "@angular/forms";
 import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { CreateCourseComponent } from "./create-course/create-course.component";
 import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
+import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
+import { MyCoachCardComponent } from "./courses-overview/my-coach-card/my-coach-card.component";
+import { MyProfileCardComponent } from "./courses-overview/my-profile-card/my-profile-card.component";
+import { CourseCardComponent } from "./courses-overview/course-card/course-card.component";
+import { CategoryCardComponent } from "./courses-overview/category-card/category-card.component";
 
 @NgModule({
 	declarations: [
@@ -24,6 +29,11 @@ import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-cour
 		EditCourseComponent,
 		CreateCourseComponent,
 		AdminCourseOverviewComponent,
+        CoursesOverviewComponent,
+        MyCoachCardComponent,
+        MyProfileCardComponent,
+        CourseCardComponent,
+        CategoryCardComponent
 	],
 	imports: [
 		CommonModule,

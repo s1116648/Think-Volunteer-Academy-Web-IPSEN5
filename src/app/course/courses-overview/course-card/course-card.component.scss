@@ -1,0 +1,27 @@
+*{
+  font-family: Bahnschrift, sans-serif;
+  color: white;
+}
+
+.button-arrow {
+  display: inline-block;
+  margin-left: 90%;
+}
+
+.button-text {
+  display: block;
+  margin-left: 0;
+  position: fixed;
+}
+
+.course-button {
+  background-color: #1C2B40;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.course-button:hover {
+  cursor: pointer;
+}

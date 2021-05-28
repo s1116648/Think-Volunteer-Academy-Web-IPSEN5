@@ -1,0 +1,57 @@
+*{
+  font-family: Bahnschrift, sans-serif;
+  color: white;
+}
+
+h1 {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+hr {
+  color: #2B3D55;
+}
+
+.button-arrow {
+  display: inline-block;
+  margin-left: 90%;
+}
+
+.button-text {
+  display: block;
+  margin-left: 0;
+  position: fixed;
+}
+
+.chat {
+  font-size: 10px;
+  margin: 8px 0 16px 0;
+}
+
+.chat-arrow {
+  display: inline;
+  margin-left: 80%;
+}
+
+.coachImg {
+  border-radius: 50%;
+}
+
+.my-coach-wrapper {
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  background-color: #1C2B40;
+}
+
+.my-coach-wrapper button {
+  background-color: #2B3D55;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.my-coach-wrapper button:hover {
+  cursor: pointer;
+}

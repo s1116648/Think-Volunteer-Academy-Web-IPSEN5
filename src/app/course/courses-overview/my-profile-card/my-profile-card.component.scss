@@ -1,0 +1,43 @@
+*{
+  font-family: Bahnschrift, sans-serif;
+  color: white;
+}
+
+h1 {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.button-arrow {
+  display: inline-block;
+  margin-left: 90%;
+}
+
+.button-text {
+  display: block;
+  margin-left: 0;
+  position: fixed;
+}
+
+.my-profile-wrapper {
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  background-color: #1C2B40;
+}
+
+.my-profile-wrapper button {
+  background-color: #2B3D55;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.my-profile-wrapper button:hover {
+  cursor: pointer;
+}
+
+.profileImg {
+  border-radius: 50%;
+}
