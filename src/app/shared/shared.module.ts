@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { PlaceholderDirective } from "./placeholder.directive";
+import { ModalComponent } from "./modals/modal/modal.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DropdownComponent } from "./dropdown/dropdown.component";
 import { DropdownOptionDirective } from "./dropdown/dropdown-option.directive";
@@ -10,8 +12,6 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
-import { ModalComponent } from "./modals/modal/modal.component";
-import { PlaceholderDirective } from "./placeholder.directive";
 
 @NgModule({
 	declarations: [
