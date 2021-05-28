@@ -3,7 +3,6 @@ import { Observable } from "rxjs";
 import { Permission } from "./permission.model";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { Role } from "../role.model";
 
 @Injectable({
   providedIn: "root"
