@@ -90,11 +90,11 @@ export class CreateCourseComponent implements OnInit {
 			this.modalHost
 		);
 		modal.instance.category = category;
-		modal.instance.updated.subscribe((category: CourseCategory) => {
+		modal.instance.updated.subscribe((updatedCategory: CourseCategory) => {
 			const index = this.categories.findIndex(
 				(c) => c.id === category.id
 			);
-			this.categories[index] = category;
+			this.categories[index] = updatedCategory;
 		});
 	}
 }
