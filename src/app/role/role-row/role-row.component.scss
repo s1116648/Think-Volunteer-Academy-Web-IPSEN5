@@ -1,0 +1,12 @@
+@import "/src/app/shared/variables";
+
+.role-row {
+	padding: 20px;
+	background-color: $color-background-dark;
+
+    button {
+        fa-icon {
+            color: $color-gray-500;
+        }
+    }
+}
