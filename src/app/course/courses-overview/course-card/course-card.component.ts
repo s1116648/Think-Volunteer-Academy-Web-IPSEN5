@@ -10,6 +10,8 @@ export class CourseCardComponent implements OnInit {
 
     @Input() course: Course;
 
+    // defaultImg : string;
+
     constructor() { }
 
     ngOnInit(): void {
