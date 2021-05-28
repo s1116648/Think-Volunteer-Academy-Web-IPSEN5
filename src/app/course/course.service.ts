@@ -33,4 +33,10 @@ export class CourseService {
 			`/courses/${id}/similar`
 		);
 	}
+
+	getCoursesByCategory(categoryId: string): Observable<HttpPaginatedResult<Course>> {
+	    return this.http.get<HttpPaginatedResult<Course>>(
+            `/categories/${categoryId}/courses`
+        );
+    }
 }

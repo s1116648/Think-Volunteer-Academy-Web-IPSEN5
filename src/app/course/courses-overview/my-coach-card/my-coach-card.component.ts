@@ -18,7 +18,7 @@ export class MyCoachCardComponent implements OnInit {
   }
 
   generateCoachCardModel(): CoachCardModel {
-    const coachCardModel = new CoachCardModel("1", "John Doe", "temp");
+    const coachCardModel = new CoachCardModel("1", "John Doe", "assets/images/avatar-temp.jpg");
     return coachCardModel;
   }
 }

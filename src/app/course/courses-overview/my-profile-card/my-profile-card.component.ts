@@ -18,7 +18,7 @@ export class MyProfileCardComponent implements OnInit {
   }
 
   generateProfileCardModel(): ProfileCardModel {
-    const profileCardModel = new ProfileCardModel("1", "Jane Doe", "temp");
+    const profileCardModel = new ProfileCardModel("1", "Jane Doe", "assets/images/avatar-temp.jpg");
     return profileCardModel;
   }
 

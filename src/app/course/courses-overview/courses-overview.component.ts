@@ -11,13 +11,13 @@ import { Course } from "../course.model";
 })
 export class CoursesOverviewComponent implements OnInit {
 
-    categories: CourseCategory[];
+    courseCategories: CourseCategory[];
 
     constructor(private courseCategoryService: CourseCategoryService) {}
 
     ngOnInit(): void {
         this.courseCategoryService.get().subscribe((categories) => {
-            this.categories = categories.items;
+            this.courseCategories = categories.items;
         });
     }
 
