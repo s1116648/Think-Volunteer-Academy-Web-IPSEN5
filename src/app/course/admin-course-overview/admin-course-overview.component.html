@@ -7,7 +7,7 @@
             <app-admin-side-nav></app-admin-side-nav>
             <app-general-course-info [course]="course" [lessonCount]="5" [length]="totalLessonLength"></app-general-course-info>
         </section>
-    
+
         <section class="main-content">
             <section class="section">
                 <div class="columns">
@@ -21,9 +21,10 @@
             <section>
                 <div class="columns">
                     <h1 class="column grow">Lessons</h1>
-                    <button class="column button primary">New lesson <span class="icon"><fa-icon [icon]="icons.faPlus"></fa-icon></span></button>
+                    <button class="column button primary" (click)="openNewLessonModal()">New lesson <span class="icon"><fa-icon [icon]="icons.faPlus"></fa-icon></span></button>
                 </div>
             </section>
         </section>
     </div>
 </div>
+<ng-container appPlaceholder></ng-container>
