@@ -12,7 +12,7 @@ import { PermissionService } from "../../permission/permission.service";
 })
 export class SetRoleModalComponent implements OnInit, Modal {
   @Output() closeModal = new EventEmitter();
-  @Output() set = new EventEmitter<Partial<Role>>();
+  @Output() set = new EventEmitter<Role>();
 
   @Input() role?: Role;
 
