@@ -15,4 +15,10 @@ export class LessonService {
 			`/courses/${courseID}/lessons`
 		);
 	}
+
+	swap(lesson: Lesson, newIndex: number): Observable<void> {
+		return this.http.patch<void>(`/lessons/${lesson.id}/order`, {
+			newIndex,
+		});
+	}
 }

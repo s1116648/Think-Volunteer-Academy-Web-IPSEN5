@@ -3,6 +3,7 @@ export interface Lesson {
 	name: string;
 	image: string;
 	content: string;
+	index: number;
 	description: string;
 	length: number;
 	updatedAt: Date;
