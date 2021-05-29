@@ -54,7 +54,7 @@
                             <div class="columns">
                                 <p class="column grow">{{ option.name }}</p>
                                 <fa-icon (click)="updateCategory($event, option)" class="category-icon" [icon]="icons.faPen"></fa-icon>
-                                <fa-icon (click)="removeCategory($event, option)" class="category-icon" [icon]="icons.faTimes"></fa-icon>
+                                <fa-icon (click)="removeCategory($event, option)" class="category-icon" [icon]="icons.faTimes" *ngIf="option.coursesCount === 0"></fa-icon>
                             </div>
 						</ng-template>
 					</app-dropdown>
