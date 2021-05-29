@@ -57,7 +57,9 @@ export class EditCourseComponent implements OnInit {
 
 		this.courseService
 			.update(this.course.id, dto)
-			.subscribe(() => this.router.navigate(["../"]));
+			.subscribe(() =>
+				this.router.navigate(["../"], { relativeTo: this.route })
+			);
 	}
 
 	remove(): void {

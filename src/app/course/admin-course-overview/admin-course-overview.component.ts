@@ -62,6 +62,7 @@ export class AdminCourseOverviewComponent implements OnInit {
 		const notDraggedLesson: Lesson = this.lessons[event.index];
 
 		if (!draggedLesson || !notDraggedLesson) return;
+		if (draggedLesson.index === notDraggedLesson.index) return;
 
 		this.updateLessonOrder(draggedLesson, event.index, previousState);
 		this.updateLessonOrderUI(draggedLesson, notDraggedLesson);

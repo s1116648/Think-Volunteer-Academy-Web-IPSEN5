@@ -10,6 +10,7 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	declarations: [
@@ -22,7 +23,7 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		ToggleComponent,
 		AdminSideNavComponent,
 	],
-	imports: [CommonModule, FontAwesomeModule, FormsModule],
+	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
 		DropdownComponent,
 		DropdownOptionDirective,
