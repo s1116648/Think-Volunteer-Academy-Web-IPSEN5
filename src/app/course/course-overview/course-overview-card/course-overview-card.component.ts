@@ -17,6 +17,4 @@ export class CourseOverviewCardComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
-
-	getLessonNumber = (): string => String(this.lessonNumber).padStart(2, "0");
 }
