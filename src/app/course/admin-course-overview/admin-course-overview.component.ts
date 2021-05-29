@@ -61,8 +61,10 @@ export class AdminCourseOverviewComponent implements OnInit {
 		);
 		const notDraggedLesson: Lesson = this.lessons[event.index];
 
+		if (!draggedLesson || !notDraggedLesson) return;
+
+		this.updateLessonOrder(draggedLesson, event.index, previousState);
 		this.updateLessonOrderUI(draggedLesson, notDraggedLesson);
-		this.updateLessonOrder(draggedLesson, notDraggedLesson, previousState);
 	}
 
 	updateLessonOrderUI(draggedLesson: Lesson, notDraggedLesson: Lesson): void {
@@ -85,18 +87,26 @@ export class AdminCourseOverviewComponent implements OnInit {
 
 	updateLessonOrder(
 		draggedLesson: Lesson,
-		notDraggedLesson: Lesson,
+		newIndex: number,
 		previousState: Lesson[]
 	): void {
-		this.lessonService
-			.swap(draggedLesson, notDraggedLesson.index)
-			.subscribe(
-				() => {
-					console.log(this.lessons.map((l) => l.index));
-				},
-				() => {
-					this.lessons = previousState;
+		this.lessonService.swap(draggedLesson, newIndex).subscribe(
+			(lessons: Lesson[]) => {
+				if (this.lessons.length !== lessons.length) {
+					returnToPreviousState();
+					return;
 				}
-			);
+
+				for (let i = 0; i < lessons.length; i++) {
+					if (this.lessons[i].id !== lessons[i].id) {
+						returnToPreviousState();
+						return;
+					}
+				}
+			},
+			() => returnToPreviousState()
+		);
+
+		const returnToPreviousState = () => (this.lessons = previousState);
 	}
 }

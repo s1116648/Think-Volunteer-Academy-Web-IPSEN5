@@ -16,8 +16,8 @@ export class LessonService {
 		);
 	}
 
-	swap(lesson: Lesson, newIndex: number): Observable<void> {
-		return this.http.patch<void>(`/lessons/${lesson.id}/order`, {
+	swap(lesson: Lesson, newIndex: number): Observable<Lesson[]> {
+		return this.http.patch<Lesson[]>(`/lessons/${lesson.id}/order`, {
 			newIndex,
 		});
 	}
