@@ -38,7 +38,7 @@ import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-i
 		LessonModule,
 		DndModule,
 	],
-	exports: [CourseOverviewComponent],
+	exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}

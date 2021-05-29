@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { PlaceholderDirective } from "./placeholder.directive";
+import { ModalComponent } from "./modals/modal/modal.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DropdownComponent } from "./dropdown/dropdown.component";
 import { DropdownOptionDirective } from "./dropdown/dropdown-option.directive";
@@ -22,6 +24,8 @@ import { RouterModule } from "@angular/router";
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
+		ModalComponent,
+		PlaceholderDirective,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -33,6 +37,8 @@ import { RouterModule } from "@angular/router";
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
+		ModalComponent,
+		PlaceholderDirective,
 	],
 })
 export class SharedModule {}

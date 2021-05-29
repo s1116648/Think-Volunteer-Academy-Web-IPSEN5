@@ -1,0 +1,32 @@
+.avatar-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    .profile-avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 200px;
+        margin-right: 20px;
+    }
+}
+
+form {
+    margin-top: 20px;
+
+    .form-group {
+        flex-grow: 1;
+
+        label {
+            color: white;
+        }
+    }
+}
+
+.btn {
+    height: 56px;
+    width: 178px;
+    border-radius: 20px;
+    background-color: #1C2B40;
+    color: white;
+}
