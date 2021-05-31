@@ -12,12 +12,14 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
+import {ProgressCircleComponent} from "./progress-circle/progress-circle.component";
 
 @NgModule({
 	declarations: [
 		DropdownComponent,
 		DropdownOptionDirective,
 		DropdownSelectedDirective,
+        ProgressCircleComponent,
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
@@ -33,6 +35,7 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		DropdownSelectedDirective,
 		TruncatePipe,
 		PadStartPipe,
+        ProgressCircleComponent,
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,

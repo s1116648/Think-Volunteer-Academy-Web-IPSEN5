@@ -15,4 +15,7 @@ export class LessonService {
 			`/courses/${courseID}/lessons`
 		);
 	}
+	getById(lessonId: string): Observable<Lesson> {
+	    return this.http.get<Lesson>(`/lessons/${lessonId}`);
+    }
 }
