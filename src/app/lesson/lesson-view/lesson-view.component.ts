@@ -18,19 +18,6 @@ export class LessonViewComponent implements OnInit {
               private courseService: CourseService) { }
 
   ngOnInit(): void {
-      this.getLessonFromId();
-      this.getCourseFromId();
-  }
-
-  getCourseFromId(): void{
-      this.courseService
-          .getByID(this.lesson.courseId)
-          .subscribe((course: Course) => {
-              this.course = course;
-          });
-  }
-
-  getLessonFromId(): void{
       this.route.params.subscribe((params: Params) => {
           this.lessonService
               .getById(params.id)
@@ -41,4 +28,11 @@ export class LessonViewComponent implements OnInit {
       });
   }
 
+  getCourseFromId(): void{
+      this.courseService
+          .getByID(this.lesson.courseId)
+          .subscribe((course: Course) => {
+              this.course = course;
+          });
+  }
 }
