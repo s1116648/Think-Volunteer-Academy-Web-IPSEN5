@@ -4,7 +4,7 @@ import { ManageComponent } from "../manage/manage.component";
 
 const routes: Routes = [
   {
-    path: "admin/courses/:id/lessons/:id",
+    path: "admin/courses/:courseid/lessons/:lessonid",
     component: ManageComponent,
   },
 ];
