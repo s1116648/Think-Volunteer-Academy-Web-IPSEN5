@@ -7,6 +7,7 @@ import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AdminLessonCardComponent } from "./admin-lesson-card/admin-lesson-card.component";
+import { DndModule } from "ngx-drag-drop";
 
 @NgModule({
 	declarations: [SetLessonModalComponent, AdminLessonCardComponent],
@@ -16,6 +17,7 @@ import { AdminLessonCardComponent } from "./admin-lesson-card/admin-lesson-card.
 		SharedModule,
 		FormsModule,
 		FontAwesomeModule,
+		DndModule,
 	],
 	exports: [AdminLessonCardComponent],
 	providers: [CourseService],
