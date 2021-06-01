@@ -1,4 +1,4 @@
-<app-modal [title]="'Create lesson'" (closeModal)="close()">
+<app-modal title="Create lesson" (closeModal)="close()">
   <ng-container body>
     <form #courseForm="ngForm" (ngSubmit)="create(courseForm)">
       <div class="form-group">
