@@ -51,10 +51,9 @@
 
 				<ul class="lessons" [dndDropzone] [dndHorizontal] (dndDrop)="onDrop($event)">
 					<li
-						*ngFor="let lesson of lessonsInOrder; let index = index"
+						*ngFor="let lesson of lessonsInOrder; let index = index" [dndDraggable]="lesson"
 					>
 						<app-admin-lesson-card
-							[dndDraggable]="lesson"
 							[lesson]="lesson"
 							[number]="index + 1"
 						></app-admin-lesson-card>
