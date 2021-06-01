@@ -28,9 +28,9 @@ export class AdminCourseOverviewComponent implements OnInit {
 	constructor(
 		private courseService: CourseService,
 		private route: ActivatedRoute,
-    private modalService: ModalService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+  private modalService: ModalService,
+  private activatedRoute: ActivatedRoute,
+  private router: Router,
 		private lessonService: LessonService
 	) {}
 
