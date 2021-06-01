@@ -41,7 +41,7 @@
 			<section class="section">
 				<div class="columns">
 					<h1 class="column grow">Lessons</h1>
-					<button class="column button primary">
+					<button class="column button primary" (click)="openNewLessonModal()">
 						New lesson
 						<span class="icon"
 							><fa-icon [icon]="icons.faPlus"></fa-icon
@@ -65,4 +65,6 @@
 			</section>
 		</section>
 	</div>
+
+    <ng-container appPlaceholder></ng-container>
 </div>
