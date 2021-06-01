@@ -23,8 +23,8 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
-    PlaceholderDirective,
-    ModalComponent
+		ModalComponent,
+		PlaceholderDirective,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule],
 	exports: [
@@ -36,8 +36,8 @@ import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
-    PlaceholderDirective,
-    ModalComponent
+		ModalComponent,
+		PlaceholderDirective,
 	],
 })
 export class SharedModule {}

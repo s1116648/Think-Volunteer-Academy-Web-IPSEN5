@@ -73,14 +73,12 @@ button {
     border: none;
     border-radius: $border-radius;
     transition: .3s;
-
     max-width: max-content;
     font-size: 13px;
     font-weight: bold;
     background-color: $color-gray-200;
     white-space: nowrap;
     background-color: $color-background-dark;
-
     color: $color-white;
 
     span.icon {
@@ -146,7 +144,7 @@ input, textarea {
     color: $color-white;
     font-family: inherit;
     display: block;
-    background-color: transparent;
+    background-color: $color-background;
     transition: .3s;
     font-weight: 100;
 

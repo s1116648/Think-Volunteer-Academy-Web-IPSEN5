@@ -8,6 +8,8 @@ import { ModalService } from "../../shared/modal.service";
 import { PlaceholderDirective } from "../../shared/placeholder.directive";
 import { SetLessonModalComponent } from "../../lesson/modals/set-lesson-modal/set-lesson-modal.component";
 import { Lesson } from "../../lesson/lesson.model";
+import { LessonService } from "src/app/lesson/lesson.service";
+import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 
 @Component({
 	selector: "app-admin-course-overview",
@@ -21,17 +23,15 @@ export class AdminCourseOverviewComponent implements OnInit {
 	icons = { faPen, faPlus };
 
 	course: Course;
-
-	get totalLessonLength(): number {
-		return 0;
-	}
+	lessons: Lesson[];
 
 	constructor(
 		private courseService: CourseService,
 		private route: ActivatedRoute,
-  private modalService: ModalService,
-  private activatedRoute: ActivatedRoute,
-  private router: Router
+    private modalService: ModalService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+		private lessonService: LessonService
 	) {}
 
 	ngOnInit(): void {
@@ -40,6 +40,12 @@ export class AdminCourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
+				});
+
+			this.lessonService
+				.get(params.id)
+				.subscribe((paginated: HttpPaginatedResult<Lesson>) => {
+					this.lessons = paginated.items;
 				});
 		});
 	}
@@ -55,5 +61,9 @@ export class AdminCourseOverviewComponent implements OnInit {
         relativeTo: this.route,
       });
     });
+  }
+
+  get totalLessonLength(): number {
+    return 0;
   }
 }

@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { CourseCategory } from "./course-category.model";
+import { CreateCourseCategoryDTO } from "./dto/create-course-category.dto";
+import { UpdateCourseCategoryDTO } from "./dto/update-course-category.dto";
 
 @Injectable({
 	providedIn: "root",
@@ -14,5 +16,20 @@ export class CourseCategoryService {
 		return this.http.get<HttpPaginatedResult<CourseCategory>>(
 			"/categories"
 		);
+	}
+
+	create(dto: CreateCourseCategoryDTO): Observable<CourseCategory> {
+		return this.http.post<CourseCategory>("/categories", dto);
+	}
+
+	update(
+		id: string,
+		dto: UpdateCourseCategoryDTO
+	): Observable<CourseCategory> {
+		return this.http.patch<CourseCategory>(`/categories/${id}`, dto);
+	}
+
+	remove(id: string): Observable<void> {
+		return this.http.delete<void>(`/categories/${id}`);
 	}
 }
