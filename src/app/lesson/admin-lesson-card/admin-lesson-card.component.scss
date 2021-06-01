@@ -16,6 +16,7 @@
     .lesson-info {
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
 
         .textual-info {
             flex-grow: 1;
@@ -28,6 +29,18 @@
                 display: flex;
                 align-items: center;
             }
+        }
+    }
+
+    .grip-icon {
+        font-size: 20px;
+        color: $color-gray-600;
+        align-self: center;
+        cursor: grabbing;
+        transition: .3s;
+
+        &:hover {
+            color: $color-white;
         }
     }
 }

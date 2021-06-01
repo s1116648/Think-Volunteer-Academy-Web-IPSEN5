@@ -9,18 +9,15 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AdminLessonCardComponent } from "./admin-lesson-card/admin-lesson-card.component";
 
 @NgModule({
-	declarations: [
-	  SetLessonModalComponent,
-    AdminLessonCardComponent
-  ],
-  imports: [
-    CommonModule,
-    LessonRoutingModule,
-    SharedModule,
-    FormsModule,
-    FontAwesomeModule
-  ],
+	declarations: [SetLessonModalComponent, AdminLessonCardComponent],
+	imports: [
+		CommonModule,
+		LessonRoutingModule,
+		SharedModule,
+		FormsModule,
+		FontAwesomeModule,
+	],
 	exports: [AdminLessonCardComponent],
-  providers: [CourseService],
+	providers: [CourseService],
 })
 export class LessonModule {}

@@ -1,36 +1,70 @@
 <div class="container" *ngIf="course">
-    <figure>
-        <img class="header-image" src="/assets/images/test-banner.jpeg" alt="Course image">
-    </figure>
-    <div class="content-holder">
-        <section class="left-sidebar">
-            <app-admin-side-nav></app-admin-side-nav>
-            <app-general-course-info [course]="course" [lessonCount]="5" [length]="totalLessonLength"></app-general-course-info>
-        </section>
+	<figure>
+		<img
+			class="header-image"
+			src="/assets/images/test-banner.jpeg"
+			alt="Course image"
+		/>
+	</figure>
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-admin-side-nav></app-admin-side-nav>
+			<app-general-course-info
+				[course]="course"
+				[lessonCount]="5"
+				[length]="totalLessonLength"
+			></app-general-course-info>
 
-        <section class="main-content">
-            <section class="section">
-                <div class="columns">
-                    <h1 class="column grow">{{ course.name }}</h1>
-                    <button class="column button primary" routerLink="edit">Edit course <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
-                    <button class="column button primary">Edit test <span class="icon"><fa-icon [icon]="icons.faPen"></fa-icon></span></button>
-                </div>
-                <p class="course-description">{{ course.description }}</p>
-            </section>
+            <app-admin-course-info [course]="course"></app-admin-course-info>
+		</section>
 
-            <section class="section">
-                <div class="columns">
-                    <h1 class="column grow">Lessons</h1>
-                    <button class="column button primary" (click)="openNewLessonModal()">New lesson <span class="icon"><fa-icon [icon]="icons.faPlus"></fa-icon></span></button>
-                </div>
+		<section class="main-content">
+			<section class="section">
+				<div class="columns">
+					<h1 class="column grow">{{ course.name }}</h1>
+					<button class="column button primary" routerLink="edit">
+						Edit course
+						<span class="icon"
+							><fa-icon [icon]="icons.faPen"></fa-icon
+						></span>
+					</button>
+					<button class="column button primary">
+						Edit test
+						<span class="icon"
+							><fa-icon [icon]="icons.faPen"></fa-icon
+						></span>
+					</button>
+				</div>
+				<p class="course-description">{{ course.description }}</p>
+			</section>
 
-                <ul class="lessons">
-                    <li *ngFor="let lesson of lessons; let index = index">
-                        <app-admin-lesson-card [lesson]="lesson" [number]="index + 1"></app-admin-lesson-card>
-                    </li>
-                </ul>
-            </section>
-        </section>
-    </div>
+			<section class="section">
+				<div class="columns">
+					<h1 class="column grow">Lessons</h1>
+					<button class="column button primary" (click)="openNewLessonModal()">
+						New lesson
+						<span class="icon"
+							><fa-icon [icon]="icons.faPlus"></fa-icon
+						></span>
+					</button>
+				</div>
+
+				<ul class="lessons" [dndDropzone] [dndHorizontal] (dndDrop)="onDrop($event)">
+					<li
+						*ngFor="let lesson of lessonsInOrder; let index = index"
+					>
+						<app-admin-lesson-card
+							[dndDraggable]="lesson"
+							[lesson]="lesson"
+							[number]="index + 1"
+						></app-admin-lesson-card>
+					</li>
+
+					<li dndPlaceholderRef class="drop-placeholder">Drop lesson to update order</li>
+				</ul>
+			</section>
+		</section>
+	</div>
+
+    <ng-container appPlaceholder></ng-container>
 </div>
-<ng-container appPlaceholder></ng-container>

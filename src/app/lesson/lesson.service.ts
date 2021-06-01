@@ -3,8 +3,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Lesson } from "./lesson.model";
-import { CreateCourseDTO } from "../course/dto/create-course.dto";
-import { Course } from "../course/course.model";
 import { CreateLessonDTO } from "./dto/create-lesson.dto";
 
 @Injectable({
@@ -19,7 +17,13 @@ export class LessonService {
 		);
 	}
 
-  create(dto: CreateLessonDTO): Observable<Lesson> {
-    return this.http.post<Lesson>("/lessons", dto);
-  }
+	swap(lesson: Lesson, newIndex: number): Observable<Lesson[]> {
+		return this.http.patch<Lesson[]>(`/lessons/${lesson.id}/order`, {
+			newIndex,
+		});
+	}
+
+	create(dto: CreateLessonDTO): Observable<Lesson> {
+		return this.http.post<Lesson>("/lessons", dto);
+	}
 }

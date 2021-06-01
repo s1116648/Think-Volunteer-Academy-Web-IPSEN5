@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Lesson } from "../lesson.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faGripHorizontal } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-admin-lesson-card",
@@ -11,7 +12,7 @@ export class AdminLessonCardComponent implements OnInit {
 	@Input() lesson: Lesson;
 	@Input() number: number;
 
-	icons = { faArrowRight };
+	icons = { faArrowRight, faGripHorizontal };
 
 	constructor() {}
 

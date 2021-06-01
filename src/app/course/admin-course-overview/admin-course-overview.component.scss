@@ -19,9 +19,14 @@
 
 .lessons {
     margin-top: 20px;
-    max-width: 610px;
 
     li {
         margin-bottom: 30px;
     }
+}
+
+.drop-placeholder {
+    padding: 20px 20px;
+    background-color: $color-background-dark;
+    border-radius: $border-radius;
 }

@@ -5,7 +5,7 @@
 
 	<div class="lesson-info">
 		<div class="textual-info">
-			<h2>Lesson {{ number | padStart: 2:"0" }}</h2>
+			<h2>{{ lesson.name }}</h2>
 			<p>{{ lesson.description | truncate: 190 }}</p>
 		</div>
 
@@ -24,4 +24,6 @@
 			</button>
 		</div>
 	</div>
+
+    <fa-icon class="grip-icon" dndHandle [icon]="icons.faGripHorizontal"></fa-icon>
 </div>
