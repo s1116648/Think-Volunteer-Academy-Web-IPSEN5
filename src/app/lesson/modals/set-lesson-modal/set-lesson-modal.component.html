@@ -1,0 +1,39 @@
+<app-modal title="Create lesson" (closeModal)="close()">
+  <ng-container body>
+    <form #courseForm="ngForm" (ngSubmit)="create(courseForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Lesson name"
+          class="dark"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Lesson description"
+          class="dark"
+          ngModel
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <button class="button primary" [disabled]="courseForm.invalid">
+          Save lesson
+          <span class="icon"
+          ><fa-icon [icon]="icons.faCheck"></fa-icon
+          ></span>
+        </button>
+      </div>
+    </form>
+  </ng-container>
+</app-modal>
