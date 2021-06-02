@@ -1,8 +1,6 @@
 import { Component, NgModule, OnInit } from "@angular/core";
 import { CourseCategory } from "../../course-category/course-category.model";
 import { CourseCategoryService } from "../../course-category/course-category.service";
-import { HttpPaginatedResult } from "../../shared/http-paginated-result";
-import { Course } from "../course.model";
 
 @Component({
     selector: "app-courses-overview",
