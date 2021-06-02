@@ -13,6 +13,7 @@ import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
 import { RouterModule } from "@angular/router";
+import { TopNavComponent } from "./top-nav/top-nav.component";
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { RouterModule } from "@angular/router";
 		AdminSideNavComponent,
 		ModalComponent,
 		PlaceholderDirective,
+		TopNavComponent,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
