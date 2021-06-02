@@ -1,5 +1,5 @@
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {CourseService} from "../course.service";
+import {CourseService} from "../app/course/course.service";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {HttpRequest} from "@angular/common/http";
 
