@@ -1,0 +1,35 @@
+@import "/src/app/shared/variables";
+
+li {
+    display: flex;
+    height: 80px;
+    font-size: 130%;
+    align-items: center;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.outside-container {
+    width: 100%;
+    background-color: $color-background-dark;
+    margin-bottom: 64px;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.right-side-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}

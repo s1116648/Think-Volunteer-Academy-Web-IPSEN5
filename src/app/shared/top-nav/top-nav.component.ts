@@ -7,9 +7,22 @@ import { Component, OnInit } from "@angular/core";
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+    coursesPath = "/courses";
+    adminPanelPath = ""; // ToDo insert admin path
+    settingsPath = ""; // ToDo insert settings path
+    logoutPath = ""; // ToDo insert logout path
 
-  ngOnInit(): void {
-  }
+    isAdmin: boolean;
+
+    constructor() {}
+
+    ngOnInit(): void {
+        this.isAdmin = this.checkIfAdmin();
+    }
+
+    // ToDo If permissions are finished, make this method useful.
+    checkIfAdmin(): boolean {
+        return true;
+    }
 
 }

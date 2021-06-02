@@ -1,1 +1,12 @@
-<p>top-nav works!</p>
+<div class="outside-container">
+    <section class="nav-wrapper container">
+        <ul>
+            <li [routerLink]="coursesPath"> Courses </li>
+        </ul>
+        <ul class="right-side-wrapper">
+            <li [routerLink]="adminPanelPath" *ngIf="this.isAdmin">Adminpanel</li>
+            <li [routerLink]="settingsPath">Settings</li>
+            <li [routerLink]="logoutPath">Logout</li>
+        </ul>
+    </section>
+</div>

@@ -30,17 +30,18 @@ import { TopNavComponent } from "./top-nav/top-nav.component";
 		TopNavComponent,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
-	exports: [
-		DropdownComponent,
-		DropdownOptionDirective,
-		DropdownSelectedDirective,
-		TruncatePipe,
-		PadStartPipe,
-		GeneralCourseInfoComponent,
-		ToggleComponent,
-		AdminSideNavComponent,
-		ModalComponent,
-		PlaceholderDirective,
-	],
+  exports: [
+    DropdownComponent,
+    DropdownOptionDirective,
+    DropdownSelectedDirective,
+    TruncatePipe,
+    PadStartPipe,
+    GeneralCourseInfoComponent,
+    ToggleComponent,
+    AdminSideNavComponent,
+    ModalComponent,
+    PlaceholderDirective,
+    TopNavComponent
+  ]
 })
 export class SharedModule {}
