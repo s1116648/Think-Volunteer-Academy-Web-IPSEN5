@@ -39,13 +39,15 @@ import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-i
         CategoryCardComponent,
 		AdminCourseInfoComponent,
 	],
-	imports: [
-		CommonModule,
-		FontAwesomeModule,
-		CourseRoutingModule,
-		SharedModule,
-		FormsModule,
-	],
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        CourseRoutingModule,
+        SharedModule,
+        FormsModule,
+        DndModule,
+        LessonModule
+    ],
 	exports: [CourseOverviewComponent],
 	providers: [CourseService],
 })
