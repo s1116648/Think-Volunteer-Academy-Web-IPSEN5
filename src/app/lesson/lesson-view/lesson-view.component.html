@@ -1,15 +1,20 @@
 <main class="container">
-    <div class="content-holder">
-        <section class="left-sidebar">
-            <app-lesson-info-card *ngIf="course && lesson" [courseName]="course.name" [lessonLength]="lesson.length" [lessonName]="lesson.name"></app-lesson-info-card>
-            <app-lesson-badge-card></app-lesson-badge-card>
-            <app-lesson-documents-card></app-lesson-documents-card>
-        </section>
-        <section *ngIf="lesson" class="main-content">
-            <h1>{{ lesson.name }}</h1>
-            <section class="lesson-content">
-                {{ lesson.content }}
-            </section>
-        </section>
-    </div>
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-lesson-info-card
+				*ngIf="course && lesson"
+				[courseName]="course.name"
+				[lessonLength]="lesson.length"
+				[lessonName]="lesson.name"
+			></app-lesson-info-card>
+			<app-lesson-badge-card></app-lesson-badge-card>
+			<app-lesson-documents-card></app-lesson-documents-card>
+		</section>
+		<section *ngIf="lesson" class="main-content">
+			<h1>{{ lesson.name }}</h1>
+			<section class="lesson-content">
+				{{ lesson.content }}
+			</section>
+		</section>
+	</div>
 </main>
