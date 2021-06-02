@@ -18,6 +18,9 @@ import { MyCoachCardComponent } from "./courses-overview/my-coach-card/my-coach-
 import { MyProfileCardComponent } from "./courses-overview/my-profile-card/my-profile-card.component";
 import { CourseCardComponent } from "./courses-overview/course-card/course-card.component";
 import { CategoryCardComponent } from "./courses-overview/category-card/category-card.component";
+import { LessonModule } from "../lesson/lesson.module";
+import { DndModule } from "ngx-drag-drop";
+import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
 
 @NgModule({
 	declarations: [
@@ -33,7 +36,8 @@ import { CategoryCardComponent } from "./courses-overview/category-card/category
         MyCoachCardComponent,
         MyProfileCardComponent,
         CourseCardComponent,
-        CategoryCardComponent
+        CategoryCardComponent,
+		AdminCourseInfoComponent,
 	],
 	imports: [
 		CommonModule,

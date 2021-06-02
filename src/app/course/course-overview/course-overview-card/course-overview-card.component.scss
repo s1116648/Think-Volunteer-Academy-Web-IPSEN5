@@ -10,7 +10,6 @@ h1 {
 .lesson-card {
 	display: flex;
 	flex-direction: row;
-	max-width: 600px;
 	height: 170px;
 	gap: 10px;
 
@@ -65,41 +64,16 @@ h1 {
 				display: flex;
 				gap: 10px;
 
-				.to-lesson {
-					display: flex;
-					background-color: #1c2b40;
-					border: none;
-					padding: 10px;
-					border-radius: 8px;
-					color: white;
-					gap: 60px;
-				}
-
-				.to-lesson > p,
-				img {
-					background-color: transparent;
-				}
-
-				.to-lesson > img {
-					height: 15px;
-					width: 15px;
-				}
-
 				.eta {
 					align-self: center;
-					color: white;
+					color: $color-white;
 				}
 			}
 		}
 
-		.title-desc-holder > h3 {
-			font-weight: bold;
-			color: white;
-		}
-
 		.title-desc-holder > p {
 			font-weight: 1;
-			color: $color-gray-400
+			color: $color-gray-400;
 		}
 	}
 }

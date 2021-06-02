@@ -64,26 +64,6 @@ h1 {
 				display: flex;
 				gap: 10px;
 
-				.to-lesson {
-					display: flex;
-					background-color: $color-background-dark;
-					border: none;
-					padding: 10px;
-					border-radius: 8px;
-					color: $color-white;
-					gap: 60px;
-				}
-
-				.to-lesson > p,
-				img {
-					background-color: transparent;
-				}
-
-				.to-lesson > img {
-					height: 15px;
-					width: 15px;
-				}
-
 				.eta {
 					align-self: center;
 					color: $color-white;

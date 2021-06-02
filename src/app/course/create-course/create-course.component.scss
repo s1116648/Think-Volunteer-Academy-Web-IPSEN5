@@ -11,6 +11,22 @@
             textarea {
                 height: 300px;
             }
+
+            .add-category-button {
+                border: 1px solid $color-gray-700;
+
+                &:focus {
+                    border-color: $color-white;
+                }
+            }
+
+            .category-icon {
+                color: $color-gray-700;
+                transition: .3s;
+                font-size: 13px;
+                position: relative;
+                top: 1px;
+            }
         }
     }
 }
