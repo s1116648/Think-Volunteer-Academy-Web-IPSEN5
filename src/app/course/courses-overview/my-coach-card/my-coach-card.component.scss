@@ -1,57 +1,64 @@
+@import "/src/app/shared/variables";
+
 *{
   font-family: Bahnschrift, sans-serif;
-  color: white;
+  //color: white;
 }
 
 h1 {
-  font-size: 12px;
-  font-weight: lighter;
+    font-size: 100%;
+    font-weight: normal;
 }
 
 hr {
-  color: #2B3D55;
-}
-
-.button-arrow {
-  display: inline-block;
-  margin-left: 90%;
-}
-
-.button-text {
-  display: block;
-  margin-left: 0;
-  position: fixed;
+    margin-top: 2px;
+    color: $color-background;
+    border-width: 2px;
 }
 
 .chat {
-  font-size: 10px;
-  margin: 8px 0 16px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 90%;
+    margin: 8px 0 16px 0;
 }
 
-.chat-arrow {
-  display: inline;
-  margin-left: 80%;
+.coach-img {
+    border-radius: 50%;
 }
 
-.coachImg {
-  border-radius: 50%;
+.coach-title {
+    margin-bottom: 12px;
+}
+
+.icon-chevron-right {
+    color: $color-background;
+}
+
+.img-and-name {
+    display: flex;
+    gap: 12px;
+}
+
+.name {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 120%;
 }
 
 .my-coach-wrapper {
-  border-radius: 10px;
-  margin: 5px;
-  padding: 10px;
-  background-color: #1C2B40;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: $color-background-dark;
 }
 
 .my-coach-wrapper button {
-  background-color: #2B3D55;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  width: 100%;
-}
-
-.my-coach-wrapper button:hover {
-  cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    color: $color-white;
+    background-color: $color-background;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
 }

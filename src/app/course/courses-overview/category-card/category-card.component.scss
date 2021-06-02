@@ -3,25 +3,15 @@
   color: white;
 }
 
-.button-arrow {
-  display: inline-block;
-  margin-left: 90%;
+h1 {
+    font-size: 250%;
 }
 
-.button-text {
-  display: block;
-  margin-left: 0;
-  position: fixed;
+header {
+    margin-bottom: 25px;
 }
 
-.course-button {
-  background-color: #1C2B40;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  width: 100%;
-}
-
-.course-button:hover {
-  cursor: pointer;
+.course-cards-wrapper {
+    display: flex;
+    gap: 35px;
 }

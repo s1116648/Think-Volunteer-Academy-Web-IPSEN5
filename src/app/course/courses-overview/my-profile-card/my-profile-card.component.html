@@ -1,13 +1,19 @@
 <section class="my-profile-wrapper">
-  <header>
-    <h1> My profile </h1>
-  </header>
-  <p>
-    <img class="profileImg" src="{{ profileCardModel.imgPath }}" width="40px" height="40px;">
-    <span> {{ profileCardModel.myName }} </span>
-  </p>
-  <button>
-    <span class="button-text"> My profile </span>
-    <span class="button-arrow"> ➜ </span>
-  </button>
+    <section class="profile-title">
+        <h1> My profile </h1>
+    </section>
+    <section class="img-and-name">
+        <figure>
+            <img class="profile-img" src="{{ profileCardModel.imgPath }}" width="40px" height="40px;" alt="Image of your profile">
+        </figure>
+        <p class="name">
+            {{ profileCardModel.myName }}
+        </p>
+    </section>
+    <button>
+        My profile
+        <span class="icon">
+            <fa-icon [icon]="icons.faArrowRight"></fa-icon>
+        </span>
+    </button>
 </section>

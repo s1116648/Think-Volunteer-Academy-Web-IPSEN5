@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import { CoachCardModel } from "./coach-card.model";
+import { faArrowRight, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-course-my-coach-card",
@@ -8,17 +9,21 @@ import { CoachCardModel } from "./coach-card.model";
 })
 export class MyCoachCardComponent implements OnInit {
 
-  coachCardModel: CoachCardModel;
+    coachCardModel: CoachCardModel;
+    icons = {
+        faArrowRight,
+        faChevronRight
+    };
 
-  constructor() {
-    this.coachCardModel = this.generateCoachCardModel();
-  }
+    constructor() {
+        this.coachCardModel = this.generateCoachCardModel();
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  generateCoachCardModel(): CoachCardModel {
-    const coachCardModel = new CoachCardModel("1", "John Doe", "assets/images/avatar-temp.jpg");
-    return coachCardModel;
-  }
+    generateCoachCardModel(): CoachCardModel {
+        const coachCardModel = new CoachCardModel("1", "John Doe", "assets/images/avatar-temp.jpg");
+        return coachCardModel;
+}
 }

@@ -1,27 +1,39 @@
+@import "/src/app/shared/variables";
+
 *{
   font-family: Bahnschrift, sans-serif;
-  color: white;
 }
 
-.button-arrow {
-  display: inline-block;
-  margin-left: 90%;
+figure:hover {
+    cursor: pointer;
 }
 
-.button-text {
-  display: block;
-  margin-left: 0;
-  position: fixed;
+h3 {
+    font-weight: lighter;
+    font-size: 140%;
+}
+
+header {
+    margin-top: 5px;
+}
+
+img {
+    border-radius: 5px;
+}
+
+.button-icon {
+    //margin-left: 90px;
 }
 
 .course-button {
-  background-color: #1C2B40;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-background-dark;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 20px;
+    width: 140px;
+    color: $color-white;
 }
 
-.course-button:hover {
-  cursor: pointer;
-}
+

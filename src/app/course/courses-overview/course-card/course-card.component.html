@@ -1,13 +1,15 @@
 <section class="course-card-wrapper">
-  <figure>
-<!--              <img [src]="course.image" alt="course-thumbnail">-->
-    <img src="/assets/images/lion.jpg" width="200" height="160">
-  </figure>
-  <header>
-    <h3> {{course.name}} </h3>
-  </header>
-  <button class="course-button">
-    <span class="button-text"> To course </span>
-    <span class="button-arrow"> ➜ </span>
-  </button>
+    <figure [routerLink]="course.id">
+<!--        <img srs="{{course.image}}" alt="course-thumbnail" width="240" height="200">-->
+        <img src="/assets/images/lion.jpg" width="240" height="200" alt="temporary lion img">
+    </figure>
+    <header>
+        <h3> {{course.name}} </h3>
+    </header>
+    <button [routerLink]="course.id" class="course-button">
+        To course
+        <span class="icon">
+            <fa-icon [icon]="icons.faArrowRight" class="button-icon"></fa-icon>
+        </span>
+    </button>
 </section>
