@@ -250,10 +250,25 @@ textarea {
   .ql-stroke, .ql-stroke.ql-fill{
     stroke: white;
   }
-  rect.ql-fill, circle.ql-fill,path.ql-fill, rect, .ql-picker.ql-font, .ql-picker-label, polyline.ql-fill.ql-even,
+  rect.ql-fill,
+  circle.ql-fill,
+  path.ql-fill,
+  rect,
+  .ql-picker.ql-font,
+  .ql-picker-label,
+  polyline.ql-fill.ql-even,
+  .ql-snow .ql-picker,
   line.ql-color-label{
     fill: white;
     color: white;
+  }
+
+  .ql-snow .ql-picker-options{
+    background-color: #2B3D55;
+  }
+
+  .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options{
+    border-color: white;
   }
 
   @media only screen and (max-width: 900px) {
