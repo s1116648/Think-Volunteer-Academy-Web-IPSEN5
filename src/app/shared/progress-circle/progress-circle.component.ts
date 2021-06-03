@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Lesson } from "../../../lesson/lesson.model";
 
 @Component({
 	selector: "app-progress-circle",
