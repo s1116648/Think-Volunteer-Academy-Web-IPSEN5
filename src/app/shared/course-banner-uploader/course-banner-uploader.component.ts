@@ -1,8 +1,6 @@
 import {
 	Component,
 	OnInit,
-	Output,
-	EventEmitter,
 	forwardRef,
 	Input,
 } from "@angular/core";
@@ -10,7 +8,7 @@ import { FileService } from "src/app/file/file.service";
 import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { environment } from "./../../../environments/environment";
+import { environment } from "../../../environments/environment";
 
 @Component({
 	selector: "app-course-banner-uploader",

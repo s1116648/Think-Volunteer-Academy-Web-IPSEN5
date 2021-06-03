@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ManageComponent } from "../manage/manage.component";
 import { AuthGuard } from "../auth/auth.guard";
 import { LessonViewComponent } from "./lesson-view/lesson-view.component";
+import {AdminLessonViewComponent} from "./admin-lesson-view/admin-lesson-view.component";
 
 const routes: Routes = [
 	{
 		path: "admin/courses/:courseId/lessons/:lessonId",
-		component: ManageComponent,
+		component: AdminLessonViewComponent,
         canActivate: [AuthGuard],
 	},
 	{

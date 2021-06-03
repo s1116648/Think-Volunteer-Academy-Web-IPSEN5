@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
 import {ProgressCircleComponent} from "./progress-circle/progress-circle.component";
 import { RouterModule } from "@angular/router";
+import {CourseBannerUploaderComponent} from "./course-banner-uploader/course-banner-uploader.component";
 
 @NgModule({
 	declarations: [
@@ -26,8 +27,9 @@ import { RouterModule } from "@angular/router";
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
-    PlaceholderDirective,
-    ModalComponent
+        PlaceholderDirective,
+        ModalComponent,
+        CourseBannerUploaderComponent
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -40,8 +42,9 @@ import { RouterModule } from "@angular/router";
 		GeneralCourseInfoComponent,
 		ToggleComponent,
 		AdminSideNavComponent,
-    PlaceholderDirective,
-    ModalComponent
+        PlaceholderDirective,
+        ModalComponent,
+        CourseBannerUploaderComponent
 	],
 })
 export class SharedModule {}
