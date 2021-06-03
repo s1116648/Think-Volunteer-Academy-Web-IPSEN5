@@ -10,7 +10,7 @@ import {
 	faFile,
 	faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { LessonService } from "../lesson.service";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
@@ -18,13 +18,14 @@ import { LessonAttachmentService } from "src/app/lesson-attachment/lesson-attach
 import { LessonAttachment } from "src/app/lesson-attachment/lesson-acttachment.model";
 import { FileService } from "src/app/file/file.service";
 import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
+import { UpdateLessonDTO } from "../dto/update-lesson.dto";
 
 @Component({
-	selector: "app-admin-lesson-view",
-	templateUrl: "./admin-lesson-view.component.html",
-	styleUrls: ["./admin-lesson-view.component.scss"],
+	selector: "app-admin-edit-lesson-view",
+	templateUrl: "./admin-edit-lesson-view.component.html",
+	styleUrls: ["./admin-edit-lesson-view.component.scss"],
 })
-export class AdminLessonViewComponent implements OnInit {
+export class AdminEditLessonViewComponent implements OnInit {
 	lesson: Lesson;
 	icons = {
 		faArrowRight,
@@ -48,6 +49,7 @@ export class AdminLessonViewComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private lessonService: LessonService,
 		private lessonAttachmentService: LessonAttachmentService,
 		private fileService: FileService
@@ -74,8 +76,24 @@ export class AdminLessonViewComponent implements OnInit {
 	}
 
 	update(lessonForm: NgForm): void {
+		const values = lessonForm.value;
+
+		const updateDto: UpdateLessonDTO = {
+			name: values.name,
+			content: values.content,
+			description: values.description,
+			image: values.image,
+			length: values.length,
+		};
+
 		this.createAttachments(this.attachmentsToUpload);
 		this.deleteAttachments(this.attachmentsToDelete);
+
+		this.lessonService.update(this.lesson.id, updateDto).subscribe(() => {
+			this.router
+				.navigate(["../.."], { relativeTo: this.route })
+				.catch((err) => console.log(err));
+		});
 	}
 
 	getFileIcon(name: string): IconProp {
@@ -105,16 +123,11 @@ export class AdminLessonViewComponent implements OnInit {
 		const files = target.files as FileList;
 		const file = files[0];
 
-		console.log(file);
-
 		if (file) this.attachmentsToUpload.push(file);
 	}
 
-	createAttachments(file: File[]): void {
-		this.attachmentsToUpload.forEach((file: File) =>
-			this.createAttachment(file)
-		);
-	}
+	createAttachments = (files: File[]): void =>
+		files.forEach((file: File) => this.createAttachment(file));
 
 	createAttachment(file: File): void {
 		this.fileService

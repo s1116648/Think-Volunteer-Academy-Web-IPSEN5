@@ -1,4 +1,7 @@
 @import "/src/app/shared/variables";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 
 form {
     margin-top: 30px;
@@ -59,3 +62,9 @@ form {
         }
     }
 }
+
+
+.quill-wrapper{
+  background-color: #1C2B40;
+}
+

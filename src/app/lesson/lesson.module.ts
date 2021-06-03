@@ -12,26 +12,28 @@ import { LessonViewComponent } from "./lesson-view/lesson-view.component";
 import { LessonInfoCardComponent } from "./lesson-view/lesson-info-card/lesson-info-card.component";
 import { LessonBadgeCardComponent } from "./lesson-view/lesson-badge-card/lesson-badge-card.component";
 import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-card/lesson-documents-card.component";
-import { AdminLessonViewComponent } from "./admin-lesson-view/admin-lesson-view.component";
-
+import { AdminEditLessonViewComponent } from "./admin-edit-lesson-view/admin-edit-lesson-view.component";
+import { QuillModule } from "ngx-quill";
 
 @NgModule({
 	declarations: [
-	    SetLessonModalComponent,
-        AdminLessonCardComponent,
-        LessonViewComponent,
-        LessonInfoCardComponent,
-        LessonBadgeCardComponent,
-        LessonDocumentsCardComponent,
-        AdminLessonViewComponent],
-    imports: [
-        CommonModule,
-        LessonRoutingModule,
-        SharedModule,
-        FormsModule,
-        FontAwesomeModule,
-        DndModule,
-    ],
+		SetLessonModalComponent,
+		AdminLessonCardComponent,
+		LessonViewComponent,
+		LessonInfoCardComponent,
+		LessonBadgeCardComponent,
+		LessonDocumentsCardComponent,
+		AdminEditLessonViewComponent,
+	],
+	imports: [
+		CommonModule,
+		LessonRoutingModule,
+		SharedModule,
+		FormsModule,
+		FontAwesomeModule,
+		DndModule,
+		QuillModule,
+	],
 	exports: [AdminLessonCardComponent],
 	providers: [CourseService],
 })
