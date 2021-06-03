@@ -14,6 +14,7 @@ import { CourseModule } from "./course/course.module";
 import { FormsModule } from "@angular/forms";
 import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
+import {QuillModule} from "ngx-quill";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { ManageModule } from "./manage/manage.module";
 		RoleModule,
 		ManageModule,
 		UserModule,
+    QuillModule.forRoot()
 	],
 	providers: [
 		{

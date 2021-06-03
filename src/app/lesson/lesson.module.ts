@@ -13,6 +13,7 @@ import { LessonInfoCardComponent } from "./lesson-view/lesson-info-card/lesson-i
 import { LessonBadgeCardComponent } from "./lesson-view/lesson-badge-card/lesson-badge-card.component";
 import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-card/lesson-documents-card.component";
 import { AdminLessonViewComponent } from "./admin-lesson-view/admin-lesson-view.component";
+import {QuillModule} from "ngx-quill";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdminLessonViewComponent } from "./admin-lesson-view/admin-lesson-view.
         FormsModule,
         FontAwesomeModule,
         DndModule,
+        QuillModule,
     ],
 	exports: [AdminLessonCardComponent],
 	providers: [CourseService],

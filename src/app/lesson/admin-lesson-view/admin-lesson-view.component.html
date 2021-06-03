@@ -1,67 +1,83 @@
 <main class="container content-holder">
-    <section class="left-sidebar">
-        <app-admin-side-nav></app-admin-side-nav>
-    </section>
+	<section class="left-sidebar">
+		<app-admin-side-nav></app-admin-side-nav>
+	</section>
 
-    <section class="main-content" *ngIf="lesson">
-        <h1>Edit lesson</h1>
+	<section class="main-content" *ngIf="lesson">
+		<h1>Edit lesson</h1>
 
-        <form #lessonForm="ngForm" (ngSubmit)="update(lessonForm)">
-            <div class="form-group">
-                <app-course-banner-uploader name="image" [ngModel]="lesson.image" required></app-course-banner-uploader>
-            </div>
+		<form #lessonForm="ngForm" (ngSubmit)="update(lessonForm)">
+			<div class="form-group">
+				<app-course-banner-uploader
+					name="image"
+					[ngModel]="lesson.image"
+					required
+				></app-course-banner-uploader>
+			</div>
 
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Lesson name"
-                    class="dark"
-                    [ngModel]="lesson.name"
-                    name="name"
-                    required
-                />
-            </div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input
+					type="text"
+					id="name"
+					placeholder="Lesson name"
+					class="dark"
+					[ngModel]="lesson.name"
+					name="name"
+					required
+				/>
+			</div>
 
-            <div class="form-group">
-                <label for="length">Expected length</label>
-                <input
-                    type="text"
-                    id="length"
-                    placeholder="Lesson length"
-                    class="dark"
-                    [ngModel]="lesson.length"
-                    name="length"
-                    required
-                />
-            </div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea
+					type="text"
+					id="description"
+					placeholder="Lesson length"
+					class="dark"
+					[ngModel]="lesson.description"
+					name="textarea"
+					required
+				></textarea>
+			</div>
 
-            <div class="form-group">
-                <label for="content">Content</label>
-                <textarea
-                    type="text"
-                    id="content"
-                    placeholder="Lesson content"
-                    class="dark"
-                    [ngModel]="lesson.content"
-                    name="content"
-                    required
-                ></textarea>
-            </div>
+			<div class="form-group">
+				<label for="length">Expected length (minutes)</label>
+				<input
+					type="number"
+					id="length"
+					placeholder="Lesson length"
+					class="dark"
+					[ngModel]="lesson.length"
+					name="length"
+					required
+				/>
+			</div>
 
-            <div class="form-group">
-                <label for="content">Document</label>
+			<div class="form-group">
+				<label for="content">Content</label>
+				<section class="quill-wrapper">
+					<quill-editor
+						id="content"
+						placeholder="Lesson content"
+						class="quill-editor"
+						[ngModel]="lesson.content"
+						name="content"
+					></quill-editor>
+				</section>
+			</div>
 
-            </div>
-            <div class="form-group">
-                <button class="button primary" [disabled]="lessonForm.invalid">
-                    Save course
-                    <span class="icon"
-                    ><fa-icon [icon]="icons.faArrowRight"></fa-icon
-                    ></span>
-                </button>
-            </div>
-        </form>
-    </section>
+			<div class="form-group">
+				<label for="content">Document</label>
+			</div>
+			<div class="form-group">
+				<button class="button primary" [disabled]="lessonForm.invalid">
+					Save course
+					<span class="icon"
+						><fa-icon [icon]="icons.faArrowRight"></fa-icon
+					></span>
+				</button>
+			</div>
+		</form>
+	</section>
 </main>
