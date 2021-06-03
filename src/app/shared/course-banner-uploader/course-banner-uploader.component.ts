@@ -1,9 +1,4 @@
-import {
-	Component,
-	OnInit,
-	forwardRef,
-	Input,
-} from "@angular/core";
+import { Component, OnInit, forwardRef, Input } from "@angular/core";
 import { FileService } from "src/app/file/file.service";
 import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
@@ -44,7 +39,6 @@ export class CourseBannerUploaderComponent
 	@Input() public set value(value: string) {
 		if (!this.disabled) {
 			this.imagePath = value;
-			console.log(value);
 			this.onChange(value);
 		}
 	}

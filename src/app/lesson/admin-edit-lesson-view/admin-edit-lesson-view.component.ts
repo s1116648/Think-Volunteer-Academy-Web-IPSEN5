@@ -19,6 +19,8 @@ import { LessonAttachment } from "src/app/lesson-attachment/lesson-acttachment.m
 import { FileService } from "src/app/file/file.service";
 import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { UpdateLessonDTO } from "../dto/update-lesson.dto";
+import { forkJoin, Observable, of } from "rxjs";
+import { defaultIfEmpty, tap } from "rxjs/operators";
 
 @Component({
 	selector: "app-admin-edit-lesson-view",
@@ -27,6 +29,7 @@ import { UpdateLessonDTO } from "../dto/update-lesson.dto";
 })
 export class AdminEditLessonViewComponent implements OnInit {
 	lesson: Lesson;
+
 	icons = {
 		faArrowRight,
 		faFileUpload,
@@ -46,6 +49,8 @@ export class AdminEditLessonViewComponent implements OnInit {
 	attachments: LessonAttachment[] = [];
 	attachmentsToUpload: File[] = [];
 	attachmentsToDelete: LessonAttachment[] = [];
+
+	isUpdating = false;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -86,10 +91,27 @@ export class AdminEditLessonViewComponent implements OnInit {
 			length: values.length,
 		};
 
-		this.createAttachments(this.attachmentsToUpload);
-		this.deleteAttachments(this.attachmentsToDelete);
+		const createAttachmentsObservable = this.createAttachments(
+			this.attachmentsToUpload
+		);
+		const deleteAttachmentsObservable = this.deleteAttachments(
+			this.attachmentsToDelete
+		);
+		const dataUpdateObservable = this.lessonService.update(
+			this.lesson.id,
+			updateDto
+		);
 
-		this.lessonService.update(this.lesson.id, updateDto).subscribe(() => {
+		const update = forkJoin([
+			createAttachmentsObservable,
+			deleteAttachmentsObservable,
+			dataUpdateObservable,
+		]);
+
+		this.isUpdating = true;
+
+		update.subscribe(() => {
+			this.isUpdating = false;
 			this.router
 				.navigate(["../.."], { relativeTo: this.route })
 				.catch((err) => console.log(err));
@@ -103,19 +125,25 @@ export class AdminEditLessonViewComponent implements OnInit {
 		return this.fileIcons[extension] ?? this.icons.faFile;
 	}
 
-	deleteAttachments = (attachments: LessonAttachment[]): void =>
-		attachments.forEach((attachment) => this.deleteAttachment(attachment));
+	deleteAttachments(attachments: LessonAttachment[]): Observable<any[]> {
+		const observables: Observable<null>[] = [];
+		attachments.forEach((attachment) => {
+			const observable = this.lessonAttachmentService
+				.remove(this.lesson.id, attachment.id)
+				.pipe(
+					tap(() => {
+						const index = this.attachmentsToDelete.findIndex(
+							(a) => a.id === attachment.id
+						);
 
-	deleteAttachment(attachment: LessonAttachment): void {
-		this.lessonAttachmentService
-			.remove(this.lesson.id, attachment.id)
-			.subscribe(() => {
-				const index = this.attachmentsToDelete.findIndex(
-					(a) => a.id === attachment.id
+						this.attachmentsToDelete.splice(index, 1);
+					})
 				);
 
-				this.attachmentsToDelete.splice(index, 1);
-			});
+			observables.push(observable);
+		});
+
+		return forkJoin(observables).pipe(defaultIfEmpty([]));
 	}
 
 	onFileChange(event: Event): void {
@@ -126,26 +154,31 @@ export class AdminEditLessonViewComponent implements OnInit {
 		if (file) this.attachmentsToUpload.push(file);
 	}
 
-	createAttachments = (files: File[]): void =>
-		files.forEach((file: File) => this.createAttachment(file));
+	createAttachments(files: File[]): Observable<UploadedFileResponse[]> {
+		const observables: Observable<UploadedFileResponse>[] = [];
 
-	createAttachment(file: File): void {
-		this.fileService
-			.upload(file)
-			.subscribe((uploadedFileResponse: UploadedFileResponse) => {
-				this.lessonAttachmentService
-					.create(this.lesson.id, {
-						name: file.name,
-						path: uploadedFileResponse.path,
-					})
-					.subscribe((attachment: LessonAttachment) => {
-						const index = this.attachmentsToUpload.findIndex(
-							(f) => f === file
-						);
-						this.attachmentsToUpload.splice(index, 1);
-						this.attachments.push(attachment);
-					});
-			});
+		files.forEach((file: File) => {
+			const observable = this.fileService.upload(file).pipe(
+				tap((uploadedFileResponse: UploadedFileResponse) => {
+					this.lessonAttachmentService
+						.create(this.lesson.id, {
+							name: file.name,
+							path: uploadedFileResponse.path,
+						})
+						.subscribe((attachment: LessonAttachment) => {
+							const index = this.attachmentsToUpload.findIndex(
+								(f) => f === file
+							);
+							this.attachmentsToUpload.splice(index, 1);
+							this.attachments.push(attachment);
+						});
+				})
+			);
+
+			observables.push(observable);
+		});
+
+		return forkJoin(observables).pipe(defaultIfEmpty([]));
 	}
 
 	deleteAttachmentFromUploadList(index: number): void {
