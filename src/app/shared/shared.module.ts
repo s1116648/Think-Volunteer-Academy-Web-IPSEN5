@@ -13,6 +13,7 @@ import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
 import {ProgressCircleComponent} from "./progress-circle/progress-circle.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	declarations: [
@@ -28,7 +29,7 @@ import {ProgressCircleComponent} from "./progress-circle/progress-circle.compone
     PlaceholderDirective,
     ModalComponent
 	],
-	imports: [CommonModule, FontAwesomeModule, FormsModule],
+	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
 		DropdownComponent,
 		DropdownOptionDirective,

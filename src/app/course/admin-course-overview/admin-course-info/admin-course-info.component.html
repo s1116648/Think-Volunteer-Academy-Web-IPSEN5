@@ -1,0 +1,13 @@
+<section>
+    <h3>Admin information</h3>
+    <ul>
+        <li>
+            <p class="title">Active</p>
+            <p class="value">{{ "" + course.active  | titlecase }}</p>
+        </li>
+        <li>
+            <p class="title">Created at</p>
+            <p class="value">{{ course.createdAt | date }}</p>
+        </li>
+    </ul>
+</section>
