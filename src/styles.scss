@@ -250,7 +250,8 @@ textarea {
   .ql-stroke, .ql-stroke.ql-fill{
     stroke: white;
   }
-  rect.ql-fill, path.ql-fill, rect, .ql-picker.ql-font, .ql-picker-label, polyline.ql-fill.ql-even{
+  rect.ql-fill, circle.ql-fill,path.ql-fill, rect, .ql-picker.ql-font, .ql-picker-label, polyline.ql-fill.ql-even,
+  line.ql-color-label{
     fill: white;
     color: white;
   }
