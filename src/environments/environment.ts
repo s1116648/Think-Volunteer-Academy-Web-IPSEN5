@@ -5,6 +5,7 @@
 export const environment = {
 	production: false,
 	API_URL: "http://localhost:5000",
+	S3_ENDPOINT: "https://thinkvolunteer.ams3.cdn.digitaloceanspaces.com/",
 };
 
 /*
