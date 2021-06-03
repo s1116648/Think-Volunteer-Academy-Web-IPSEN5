@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
-
     .profile-avatar {
         height: 100px;
         width: 100px;
@@ -13,12 +12,13 @@
 
 form {
     margin-top: 20px;
-
     .form-group {
         flex-grow: 1;
-
         label {
             color: white;
+        }
+        input:invalid {
+            border-color: red;
         }
     }
 }
@@ -29,4 +29,8 @@ form {
     border-radius: 20px;
     background-color: #1C2B40;
     color: white;
+}
+
+.btn:disabled {
+    opacity: 50%;
 }
