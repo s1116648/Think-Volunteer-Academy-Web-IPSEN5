@@ -140,7 +140,7 @@ export class AdminEditLessonViewComponent implements OnInit {
 					})
 					.subscribe((attachment: LessonAttachment) => {
 						const index = this.attachmentsToUpload.findIndex(
-							(f) => f == file
+							(f) => f === file
 						);
 						this.attachmentsToUpload.splice(index, 1);
 						this.attachments.push(attachment);
