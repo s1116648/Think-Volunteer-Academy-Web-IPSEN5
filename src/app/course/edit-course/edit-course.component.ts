@@ -12,6 +12,7 @@ import {
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
+import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
@@ -39,7 +40,6 @@ export class EditCourseComponent implements OnInit {
 		private courseCategoryService: CourseCategoryService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private location: Location,
 		private modalService: ModalService
 	) {}
 
@@ -63,10 +63,12 @@ export class EditCourseComponent implements OnInit {
 		const dto: UpdateCourseDTO = {
 			name: values.name,
 			description: values.description,
-			image: "testimage",
+			image: values.image,
 			categoryId: values.category.id,
 			active: values.active,
 		};
+
+		console.log(values, dto);
 
 		this.courseService
 			.update(this.course.id, dto)

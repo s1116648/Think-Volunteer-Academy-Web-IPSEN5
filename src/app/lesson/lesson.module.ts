@@ -7,15 +7,28 @@ import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AdminLessonCardComponent } from "./admin-lesson-card/admin-lesson-card.component";
+import { DndModule } from "ngx-drag-drop";
+import { LessonViewComponent } from "./lesson-view/lesson-view.component";
+import { LessonInfoCardComponent } from "./lesson-view/lesson-info-card/lesson-info-card.component";
+import { LessonBadgeCardComponent } from "./lesson-view/lesson-badge-card/lesson-badge-card.component";
+import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-card/lesson-documents-card.component";
+
 
 @NgModule({
-	declarations: [SetLessonModalComponent, AdminLessonCardComponent],
+	declarations: [
+	    SetLessonModalComponent,
+        AdminLessonCardComponent,
+        LessonViewComponent,
+        LessonInfoCardComponent,
+        LessonBadgeCardComponent,
+        LessonDocumentsCardComponent],
 	imports: [
 		CommonModule,
 		LessonRoutingModule,
 		SharedModule,
 		FormsModule,
 		FontAwesomeModule,
+		DndModule,
 	],
 	exports: [AdminLessonCardComponent],
 	providers: [CourseService],
