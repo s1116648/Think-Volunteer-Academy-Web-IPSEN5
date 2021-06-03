@@ -6,11 +6,12 @@ import { LessonViewComponent } from "./lesson-view/lesson-view.component";
 
 const routes: Routes = [
 	{
-		path: "admin/courses/:courseid/lessons/:lessonid",
+		path: "admin/courses/:courseId/lessons/:lessonId",
 		component: ManageComponent,
+        canActivate: [AuthGuard],
 	},
 	{
-		path: "courses/:id/lesson/:id",
+		path: "courses/:courseId/lessons/:lessonId",
 		component: LessonViewComponent,
 		canActivate: [AuthGuard],
 	},
