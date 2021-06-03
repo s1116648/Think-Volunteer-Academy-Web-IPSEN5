@@ -21,11 +21,6 @@ export class TopNavComponent implements OnInit {
         this.isAdmin = this.checkIfAdmin();
     }
 
-    // ToDo, don't create it if you aren't logged in.
-    checkIfLoggedIn(): boolean {
-        return false;
-    }
-
     // ToDo If permissions are finished, make this method useful.
     checkIfAdmin(): boolean {
         return true;
