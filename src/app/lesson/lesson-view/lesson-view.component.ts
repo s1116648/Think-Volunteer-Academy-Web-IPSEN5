@@ -22,7 +22,7 @@ export class LessonViewComponent implements OnInit {
 	ngOnInit(): void {
 		this.route.params.subscribe((params: Params) => {
 			this.lessonService
-				.getById(params.id)
+				.getById(params.lessonId)
 				.subscribe((lesson: Lesson) => {
 					this.lesson = lesson;
 					this.getCourseFromId();
