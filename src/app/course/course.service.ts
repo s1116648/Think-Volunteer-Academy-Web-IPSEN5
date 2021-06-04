@@ -39,4 +39,13 @@ export class CourseService {
             `/categories/${categoryId}/courses`
         );
     }
+
+    getBatchesFromActiveUser(): Observable<HttpPaginatedResult<any>> {
+		const loginInfo = localStorage.getItem("loginInfo");
+		const loginInfoJson = JSON.parse(loginInfo);
+		const userId = loginInfoJson.user.id;
+		return this.http.get<HttpPaginatedResult<any>>(
+			`/users/${userId}/badges`
+		);
+	}
 }
