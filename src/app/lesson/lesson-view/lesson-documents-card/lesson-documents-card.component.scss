@@ -1,0 +1,16 @@
+@import "/src/app/shared/variables";
+
+.document-information {
+    ul li {
+        display: flex;
+        cursor: pointer;
+        p.value {
+            text-align: right;
+            font-weight: 400;
+        }
+
+        p.title {
+            flex-grow: 1;
+        }
+    }
+}

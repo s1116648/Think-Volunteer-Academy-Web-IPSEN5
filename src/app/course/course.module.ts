@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { CourseRoutingModule } from "./course.routing.module";
 import { CourseOverviewComponent } from "./course-overview/course-overview.component";
 import { CourseOverviewCardComponent } from "./course-overview/course-overview-card/course-overview-card.component";
-import { ProgressCircleComponent } from "./course-overview/progress-circle/progress-circle.component";
 import { RecommendationCardComponent } from "./course-overview/recommendation-card/recommendation-card.component";
 import { LessonTestCardComponent } from "./course-overview/lesson-test-card/lesson-test-card.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
@@ -21,12 +20,12 @@ import { CategoryCardComponent } from "./courses-overview/category-card/category
 import { LessonModule } from "../lesson/lesson.module";
 import { DndModule } from "ngx-drag-drop";
 import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
+import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
 
 @NgModule({
 	declarations: [
 		CourseOverviewComponent,
 		CourseOverviewCardComponent,
-		ProgressCircleComponent,
 		RecommendationCardComponent,
 		LessonTestCardComponent,
 		EditCourseComponent,
@@ -38,6 +37,7 @@ import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-i
         CourseCardComponent,
         CategoryCardComponent,
 		AdminCourseInfoComponent,
+		CourseBannerUploaderComponent,
 	],
     imports: [
         CommonModule,

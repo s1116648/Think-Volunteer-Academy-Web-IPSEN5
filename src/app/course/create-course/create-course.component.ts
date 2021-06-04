@@ -1,3 +1,4 @@
+import { HttpEvent, HttpEventType } from "@angular/common/http";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -6,10 +7,13 @@ import {
 	faPlus,
 	faTimes,
 	faPen,
+	faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
+import { FileService } from "src/app/file/file.service";
+import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
@@ -23,7 +27,7 @@ import { CreateCourseDTO } from "../dto/create-course.dto";
 	styleUrls: ["./create-course.component.scss"],
 })
 export class CreateCourseComponent implements OnInit {
-	icons = { faCheck, faPlus, faTimes, faPen };
+	icons = { faCheck, faPlus, faTimes, faPen, faImage };
 
 	categories: CourseCategory[] = [];
 
@@ -33,6 +37,7 @@ export class CreateCourseComponent implements OnInit {
 	constructor(
 		private courseService: CourseService,
 		private courseCategoryService: CourseCategoryService,
+		private fileService: FileService,
 		private route: ActivatedRoute,
 		private router: Router,
 		private modalService: ModalService
@@ -52,7 +57,7 @@ export class CreateCourseComponent implements OnInit {
 		const dto: CreateCourseDTO = {
 			name: values.name,
 			description: values.description,
-			image: "testimage",
+			image: values.image,
 			categoryId: values.category.id,
 		};
 
