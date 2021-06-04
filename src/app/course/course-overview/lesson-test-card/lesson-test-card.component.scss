@@ -10,13 +10,11 @@ h1 {
 	display: flex;
 	flex-direction: row;
 	max-width: 600px;
-	height: 170px;
 	gap: 10px;
 
 	.status-and-line {
 		display: flex;
 		flex-direction: column;
-		/* background-color: red; */
 		gap: 10px;
 		max-width: 30px;
 
@@ -26,7 +24,6 @@ h1 {
 			width: 22px;
 			height: 22px;
 			border-radius: 100%;
-			/* background-color: #22E63C; */
 		}
 
 		.line {

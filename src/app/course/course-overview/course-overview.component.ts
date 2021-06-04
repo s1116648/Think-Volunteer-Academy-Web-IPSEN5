@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { LessonService } from "src/app/lesson/lesson.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
+import { environment } from "src/environments/environment";
 import { Lesson } from "../../lesson/lesson.model";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
@@ -20,6 +21,10 @@ export class CourseOverviewComponent implements OnInit {
 
 	get totalLessonLength(): number {
 		return this.lessons.reduce((acc, lesson) => acc + lesson.length, 0);
+	}
+
+	get bannerImage(): string {
+		return environment.S3_ENDPOINT + this.course.image;
 	}
 
 	constructor(
