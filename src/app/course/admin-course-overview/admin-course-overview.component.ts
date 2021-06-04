@@ -10,6 +10,7 @@ import { Lesson } from "../../lesson/lesson.model";
 import { LessonService } from "src/app/lesson/lesson.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { DndDropEvent } from "ngx-drag-drop";
+import { environment } from "src/environments/environment";
 
 @Component({
 	selector: "app-admin-course-overview",
@@ -31,6 +32,10 @@ export class AdminCourseOverviewComponent implements OnInit {
 
 	get lessonsInOrder(): Lesson[] {
 		return this.lessons.sort((a, b) => a.index - b.index);
+	}
+
+	get image(): string {
+		return environment.S3_ENDPOINT + this.course.image;
 	}
 
 	constructor(
