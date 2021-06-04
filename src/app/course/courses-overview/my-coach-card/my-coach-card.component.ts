@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import { CoachCardModel } from "./coach-card.model";
 import { faArrowRight, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -9,21 +8,25 @@ import { faArrowRight, faChevronRight } from "@fortawesome/free-solid-svg-icons"
 })
 export class MyCoachCardComponent implements OnInit {
 
-    coachCardModel: CoachCardModel;
+    coachImg: string;
+    coachFirstName: string;
+    coachLastName: string;
     icons = {
         faArrowRight,
         faChevronRight
     };
 
     constructor() {
-        this.coachCardModel = this.generateCoachCardModel();
     }
 
     ngOnInit(): void {
+        this.initialiseCoach();
     }
 
-    generateCoachCardModel(): CoachCardModel {
-        const coachCardModel = new CoachCardModel("1", "John Doe", "assets/images/avatar-temp.jpg");
-        return coachCardModel;
-}
+    // ToDo if the coach binding works, update this so it would get it from a service.
+    initialiseCoach(): void {
+        this.coachImg = "assets/images/avatar-temp.jpg";
+        this.coachFirstName = "John";
+        this.coachLastName = "Doe";
+    }
 }

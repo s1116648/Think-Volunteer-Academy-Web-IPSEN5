@@ -11,13 +11,19 @@ export class CoursesOverviewComponent implements OnInit {
 
     courseCategories: CourseCategory[];
 
+    myCoursesExists: boolean;
+
     constructor(private courseCategoryService: CourseCategoryService) {}
 
     ngOnInit(): void {
         this.courseCategoryService.get().subscribe((categories) => {
             this.courseCategories = categories.items;
         });
+        this.initialiseMyCoursesExists();
     }
 
-
+    // ToDo
+    initialiseMyCoursesExists(): void {
+        this.myCoursesExists = true;
+    }
 }

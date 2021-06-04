@@ -11,6 +11,9 @@
         </aside>
 
         <div class="courses-wrapper">
+            <article *ngIf="this.myCoursesExists">
+                <app-my-courses></app-my-courses>
+            </article>
             <article class="course-type-card" *ngFor="let courseCategory of courseCategories">
               <app-course-category-card [courseCategory]="courseCategory"></app-course-category-card>
             </article>

@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import { ProfileCardModel } from "./profile-card.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -9,19 +8,22 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 })
 export class MyProfileCardComponent implements OnInit {
 
-  profileCardModel: ProfileCardModel;
+    profileImgPath: string;
+    firstName: string;
+    lastName: string;
     icons = { faArrowRight };
 
-  constructor() {
-    this.profileCardModel = this.generateProfileCardModel();
-  }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.initialiseProfile();
+    }
 
-  generateProfileCardModel(): ProfileCardModel {
-    const profileCardModel = new ProfileCardModel("1", "Jane Doe", "assets/images/avatar-temp.jpg");
-    return profileCardModel;
-  }
+    initialiseProfile(): void {
+        this.profileImgPath = "assets/images/avatar-temp.jpg";
+        this.firstName = "Jane";
+        this.lastName = "Doe";
+    }
 
 }

@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		// @ts-ignore
     this.loginInfoSubscription.unsubscribe();
 	}
 }
