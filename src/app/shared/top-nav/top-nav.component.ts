@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../../auth/auth.service";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-top-nav",
@@ -15,6 +16,10 @@ export class TopNavComponent implements OnInit {
 
     isAdmin: boolean;
 
+    collapsedOnPhone = true;
+
+    icons = { faBars };
+
     constructor(private authService: AuthService) {}
 
     ngOnInit(): void {
@@ -24,6 +29,16 @@ export class TopNavComponent implements OnInit {
     // ToDo If permissions are finished, make this method useful.
     checkIfAdmin(): boolean {
         return true;
+    }
+
+    hamburgerClicked(): void {
+        if (this.collapsedOnPhone) {
+          document.getElementById("options").style.display = "flex";
+          this.collapsedOnPhone = false;
+        } else {
+          document.getElementById("options").style.display = "none";
+          this.collapsedOnPhone = true;
+        }
     }
 
     logout(): void {
