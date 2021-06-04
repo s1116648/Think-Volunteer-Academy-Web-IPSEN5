@@ -23,8 +23,8 @@ export class LessonService {
 		});
 	}
 
-	create(dto: CreateLessonDTO): Observable<Lesson> {
-		return this.http.post<Lesson>("/lessons", dto);
+	create(courseID: string, dto: CreateLessonDTO): Observable<Lesson> {
+		return this.http.post<Lesson>(`/courses/${courseID}/lessons`, dto);
 	}
 
     getById(lessonId: string): Observable<Lesson> {
