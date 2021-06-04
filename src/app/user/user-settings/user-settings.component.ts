@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { UpdateProfileDto } from "../dto/update-profile.dto";
 import { UserService } from "../user.service";
 import { AuthService } from "../../auth/auth.service";
+import { ChangePasswordDto } from "../dto/change-password.dto";
 
 @Component({
     selector: "app-user-settings",
@@ -18,6 +19,8 @@ export class UserSettingsComponent implements OnInit {
     email: string;
     updateMessage: string;
     updateMessageShown: boolean;
+    updatePasswordMessage: string;
+    updatePasswordMessageShown: boolean;
 
     constructor(private userService: UserService, private authService: AuthService) {
     }
@@ -30,7 +33,6 @@ export class UserSettingsComponent implements OnInit {
 
     updateProfile(form: NgForm): void {
         const values = form.value;
-        console.log(values);
 
         const dto: UpdateProfileDto = {
             firstname: values.firstName,
@@ -51,6 +53,34 @@ export class UserSettingsComponent implements OnInit {
         );
     }
 
+    changePassword(form: NgForm): void {
+        const values = form.value;
+
+        if (values.newPassword === values.repeatPassword) {
+            const dto: ChangePasswordDto = {
+                currentPassword: values.currentPassword,
+                newPassword: values.newPassword,
+                repeatPassword: values.repeatPassword
+            };
+
+            this.userService.changePassword(dto).subscribe(
+                (user: User) => {
+                    this.set.emit(user);
+                    this.updateUserInStorage(user);
+                    this.setPasswordMessage("Password has been changed.");
+                    this.showPasswordMessage(true);
+                },
+                () => {
+                    this.setPasswordMessage("An error has occured. Check your password.");
+                    this.showPasswordMessage(true);
+                }
+            );
+        } else {
+            this.setPasswordMessage("Passwords don't match.");
+            this.showPasswordMessage(true);
+        }
+    }
+
     updateUserInStorage(user: User): void {
         const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
         loginInfo.user.firstname = user.firstname;
@@ -67,6 +97,14 @@ export class UserSettingsComponent implements OnInit {
         this.updateMessageShown = bool;
     }
 
+    setPasswordMessage(message: string): void {
+        this.updatePasswordMessage = message;
+    }
+
+    showPasswordMessage(bool: boolean): void {
+        this.updatePasswordMessageShown = bool;
+    }
+
     setName(firstname: string, lastname: string): void {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -75,5 +113,4 @@ export class UserSettingsComponent implements OnInit {
     setEmail(email: string): void {
         this.email = email;
     }
-
 }

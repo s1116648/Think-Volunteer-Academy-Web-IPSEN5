@@ -17,9 +17,12 @@ form {
         label {
             color: white;
         }
-        input:invalid {
-            border-color: red;
-        }
+    }
+}
+
+#update-profile-form {
+    input:invalid {
+        border-color: red;
     }
 }
 
