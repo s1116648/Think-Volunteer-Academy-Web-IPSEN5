@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from "@angular/core";
 	styleUrls: ["./lesson-documents-card.component.scss"],
 })
 export class LessonDocumentsCardComponent implements OnInit {
-  @Input() lessonAttachment;
+  @Input() lessonAttachments;
 	constructor() {}
 
 	ngOnInit(): void {}

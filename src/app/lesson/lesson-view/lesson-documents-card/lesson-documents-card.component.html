@@ -1,7 +1,7 @@
 <section class="document-information">
 	<h3>Documents</h3>
 	<ul>
-		<li>
+		<li *ngFor="let lessonAttachment of lessonAttachments">
 			<p class="value">{{lessonAttachment.name}}</p>
 		</li>
 	</ul>
