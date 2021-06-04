@@ -20,6 +20,7 @@ export class MyProfileCardComponent implements OnInit {
         this.initialiseProfile();
     }
 
+    // ToDo initialise it correctly from a service
     initialiseProfile(): void {
         this.profileImgPath = "assets/images/avatar-temp.jpg";
         this.firstName = "Jane";
