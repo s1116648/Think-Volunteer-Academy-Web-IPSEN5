@@ -1,0 +1,89 @@
+@import "/src/app/shared/variables";
+
+li {
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.outside-container {
+    width: 100%;
+    background-color: $color-background-dark;
+    margin-bottom: 64px;
+}
+
+.phone-bars {
+    display: none;
+}
+
+.nav-wrapper, #options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.right-side-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .outside-container {
+      margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .nav-wrapper, #options {
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .right-side-wrapper {
+      gap: 36px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+
+    li {
+        justify-content: center;
+        height: 36px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-wrapper, #options {
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #options {
+        display: none;
+    }
+
+    .phone-bars {
+      display: flex;
+      justify-content: right;
+    }
+
+    .right-side-wrapper {
+        gap: 0;
+    }
+}
