@@ -12,13 +12,16 @@ import { GeneralCourseInfoComponent } from "./general-course-info/general-course
 import { ToggleComponent } from "./toggle/toggle.component";
 import { FormsModule } from "@angular/forms";
 import { AdminSideNavComponent } from "./admin-side-nav/admin-side-nav.component";
+import {ProgressCircleComponent} from "./progress-circle/progress-circle.component";
 import { RouterModule } from "@angular/router";
+import { TopNavComponent } from "./top-nav/top-nav.component";
 
 @NgModule({
 	declarations: [
 		DropdownComponent,
 		DropdownOptionDirective,
 		DropdownSelectedDirective,
+    ProgressCircleComponent,
 		TruncatePipe,
 		PadStartPipe,
 		GeneralCourseInfoComponent,
@@ -26,19 +29,26 @@ import { RouterModule } from "@angular/router";
 		AdminSideNavComponent,
 		ModalComponent,
 		PlaceholderDirective,
+		TopNavComponent,
+    PlaceholderDirective,
+    ModalComponent
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
-		DropdownComponent,
-		DropdownOptionDirective,
-		DropdownSelectedDirective,
-		TruncatePipe,
-		PadStartPipe,
-		GeneralCourseInfoComponent,
-		ToggleComponent,
-		AdminSideNavComponent,
-		ModalComponent,
-		PlaceholderDirective,
-	],
+	  AdminSideNavComponent,
+    DropdownComponent,
+    DropdownOptionDirective,
+    DropdownSelectedDirective,
+    GeneralCourseInfoComponent,
+    ModalComponent,
+    ModalComponent,
+    PadStartPipe,
+    PlaceholderDirective,
+    PlaceholderDirective,
+    ProgressCircleComponent,
+    ToggleComponent,
+    TopNavComponent,
+    TruncatePipe,
+  ]
 })
 export class SharedModule {}

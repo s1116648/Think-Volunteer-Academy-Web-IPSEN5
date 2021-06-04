@@ -35,9 +35,11 @@ export class SetLessonModalComponent implements OnInit {
 			courseId: this.course.id,
 		};
 
-		this.lessonService.create(dto).subscribe((lesson: Lesson) => {
-			this.set.emit(lesson);
-		});
+		this.lessonService
+			.create(this.course.id, dto)
+			.subscribe((lesson: Lesson) => {
+				this.set.emit(lesson);
+			});
 	}
 
 	close = (): void => this.closeModal.emit();

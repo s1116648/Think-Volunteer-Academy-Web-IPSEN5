@@ -49,6 +49,7 @@ h1 {
 		}
 
 		.img-content-holder > img {
+            cursor: pointer;
 			width: 140px;
 			height: 126px;
 			border-radius: 10px;
@@ -63,6 +64,26 @@ h1 {
 			.button-eta-holder {
 				display: flex;
 				gap: 10px;
+
+				.to-lesson {
+					display: flex;
+					background-color: #1c2b40;
+					border: none;
+					padding: 10px;
+					border-radius: 8px;
+					color: white;
+					gap: 60px;
+				}
+
+				.to-lesson > p,
+				img {
+					background-color: transparent;
+				}
+
+				.to-lesson > img {
+					height: 15px;
+					width: 15px;
+				}
 
 				.eta {
 					align-self: center;
