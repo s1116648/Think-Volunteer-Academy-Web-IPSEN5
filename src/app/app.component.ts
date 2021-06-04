@@ -9,8 +9,9 @@ import { LoginInfo } from "./auth/dto/login-info.dto";
 	styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
-	private isLoggedIn = false;
+	isLoggedIn = false;
 	private loginInfoSubscription: Subscription;
+
 
 	constructor(private authService: AuthService) {}
 
