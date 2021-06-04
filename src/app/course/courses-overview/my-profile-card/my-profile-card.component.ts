@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { BehaviorSubject } from "rxjs";
+import { LoginInfo } from "../../../auth/dto/login-info.dto";
 
 @Component({
   selector: "app-course-profile-card",
@@ -20,11 +22,12 @@ export class MyProfileCardComponent implements OnInit {
         this.initialiseProfile();
     }
 
-    // ToDo initialise it correctly from a service
+    // ToDo initialise profile img correctly
     initialiseProfile(): void {
+        const loginInfo = localStorage.getItem("loginInfo");
+        const loginInfoJson = JSON.parse(loginInfo);
+        this.firstName = loginInfoJson.user.firstname;
+        this.lastName = loginInfoJson.user.lastname;
         this.profileImgPath = "assets/images/avatar-temp.jpg";
-        this.firstName = "Jane";
-        this.lastName = "Doe";
     }
-
 }
