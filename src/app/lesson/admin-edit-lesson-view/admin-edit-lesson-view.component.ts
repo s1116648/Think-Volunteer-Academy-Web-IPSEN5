@@ -15,11 +15,11 @@ import { LessonService } from "../lesson.service";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { LessonAttachmentService } from "src/app/lesson-attachment/lesson-attachment.service";
-import { LessonAttachment } from "src/app/lesson-attachment/lesson-acttachment.model";
+import { LessonAttachment } from "src/app/lesson-attachment/lesson-attachment.model";
 import { FileService } from "src/app/file/file.service";
 import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { UpdateLessonDTO } from "../dto/update-lesson.dto";
-import { forkJoin, Observable, of } from "rxjs";
+import { forkJoin, Observable } from "rxjs";
 import { defaultIfEmpty, tap } from "rxjs/operators";
 
 @Component({

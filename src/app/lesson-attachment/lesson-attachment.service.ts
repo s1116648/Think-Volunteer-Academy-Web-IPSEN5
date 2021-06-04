@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { CreateLessonAttachmentDTO } from "./dto/create-lesson-attachment.dto";
-import { LessonAttachment } from "./lesson-acttachment.model";
+import { LessonAttachment } from "./lesson-attachment.model";
 
 @Injectable({
 	providedIn: "root",
