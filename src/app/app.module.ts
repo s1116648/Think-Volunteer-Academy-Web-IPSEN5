@@ -14,23 +14,25 @@ import { CourseModule } from "./course/course.module";
 import { FormsModule } from "@angular/forms";
 import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		LessonModule,
-		FontAwesomeModule,
-		AuthModule,
-		AppRoutingModule,
-		CourseModule,
-		FormsModule,
-		CourseCategoryModule,
-		RoleModule,
-		ManageModule,
-		UserModule,
-	],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        LessonModule,
+        FontAwesomeModule,
+        AuthModule,
+        AppRoutingModule,
+        CourseModule,
+        FormsModule,
+        CourseCategoryModule,
+        RoleModule,
+        ManageModule,
+        UserModule,
+        SharedModule
+    ],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
