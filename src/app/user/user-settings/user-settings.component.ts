@@ -81,7 +81,7 @@ export class UserSettingsComponent implements OnInit {
         }
     }
 
-    updateUserInStorage(user: User): void {
+    private updateUserInStorage(user: User): void {
         const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
         loginInfo.user.firstname = user.firstname;
         loginInfo.user.lastname = user.lastname;
@@ -89,28 +89,28 @@ export class UserSettingsComponent implements OnInit {
         this.authService.handleAuthentication(loginInfo);
     }
 
-    setUpdateMessage(message: string): void {
+    private setUpdateMessage(message: string): void {
         this.updateMessage = message;
     }
 
-    showUpdateMessage(bool: boolean): void {
+    private showUpdateMessage(bool: boolean): void {
         this.updateMessageShown = bool;
     }
 
-    setPasswordMessage(message: string): void {
+    private setPasswordMessage(message: string): void {
         this.updatePasswordMessage = message;
     }
 
-    showPasswordMessage(bool: boolean): void {
+    private showPasswordMessage(bool: boolean): void {
         this.updatePasswordMessageShown = bool;
     }
 
-    setName(firstname: string, lastname: string): void {
+    private setName(firstname: string, lastname: string): void {
         this.firstname = firstname;
         this.lastname = lastname;
     }
 
-    setEmail(email: string): void {
+    private setEmail(email: string): void {
         this.email = email;
     }
 }
