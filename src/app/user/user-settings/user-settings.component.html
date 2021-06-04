@@ -1,8 +1,8 @@
 <div class="container">
     <div class="content-holder">
-        <div class="left-sidebar">
+        <section class="left-sidebar">
             <app-profile-card></app-profile-card>
-        </div>
+        </section>
         <section class="main-content">
             <h1>
                 Settings
@@ -10,7 +10,7 @@
             <section class="avatar-section">
                 <img src="assets/images/avatar-temp.jpg"
                      alt="profile avatar" class="profile-avatar">
-                <button type="submit" class="btn">
+                <button type="submit" class="button">
                     Change avatar
                 </button>
             </section>
@@ -18,23 +18,23 @@
                 <div class="columns">
                     <div class="form-group">
                         <label for="firstName">First name</label>
-                        <input ngModel name="firstName" id="firstName" [(ngModel)]="firstname"
+                        <input ngModel name="firstName" id="firstName" class="dark" [(ngModel)]="firstname"
                                placeholder="Enter your first name" required>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last name</label>
-                        <input ngModel name="lastName" id="lastName" [(ngModel)]="lastname"
+                        <input ngModel name="lastName" id="lastName" class="dark" [(ngModel)]="lastname"
                                placeholder="Enter your last name" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" ngModel name="email" id="email" [(ngModel)]="email"
+                    <input type="email" ngModel name="email" id="email" class="dark" [(ngModel)]="email"
                            placeholder="Enter your email"
                            email required>
                 </div>
                 <div class="columns">
-                    <button class="btn" (submit)="updateProfile(profileForm)" [disabled]="!profileForm.valid">
+                    <button class="button" (submit)="updateProfile(profileForm)" [disabled]="!profileForm.valid">
                         Update profile
                     </button>
                     <p *ngIf="updateMessageShown">{{ updateMessage }}</p>
@@ -46,21 +46,21 @@
             <form #passwordForm="ngForm" id="change-password-form" (ngSubmit)="changePassword(passwordForm)">
                 <div class="form-group">
                     <label for="currentPassword">Current password</label>
-                    <input type="password" id="currentPassword" placeholder="Enter your current password"
+                    <input type="password" id="currentPassword" class="dark" placeholder="Enter your current password"
                            name="currentPassword" ngModel required>
                 </div>
                 <div class="columns">
                     <div class="form-group">
                         <label for="newPassword">New password</label>
-                        <input type="password" id="newPassword" placeholder="Enter a new password" name="newPassword" ngModel required>
+                        <input type="password" id="newPassword" class="dark" placeholder="Enter a new password" name="newPassword" ngModel required>
                     </div>
                     <div class="form-group">
                         <label for="repeatPassword">Repeat new password</label>
-                        <input type="password" id="repeatPassword" placeholder="Repeat the new password" name="repeatPassword" ngModel required>
+                        <input type="password" id="repeatPassword" class="dark" placeholder="Repeat the new password" name="repeatPassword" ngModel required>
                     </div>
                 </div>
                 <div class="columns">
-                    <button class="btn" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
+                    <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
                         Update profile
                     </button>
                     <p *ngIf="updatePasswordMessageShown">{{ updatePasswordMessage }}</p>
