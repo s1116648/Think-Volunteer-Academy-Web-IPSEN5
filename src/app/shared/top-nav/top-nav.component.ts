@@ -11,7 +11,7 @@ export class TopNavComponent implements OnInit {
 
     coursesPath = "/courses";
     adminPanelPath = ""; // ToDo insert admin path
-    settingsPath = ""; // ToDo insert settings path
+    settingsPath = "user/settings";
     logoutPath = "/login";
 
     isAdmin: boolean;
