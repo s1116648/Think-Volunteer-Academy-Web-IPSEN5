@@ -9,8 +9,9 @@ import { LoginInfo } from "./auth/dto/login-info.dto";
 	styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
-	private isLoggedIn = false;
-	private loginInfoSubscription: Subscription | undefined;
+	isLoggedIn = false;
+	private loginInfoSubscription: Subscription;
+
 
 	constructor(private authService: AuthService) {}
 
@@ -22,6 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-    this.loginInfoSubscription.unsubscribe();
+		this.loginInfoSubscription.unsubscribe();
 	}
 }
