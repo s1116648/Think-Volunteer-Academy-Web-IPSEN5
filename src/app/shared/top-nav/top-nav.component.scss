@@ -21,7 +21,11 @@ ul {
     margin-bottom: 64px;
 }
 
-.nav-wrapper {
+.phone-bars {
+    display: none;
+}
+
+.nav-wrapper, #options {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -41,7 +45,7 @@ ul {
 
 @media only screen and (max-width: 600px) {
 
-    .nav-wrapper {
+    .nav-wrapper, #options {
       justify-content: center;
       gap: 36px;
     }
@@ -59,13 +63,24 @@ ul {
     }
 
     ul {
+        display: flex;
         flex-direction: column;
         gap: 0;
     }
 
-    .nav-wrapper {
+    .nav-wrapper, #options {
+        flex-wrap: wrap;
         flex-direction: column;
         gap: 0;
+    }
+
+    #options {
+        display: none;
+    }
+
+    .phone-bars {
+      display: flex;
+      justify-content: right;
     }
 
     .right-side-wrapper {

@@ -66,7 +66,7 @@ export class AuthService {
 		return isExpired;
 	}
 
-	private handleAuthentication(loginInfo: LoginInfo): void {
+	public handleAuthentication(loginInfo: LoginInfo): void {
 		this.loginInfo.next(loginInfo);
 		localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
 	}

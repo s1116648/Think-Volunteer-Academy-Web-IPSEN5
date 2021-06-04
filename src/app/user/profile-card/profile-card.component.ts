@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "../user.model";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-profile-card",
@@ -7,16 +7,16 @@ import { User } from "../user.model";
 	styleUrls: ["./profile-card.component.scss"],
 })
 export class ProfileCardComponent implements OnInit {
+	icons = { faArrowRight };
+
 	firstname: string;
 	lastname: string;
 
 	constructor() {}
 
 	ngOnInit(): void {
-		// const currentUser: User = JSON.parse(localStorage.getItem("loginInfo")).user;
-		// this.setName(currentUser.firstname, currentUser.lastname);
-
-		this.setName("Lars", "Verhoorn");
+		const currentUser = JSON.parse(localStorage.getItem("loginInfo")).user;
+		this.setName(currentUser.firstname, currentUser.lastname);
 	}
 
 	setName(firstname: string, lastname: string): void {

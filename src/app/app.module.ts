@@ -14,7 +14,7 @@ import { CourseModule } from "./course/course.module";
 import { FormsModule } from "@angular/forms";
 import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
-import { QuillModule } from "ngx-quill";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -31,7 +31,7 @@ import { QuillModule } from "ngx-quill";
 		RoleModule,
 		ManageModule,
 		UserModule,
-		QuillModule.forRoot(),
+		SharedModule,
 	],
 	providers: [
 		{
