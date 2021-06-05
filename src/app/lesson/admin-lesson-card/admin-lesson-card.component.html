@@ -1,6 +1,6 @@
 <div class="lesson-card">
 	<figure>
-		<img src="./assets/images/nature.jpeg" alt="Lesson image" />
+		<img [src]="image" alt="Lesson image" />
 	</figure>
 
 	<div class="lesson-info">
@@ -10,7 +10,7 @@
 		</div>
 
 		<div class="bottom-container columns">
-			<button class="button">
+			<button class="button" [routerLink]="['lessons', lesson.id]">
 				Edit lesson
 				<span class="icon"
 					><fa-icon [icon]="icons.faArrowRight"></fa-icon

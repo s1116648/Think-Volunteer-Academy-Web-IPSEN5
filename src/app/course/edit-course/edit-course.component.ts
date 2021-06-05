@@ -1,4 +1,3 @@
-import { Location } from "@angular/common";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -12,7 +11,6 @@ import {
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
-import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
