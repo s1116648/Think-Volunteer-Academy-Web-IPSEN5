@@ -25,7 +25,9 @@ export class RoleComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.roles = this.roleService.fetchNonReal();
+		this.roleService.fetchRoles().subscribe((roles: Role[]) => {
+			this.roles = roles;
+		});
 	}
 
 	openEditRoleModal(role: Role): void {

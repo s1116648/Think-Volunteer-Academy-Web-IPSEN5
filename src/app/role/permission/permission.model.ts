@@ -1,4 +1,6 @@
 export interface Permission {
-  value: string;
+  name: string;
   description: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
