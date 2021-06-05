@@ -23,7 +23,7 @@ export class CourseOverviewComponent implements OnInit {
 		return this.lessons.reduce((acc, lesson) => acc + lesson.length, 0);
 	}
 
-	get bannerImage(): string {
+	get image(): string {
 		return environment.S3_ENDPOINT + this.course.image;
 	}
 

@@ -34,7 +34,7 @@ export class AdminCourseOverviewComponent implements OnInit {
 		return this.lessons.sort((a, b) => a.index - b.index);
 	}
 
-	get bannerImage(): string {
+	get image(): string {
 		return environment.S3_ENDPOINT + this.course.image;
 	}
 

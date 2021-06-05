@@ -15,6 +15,7 @@ import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-cour
 import { LessonModule } from "../lesson/lesson.module";
 import { DndModule } from "ngx-drag-drop";
 import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
+import { AdminOverviewComponent } from "./admin-overview/admin-overview.component";
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-i
 		CreateCourseComponent,
 		AdminCourseOverviewComponent,
 		AdminCourseInfoComponent,
+		AdminOverviewComponent,
 	],
 	imports: [
 		CommonModule,
@@ -36,7 +38,7 @@ import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-i
 		LessonModule,
 		DndModule,
 	],
-    exports: [],
+	exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}
