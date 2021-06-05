@@ -1,12 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Sanitizer, SecurityContext } from "@angular/core";
 import { Course } from "../../course/course.model";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { LessonService } from "../lesson.service";
 import { Lesson } from "../lesson.model";
 import { CourseService } from "../../course/course.service";
-import {LessonAttachment} from "../../lesson-attachment/lesson-attachment.model";
-import {LessonAttachmentService} from "../../lesson-attachment/lesson-attachment.service";
-import {HttpPaginatedResult} from "../../shared/http-paginated-result";
+import { HttpPaginatedResult } from "../../shared/http-paginated-result";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { LessonAttachment } from "src/app/lesson-attachment/lesson-attachment.model";
+import { LessonAttachmentService } from "src/app/lesson-attachment/lesson-attachment.service";
 
 @Component({
 	selector: "app-lesson-view",
@@ -22,8 +23,9 @@ export class LessonViewComponent implements OnInit {
 		private route: ActivatedRoute,
 		private lessonService: LessonService,
 		private courseService: CourseService,
-  private lessonAttachmentService: LessonAttachmentService,
-  private router: Router
+		private lessonAttachmentService: LessonAttachmentService,
+		private router: Router,
+		private sanitizer: DomSanitizer
 	) {}
 
 	ngOnInit(): void {
@@ -37,16 +39,22 @@ export class LessonViewComponent implements OnInit {
 				});
 		});
 	}
+
+	getSafeHTML = (): SafeHtml =>
+		this.sanitizer.bypassSecurityTrustHtml(this.lesson.content);
+
 	getAttachmentsByLessonId(): void {
-	  this.lessonAttachmentService
-      .get(this.lesson.id)
-      .subscribe((responseData: HttpPaginatedResult<LessonAttachment>) => {
-        this.attachments = responseData.items;
-      });
-  }
-  openDocument(attachment: LessonAttachment): void {
-	  this.router.navigateByUrl(`${attachment.path}`);
-  }
+		this.lessonAttachmentService
+			.get(this.lesson.id)
+			.subscribe(
+				(responseData: HttpPaginatedResult<LessonAttachment>) => {
+					this.attachments = responseData.items;
+				}
+			);
+	}
+	openDocument(attachment: LessonAttachment): void {
+		this.router.navigateByUrl(`${attachment.path}`);
+	}
 
 	getCourseFromId(): void {
 		this.courseService
