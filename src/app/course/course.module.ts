@@ -40,7 +40,7 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 		LessonModule,
 		DndModule,
 	],
-	exports: [],
+    exports: [],
 	providers: [CourseService],
 })
 export class CourseModule {}

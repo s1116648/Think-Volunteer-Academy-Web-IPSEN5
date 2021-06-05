@@ -18,21 +18,21 @@ import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
 	declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        LessonModule,
-        FontAwesomeModule,
-        AuthModule,
-        AppRoutingModule,
-        CourseModule,
-        FormsModule,
-        CourseCategoryModule,
-        RoleModule,
-        ManageModule,
-        UserModule,
-        SharedModule
-    ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		LessonModule,
+		FontAwesomeModule,
+		AuthModule,
+		AppRoutingModule,
+		CourseModule,
+		FormsModule,
+		CourseCategoryModule,
+		RoleModule,
+		ManageModule,
+		UserModule,
+		SharedModule,
+	],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
