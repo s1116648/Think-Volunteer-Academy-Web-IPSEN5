@@ -7,7 +7,6 @@ import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AdminLessonCardComponent } from "./admin-lesson-card/admin-lesson-card.component";
-import { DndModule } from "ngx-drag-drop";
 import { AdminEditLessonViewComponent } from "./admin-edit-lesson-view/admin-edit-lesson-view.component";
 import { QuillModule } from "ngx-quill";
 import { LessonViewComponent } from "./lesson-view/lesson-view.component";
@@ -31,7 +30,6 @@ import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-car
 		SharedModule,
 		FormsModule,
 		FontAwesomeModule,
-		DndModule,
 		QuillModule.forRoot(),
 	],
 	exports: [AdminLessonCardComponent],

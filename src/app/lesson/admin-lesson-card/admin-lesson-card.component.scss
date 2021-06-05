@@ -37,15 +37,22 @@
         }
     }
 
-    .grip-icon {
-        font-size: 20px;
-        color: $color-gray-600;
-        align-self: center;
+    .handle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: grabbing;
-        transition: .3s;
 
-        &:hover {
+        &:hover .grip-icon {
             color: $color-white;
+        }
+
+        .grip-icon {
+            font-size: 20px;
+            color: $color-gray-600;
+            align-self: center;
+            transition: .3s;
+            pointer-events: none;
         }
     }
 }
