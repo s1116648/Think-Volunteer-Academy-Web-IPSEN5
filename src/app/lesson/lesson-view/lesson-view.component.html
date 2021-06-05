@@ -12,7 +12,7 @@
 		</section>
 		<section *ngIf="lesson" class="main-content">
 			<h1>{{ lesson.name }}</h1>
-			<section class="lesson-content" [innerHTML]="lesson.content"></section>
+			<section class="lesson-content" [innerHTML]="getSafeHTML()"></section>
 		</section>
 	</div>
 </main>
