@@ -1,53 +1,25 @@
-.card {
-    width: 250px;
-    border-radius: 7px;
-    background-color: #1C2B40;
-    margin-bottom: 20px;
+@import "/src/app/shared/variables";
+
+.columns {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 0;
 }
 
-.content {
-    padding: 5px 10px 10px;
-    line-height: 30px;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.flex img {
-    height: 22px;
-    width: 22px;
+.avatar {
+    height: 40px;
+    width: 40px;
     border-radius: 200px;
     margin-right: 6px;
 }
 
-.profile-button {
+button.button {
+    background-color: $color-background;
+    max-width: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 7px;
-    border-radius: 10px;
-    background-color: #2B3D55;
-}
+    justify-content: flex-start;
 
-.profile-button:hover {
-    cursor: pointer;
+    span.icon {
+        margin-left: auto;
+    }
 }
-
-.profile-button p {
-    padding: 5px;
-    margin-left: 3px;
-    line-height: 20px;
-}
-
-.profile-button img {
-    height: 15px;
-    width: 15px;
-    margin-right: 8px;
-}
-
-p {
-    color: white;
-}
-

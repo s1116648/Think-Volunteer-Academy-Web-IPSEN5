@@ -6,7 +6,10 @@
 	<section class="lesson-content">
 		<h1>Lesson {{ lessonNumber | padStart : 2 : "0" }}</h1>
 		<section class="img-content-holder">
-			<img [routerLink]="['lessons', lesson.id]" src="./assets/images/nature.jpeg" alt="lesson-thumbnail" />
+            <figure>
+                <img [routerLink]="['lessons', lesson.id]" [src]="image" alt="lesson-thumbnail" />
+            </figure>
+			
 			<section class="title-desc-holder">
 				<h3>{{ lesson.name }}</h3>
 				<p>{{ lesson.description | truncate : 190 }}</p>
