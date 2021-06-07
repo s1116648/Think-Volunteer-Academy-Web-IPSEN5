@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
+import { DragulaModule } from "ng2-dragula";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { SharedModule } from "./shared/shared.module";
 		ManageModule,
 		UserModule,
 		SharedModule,
+		DragulaModule.forRoot(),
 	],
 	providers: [
 		{
