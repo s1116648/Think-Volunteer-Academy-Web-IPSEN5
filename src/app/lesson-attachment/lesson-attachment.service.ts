@@ -33,7 +33,7 @@ export class LessonAttachmentService {
 		);
 	}
 
-	getAttachmentUrl(attachmentID: string): any {
+	getAttachmentUrl(attachmentID: string): Observable<string> {
 		return this.http.get(`/attachments/${attachmentID}/url`);
 	}
 }
