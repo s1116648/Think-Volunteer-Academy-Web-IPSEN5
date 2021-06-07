@@ -1,58 +1,59 @@
 @import "/src/app/shared/variables";
 
 .lesson-card {
-    display: flex;
-    gap: 20px;
-    // background: red;
-    min-height: 126px;
+	display: flex;
+	gap: 20px;
+	// background: red;
+	min-height: 126px;
 
-    figure {
-        max-width: 140px;
-        max-height: 140px;
+	figure {
+		width: 255px;
+		height: 130px;
 
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-    }
+		img {
+			cursor: pointer;
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			object-fit: cover;
+		}
+	}
 
-    .lesson-info {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+	.lesson-info {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
 
-        .textual-info {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+		.textual-info {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
 
-            p {
-                color: $color-gray-400;
-                flex-grow: 1;
-                display: flex;
-                align-items: center;
-            }
-        }
-    }
+			p {
+				color: $color-gray-400;
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
 
-    .handle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: grabbing;
+	.handle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: grabbing;
 
-        &:hover .grip-icon {
-            color: $color-white;
-        }
+		&:hover .grip-icon {
+			color: $color-white;
+		}
 
-        .grip-icon {
-            font-size: 20px;
-            color: $color-gray-600;
-            align-self: center;
-            transition: .3s;
-            pointer-events: none;
-        }
-    }
+		.grip-icon {
+			font-size: 20px;
+			color: $color-gray-600;
+			align-self: center;
+			transition: 0.3s;
+			pointer-events: none;
+		}
+	}
 }
