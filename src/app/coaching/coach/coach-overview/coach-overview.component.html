@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-admin-side-nav></app-admin-side-nav>
+		</section>
+
+		<section class="main-content">
+			<h1 style="margin-bottom: 20px">Manage coaches</h1>
+
+			<section class="section" *ngFor="let coach of coaches">
+				<div class="coach-row">
+
+					<div class="columns" id="coach_row">
+						<h3 class="column grow">{{ coach.user.firstname }} {{ coach.user.lastname }}</h3>
+
+						<div class="column">
+							<button (click)="openAddStudentModal(coach)">Add students</button>
+						</div>
+					</div>
+					<app-student-overview [coach]="coach"></app-student-overview>
+				</div>
+
+			</section>
+		</section>
+	</div>
+</div>
+<ng-container appPlaceholder></ng-container>
