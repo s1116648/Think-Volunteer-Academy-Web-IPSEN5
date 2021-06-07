@@ -8,7 +8,7 @@
 				[lessonName]="lesson.name"
 			></app-lesson-info-card>
 			<app-lesson-badge-card></app-lesson-badge-card>
-			<app-lesson-documents-card [lessonAttachments]="attachments"></app-lesson-documents-card>
+			<app-lesson-documents-card *ngIf="attachments.length > 0" [lessonAttachments]="attachments"></app-lesson-documents-card>
 		</section>
 		<section *ngIf="lesson" class="main-content">
 			<h1>{{ lesson.name }}</h1>
