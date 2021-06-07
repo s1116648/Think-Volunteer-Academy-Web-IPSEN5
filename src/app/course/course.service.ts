@@ -40,6 +40,8 @@ export class CourseService {
         );
     }
 
+
+    // ToDo inplaats endpoint gebruiken.
     getBatchesFromActiveUser(): Observable<HttpPaginatedResult<any>> {
 		const loginInfo = localStorage.getItem("loginInfo");
 		const loginInfoJson = JSON.parse(loginInfo);
