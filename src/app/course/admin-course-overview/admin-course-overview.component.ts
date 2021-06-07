@@ -97,7 +97,6 @@ export class AdminCourseOverviewComponent implements OnInit, OnDestroy {
 	}
 
 	onDrop(event: { targetIndex: number; sourceIndex: number }): void {
-		console.log(event.targetIndex);
 		const previousState = JSON.parse(JSON.stringify(this.lessons));
 
 		const draggedLesson: Lesson = this.lessons.find(

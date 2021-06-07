@@ -9,7 +9,6 @@ h1 {
 .lesson-card {
 	display: flex;
 	flex-direction: row;
-	max-width: 600px;
 	gap: 10px;
 
 	.status-and-line {
@@ -47,7 +46,7 @@ h1 {
 
 		.img-content-holder {
 			figure {
-				width: 300px;
+				max-width: 140px;
 				height: 140px;
 
 				img {
@@ -58,6 +57,7 @@ h1 {
 					object-fit: cover;
 				}
 			}
+        
 		}
 
 		.title-desc-holder {
@@ -75,11 +75,6 @@ h1 {
 					color: $color-white;
 				}
 			}
-		}
-
-		.title-desc-holder > h3 {
-			font-weight: bold;
-			color: $color-white;
 		}
 
 		.title-desc-holder > p {
