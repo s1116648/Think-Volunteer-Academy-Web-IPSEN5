@@ -32,4 +32,8 @@ export class LessonAttachmentService {
 			`/lessons/${lessonID}/attachments/${attachmentID}`
 		);
 	}
+
+	getAttachmentUrl(attachmentID: string): any {
+		return this.http.get(`/attachments/${attachmentID}/url`);
+	}
 }
