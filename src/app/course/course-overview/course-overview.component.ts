@@ -6,9 +6,9 @@ import { environment } from "src/environments/environment";
 import { Lesson } from "../../lesson/lesson.model";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
-import {BadgeService} from "../../shared/badge.service";
-import {AuthService} from "../../auth/auth.service";
-import {Badge} from "../../shared/badge.model";
+import { BadgeService } from "../../shared/badge.service";
+import { AuthService } from "../../auth/auth.service";
+import { Badge } from "../../shared/badge.model";
 
 @Component({
 	selector: "app-course-overview",
@@ -59,14 +59,21 @@ export class CourseOverviewComponent implements OnInit {
 						this.MAX_SIMILAR_COURSES
 					);
 				});
-			this.badgeService.getBadgesByUser(this.authService.loginInfo.getValue().user.id, params.id)
+			this.badgeService
+				.getBadgesByUser(
+					this.authService.loginInfo.getValue().user.id,
+					params.id
+				)
 				.subscribe((result: HttpPaginatedResult<Badge>) => {
 					this.userBadges = result.items;
 				});
 		});
 	}
 
-	lessonIsCompleted(lessonNumber: number): boolean {
-		return this.userBadges.map(badge => badge.lessonNumber).includes(lessonNumber);
+	lessonIsCompleted(index: number): boolean {
+		const lesson = this.lessons[index];
+		return this.userBadges
+			.map((badge) => badge.lesson.id)
+			.includes(lesson.id);
 	}
 }
