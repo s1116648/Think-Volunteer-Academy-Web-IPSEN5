@@ -21,8 +21,7 @@ export class UserService {
     );
   }
 
-    updateProfile(dto: UpdateProfileDto): Observable<User> {
-        const id = JSON.parse(localStorage.getItem("loginInfo")).user.id;
+    updateProfile(id: string, dto: UpdateProfileDto): Observable<User> {
         return this.http.patch<User>("/users/" + id, dto);
     }
 
