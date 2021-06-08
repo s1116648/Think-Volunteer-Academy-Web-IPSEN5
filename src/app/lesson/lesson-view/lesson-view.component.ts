@@ -21,7 +21,6 @@ export class LessonViewComponent implements OnInit {
 	lesson: Lesson;
 	course: Course;
 	badges: Badge[];
-	completed: boolean;
 	index: number;
 	attachments: LessonAttachment[] = [];
 
@@ -74,7 +73,6 @@ export class LessonViewComponent implements OnInit {
 		this.badgeService.getBadgesByUser(this.authService.loginInfo.getValue().user.id, this.lesson.courseId)
 			.subscribe((result: HttpPaginatedResult<Badge>) => {
 				this.badges = result.items;
-				// this.lessonIsCompleted(this.lesson.index + 1);
 			});
 	}
 

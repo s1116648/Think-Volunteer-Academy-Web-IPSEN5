@@ -1,15 +1,15 @@
 <div class="badge-information">
 	<h3>Badges</h3>
 	<ul>
-		<li>
+		<li *ngIf="badge">
 			<p class="title">Completed on</p>
-			<p class="value"></p>
+			<p class="value">{{badge.achievedAt | date}}</p>
 		</li>
 		<li class="badge-holder">
 			<div>
 				<app-progress-circle
 						[number]="lesson.index + 1"
-						[completed]="lessonIsCompleted(lesson.index + 1)"
+						[completed]="!!badge"
 				></app-progress-circle>
 			</div>
 		</li>
