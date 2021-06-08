@@ -22,7 +22,8 @@ export class UserService {
   }
 
     updateProfile(dto: UpdateProfileDto): Observable<User> {
-        return this.http.patch<User>("/users/settings", dto);
+        const id = JSON.parse(localStorage.getItem("loginInfo")).user.id;
+        return this.http.patch<User>("/users/" + id, dto);
     }
 
     changePassword(dto: ChangePasswordDto): Observable<User> {
