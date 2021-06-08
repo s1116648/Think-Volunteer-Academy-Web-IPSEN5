@@ -9,6 +9,7 @@ import {
 	faFilePdf,
 	faFile,
 	faTimes,
+	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { LessonService } from "../lesson.service";
@@ -38,6 +39,7 @@ export class AdminEditLessonViewComponent implements OnInit {
 		faFilePdf,
 		faFile,
 		faTimes,
+		faTrash,
 	};
 
 	fileIcons = {
@@ -191,5 +193,11 @@ export class AdminEditLessonViewComponent implements OnInit {
 	): void {
 		this.attachments.splice(index, 1);
 		this.attachmentsToDelete.push(attachment);
+	}
+
+	remove(): void {
+		this.lessonService.delete(this.lesson.id).subscribe(() => {
+			this.router.navigate(["../.."], { relativeTo: this.route });
+		});
 	}
 }
