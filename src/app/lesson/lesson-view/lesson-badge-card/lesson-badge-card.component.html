@@ -1,12 +1,17 @@
-<section class="badge-information">
+<div class="badge-information">
 	<h3>Badges</h3>
 	<ul>
 		<li>
 			<p class="title">Completed on</p>
-			<p class="value">02 January 2021</p>
+			<p class="value"></p>
 		</li>
 		<li class="badge-holder">
-			<app-progress-circle></app-progress-circle>
+			<div>
+				<app-progress-circle
+						[number]="lesson.index + 1"
+						[completed]="lessonIsCompleted(lesson.index + 1)"
+				></app-progress-circle>
+			</div>
 		</li>
 	</ul>
-</section>
+</div>

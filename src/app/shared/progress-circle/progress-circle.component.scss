@@ -6,8 +6,8 @@
 	justify-content: center;
 	width: 62px;
 	height: 63px;
-	border-radius: 100%;
-	background-color: $color-background;
+	border-radius: 100% !important;
+	background-color: $color-background !important;
 
 	> h1 {
 		color: white;
@@ -23,8 +23,8 @@
 	justify-content: center;
 	width: 62px;
 	height: 63px;
-	border-radius: 100%;
-	background-color: #D8C54A;
+	border-radius: 100% !important;
+	background-color: #D8C54A !important;
 
 	> h1 {
 		color: white;
