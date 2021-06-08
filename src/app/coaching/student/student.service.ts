@@ -27,8 +27,4 @@ export class StudentService {
               userId: studentUserId,
           });
   }
-
-  removeStudentFromCoach(coachId: string, studentId: string): Observable<void>{
-      return this.http.delete<void>(`/coaches/${coachId}/students/${studentId}`);
-  }
 }
