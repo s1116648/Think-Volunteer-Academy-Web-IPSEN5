@@ -1,65 +1,30 @@
 @import "/src/app/shared/variables";
 
-*{
-  font-family: Bahnschrift, sans-serif;
+.columns {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	gap: 0;
 }
 
-h1 {
-    font-size: 100%;
-    font-weight: normal;
+.avatar {
+	height: 40px;
+	width: 40px;
+	border-radius: 200px;
+	margin-right: 6px;
 }
 
-hr {
-    margin-top: 2px;
-    color: $color-background;
-    border-width: 2px;
+button.button {
+	background-color: $color-background;
+	max-width: none;
+	display: flex;
+	justify-content: flex-start;
+
+	span.icon {
+		margin-left: auto;
+	}
 }
 
-.chat {
-    display: flex;
-    justify-content: space-between;
-    font-size: 90%;
-    margin: 8px 0 16px 0;
-}
-
-.coach-img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-}
-
-.coach-title {
-    margin-bottom: 12px;
-}
-
-.icon-chevron-right {
-    color: $color-background;
-}
-
-.img-and-name {
-    display: flex;
-    gap: 12px;
-}
-
-.name {
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 120%;
-}
-
-.my-coach-wrapper {
-    border-radius: 10px;
-    padding: 10px;
-    background-color: $color-background-dark;
-}
-
-.my-coach-wrapper button {
-    display: flex;
-    justify-content: space-between;
-    color: $color-white;
-    background-color: $color-background;
-    border: none;
-    border-radius: 8px;
-    padding: 8px;
-    width: 100%;
+.chevron-icon {
+	font-size: 12px;
+	color: $color-gray-600;
 }

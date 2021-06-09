@@ -1,17 +1,29 @@
-<section class="course-card-wrapper">
-    <figure [routerLink]="course.id">
-        <img src="{{image}}" alt="course-thumbnail">
-    </figure>
-    <div class="progress-bar-wrapper">
-        <div id="progress-bar" *ngIf="progress" style="width: {{progress.progress*100 + '%'}}"></div>
-    </div>
-    <header>
-        <h3> {{course.name}} </h3>
-    </header>
-    <button [routerLink]="course.id" class="course-button">
-        To course
-        <span class="icon">
-            <fa-icon [icon]="icons.faArrowRight" class="button-icon"></fa-icon>
-        </span>
-    </button>
-</section>
+<div class="course-card">
+	<div class="image-container">
+		<figure>
+			<img [src]="image" alt="Course banner" />
+		</figure>
+
+		<div class="progress-bar">
+			<div
+				class="progress-bar-inner"
+				*ngIf="progress"
+				[style.width.%]="progressPercentage"
+			></div>
+		</div>
+	</div>
+
+	<div>
+		<h3>{{ course.name }}</h3>
+
+		<button [routerLink]="course.id" class="button">
+			To course
+			<span class="icon">
+				<fa-icon
+					[icon]="icons.faArrowRight"
+					class="button-icon"
+				></fa-icon>
+			</span>
+		</button>
+	</div>
+</div>

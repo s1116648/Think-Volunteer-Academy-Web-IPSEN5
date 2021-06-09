@@ -1,17 +1,9 @@
-*{
-  font-family: Bahnschrift, sans-serif;
-  color: white;
+ul {
+    margin-top: 25px;
 }
 
-h1 {
-    font-size: 250%;
-}
-
-header {
-    margin-bottom: 25px;
-}
-
-.course-cards-wrapper {
-    display: flex;
-    gap: 35px;
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 240px));
+    grid-gap: 40px;
 }

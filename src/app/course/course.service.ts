@@ -5,7 +5,7 @@ import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Course } from "./course.model";
 import { CreateCourseDTO } from "./dto/create-course.dto";
 import { UpdateCourseDTO } from "./dto/update-course.dto";
-import { MyCoursesModel } from "./courses-overview/my-courses/my-courses.model";
+import { MyCourse } from "./courses-overview/my-courses/my-courses.model";
 
 @Injectable({
 	providedIn: "root",
@@ -39,18 +39,17 @@ export class CourseService {
 		);
 	}
 
-	getCoursesByCategory(categoryId: string): Observable<HttpPaginatedResult<Course>> {
-	    return this.http.get<HttpPaginatedResult<Course>>(
-            `/categories/${categoryId}/courses`
-        );
-    }
+	getCoursesByCategory(
+		categoryId: string
+	): Observable<HttpPaginatedResult<Course>> {
+		return this.http.get<HttpPaginatedResult<Course>>(
+			`/categories/${categoryId}/courses`
+		);
+	}
 
-	getCoursesFromActiveUser(): Observable<HttpPaginatedResult<MyCoursesModel>> {
-		const loginInfo = localStorage.getItem("loginInfo");
-		const loginInfoJson = JSON.parse(loginInfo);
-		const userId = loginInfoJson.user.id;
-		return this.http.get<HttpPaginatedResult<MyCoursesModel>>(
-			`/users/${userId}/courses`
+	getCoursesFromUser(id: string): Observable<HttpPaginatedResult<MyCourse>> {
+		return this.http.get<HttpPaginatedResult<MyCourse>>(
+			`/users/${id}/courses`
 		);
 	}
 }

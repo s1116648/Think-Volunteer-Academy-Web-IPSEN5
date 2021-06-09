@@ -1,26 +1,15 @@
 @import "/src/app/shared/variables";
 
-*{
-  font-family: Bahnschrift, sans-serif;
+ul {
+    margin-top: 25px;
 }
 
-aside {
-    display: flex;
-    flex-direction: column;
-    margin-right: 35px;
-    width: 300px;
-    gap: 30px;
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 240px));
+    grid-gap: 40px;
 }
 
-.courses-overview-wrapper {
-  display: flex;
-  width: 100vw;
-  border-radius: 25%;
-}
-
-.courses-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: auto;
+.container {
+    padding-bottom: 100px;
 }

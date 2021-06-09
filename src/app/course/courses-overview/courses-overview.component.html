@@ -1,22 +1,23 @@
-<main class="container">
-    <div class="courses-overview-wrapper">
-        <aside>
-            <section class="my-profile-wrapper">
-                <app-course-profile-card></app-course-profile-card>
-            </section>
+<div class="container content-holder">
 
-            <section class="my-coach-wrapper">
-                <app-course-my-coach-card></app-course-my-coach-card>
-            </section>
-        </aside>
+    <section class="left-sidebar">
+        <app-profile-card></app-profile-card>
+        <app-my-coach-card></app-my-coach-card>
+    </section>
 
-        <div class="courses-wrapper">
-            <article *ngIf="this.myCoursesExists">
-                <app-my-courses></app-my-courses>
-            </article>
-            <article class="course-type-card" *ngFor="let courseCategory of courseCategories">
-              <app-course-category-card [courseCategory]="courseCategory"></app-course-category-card>
-            </article>
-        </div>
-    </div>
-</main>
+    <section class="main-content">
+        <section class="section" *ngIf="myCourses.length > 0">
+            <h1>My courses</h1>
+
+            <ul class="courses">
+                <li *ngFor="let course of myCourses">
+                    <app-course-card [course]="course.course" [progress]="course.progress"></app-course-card>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" *ngFor="let category of categoriesWithCourses">
+            <app-course-category-card [courseCategory]="category"></app-course-category-card>
+        </section>
+    </section>
+</div>

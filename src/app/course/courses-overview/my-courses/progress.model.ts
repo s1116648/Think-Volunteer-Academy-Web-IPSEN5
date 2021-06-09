@@ -1,5 +1,5 @@
-export interface ProgressModel {
-    lessonCount: number;
-    lessonsCompleted: number;
-    progress: number;
+export interface Progress {
+	lessonCount: number;
+	lessonsCompleted: number;
+	progress: number;
 }
