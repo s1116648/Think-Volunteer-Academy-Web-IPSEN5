@@ -37,6 +37,7 @@ describe("Course service", () => {
                 category: {
                     id: "1",
                     name: "Category 1",
+                    coursesCount: 1,
                     createdAt: new Date("1"),
                     updatedAt: new Date("1")
                 },

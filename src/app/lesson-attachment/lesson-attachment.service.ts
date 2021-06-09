@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { CreateLessonAttachmentDTO } from "./dto/create-lesson-attachment.dto";
 import { LessonAttachment } from "./lesson-attachment.model";
+import * as url from "url";
 
 @Injectable({
 	providedIn: "root",
@@ -31,5 +32,9 @@ export class LessonAttachmentService {
 		return this.http.delete<null>(
 			`/lessons/${lessonID}/attachments/${attachmentID}`
 		);
+	}
+
+	getAttachmentUrl(attachmentID: string): Observable<url> {
+		return this.http.get(`/attachments/${attachmentID}/url`);
 	}
 }

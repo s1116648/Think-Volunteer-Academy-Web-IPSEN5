@@ -21,8 +21,8 @@ export class UserService {
     );
   }
 
-    updateProfile(dto: UpdateProfileDto): Observable<User> {
-        return this.http.patch<User>("/users/settings", dto);
+    updateProfile(id: string, dto: UpdateProfileDto): Observable<User> {
+        return this.http.patch<User>("/users/" + id, dto);
     }
 
     changePassword(dto: ChangePasswordDto): Observable<User> {

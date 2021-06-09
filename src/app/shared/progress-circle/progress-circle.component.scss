@@ -6,8 +6,25 @@
 	justify-content: center;
 	width: 62px;
 	height: 63px;
-	border-radius: 100%;
-	background-color: $color-background;
+	border-radius: 100% !important;
+	background-color: $color-background !important;
+
+	> h1 {
+		color: white;
+		font-size: 28px;
+		font-family: "Times New Roman", sans-serif;
+		font-weight: normal;
+	}
+}
+
+.yellow-progress-circle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 62px;
+	height: 63px;
+	border-radius: 100% !important;
+	background-color: #D8C54A !important;
 
 	> h1 {
 		color: white;

@@ -33,6 +33,7 @@
 					<app-progress-circle
 						*ngFor="let lesson of lessons; let index = index"
 						[number]="index + 1"
+						[completed]="lessonIsCompleted(index)"
 					></app-progress-circle>
 				</section>
 			</section>
@@ -42,6 +43,7 @@
 					*ngFor="let lesson of lessons; let index = index"
 					[lesson]="lesson"
                     [lessonNumber]="index + 1"
+					[completed]="lessonIsCompleted(index)"
 				></app-course-overview-card>
 
 				<app-lesson-test-card></app-lesson-test-card>

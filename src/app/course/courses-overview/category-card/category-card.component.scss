@@ -1,0 +1,9 @@
+ul {
+    margin-top: 25px;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 240px));
+    grid-gap: 40px;
+}

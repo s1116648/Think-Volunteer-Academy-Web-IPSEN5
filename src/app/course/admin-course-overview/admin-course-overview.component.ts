@@ -96,11 +96,11 @@ export class AdminCourseOverviewComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	onDrop(event: { targetIndex: number; sourceModel: Lesson[] }): void {
+	onDrop(event: { targetIndex: number; sourceIndex: number }): void {
 		const previousState = JSON.parse(JSON.stringify(this.lessons));
 
 		const draggedLesson: Lesson = this.lessons.find(
-			(l) => l.id === event.sourceModel[0].id
+			(l) => l.id === this.lessons[event.sourceIndex].id
 		);
 		const notDraggedLesson: Lesson = this.lessons[event.targetIndex];
 
@@ -137,13 +137,13 @@ export class AdminCourseOverviewComponent implements OnInit, OnDestroy {
 		this.lessonService.swap(draggedLesson, newIndex).subscribe(
 			(lessons: Lesson[]) => {
 				if (this.lessons.length !== lessons.length) {
-					returnToPreviousState();
+					this.lessons = lessons;
 					return;
 				}
 
 				for (let i = 0; i < lessons.length; i++) {
 					if (this.lessons[i].id !== lessons[i].id) {
-						returnToPreviousState();
+						this.lessons = lessons;
 						return;
 					}
 				}
