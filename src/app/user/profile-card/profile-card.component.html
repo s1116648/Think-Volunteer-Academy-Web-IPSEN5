@@ -2,8 +2,8 @@
     <h3>My profile</h3>
     <ul>
         <li class="columns">
-            <img class="avatar" src="assets/images/avatar-temp.jpg" alt="Profile avatar">
-        <p>{{ firstname + " " + lastname}}</p>
+            <img class="avatar" [src]="this.currentUser.avatar" alt="Profile avatar">
+        <p>{{ this.currentUser.firstname + " " + this.currentUser.lastname}}</p>
         </li>
     </ul>
 

@@ -16,32 +16,35 @@ import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
+import { Ng2ImgMaxModule } from "ng2-img-max";
 
 @NgModule({
-	declarations: [AppComponent],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		LessonModule,
-		FontAwesomeModule,
-		AuthModule,
-		AppRoutingModule,
-		CourseModule,
-		FormsModule,
-		CourseCategoryModule,
-		RoleModule,
-		ManageModule,
-		UserModule,
-		SharedModule,
-		DragulaModule.forRoot(),
-	],
-	providers: [
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: APIInterceptor,
-			multi: true,
-		},
-	],
-	bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        LessonModule,
+        FontAwesomeModule,
+        AuthModule,
+        AppRoutingModule,
+        CourseModule,
+        FormsModule,
+        CourseCategoryModule,
+        RoleModule,
+        ManageModule,
+        UserModule,
+        SharedModule,
+        DragulaModule.forRoot(),
+        Ng2ImgMaxModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: APIInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

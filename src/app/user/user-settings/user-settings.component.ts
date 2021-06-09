@@ -5,6 +5,9 @@ import { UpdateProfileDto } from "../dto/update-profile.dto";
 import { UserService } from "../user.service";
 import { AuthService } from "../../auth/auth.service";
 import { ChangePasswordDto } from "../dto/change-password.dto";
+import { UploadedFileResponse } from "../../file/UploadedFileResponse.model";
+import { FileService } from "../../file/file.service";
+import { ImageResizerService } from "../../file/image-resizer.service";
 
 @Component({
     selector: "app-user-settings",
@@ -14,34 +17,60 @@ import { ChangePasswordDto } from "../dto/change-password.dto";
 export class UserSettingsComponent implements OnInit {
     @Output() set = new EventEmitter<User>();
 
-    firstname: string;
-    lastname: string;
-    email: string;
+    currentUser: User;
+
+    isUploading: boolean = false;
     updateMessage: string;
     updateMessageShown: boolean;
     updatePasswordMessage: string;
     updatePasswordMessageShown: boolean;
 
-    constructor(private userService: UserService, private authService: AuthService) {
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private fileService: FileService,
+        private resizeServive: ImageResizerService) {
     }
 
     ngOnInit(): void {
-        const currentUser = JSON.parse(localStorage.getItem("loginInfo")).user;
-        this.setName(currentUser.firstname, currentUser.lastname);
-        this.setEmail(currentUser.email);
+        this.currentUser = this.authService.loginInfo.getValue().user;
+        if (!this.currentUser.avatar) {
+            this.currentUser.avatar = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
+        }
+    }
+
+    onFileUpload(event: Event): void {
+        const acceptedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
+        const target = event.target as HTMLInputElement;
+        const files = target.files as FileList;
+        const file = files[0];
+        this.isUploading = true;
+
+        if (!acceptedImageTypes.includes(file?.type)) {
+            return;
+        }
+
+        this.resizeServive.resizeImage(file, 180, 180).subscribe((resizedImage: File) => {
+            this.fileService
+                .upload(resizedImage)
+                .subscribe((uploadedFileResponse: UploadedFileResponse) => {
+                    this.currentUser.avatar = uploadedFileResponse.url;
+                    this.isUploading = false;
+                });
+        });
     }
 
     updateProfile(form: NgForm): void {
-        const id = JSON.parse(localStorage.getItem("loginInfo")).user.id;
         const values = form.value;
 
         const dto: UpdateProfileDto = {
             firstname: values.firstName,
             lastname: values.lastName,
-            email: values.email
+            email: values.email,
+            avatar: this.currentUser.avatar
         };
 
-        this.userService.updateProfile(id, dto).subscribe(
+        this.userService.updateProfile(this.currentUser.id, dto).subscribe(
             (user: User) => {
                 this.set.emit(user);
                 this.updateUserInStorage(user);
@@ -60,8 +89,7 @@ export class UserSettingsComponent implements OnInit {
         if (values.newPassword === values.repeatPassword) {
             const dto: ChangePasswordDto = {
                 currentPassword: values.currentPassword,
-                newPassword: values.newPassword,
-                repeatPassword: values.repeatPassword
+                newPassword: values.newPassword
             };
 
             this.userService.changePassword(dto).subscribe(
@@ -87,6 +115,7 @@ export class UserSettingsComponent implements OnInit {
         loginInfo.user.firstname = user.firstname;
         loginInfo.user.lastname = user.lastname;
         loginInfo.user.email = user.email;
+        loginInfo.user.profilePictureUrl = user.avatar;
         this.authService.handleAuthentication(loginInfo);
     }
 
@@ -104,14 +133,5 @@ export class UserSettingsComponent implements OnInit {
 
     private showPasswordMessage(bool: boolean): void {
         this.updatePasswordMessageShown = bool;
-    }
-
-    private setName(firstname: string, lastname: string): void {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-
-    private setEmail(email: string): void {
-        this.email = email;
     }
 }
