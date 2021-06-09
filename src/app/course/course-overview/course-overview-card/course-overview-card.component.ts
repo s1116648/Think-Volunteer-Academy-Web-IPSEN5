@@ -13,6 +13,8 @@ export class CourseOverviewCardComponent implements OnInit {
 
 	@Input() lessonNumber: number;
 
+	@Input() completed: boolean;
+
 	icons = { faArrowRight };
 
 	get image(): string {

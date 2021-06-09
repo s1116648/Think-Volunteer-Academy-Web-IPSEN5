@@ -7,7 +7,11 @@
 				[lessonLength]="lesson.length"
 				[lessonName]="lesson.name"
 			></app-lesson-info-card>
-			<app-lesson-badge-card></app-lesson-badge-card>
+			<app-lesson-badge-card
+					*ngIf="lesson && badges"
+					[lesson]="lesson"
+					[badges]="badges"
+			></app-lesson-badge-card>
 			<app-lesson-documents-card *ngIf="attachments.length > 0" [lessonAttachments]="attachments"></app-lesson-documents-card>
 		</section>
 		<section *ngIf="lesson" class="main-content">

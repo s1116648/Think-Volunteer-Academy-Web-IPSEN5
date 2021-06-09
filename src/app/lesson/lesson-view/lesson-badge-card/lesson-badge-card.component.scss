@@ -1,7 +1,17 @@
-.badge-information {
-    ul{
+@import "src/app/shared/variables";
+div.badge-information {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    background-color: $color-background-dark;
+    border-radius: 10px;
+    padding: 15px;
+
+    ul {
         li {
             display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid $color-gray-700;
 
             p.value {
                 text-align: right;
@@ -10,6 +20,15 @@
 
             p.title {
                 flex-grow: 1;
+            }
+
+            &:first-of-type {
+                padding-top: 0;
+            }
+
+            &:last-of-type {
+                border-bottom: 0;
+                padding-bottom: 0;
             }
         }
 
