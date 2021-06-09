@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Lesson } from "../../../lesson/lesson.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { environment } from "src/environments/environment";
 
 @Component({
 	selector: "app-course-overview-card",
@@ -13,6 +14,10 @@ export class CourseOverviewCardComponent implements OnInit {
 	@Input() lessonNumber: number;
 
 	icons = { faArrowRight };
+
+	get image(): string {
+		return environment.S3_ENDPOINT + this.lesson.image;
+	}
 
 	constructor() {}
 

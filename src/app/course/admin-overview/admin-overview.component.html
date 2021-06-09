@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-admin-side-nav></app-admin-side-nav>
+		</section>
+
+		<section class="main-content">
+			<section class="section">
+                <div class="columns title">
+                    <h1 class="column grow">Courses</h1>
+                    <button class="column button primary" [routerLink]="['courses', 'new']">
+						New course
+						<span class="icon"
+							><fa-icon [icon]="icons.faPlus"></fa-icon
+						></span>
+					</button>
+                </div>
+
+                <ul class="courses">
+                    <li *ngFor="let course of courses" class="course">
+                        <figure>
+                            <img [src]="getCourseImage(course.image)" alt="Course image" />
+                        </figure>
+                    
+                        <div class="lesson-info">
+                            <div class="textual-info">
+                                <h2>{{ course.name }}</h2>
+                                <p>{{ course.description | truncate: 190 }}</p>
+                            </div>
+                    
+                            <div class="bottom-container columns">
+                                <button class="button" [routerLink]="['courses', course.id]">
+                                    Go to course
+                                    <span class="icon"
+                                        ><fa-icon [icon]="icons.faArrowRight"></fa-icon
+                                    ></span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+			<section class="section"></section>
+		</section>
+
+		<ng-container appPlaceholder></ng-container>
+	</div>
+</div>

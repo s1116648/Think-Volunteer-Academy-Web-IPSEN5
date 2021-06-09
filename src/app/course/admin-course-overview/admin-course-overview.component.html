@@ -2,7 +2,7 @@
 	<figure>
 		<img
 			class="header-image"
-			src="/assets/images/test-banner.jpeg"
+			[src]="image"
 			alt="Course image"
 		/>
 	</figure>
@@ -11,7 +11,7 @@
 			<app-admin-side-nav></app-admin-side-nav>
 			<app-general-course-info
 				[course]="course"
-				[lessonCount]="5"
+				[lessonCount]="lessons.length"
 				[length]="totalLessonLength"
 			></app-general-course-info>
 
@@ -49,17 +49,15 @@
 					</button>
 				</div>
 
-				<ul class="lessons" [dndDropzone] [dndHorizontal] (dndDrop)="onDrop($event)">
+				<ul class="lessons" [dragula]="dragulaLessonGroupName" [dragulaModel]="lessonsInOrder">
 					<li
-						*ngFor="let lesson of lessonsInOrder; let index = index" [dndDraggable]="lesson"
+						*ngFor="let lesson of lessonsInOrder; let index = index" 
 					>
 						<app-admin-lesson-card
 							[lesson]="lesson"
 							[number]="index + 1"
 						></app-admin-lesson-card>
 					</li>
-
-					<li dndPlaceholderRef class="drop-placeholder">Drop lesson to update order</li>
 				</ul>
 			</section>
 		</section>

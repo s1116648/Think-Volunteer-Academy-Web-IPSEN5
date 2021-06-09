@@ -1,4 +1,7 @@
 @import "/src/app/shared/variables";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 
 * {
 	padding: 0;
@@ -240,8 +243,64 @@ textarea {
             margin-bottom: 0;
         }
     }
+  .ql-toolbar.ql-snow, .ql-container.ql-snow{
+    border: 1px solid #4A5568;
+  }
 
-    @media only screen and (max-width: 900px) {
+  .ql-stroke, .ql-stroke.ql-fill{
+    stroke: white;
+  }
+  rect.ql-fill,
+  circle.ql-fill,
+  path.ql-fill,
+  rect,
+  polyline.ql-fill.ql-even,
+  line.ql-color-label,
+  .ql-picker.ql-font,
+  .ql-picker-label,
+  .ql-snow .ql-picker {
+    fill: white;
+    color: white;
+  }
+
+  .ql-snow .ql-picker-options{
+    background-color: #2B3D55;
+  }
+
+  .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options{
+    border-color: white;
+  }
+
+  @media only screen and (max-width: 900px) {
         grid-template-columns: 1fr !important;
     }
 }
+
+
+/* in-flight clone */
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
+  }
+  /* high-performance display:none; helper */
+  .gu-hide {
+    left: -9999px !important;
+  }
+  /* added to mirrorContainer (default = body) while dragging */
+  .gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+  /* added to the source element while its mirror is dragged */
+  .gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+  }

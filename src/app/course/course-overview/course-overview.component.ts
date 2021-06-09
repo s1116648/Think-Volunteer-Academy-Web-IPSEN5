@@ -2,9 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { LessonService } from "src/app/lesson/lesson.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
+import { environment } from "src/environments/environment";
 import { Lesson } from "../../lesson/lesson.model";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
+import { BadgeService } from "../../shared/badge.service";
+import { AuthService } from "../../auth/auth.service";
+import { Badge } from "../../shared/badge.model";
 
 @Component({
 	selector: "app-course-overview",
@@ -16,16 +20,23 @@ export class CourseOverviewComponent implements OnInit {
 
 	course: Course;
 	lessons: Lesson[] = [];
+	userBadges: Badge[] = [];
 	similarCourses: Course[] = [];
 
 	get totalLessonLength(): number {
 		return this.lessons.reduce((acc, lesson) => acc + lesson.length, 0);
 	}
 
+	get image(): string {
+		return environment.S3_ENDPOINT + this.course.image;
+	}
+
 	constructor(
 		private route: ActivatedRoute,
 		private courseService: CourseService,
-		private lessonService: LessonService
+		private lessonService: LessonService,
+		private badgeService: BadgeService,
+		private authService: AuthService
 	) {}
 
 	ngOnInit(): void {
@@ -48,6 +59,21 @@ export class CourseOverviewComponent implements OnInit {
 						this.MAX_SIMILAR_COURSES
 					);
 				});
+			this.badgeService
+				.getBadgesByUser(
+					this.authService.loginInfo.getValue().user.id,
+					params.id
+				)
+				.subscribe((result: HttpPaginatedResult<Badge>) => {
+					this.userBadges = result.items;
+				});
 		});
+	}
+
+	lessonIsCompleted(index: number): boolean {
+		const lesson = this.lessons[index];
+		return this.userBadges
+			.map((badge) => badge.lesson.id)
+			.includes(lesson.id);
 	}
 }

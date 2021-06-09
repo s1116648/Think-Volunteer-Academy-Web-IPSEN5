@@ -2,7 +2,7 @@
 	<figure>
 		<img
 			class="header-image"
-			src="./assets/images/test-banner.jpeg"
+			[src]="image"
 			alt="Course banner"
 		/>
 	</figure>
@@ -33,6 +33,7 @@
 					<app-progress-circle
 						*ngFor="let lesson of lessons; let index = index"
 						[number]="index + 1"
+						[completed]="lessonIsCompleted(index)"
 					></app-progress-circle>
 				</section>
 			</section>

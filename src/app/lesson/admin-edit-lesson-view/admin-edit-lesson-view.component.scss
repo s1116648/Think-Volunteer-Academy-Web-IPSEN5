@@ -1,0 +1,70 @@
+@import "/src/app/shared/variables";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+form {
+    margin-top: 30px;
+}
+
+.documents {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .document-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-background-dark;
+        border-radius: $border-radius;
+        border: 1px solid $color-gray-700;
+        width: 150px;
+        height: 150px;
+        gap: 10px;
+        position: relative;
+
+        p {
+            text-align: center;
+        }
+
+        .file-icon {
+            font-size: 25px;
+            color: $color-white;
+        }
+
+        .delete-icon {
+            color: $color-gray-600;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            transition: .3s;
+            cursor: pointer;
+
+            &:hover {
+                color: $color-red-500;
+            }
+        }
+    }
+    
+    .upload-container {
+        cursor: pointer;
+        transition: .3s;
+    
+        &:hover {
+            filter: brightness(90%);
+        }
+    
+        input[type=file] {
+            display: none;
+        }
+    }
+}
+
+
+.quill-wrapper{
+  background-color: #1C2B40;
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
@@ -9,14 +9,19 @@ import { SetLessonModalComponent } from "../../lesson/modals/set-lesson-modal/se
 import { Lesson } from "../../lesson/lesson.model";
 import { LessonService } from "src/app/lesson/lesson.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
-import { DndDropEvent } from "ngx-drag-drop";
+import { environment } from "src/environments/environment";
+import { DragulaService } from "ng2-dragula";
+import { Subscription } from "rxjs";
 
 @Component({
 	selector: "app-admin-course-overview",
 	templateUrl: "./admin-course-overview.component.html",
 	styleUrls: ["./admin-course-overview.component.scss"],
 })
-export class AdminCourseOverviewComponent implements OnInit {
+export class AdminCourseOverviewComponent implements OnInit, OnDestroy {
+	private onDropModelSubscription: Subscription;
+	readonly dragulaLessonGroupName = "lessons";
+
 	@ViewChild(PlaceholderDirective, { static: false })
 	modalHost: PlaceholderDirective;
 
@@ -33,13 +38,17 @@ export class AdminCourseOverviewComponent implements OnInit {
 		return this.lessons.sort((a, b) => a.index - b.index);
 	}
 
+	get image(): string {
+		return environment.S3_ENDPOINT + this.course.image;
+	}
+
 	constructor(
 		private courseService: CourseService,
 		private route: ActivatedRoute,
 		private modalService: ModalService,
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private lessonService: LessonService
+		private lessonService: LessonService,
+		private dragulaService: DragulaService
 	) {}
 
 	ngOnInit(): void {
@@ -56,6 +65,22 @@ export class AdminCourseOverviewComponent implements OnInit {
 					this.lessons = paginated.items;
 				});
 		});
+
+		if (!this.dragulaService.find(this.dragulaLessonGroupName)) {
+			this.dragulaService.createGroup(this.dragulaLessonGroupName, {
+				moves: (el, source, handle, subling) => {
+					return handle.classList.contains("handle");
+				},
+			});
+		}
+
+		this.onDropModelSubscription = this.dragulaService
+			.dropModel(this.dragulaLessonGroupName)
+			.subscribe((event) => this.onDrop(event));
+	}
+
+	ngOnDestroy(): void {
+		this.onDropModelSubscription.unsubscribe();
 	}
 
 	openNewLessonModal(): void {
@@ -71,18 +96,18 @@ export class AdminCourseOverviewComponent implements OnInit {
 		});
 	}
 
-	onDrop(event: DndDropEvent): void {
+	onDrop(event: { targetIndex: number; sourceIndex: number }): void {
 		const previousState = JSON.parse(JSON.stringify(this.lessons));
 
 		const draggedLesson: Lesson = this.lessons.find(
-			(l) => l.id === event.data.id
+			(l) => l.id === this.lessons[event.sourceIndex].id
 		);
-		const notDraggedLesson: Lesson = this.lessons[event.index];
+		const notDraggedLesson: Lesson = this.lessons[event.targetIndex];
 
 		if (!draggedLesson || !notDraggedLesson) return;
 		if (draggedLesson.index === notDraggedLesson.index) return;
 
-		this.updateLessonOrder(draggedLesson, event.index, previousState);
+		this.updateLessonOrder(draggedLesson, event.targetIndex, previousState);
 		this.updateLessonOrderUI(draggedLesson, notDraggedLesson);
 	}
 
@@ -112,13 +137,13 @@ export class AdminCourseOverviewComponent implements OnInit {
 		this.lessonService.swap(draggedLesson, newIndex).subscribe(
 			(lessons: Lesson[]) => {
 				if (this.lessons.length !== lessons.length) {
-					returnToPreviousState();
+					this.lessons = lessons;
 					return;
 				}
 
 				for (let i = 0; i < lessons.length; i++) {
 					if (this.lessons[i].id !== lessons[i].id) {
-						returnToPreviousState();
+						this.lessons = lessons;
 						return;
 					}
 				}
