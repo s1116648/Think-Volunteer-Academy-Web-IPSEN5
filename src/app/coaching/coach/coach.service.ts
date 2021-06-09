@@ -29,9 +29,9 @@ export class CoachService {
       );
   }
 
-  create(user: User): Observable<Role> {
+  create(user: User): Observable<Coach> {
       return this.http
-          .post<Role>("/coaches", {
+          .post<Coach>("/coaches", {
               userId: user.id,
           });
   }
