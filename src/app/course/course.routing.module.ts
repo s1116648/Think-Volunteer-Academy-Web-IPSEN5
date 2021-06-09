@@ -6,6 +6,7 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 import { CourseOverviewComponent } from "./course-overview/course-overview.component";
 import { CreateCourseComponent } from "./create-course/create-course.component";
 import { EditCourseComponent } from "./edit-course/edit-course.component";
+import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
 
 const routes: Routes = [
 	{
@@ -33,6 +34,11 @@ const routes: Routes = [
 		component: AdminCourseOverviewComponent,
 		canActivate: [AuthGuard],
 	},
+    {
+      path: "courses",
+      component: CoursesOverviewComponent,
+      canActivate: [AuthGuard]
+    }
 ];
 
 @NgModule({

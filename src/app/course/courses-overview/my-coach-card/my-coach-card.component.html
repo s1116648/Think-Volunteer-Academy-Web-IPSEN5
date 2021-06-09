@@ -1,0 +1,32 @@
+<section class="my-coach-wrapper">
+	<h3>My coach</h3>
+
+	<ul>
+		<li>
+			<div class="columns">
+				<img
+					class="avatar"
+					[src]="coachImg"
+					alt="Coach profile avatar"
+				/>
+				<p class="name">{{ coachFirstName }} {{ coachLastName }}</p>
+			</div>
+		</li>
+
+		<li>
+			<div class="columns">
+				<p class="column grow">Chat</p>
+				<span class="chevron-icon">
+					<fa-icon [icon]="icons.faChevronRight"></fa-icon>
+				</span>
+			</div>
+		</li>
+	</ul>
+
+	<button class="button">
+		My coach
+		<span class="icon">
+			<fa-icon [icon]="icons.faArrowRight"></fa-icon>
+		</span>
+	</button>
+</section>
