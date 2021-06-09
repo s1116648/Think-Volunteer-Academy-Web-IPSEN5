@@ -24,6 +24,14 @@ img {
     height: 200px;
 }
 
+#progress-bar {
+    display: block;
+    background-color: $color-progress-bar;
+    width: 100%;
+    border-radius: 5px;
+    height: 10px;
+}
+
 .course-button {
     display: flex;
     justify-content: space-between;
@@ -33,6 +41,13 @@ img {
     margin-top: 20px;
     width: 140px;
     color: $color-white;
+}
+
+.progress-bar-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 10px;
+    transform: translateY(-22px);
 }
 
 

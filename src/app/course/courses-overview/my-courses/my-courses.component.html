@@ -3,8 +3,8 @@
         <h1> My courses </h1>
     </header>
     <section class="course-cards-wrapper">
-        <section *ngFor="let course of courses">
-            <app-course-card [course]="course"></app-course-card>
+        <section *ngFor="let myCourse of myCourses">
+            <app-course-card [course]="myCourse.course" [progress]="myCourse.progress"></app-course-card>
         </section>
     </section>
 </section>

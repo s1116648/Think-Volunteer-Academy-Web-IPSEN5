@@ -5,6 +5,7 @@ import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Course } from "./course.model";
 import { CreateCourseDTO } from "./dto/create-course.dto";
 import { UpdateCourseDTO } from "./dto/update-course.dto";
+import { MyCoursesModel } from "./courses-overview/my-courses/my-courses.model";
 
 @Injectable({
 	providedIn: "root",
@@ -40,14 +41,12 @@ export class CourseService {
         );
     }
 
-
-    // ToDo inplaats endpoint gebruiken.
-    getBatchesFromActiveUser(): Observable<HttpPaginatedResult<any>> {
+	getCoursesFromActiveUser(): Observable<HttpPaginatedResult<MyCoursesModel>> {
 		const loginInfo = localStorage.getItem("loginInfo");
 		const loginInfoJson = JSON.parse(loginInfo);
 		const userId = loginInfoJson.user.id;
-		return this.http.get<HttpPaginatedResult<any>>(
-			`/users/${userId}/badges`
+		return this.http.get<HttpPaginatedResult<MyCoursesModel>>(
+			`/users/${userId}/courses`
 		);
 	}
 }
