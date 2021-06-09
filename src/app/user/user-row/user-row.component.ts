@@ -11,7 +11,7 @@ import { UserService } from "../user.service";
 export class UserRowComponent implements OnInit {
 	@Input() user: User;
 	@Output() removeButtonClickedEvent = new EventEmitter<User>();
-	
+
 	icons = {
 		faTrash
 	};

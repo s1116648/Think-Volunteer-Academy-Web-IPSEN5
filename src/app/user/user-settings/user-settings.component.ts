@@ -94,19 +94,19 @@ export class UserSettingsComponent implements OnInit {
         }
     }
 
-    showRemoveModal() {
+    showRemoveModal(): void {
         const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
         modal.instance.description = `
             You are about to delete your account <b>indefinitely</b>!<br>
             This action can <b>not</b> be reverted!`;
         modal.instance.title = "Are you sure you want to delete your account?";
 
-		modal.instance.confirmed.subscribe(() => {
-			this.userService.delete(this.user.id).subscribe(() => {
+        modal.instance.confirmed.subscribe(() => {
+            this.userService.delete(this.user.id).subscribe(() => {
                 this.authService.logout();
                 this.router.navigate(["login"]);
-			});
-		});
+            });
+        });
     }
 
     private updateUserInStorage(user: User): void {
