@@ -13,12 +13,15 @@ import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { CreateCourseComponent } from "./create-course/create-course.component";
 import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
 import { LessonModule } from "../lesson/lesson.module";
-import { DndModule } from "ngx-drag-drop";
 import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
-import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
 import { MyCoursesComponent } from "./courses-overview/my-courses/my-courses.component";
 import { AdminOverviewComponent } from "./admin-overview/admin-overview.component";
 import { DragulaModule } from "ng2-dragula";
+import { CategoryCardComponent } from "./courses-overview/category-card/category-card.component";
+import { MyCoachCardComponent } from "./courses-overview/my-coach-card/my-coach-card.component";
+import { MyProfileCardComponent } from "./courses-overview/my-profile-card/my-profile-card.component";
+import { CourseCardComponent } from "./courses-overview/course-card/course-card.component";
+import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
 
 @NgModule({
 	declarations: [
@@ -35,7 +38,6 @@ import { DragulaModule } from "ng2-dragula";
         CourseCardComponent,
         CategoryCardComponent,
 		AdminCourseInfoComponent,
-		CourseBannerUploaderComponent,
 		MyCoursesComponent,
 		AdminOverviewComponent,
 	],
@@ -46,7 +48,6 @@ import { DragulaModule } from "ng2-dragula";
 		SharedModule,
 		FormsModule,
 		LessonModule,
-		DndModule,
 		DragulaModule,
 	],
 	exports: [CourseOverviewComponent],
