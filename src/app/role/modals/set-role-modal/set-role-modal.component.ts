@@ -9,6 +9,7 @@ import { UpdateRoleDTO } from "../../dto/update-role-dto";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { PermissionCheckbox } from "../../permission/permission-checkbox.model";
 import { Permission } from "../../permission/permission.model";
+import { assertNotNull } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-set-role-modal",
@@ -64,19 +65,19 @@ export class SetRoleModalComponent implements OnInit, Modal {
   update(form: NgForm): void {
     const values = form.value;
 
-    console.log("I have depression");
+    const tempPermissions: string[] = this.selectedPermissions.map(permission => permission.name) || [];
 
     const roleDTO: UpdateRoleDTO = {
       name: values.name,
       description: values.description,
-      permissions: this.selectedPermissions.map(permission => permission.name)
+      permissions: tempPermissions
     };
 
     this.roleService
         .update(this.role.id, roleDTO)
         .subscribe((role: Role) => {
-          console.log(this.selectedPermissions);
           this.set.emit(role);
+          this.close();
         });
   }
 

@@ -1,3 +1,3 @@
-export interface UpdateUserRoleDto {
-	roles: string[];
+export interface UpdateUserRoleDTO {
+	role: string;
 }

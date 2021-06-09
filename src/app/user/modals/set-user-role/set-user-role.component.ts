@@ -5,6 +5,7 @@ import { UserService } from "../../user.service";
 import { User } from "../../user.model";
 import { NgForm } from "@angular/forms";
 import { Role } from "../../../role/role.model";
+import { UpdateUserRoleDTO} from "../../dto/update-user-role.dto";
 
 @Component({
   selector: "app-set-user-role",
@@ -12,6 +13,8 @@ import { Role } from "../../../role/role.model";
   styleUrls: ["./set-user-role.component.scss"]
 })
 export class SetUserRoleComponent implements OnInit {
+  @Output() set = new EventEmitter<User>();
+
   roles: Role[];
 
   constructor(
@@ -33,8 +36,13 @@ export class SetUserRoleComponent implements OnInit {
 
   setRole(userRoleForm: NgForm): void {
     const values = userRoleForm.value;
-
-
+    const updateUserRoleDTO: UpdateUserRoleDTO = {
+      role: values.role.id
+    };
+    this.userService.setUserRole(this.user.id, updateUserRoleDTO).subscribe((user) => {
+      this.set.emit(user);
+      this.close();
+    });
   }
 
   close = (): void => this.closeModal.emit();

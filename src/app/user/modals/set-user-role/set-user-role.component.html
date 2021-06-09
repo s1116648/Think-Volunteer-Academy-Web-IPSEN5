@@ -9,7 +9,7 @@
 					placeholder="Select a role"
 					ngDefaultControl
 					required
-					ngModel
+					[ngModel]="user.role"
 					[dark]="true"
 					[options]="roles"
 				>

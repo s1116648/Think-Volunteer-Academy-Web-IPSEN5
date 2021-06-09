@@ -35,5 +35,10 @@ export class UserOverviewComponent implements OnInit {
 			this.modalHost
 		);
 		modal.instance.user = user;
+		modal.instance.set.subscribe((newUser: User) => {
+			const index = this.users.findIndex( u => u.id === user.id);
+			this.users.splice(index, 1);
+			this.users.push(newUser);
+		});
 	}
 }
