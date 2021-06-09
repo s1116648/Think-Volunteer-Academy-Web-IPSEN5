@@ -63,9 +63,11 @@
                     <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
                         Update profile
                     </button>
+                    <button class="button danger" (click)="showRemoveModal()">Delete Account</button>
                     <p *ngIf="updatePasswordMessageShown">{{ updatePasswordMessage }}</p>
                 </div>
             </form>
         </section>
+        <ng-container appPlaceholder></ng-container>
     </div>
 </div>

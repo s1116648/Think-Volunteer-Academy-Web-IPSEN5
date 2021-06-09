@@ -8,6 +8,7 @@ import { UserRoutingModule } from "./user-routing.module";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
 	declarations: [
@@ -27,6 +28,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		RouterModule,
 		FormsModule,
 		FontAwesomeModule,
+		SharedModule
 	],
 })
 export class UserModule {}

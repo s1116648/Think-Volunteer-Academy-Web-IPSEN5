@@ -1,10 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
 import { User } from "../user.model";
 import { NgForm } from "@angular/forms";
 import { UpdateProfileDto } from "../dto/update-profile.dto";
 import { UserService } from "../user.service";
 import { AuthService } from "../../auth/auth.service";
 import { ChangePasswordDto } from "../dto/change-password.dto";
+import { ModalService } from "../../shared/modal.service";
+import { PlaceholderDirective } from "../../shared/placeholder.directive";
+import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-user-settings",
@@ -12,6 +16,9 @@ import { ChangePasswordDto } from "../dto/change-password.dto";
     styleUrls: ["./user-settings.component.scss"]
 })
 export class UserSettingsComponent implements OnInit {
+    @ViewChild(PlaceholderDirective, { static: false })
+	modalHost: PlaceholderDirective;
+
     @Output() set = new EventEmitter<User>();
 
     firstname: string;
@@ -21,14 +28,19 @@ export class UserSettingsComponent implements OnInit {
     updateMessageShown: boolean;
     updatePasswordMessage: string;
     updatePasswordMessageShown: boolean;
+    user: User;
 
-    constructor(private userService: UserService, private authService: AuthService) {
-    }
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private modalService: ModalService,
+        private router: Router,
+    ) {}
 
     ngOnInit(): void {
-        const currentUser = JSON.parse(localStorage.getItem("loginInfo")).user;
-        this.setName(currentUser.firstname, currentUser.lastname);
-        this.setEmail(currentUser.email);
+        this.user = JSON.parse(localStorage.getItem("loginInfo")).user;
+        this.setName(this.user.firstname, this.user.lastname);
+        this.setEmail(this.user.email);
     }
 
     updateProfile(form: NgForm): void {
@@ -80,6 +92,21 @@ export class UserSettingsComponent implements OnInit {
             this.setPasswordMessage("Passwords don't match.");
             this.showPasswordMessage(true);
         }
+    }
+
+    showRemoveModal() {
+        const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
+        modal.instance.description = `
+            You are about to delete your account <b>indefinitely</b>!<br>
+            This action can <b>not</b> be reverted!`;
+        modal.instance.title = "Are you sure you want to delete your account?";
+
+		modal.instance.confirmed.subscribe(() => {
+			this.userService.delete(this.user.id).subscribe(() => {
+                this.authService.logout();
+                this.router.navigate(["login"]);
+			});
+		});
     }
 
     private updateUserInStorage(user: User): void {

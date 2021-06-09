@@ -1,5 +1,8 @@
 <div class="role-row">
 	<div class="role-info">
-		<h3 class="title">{{ user.firstname }} {{ user.lastname }}</h3>
+		<h3 class="title column grow">{{ user.firstname }} {{ user.lastname }}</h3>
+		<div class="column">
+			<button (click)="remove()"><fa-icon [icon]="icons.faTrash"></fa-icon></button>
+		</div>
 	</div>
 </div>

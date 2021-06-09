@@ -16,6 +16,7 @@ import { ProgressCircleComponent } from "./progress-circle/progress-circle.compo
 import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
+import { ConfirmModalComponent } from "./modals/confirm-modal/confirm-modal.component";
 
 @NgModule({
 	declarations: [
@@ -29,6 +30,7 @@ import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-b
 		ToggleComponent,
 		AdminSideNavComponent,
 		ModalComponent,
+		ConfirmModalComponent,
 		PlaceholderDirective,
 		TopNavComponent,
 		PlaceholderDirective,
@@ -43,6 +45,7 @@ import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-b
 		DropdownSelectedDirective,
 		GeneralCourseInfoComponent,
 		ModalComponent,
+		ConfirmModalComponent,
 		ModalComponent,
 		PadStartPipe,
 		PlaceholderDirective,
