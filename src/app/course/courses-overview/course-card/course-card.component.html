@@ -1,11 +1,10 @@
 <section class="course-card-wrapper">
     <figure [routerLink]="course.id">
-<!--        <img srs="{{course.image}}" alt="course-thumbnail">-->
-        <img src="/assets/images/lion.jpg" alt="temporary lion img">
-        <div class="progress-bar-wrapper">
-            <div id="progress-bar" *ngIf="progress" style="width: {{progress.progress*100}}%"></div>
-        </div>
+        <img srs="{{image}}" alt="course-thumbnail">
     </figure>
+    <div class="progress-bar-wrapper">
+        <div id="progress-bar" *ngIf="progress" style="width: {{progress.progress*100 + '%'}}"></div>
+    </div>
     <header>
         <h3> {{course.name}} </h3>
     </header>
