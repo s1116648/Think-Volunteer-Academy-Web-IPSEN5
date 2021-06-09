@@ -1,17 +1,25 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Coach } from "../coach/coach.model";
-import { map } from "rxjs/operators";
+import { filter, map } from "rxjs/operators";
 import { Student } from "./student.model";
 import { HttpClient } from "@angular/common/http";
-import { Role } from "../../role/role.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class StudentService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+      private http: HttpClient,
+  ) { }
+
+  getUnassignedStudents(): Observable<Student[]>{
+      return this.http.get<any>(`/students`).pipe(
+          map((responseData: { items: Student[] }) => {
+              return responseData.items.filter(student => student.coach == null);
+          })
+      );
+  }
 
   getStudentsByCoach(coachId: string): Observable<Student[]>{
     return this.http.get<any>(`/coaches/${coachId}/students`).pipe(
