@@ -3,39 +3,15 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Role } from "./role.model";
+import { CreateRoleDTO } from "./dto/create-role-dto";
+import { UpdateRoleDTO } from "./dto/update-role-dto";
 
 @Injectable({
   providedIn: "root"
 })
 
 export class RoleService {
-
-  roles: Role[] = [
-    {
-      id: "test",
-      name: "admin",
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      id: "test2",
-      name: "contentcreator",
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      id: "test3",
-      name: "user",
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }
-  ];
-
   constructor(private http: HttpClient) { }
-
-  fetchNonReal(): Role[] {
-    return this.roles;
-  }
 
   fetchRoles(): Observable<Role[]> {
     return this.http.get<any>("/roles").pipe(
@@ -45,10 +21,21 @@ export class RoleService {
     );
   }
 
-  create(role: Role): Observable<Role> {
+  create(role: CreateRoleDTO): Observable<Role> {
     return this.http
       .post<Role>("/roles", {
         name: role.name,
+        description: role.description,
+        permissions: role.permissions
       });
+  }
+
+  update(roleID: string, role: UpdateRoleDTO): Observable<Role> {
+    return this.http
+        .patch<Role>(`/roles/${roleID}`, {
+          name: role.name,
+          description: role.description,
+          permissions: role.permissions
+        });
   }
 }
