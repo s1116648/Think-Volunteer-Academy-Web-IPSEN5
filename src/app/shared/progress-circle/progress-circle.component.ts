@@ -7,7 +7,9 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class ProgressCircleComponent implements OnInit {
 	@Input() number: number;
-
+	@Input() completed: boolean;
+	defaultBackground: string = "progress-circle";
+	completedBackground: string = "yellow-progress-circle";
 	constructor() {}
 
 	ngOnInit(): void {}

@@ -9,14 +9,11 @@ h1 {
 .lesson-card {
 	display: flex;
 	flex-direction: row;
-	max-width: 600px;
-	height: 170px;
 	gap: 10px;
 
 	.status-and-line {
 		display: flex;
 		flex-direction: column;
-		/* background-color: red; */
 		gap: 10px;
 		max-width: 30px;
 
@@ -26,7 +23,6 @@ h1 {
 			width: 22px;
 			height: 22px;
 			border-radius: 100%;
-			/* background-color: #22E63C; */
 		}
 
 		.line {
@@ -48,10 +44,20 @@ h1 {
 			gap: 10px;
 		}
 
-		.img-content-holder > img {
-			width: 140px;
-			height: 126px;
-			border-radius: 10px;
+		.img-content-holder {
+			figure {
+				max-width: 140px;
+				height: 140px;
+
+				img {
+					cursor: pointer;
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+					object-fit: cover;
+				}
+			}
+        
 		}
 
 		.title-desc-holder {
@@ -69,11 +75,6 @@ h1 {
 					color: $color-white;
 				}
 			}
-		}
-
-		.title-desc-holder > h3 {
-			font-weight: bold;
-			color: $color-white;
 		}
 
 		.title-desc-holder > p {

@@ -15,24 +15,26 @@ import { FormsModule } from "@angular/forms";
 import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
+import { DragulaModule } from "ng2-dragula";
 
 @NgModule({
 	declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        LessonModule,
-        FontAwesomeModule,
-        AuthModule,
-        AppRoutingModule,
-        CourseModule,
-        FormsModule,
-        CourseCategoryModule,
-        RoleModule,
-        ManageModule,
-        UserModule,
-        SharedModule
-    ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		LessonModule,
+		FontAwesomeModule,
+		AuthModule,
+		AppRoutingModule,
+		CourseModule,
+		FormsModule,
+		CourseCategoryModule,
+		RoleModule,
+		ManageModule,
+		UserModule,
+		SharedModule,
+		DragulaModule.forRoot(),
+	],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,

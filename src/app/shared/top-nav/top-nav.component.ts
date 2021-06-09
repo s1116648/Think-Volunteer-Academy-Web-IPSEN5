@@ -3,46 +3,44 @@ import { AuthService } from "../../auth/auth.service";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-top-nav",
-  templateUrl: "./top-nav.component.html",
-  styleUrls: ["./top-nav.component.scss"]
+	selector: "app-top-nav",
+	templateUrl: "./top-nav.component.html",
+	styleUrls: ["./top-nav.component.scss"],
 })
 export class TopNavComponent implements OnInit {
+	coursesPath = "/courses";
+	adminPanelPath = "/admin";
+	settingsPath = "user/settings";
+	logoutPath = "/login";
 
-    coursesPath = "/courses";
-    adminPanelPath = ""; // ToDo insert admin path
-    settingsPath = "user/settings";
-    logoutPath = "/login";
+	isAdmin: boolean;
 
-    isAdmin: boolean;
+	collapsedOnPhone = true;
 
-    collapsedOnPhone = true;
+	icons = { faBars };
 
-    icons = { faBars };
+	constructor(private authService: AuthService) {}
 
-    constructor(private authService: AuthService) {}
+	ngOnInit(): void {
+		this.isAdmin = this.checkIfAdmin();
+	}
 
-    ngOnInit(): void {
-        this.isAdmin = this.checkIfAdmin();
-    }
+	// ToDo If permissions are finished, make this method useful.
+	checkIfAdmin(): boolean {
+		return true;
+	}
 
-    // ToDo If permissions are finished, make this method useful.
-    checkIfAdmin(): boolean {
-        return true;
-    }
+	hamburgerClicked(): void {
+		if (this.collapsedOnPhone) {
+			document.getElementById("options").style.display = "flex";
+			this.collapsedOnPhone = false;
+		} else {
+			document.getElementById("options").style.display = "none";
+			this.collapsedOnPhone = true;
+		}
+	}
 
-    hamburgerClicked(): void {
-        if (this.collapsedOnPhone) {
-          document.getElementById("options").style.display = "flex";
-          this.collapsedOnPhone = false;
-        } else {
-          document.getElementById("options").style.display = "none";
-          this.collapsedOnPhone = true;
-        }
-    }
-
-    logout(): void {
-        this.authService.logout();
-    }
-
+	logout(): void {
+		this.authService.logout();
+	}
 }

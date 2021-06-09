@@ -32,6 +32,7 @@ export class UserSettingsComponent implements OnInit {
     }
 
     updateProfile(form: NgForm): void {
+        const id = JSON.parse(localStorage.getItem("loginInfo")).user.id;
         const values = form.value;
 
         const dto: UpdateProfileDto = {
@@ -40,7 +41,7 @@ export class UserSettingsComponent implements OnInit {
             email: values.email
         };
 
-        this.userService.updateProfile(dto).subscribe(
+        this.userService.updateProfile(id, dto).subscribe(
             (user: User) => {
                 this.set.emit(user);
                 this.updateUserInStorage(user);
