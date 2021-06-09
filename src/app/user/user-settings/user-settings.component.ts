@@ -111,11 +111,11 @@ export class UserSettingsComponent implements OnInit {
     }
 
     private updateUserInStorage(user: User): void {
-        const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
+        const loginInfo = this.authService.loginInfo.getValue();
         loginInfo.user.firstname = user.firstname;
         loginInfo.user.lastname = user.lastname;
         loginInfo.user.email = user.email;
-        loginInfo.user.profilePictureUrl = user.avatar;
+        loginInfo.user.avatar = user.avatar;
         this.authService.handleAuthentication(loginInfo);
     }
 
