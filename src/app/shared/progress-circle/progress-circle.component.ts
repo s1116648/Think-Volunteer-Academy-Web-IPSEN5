@@ -12,29 +12,21 @@ export class ProgressCircleComponent implements OnInit {
 	completedBackground: string = "yellow-progress-circle";
 	constructor() {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.convertNumberToRoman(1);
+	}
 
-	convertNumberToRoman(num: number): any {
-		if (num < 1) {
-			return "";
-		}
-		if (num >= 40) {
-			return "XL" + this.convertNumberToRoman(num - 40);
-		}
-		if (num >= 10) {
-			return "X" + this.convertNumberToRoman(num - 10);
-		}
-		if (num >= 9) {
-			return "IX" + this.convertNumberToRoman(num - 9);
-		}
-		if (num >= 5) {
-			return "V" + this.convertNumberToRoman(num - 5);
-		}
-		if (num >= 4) {
-			return "IV" + this.convertNumberToRoman(num - 4);
-		}
-		if (num >= 1) {
-			return "I" + this.convertNumberToRoman(num - 1);
-		}
+	convertNumberToRoman(num: number): string {
+		const romanNumerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+		const integerArray = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+		let romanizedNumber = "";
+
+		romanNumerals.forEach((value, index) => {
+			while (num >= integerArray[index]) {
+				romanizedNumber += value;
+				num -= integerArray[index];
+			}
+		});
+		return romanizedNumber;
 	}
 }
