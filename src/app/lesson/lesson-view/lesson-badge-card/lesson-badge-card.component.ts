@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import {Badge} from "../../../shared/badge.model";
+import {Lesson} from "../../lesson.model";
+
 
 @Component({
 	selector: "app-lesson-badge-card",
@@ -6,7 +9,12 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./lesson-badge-card.component.scss"],
 })
 export class LessonBadgeCardComponent implements OnInit {
+	@Input() lesson: Lesson;
+	@Input() badges: Badge[];
+	badge: Badge;
 	constructor() {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.badge = this.badges.find(badge => badge.lesson.id === this.lesson.id);
+	}
 }

@@ -1,0 +1,29 @@
+<div class="course-card">
+	<div class="image-container">
+		<figure>
+			<img [src]="image" alt="Course banner" />
+		</figure>
+
+		<div class="progress-bar">
+			<div
+				class="progress-bar-inner"
+				*ngIf="progress"
+				[style.width.%]="progressPercentage"
+			></div>
+		</div>
+	</div>
+
+	<div>
+		<h3>{{ course.name }}</h3>
+
+		<button [routerLink]="course.id" class="button">
+			To course
+			<span class="icon">
+				<fa-icon
+					[icon]="icons.faArrowRight"
+					class="button-icon"
+				></fa-icon>
+			</span>
+		</button>
+	</div>
+</div>

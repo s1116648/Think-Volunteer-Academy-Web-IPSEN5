@@ -89,14 +89,13 @@
 						"karmaConfig": "karma.conf.js",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-							"src/styles.css",
+							"src/styles.scss",
 							"./node_modules/quill/dist/quill.core.css",
 							"./node_modules/quill/dist/quill.bubble.css",
 							"./node_modules/quill/dist/quill.snow.css"
 						],
 						"scripts": [
-							"node_modules/quill/dist/quill.min.js",
-							"node_modules/jquery/dist/jquery.min.js"
+							"node_modules/quill/dist/quill.min.js"
 						]
 					}
 				},
