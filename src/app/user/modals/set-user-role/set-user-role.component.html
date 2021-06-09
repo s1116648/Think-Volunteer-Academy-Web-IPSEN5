@@ -1,0 +1,40 @@
+<app-modal [title]="'Set user role'" (closeModal)="close()">
+	<ng-container body>
+		<form #userRoleForm="ngForm" id="set-role-form" (ngSubmit)="setRole(userRoleForm)">
+			<div class="form-group">
+				<app-dropdown
+					class="dropdown column grow"
+					name="role"
+					id="role"
+					placeholder="Select a role"
+					ngDefaultControl
+					required
+					ngModel
+					[dark]="true"
+					[options]="roles"
+				>
+					<ng-template appDropdownSelected let-selected>
+						<p>{{ selected.name }}</p>
+					</ng-template>
+					<ng-template appDropdownOption let-option>
+						<div class="columns">
+							<p class="column grow">{{ option.name }}</p>
+						</div>
+					</ng-template>
+				</app-dropdown>
+			</div>
+		</form>
+	</ng-container>
+	<ng-container footer>
+		<div class="columns">
+			<div class="column grow">
+				<button class="button primary" form="set-role-form" [disabled]="userRoleForm.invalid">
+					Set role
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+		</div>
+	</ng-container>
+</app-modal>

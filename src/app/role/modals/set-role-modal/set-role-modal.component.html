@@ -30,9 +30,9 @@
       </div>
 
       <div class="form-group">
-        <label for="permissions">Permissions</label>
+        <label>Permissions</label>
         <div *ngFor="let permission of permissions">
-          <input type="checkbox" name="permissions" id="permissions" [(ngModel)]="permission.isChecked" (change)="fetchSelectedItems()">{{permission.name}}{{ permission.isChecked}}
+          <input type="checkbox" name="permissions" [checked]="permission.isChecked" [(ngModel)]="permission.isChecked" (change)="fetchSelectedItems()">{{permission.name}}
         </div>
       </div>
 

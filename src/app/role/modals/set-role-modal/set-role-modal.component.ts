@@ -75,6 +75,7 @@ export class SetRoleModalComponent implements OnInit, Modal {
     this.roleService
         .update(this.role.id, roleDTO)
         .subscribe((role: Role) => {
+          console.log(this.selectedPermissions);
           this.set.emit(role);
         });
   }

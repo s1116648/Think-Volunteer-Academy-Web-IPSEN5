@@ -5,6 +5,7 @@ import { User } from "./user.model";
 import { UpdateProfileDto } from "./dto/update-profile.dto";
 import { ChangePasswordDto } from "./dto/change-password.dto";
 import { map } from "rxjs/operators";
+import { UpdateUserRoleDto } from "./dto/update-user-role.dto";
 
 @Injectable({
   providedIn: "root"
@@ -21,11 +22,19 @@ export class UserService {
     );
   }
 
-    updateProfile(id: string, dto: UpdateProfileDto): Observable<User> {
-        return this.http.patch<User>("/users/" + id, dto);
-    }
+  updateProfile(id: string, dto: UpdateProfileDto): Observable<User> {
+      return this.http.patch<User>("/users/" + id, dto);
+  }
 
-    changePassword(dto: ChangePasswordDto): Observable<User> {
-        return this.http.patch<User>("/users/change-password", dto);
-    }
+  changePassword(dto: ChangePasswordDto): Observable<User> {
+      return this.http.patch<User>("/users/change-password", dto);
+  }
+
+  addUserRole(userId: string, dto: UpdateUserRoleDto): Observable<User>{
+      return this.http.post<User>(`/users/${userId}/roles`, dto);
+  }
+
+  removeUserRole(userId: string, dto: UpdateUserRoleDto): Observable<void>{
+      return this.http.delete<void>(`/users/${userId}/roles`, dto);
+  }
 }
