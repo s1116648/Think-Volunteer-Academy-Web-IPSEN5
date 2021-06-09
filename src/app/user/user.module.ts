@@ -16,7 +16,11 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		UserOverviewComponent,
 		UserRowComponent,
 	],
-	exports: [UserSettingsComponent, UserOverviewComponent],
+	exports: [
+		UserSettingsComponent,
+		UserOverviewComponent,
+		ProfileCardComponent,
+	],
 	imports: [
 		CommonModule,
 		UserRoutingModule,
