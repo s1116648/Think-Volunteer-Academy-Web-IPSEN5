@@ -1,6 +1,6 @@
 <section class="course-card-wrapper">
     <figure [routerLink]="course.id">
-        <img srs="{{image}}" alt="course-thumbnail">
+        <img src="{{image}}" alt="course-thumbnail">
     </figure>
     <div class="progress-bar-wrapper">
         <div id="progress-bar" *ngIf="progress" style="width: {{progress.progress*100 + '%'}}"></div>
