@@ -2,23 +2,12 @@
 	<ng-container body>
 		<div class="columns">
 			<div class="container" style="width: 100%">
-				Current Selection:
+				Selection:
 				<div class="scroll-container">
-					<div *ngFor="let newStudent of newStudents" style="width: 100%">
+					<div *ngFor="let newStudent of possibleStudents" style="width: 100%">
 						<div style="width: 100%; display: flex">
-							<input type="checkbox">
-							<label>{{ newStudent.user.firstname }} {{ newStudent.user.lastname }}</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="container" style="width: 100%">
-				Current Selection:
-				<div class="scroll-container">
-					<div *ngFor="let posStudent of possibleStudents" style="width: 100%">
-						<div style="width: 100%; display: flex">
-							<input type="checkbox">
-							<label>{{ posStudent.user.firstname }} {{ posStudent.user.lastname }}</label>
+							<input type="checkbox" (change)="setNewStudents($event, newStudent)" >
+							<label>{{ newStudent.firstname }} {{ newStudent.lastname }}</label>
 						</div>
 					</div>
 				</div>

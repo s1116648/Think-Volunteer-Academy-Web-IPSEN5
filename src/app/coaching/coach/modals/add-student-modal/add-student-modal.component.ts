@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Role } from "../../../../role/role.model";
 import { Modal } from "../../../../shared/modals/modal.interface";
 import { Coach } from "../../coach.model";
 import { StudentService } from "../../../student/student.service";
 import { Student } from "../../../student/student.model";
+import { UserService } from "../../../../user/user.service";
+import { User } from "../../../../user/user.model";
 
 @Component({
   selector: "app-add-student-modal",
@@ -15,31 +16,29 @@ export class AddStudentModalComponent implements OnInit, Modal {
 
   @Input() coach: Coach;
 
-  currentStudents: Student[];
-  newStudents: Student[];
-  possibleStudents: Student[];
+  newStudents: User[] = [];
+  possibleStudents: User[] = [];
 
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.studentService.getStudentsByCoach(this.coach.id).subscribe((students) => {
-      console.log(students);
-      this.currentStudents = students;
-      this.newStudents = students;
-    });
-
-    this.studentService.getUnassignedStudents().subscribe((students) => {
-      this.possibleStudents = students;
+    this.studentService.getUnassignedStudents().subscribe((users) => {
+        this.possibleStudents = users;
     });
   }
 
-  addStudentClicked(): void{
-
+  setNewStudents(e, student: User): void {
+    if (e.currentTarget.checked){
+      this.newStudents.push(student);
+    }
+    else{
+      this.newStudents = this.newStudents.filter((arrayStudent: User) => {
+        return arrayStudent.id !== student.id;
+      });
+    }
   }
 
-  removeStudentClicked(): void{
 
-  }
 
   close = (): void => this.closeModal.emit();
 }

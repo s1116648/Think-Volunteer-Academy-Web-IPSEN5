@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { filter, map } from "rxjs/operators";
 import { Student } from "./student.model";
 import { HttpClient } from "@angular/common/http";
+import { User } from "../../user/user.model";
 
 @Injectable({
   providedIn: "root"
@@ -13,10 +14,10 @@ export class StudentService {
       private http: HttpClient,
   ) { }
 
-  getUnassignedStudents(): Observable<Student[]>{
-      return this.http.get<any>(`/students`).pipe(
-          map((responseData: { items: Student[] }) => {
-              return responseData.items.filter(student => student.coach == null);
+  getUnassignedStudents(): Observable<User[]>{
+      return this.http.get<any>(`/users/coachless`).pipe(
+          map((responseData: { items: User[] }) => {
+              return responseData.items;
           })
       );
   }
