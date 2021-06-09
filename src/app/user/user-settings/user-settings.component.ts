@@ -29,7 +29,7 @@ export class UserSettingsComponent implements OnInit {
         private userService: UserService,
         private authService: AuthService,
         private fileService: FileService,
-        private resizeServive: ImageResizerService) {
+        private resizeService: ImageResizerService) {
     }
 
     ngOnInit(): void {
@@ -50,7 +50,7 @@ export class UserSettingsComponent implements OnInit {
             return;
         }
 
-        this.resizeServive.resizeImage(file, 180, 180).subscribe((resizedImage: File) => {
+        this.resizeService.resizeImage(file, 180, 180).subscribe((resizedImage: File) => {
             this.fileService
                 .upload(resizedImage)
                 .subscribe((uploadedFileResponse: UploadedFileResponse) => {
@@ -100,7 +100,7 @@ export class UserSettingsComponent implements OnInit {
                     this.showPasswordMessage(true);
                 },
                 () => {
-                    this.setPasswordMessage("An error has occured. Check your password.");
+                    this.setPasswordMessage("An error has occurred. Check your password.");
                     this.showPasswordMessage(true);
                 }
             );
