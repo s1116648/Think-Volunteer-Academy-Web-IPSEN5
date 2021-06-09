@@ -3,9 +3,8 @@ import { AuthService } from "src/app/auth/auth.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { CourseCategory } from "../../course-category/course-category.model";
 import { CourseCategoryService } from "../../course-category/course-category.service";
-import { Course } from "../course.model";
 import { CourseService } from "../course.service";
-import { MyCourse } from "./my-courses/my-courses.model";
+import { MyCourse } from "../my-courses.model";
 
 @Component({
 	selector: "app-courses-overview",

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Course } from "../../course.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Progress } from "../my-courses/progress.model";
 import { environment } from "../../../../environments/environment";
+import { Progress } from "../../progress.model";
 
 @Component({
 	selector: "app-course-card",

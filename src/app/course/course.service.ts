@@ -5,7 +5,7 @@ import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Course } from "./course.model";
 import { CreateCourseDTO } from "./dto/create-course.dto";
 import { UpdateCourseDTO } from "./dto/update-course.dto";
-import { MyCourse } from "./courses-overview/my-courses/my-courses.model";
+import { MyCourse } from "./my-courses.model";
 
 @Injectable({
 	providedIn: "root",

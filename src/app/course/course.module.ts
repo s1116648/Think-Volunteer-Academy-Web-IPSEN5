@@ -14,7 +14,6 @@ import { CreateCourseComponent } from "./create-course/create-course.component";
 import { AdminCourseOverviewComponent } from "./admin-course-overview/admin-course-overview.component";
 import { LessonModule } from "../lesson/lesson.module";
 import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
-import { MyCoursesComponent } from "./courses-overview/my-courses/my-courses.component";
 import { DragulaModule } from "ng2-dragula";
 import { CategoryCardComponent } from "./courses-overview/category-card/category-card.component";
 import { MyCoachCardComponent } from "./courses-overview/my-coach-card/my-coach-card.component";
@@ -37,7 +36,6 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 		CourseCardComponent,
 		CategoryCardComponent,
 		AdminCourseInfoComponent,
-		MyCoursesComponent,
 		AdminOverviewComponent,
 	],
 	imports: [
