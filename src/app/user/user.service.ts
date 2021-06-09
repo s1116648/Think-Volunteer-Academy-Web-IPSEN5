@@ -34,7 +34,7 @@ export class UserService {
       return this.http.post<User>(`/users/${userId}/roles`, dto);
   }
 
-  removeUserRole(userId: string, dto: UpdateUserRoleDto): Observable<void>{
-      return this.http.delete<void>(`/users/${userId}/roles`, dto);
+  removeUserRole(userId: string): Observable<void>{
+      return this.http.delete<void>(`/users/${userId}/roles`);
   }
 }
