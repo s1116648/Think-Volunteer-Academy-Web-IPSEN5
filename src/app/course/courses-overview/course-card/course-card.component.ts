@@ -17,15 +17,5 @@ export class CourseCardComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        if (this.progress) {
-            this.setProgressBar();
-        }
-    }
-
-    setProgressBar(): void {
-        const width = this.progress.progress * 100;
-        if (document.getElementById("progress-bar")) {
-            document.getElementById("progress-bar").style.width = `${width}%`;
-        }
     }
 }
