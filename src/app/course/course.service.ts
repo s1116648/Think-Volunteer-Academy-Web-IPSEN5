@@ -5,6 +5,7 @@ import { HttpPaginatedResult } from "../shared/http-paginated-result";
 import { Course } from "./course.model";
 import { CreateCourseDTO } from "./dto/create-course.dto";
 import { UpdateCourseDTO } from "./dto/update-course.dto";
+import { MyCourse } from "./my-courses.model";
 
 @Injectable({
 	providedIn: "root",
@@ -35,6 +36,20 @@ export class CourseService {
 	getSimilar(id: string): Observable<HttpPaginatedResult<Course>> {
 		return this.http.get<HttpPaginatedResult<Course>>(
 			`/courses/${id}/similar`
+		);
+	}
+
+	getCoursesByCategory(
+		categoryId: string
+	): Observable<HttpPaginatedResult<Course>> {
+		return this.http.get<HttpPaginatedResult<Course>>(
+			`/categories/${categoryId}/courses`
+		);
+	}
+
+	getCoursesFromUser(id: string): Observable<HttpPaginatedResult<MyCourse>> {
+		return this.http.get<HttpPaginatedResult<MyCourse>>(
+			`/users/${id}/courses`
 		);
 	}
 }

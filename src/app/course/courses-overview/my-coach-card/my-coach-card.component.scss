@@ -1,0 +1,30 @@
+@import "/src/app/shared/variables";
+
+.columns {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	gap: 0;
+}
+
+.avatar {
+	height: 40px;
+	width: 40px;
+	border-radius: 200px;
+	margin-right: 6px;
+}
+
+button.button {
+	background-color: $color-background;
+	max-width: none;
+	display: flex;
+	justify-content: flex-start;
+
+	span.icon {
+		margin-left: auto;
+	}
+}
+
+.chevron-icon {
+	font-size: 12px;
+	color: $color-gray-600;
+}
