@@ -14,4 +14,16 @@
 			</div>
 		</div>
 	</ng-container>
+	<ng-container footer>
+		<div class="columns">a
+			<div class="column grow">
+				<button class="button primary" (click)="saveNewStudents()" [disabled]="isTransferring">
+					Assign students to coach
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+		</div>
+	</ng-container>
 </app-modal>

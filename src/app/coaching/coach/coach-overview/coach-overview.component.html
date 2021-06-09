@@ -5,7 +5,10 @@
 		</section>
 
 		<section class="main-content">
-			<h1 style="margin-bottom: 20px">Manage coaches</h1>
+			<div class="columns">
+				<h1 class="column grow" style="margin-bottom: 20px">Manage coaches</h1>
+				<button class="button primary" (click)="openAddCoachModal()">Add coach<span class="icon"><fa-icon [icon]="icons.faPlus"></fa-icon></span></button>
+			</div>
 
 			<section class="section" *ngFor="let coach of coaches">
 				<div class="coach-row">
@@ -15,6 +18,9 @@
 
 						<div class="column">
 							<button (click)="openAddStudentModal(coach)">Add students</button>
+						</div>
+						<div class="column">
+							<button (click)="removeCoach(coach)">Remove coach</button>
 						</div>
 					</div>
 					<app-student-overview [coach]="coach"></app-student-overview>

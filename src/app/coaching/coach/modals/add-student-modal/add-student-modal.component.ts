@@ -5,6 +5,8 @@ import { StudentService } from "../../../student/student.service";
 import { Student } from "../../../student/student.model";
 import { UserService } from "../../../../user/user.service";
 import { User } from "../../../../user/user.model";
+import { faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { forkJoin, Observable } from "rxjs";
 
 @Component({
   selector: "app-add-student-modal",
@@ -12,14 +14,22 @@ import { User } from "../../../../user/user.model";
   styleUrls: ["./add-student-modal.component.scss"]
 })
 export class AddStudentModalComponent implements OnInit, Modal {
-  @Output() closeModal = new EventEmitter();
+  icons = { faCheck };
 
+  @Output() closeModal = new EventEmitter();
+  @Output() set = new EventEmitter<Student[]>();
   @Input() coach: Coach;
 
+  isTransferring: boolean = false;
+
   newStudents: User[] = [];
+  students: Student[] = [];
   possibleStudents: User[] = [];
 
-  constructor(private studentService: StudentService, private userService: UserService) { }
+  constructor(
+      private studentService: StudentService,
+      private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.studentService.getUnassignedStudents().subscribe((users) => {
@@ -38,7 +48,20 @@ export class AddStudentModalComponent implements OnInit, Modal {
     }
   }
 
+  saveNewStudents(): void{
+    this.isTransferring = true;
 
+    const studentToCoachObservables: Observable<Student>[] = [];
+    this.newStudents.forEach((student) => {
+      const observable = this.studentService.addStudentToCoach(this.coach.id, student.id);
+      studentToCoachObservables.push(observable);
+    });
+    forkJoin(studentToCoachObservables).subscribe((students: Student[]) => {
+      this.set.emit(students);
+      this.studentService.addedStudentsToCoach.next(students);
+      this.close();
+    });
+  }
 
   close = (): void => this.closeModal.emit();
 }

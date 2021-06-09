@@ -5,7 +5,7 @@ import { CoachOverviewComponent } from "./coach/coach-overview/coach-overview.co
 
 const routes: Routes = [
   {
-    path: "coaching/manage",
+    path: "admin/manage/coaches",
     component: CoachOverviewComponent,
   },
 ];

@@ -3,7 +3,7 @@
 		<h3 class="column grow">{{ student.user.firstname }} {{ student.user.lastname }}</h3>
 
 		<div class="column">
-			<button >Remove student</button>
+			<button (click)="removeFromCoach(student)">Remove student</button>
 		</div>
 	</div>
 </div>

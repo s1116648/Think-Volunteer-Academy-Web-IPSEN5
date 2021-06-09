@@ -1,1 +1,41 @@
-<p>add-coach-modal works!</p>
+<app-modal [title]="'Add coach'" (closeModal)="close()">
+	<ng-container body>
+		<form #coachForm="ngForm" id="coach-form" (ngSubmit)="addCoach(coachForm)">
+			<div class="form-group">
+				<label for="coach">Selection</label>
+				<app-dropdown
+					class="dropdown column grow"
+					name="coach"
+					id="coach"
+					placeholder="Select a new coach"
+					ngDefaultControl
+					required
+					ngModel
+					[dark]="true"
+					[options]="possibleCoaches"
+				>
+					<ng-template appDropdownSelected let-selected>
+						<p>{{ selected.firstname }} {{ selected.lastname }}</p>
+					</ng-template>
+					<ng-template appDropdownOption let-option>
+						<div class="columns">
+							<p class="column grow">{{ option.firstname }} {{ option.lastname }}</p>
+						</div>
+					</ng-template>
+				</app-dropdown>
+			</div>
+		</form>
+	</ng-container>
+	<ng-container footer>
+		<div class="columns">
+			<div class="column grow">
+				<button class="button primary" form="coach-form" [disabled]="coachForm.invalid">
+					Assign as coach
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+		</div>
+	</ng-container>
+</app-modal>

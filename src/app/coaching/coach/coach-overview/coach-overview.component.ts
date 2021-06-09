@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CoachService } from "../coach.service";
 import { Coach } from "../coach.model";
-import { Role } from "../../../role/role.model";
-import { SetRoleModalComponent } from "../../../role/modals/set-role-modal/set-role-modal.component";
 import { ModalService } from "../../../shared/modal.service";
 import { PlaceholderDirective } from "../../../shared/placeholder.directive";
-import { AddCoachModalComponent } from "../modals/add-coach-modal/add-coach-modal.component";
 import { AddStudentModalComponent } from "../modals/add-student-modal/add-student-modal.component";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { AddCoachModalComponent } from "../modals/add-coach-modal/add-coach-modal.component";
 
 @Component({
   selector: "app-coach-overview",
@@ -17,7 +16,8 @@ export class CoachOverviewComponent implements OnInit {
   @ViewChild(PlaceholderDirective, { static: false })
   modalHost: PlaceholderDirective;
 
-  coaches: Coach[];
+  icons = { faPlus };
+  coaches: Coach[] = [];
 
   constructor(
       private coachService: CoachService,
@@ -27,8 +27,21 @@ export class CoachOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.coachService.getCoaches().subscribe((coaches: Coach[]) => {
       this.coaches = coaches;
-      console.log(coaches);
     });
+  }
+
+  createCoach(): void{
+    this.coachService.getCoaches().subscribe((coaches: Coach[]) => {
+      this.coaches = coaches;
+    });
+  }
+
+  openAddCoachModal(): void {
+    const modal = this.modalService.createModal(
+        AddCoachModalComponent,
+        this.modalHost
+    );
+    modal.instance.set.subscribe((coach) => this.coaches.push(coach));
   }
 
   openAddStudentModal(coach: Coach): void {
@@ -39,9 +52,10 @@ export class CoachOverviewComponent implements OnInit {
     modal.instance.coach = coach;
   }
 
-  createCoach(): void{
-    this.coachService.getCoaches().subscribe((coaches: Coach[]) => {
-      this.coaches = coaches;
+  removeCoach(coach: Coach): void {
+    this.coachService.delete(coach.id).subscribe(() => {
+      const index = this.coaches.findIndex( c => c.id === coach.id);
+      this.coaches.splice(index, 1);
     });
   }
 }

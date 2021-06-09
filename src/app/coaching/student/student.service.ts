@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { filter, map } from "rxjs/operators";
 import { Student } from "./student.model";
 import { HttpClient } from "@angular/common/http";
@@ -9,6 +9,7 @@ import { User } from "../../user/user.model";
   providedIn: "root"
 })
 export class StudentService {
+    addedStudentsToCoach: Subject<Student[]> = new Subject<Student[]>();
 
   constructor(
       private http: HttpClient,
@@ -35,5 +36,10 @@ export class StudentService {
           .post<Student>(`/coaches/${coachId}/students`, {
               userId: studentUserId,
           });
+  }
+
+  removeStudentFromCoach(coachId: string, userId: string): Observable<null>{
+      console.log("yeet");
+      return this.http.delete<null>(`/coaches/${coachId}/students/${userId}`);
   }
 }
