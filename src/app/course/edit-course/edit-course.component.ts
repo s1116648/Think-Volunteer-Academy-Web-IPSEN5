@@ -66,8 +66,6 @@ export class EditCourseComponent implements OnInit {
 			active: values.active,
 		};
 
-		console.log(values, dto);
-
 		this.courseService
 			.update(this.course.id, dto)
 			.subscribe(() =>
