@@ -25,7 +25,9 @@ export class RoleComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.roles = this.roleService.fetchNonReal();
+		this.roleService.fetchRoles().subscribe((roles: Role[]) => {
+			this.roles = roles;
+		});
 	}
 
 	openEditRoleModal(role: Role): void {
@@ -41,5 +43,10 @@ export class RoleComponent implements OnInit {
 			SetRoleModalComponent,
 			this.modalHost
 		);
+		modal.instance.set.subscribe((role) => {
+			const index = this.roles.findIndex( r => r.id === role.id);
+			this.roles.splice(index, 1);
+			this.roles.push(role);
+		});
 	}
 }

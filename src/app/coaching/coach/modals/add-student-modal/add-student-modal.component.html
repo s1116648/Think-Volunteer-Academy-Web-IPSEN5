@@ -1,0 +1,29 @@
+<app-modal [title]="'Add student to coach: ' + coach.user.firstname + ' '+ coach.user.lastname" (closeModal)="close()">
+	<ng-container body>
+		<div class="columns">
+			<div class="container" style="width: 100%">
+				Selection:
+				<div class="scroll-container">
+					<div *ngFor="let newStudent of possibleStudents" style="width: 100%">
+						<div style="width: 100%; display: flex">
+							<input type="checkbox" (change)="setNewStudents($event, newStudent)" >
+							<label>{{ newStudent.firstname }} {{ newStudent.lastname }}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container footer>
+		<div class="columns">
+			<div class="column grow">
+				<button class="button primary" (click)="saveNewStudents()" [disabled]="isTransferring">
+					Assign students to coach
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+		</div>
+	</ng-container>
+</app-modal>
