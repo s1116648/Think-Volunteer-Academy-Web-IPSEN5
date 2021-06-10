@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="content-holder">
+        <section class="left-sidebar">
+            <app-profile-card></app-profile-card>
+            <section>
+                <h3>Chats</h3>
+    
+                <ul>
+                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                </ul>
+            </section>
+        </section>
+    
+        <section class="main-content">
+            <app-chat-window *ngIf="currentChat" [chat]="currentChat"></app-chat-window>
+        </section>
+    </div>    
+</div>

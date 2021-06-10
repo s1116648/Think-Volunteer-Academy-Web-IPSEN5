@@ -17,6 +17,7 @@ import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
 import { CoachingModule } from "./coaching/coaching.module";
+import { ChatModule } from "./chat/chat.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { CoachingModule } from "./coaching/coaching.module";
 		CoachingModule,
 		SharedModule,
 		DragulaModule.forRoot(),
+		ChatModule,
 	],
 	providers: [
 		{

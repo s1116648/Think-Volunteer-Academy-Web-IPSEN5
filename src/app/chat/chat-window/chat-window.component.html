@@ -1,0 +1,35 @@
+<div class="chat-window">
+	<header>
+		<h1>Chat with {{ chatUser.firstname }}</h1>
+	</header>
+
+    <div class="messages-wrapper">
+        <ul class="messages">
+            <li class="message receiver" [class.sender]="isSender(message)" *ngFor="let message of messages">
+                <p class="date">{{ message.createdAt | date }}</p>
+                <div class="message-box">
+                    <p>{{ message.message }}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+	<footer>
+		<form #form="ngForm" (ngSubmit)="sendMessage(form)">
+			<input
+				type="text"
+				name="message"
+				placeholder="Type your message to {{ chatUser.firstname }}"
+                [disabled]="message == ''"
+				ngModel
+                required
+			/>
+			<button class="button primary" type="submit">
+				Send
+				<span class="icon"
+					><fa-icon [icon]="icons.faPaperPlane"></fa-icon
+				></span>
+			</button>
+		</form>
+	</footer>
+</div>

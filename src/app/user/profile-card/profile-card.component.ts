@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/auth/auth.service";
+import { User } from "../user.model";
 
 @Component({
 	selector: "app-profile-card",
@@ -12,10 +14,10 @@ export class ProfileCardComponent implements OnInit {
 	firstname: string;
 	lastname: string;
 
-	constructor() {}
+	constructor(private authService: AuthService) {}
 
 	ngOnInit(): void {
-		const currentUser = JSON.parse(localStorage.getItem("loginInfo")).user;
+		const currentUser: User = this.authService.loginInfo.getValue().user;
 		this.setName(currentUser.firstname, currentUser.lastname);
 	}
 
