@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { User } from "../user.model";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-user-row",
@@ -8,7 +9,14 @@ import { User } from "../user.model";
 })
 export class UserRowComponent implements OnInit {
 	@Input() user: User;
+	@Output() updateUserRole = new EventEmitter<User>();
 	constructor() {}
 
+	icons = { faPen };
+
 	ngOnInit(): void {}
+
+	openEditRoleModal(): void {
+		this.updateUserRole.emit(this.user);
+	}
 }
