@@ -1,3 +1,5 @@
+@import "/src/app/shared/variables";
+
 .recommendation {
     display: flex;
     align-items: center;
@@ -6,9 +8,11 @@
 
     figure {
         height: 70px;
-        width: 80px;
+        max-width: 80px;
+        width: 100%;
         border-radius: 7px;
         overflow: hidden;
+        background-color: $color-background;
     
         img {
             object-fit: cover;
