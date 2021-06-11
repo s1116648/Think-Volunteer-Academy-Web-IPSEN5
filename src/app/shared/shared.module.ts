@@ -17,6 +17,7 @@ import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
 import { AvatarComponent } from "./avatar/avatar.component";
+import { CourseProgressionBannerComponent } from "./course-progression-banner/course-progression-banner.component";
 
 @NgModule({
 	declarations: [
@@ -36,6 +37,7 @@ import { AvatarComponent } from "./avatar/avatar.component";
 		ModalComponent,
 		CourseBannerUploaderComponent,
 		AvatarComponent,
+		CourseProgressionBannerComponent,
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -55,6 +57,7 @@ import { AvatarComponent } from "./avatar/avatar.component";
 		TruncatePipe,
 		CourseBannerUploaderComponent,
 		AvatarComponent,
+		CourseProgressionBannerComponent,
 	],
 })
 export class SharedModule {}

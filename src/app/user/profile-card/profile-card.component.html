@@ -4,14 +4,13 @@
 		<li class="columns">
 			<app-avatar [avatar]="currentUser.avatar"></app-avatar>
 			<p>
-				{{
-					this.currentUser.firstname + " " + this.currentUser.lastname
-				}}
+				{{ currentUser.firstname }}
+				{{ currentUser.lastname }}
 			</p>
 		</li>
 	</ul>
 
-	<button class="button">
+	<button class="button" [routerLink]="['/profile']">
 		My profile
 		<span class="icon"
 			><fa-icon [icon]="icons.faArrowRight"></fa-icon
