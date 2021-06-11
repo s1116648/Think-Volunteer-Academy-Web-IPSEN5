@@ -17,6 +17,7 @@ import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
 import { Ng2ImgMaxModule } from "ng2-img-max";
+import {TestModule} from "./test/test.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { Ng2ImgMaxModule } from "ng2-img-max";
 		SharedModule,
 		DragulaModule.forRoot(),
 		Ng2ImgMaxModule,
+		TestModule
 	],
 	providers: [
 		{
