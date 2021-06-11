@@ -1,12 +1,12 @@
 <label class="image-upload">
-    <input type="file" (change)="onFileUpload($event)" [disabled]="disabled" />
-    <img *ngIf="imagePath" [src]="imageUrl" alt="Course banner image">
-    <div class="overlay" *ngIf="!isUploading">
-        <fa-icon [icon]="icons.faImage"></fa-icon>
-        <p *ngIf="!imagePath">Click to add an image</p>
-        <p *ngIf="imagePath">Click to change image</p>
-    </div>
-    <div class="overlay" *ngIf="isUploading">
-        <p>Uploading...</p>
-    </div>
+	<input type="file" (change)="onFileUpload($event)" [disabled]="disabled" accept="image/*" />
+	<img *ngIf="imagePath" [src]="imageUrl" alt="Course banner image" />
+	<div class="overlay" *ngIf="!isUploading">
+		<fa-icon [icon]="icons.faImage"></fa-icon>
+		<p *ngIf="!imagePath">Click to add an image</p>
+		<p *ngIf="imagePath">Click to change image</p>
+	</div>
+	<div class="overlay" *ngIf="isUploading">
+		<p>Uploading...</p>
+	</div>
 </label>

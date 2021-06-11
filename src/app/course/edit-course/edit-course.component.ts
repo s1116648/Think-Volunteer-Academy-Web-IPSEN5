@@ -66,8 +66,6 @@ export class EditCourseComponent implements OnInit {
 			active: values.active,
 		};
 
-		console.log(values, dto);
-
 		this.courseService
 			.update(this.course.id, dto)
 			.subscribe(() =>
@@ -78,7 +76,7 @@ export class EditCourseComponent implements OnInit {
 	remove(): void {
 		this.courseService
 			.remove(this.course.id)
-			.subscribe(() => this.router.navigate(["/admin", "courses"]));
+			.subscribe(() => this.router.navigate(["/admin"]));
 	}
 
 	showCreateCategoryModal(): void {

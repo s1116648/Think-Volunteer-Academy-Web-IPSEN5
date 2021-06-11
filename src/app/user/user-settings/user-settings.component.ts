@@ -32,10 +32,6 @@ export class UserSettingsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.currentUser = this.authService.loginInfo.getValue().user;
-		if (!this.currentUser.avatar) {
-			this.currentUser.avatar =
-				"https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
-		}
 	}
 
 	onFileUpload(event: Event): void {
@@ -55,7 +51,7 @@ export class UserSettingsComponent implements OnInit {
 				this.fileService
 					.upload(resizedImage)
 					.subscribe((uploadedFileResponse: UploadedFileResponse) => {
-						this.currentUser.avatar = uploadedFileResponse.url;
+						this.currentUser.avatar = uploadedFileResponse.path;
 						this.isUploading = false;
 					});
 			});
