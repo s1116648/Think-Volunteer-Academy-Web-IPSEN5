@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { AuthService } from "src/app/auth/auth.service";
 import { User } from "../user.model";
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
 	selector: "app-profile-card",
@@ -11,18 +11,15 @@ import { User } from "../user.model";
 export class ProfileCardComponent implements OnInit {
 	icons = { faArrowRight };
 
-	firstname: string;
-	lastname: string;
+	currentUser: User;
 
 	constructor(private authService: AuthService) {}
 
 	ngOnInit(): void {
-		const currentUser: User = this.authService.loginInfo.getValue().user;
-		this.setName(currentUser.firstname, currentUser.lastname);
-	}
-
-	setName(firstname: string, lastname: string): void {
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.currentUser = this.authService.loginInfo.getValue().user;
+		if (!this.currentUser.avatar) {
+			this.currentUser.avatar =
+				"https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
+		}
 	}
 }

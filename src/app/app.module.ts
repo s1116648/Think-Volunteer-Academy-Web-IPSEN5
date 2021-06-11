@@ -16,8 +16,9 @@ import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
-import { CoachingModule } from "./coaching/coaching.module";
 import { ChatModule } from "./chat/chat.module";
+import { Ng2ImgMaxModule } from "ng2-img-max";
+import { CoachingModule } from "./coaching/coaching.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -34,10 +35,11 @@ import { ChatModule } from "./chat/chat.module";
 		RoleModule,
 		ManageModule,
 		UserModule,
-		CoachingModule,
 		SharedModule,
 		DragulaModule.forRoot(),
 		ChatModule,
+		Ng2ImgMaxModule,
+		CoachingModule,
 	],
 	providers: [
 		{

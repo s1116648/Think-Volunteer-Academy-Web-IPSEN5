@@ -16,7 +16,7 @@ import { ProgressCircleComponent } from "./progress-circle/progress-circle.compo
 import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
-import { AvatarComponent } from './avatar/avatar.component';
+import { AvatarComponent } from "./avatar/avatar.component";
 
 @NgModule({
 	declarations: [
@@ -54,6 +54,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 		TopNavComponent,
 		TruncatePipe,
 		CourseBannerUploaderComponent,
+		AvatarComponent,
 	],
 })
 export class SharedModule {}

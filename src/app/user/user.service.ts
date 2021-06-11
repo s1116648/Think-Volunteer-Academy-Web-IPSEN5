@@ -8,19 +8,20 @@ import { map } from "rxjs/operators";
 import { UpdateUserRoleDTO } from "./dto/update-user-role.dto";
 
 @Injectable({
-  providedIn: "root"
+    providedIn: "root"
 })
 export class UserService {
 
-  constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) {
+    }
 
-  fetchUsers(): Observable<User[]> {
-    return this.http.get<any>("/users").pipe(
-      map((responseData: { items: User[] }) => {
-        return responseData.items;
-      })
-    );
-  }
+    fetchUsers(): Observable<User[]> {
+        return this.http.get<any>("/users").pipe(
+            map((responseData: { items: User[] }) => {
+                return responseData.items;
+            })
+        );
+    }
 
   updateProfile(id: string, dto: UpdateProfileDto): Observable<User> {
       return this.http.patch<User>("/users/" + id, dto);
