@@ -11,6 +11,7 @@ import { LessonAttachmentService } from "src/app/lesson-attachment/lesson-attach
 import {BadgeService} from "../../shared/badge.service";
 import {AuthService} from "../../auth/auth.service";
 import {Badge} from "../../shared/badge.model";
+import { faGraduationCap, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-lesson-view",
@@ -18,6 +19,7 @@ import {Badge} from "../../shared/badge.model";
 	styleUrls: ["./lesson-view.component.scss"],
 })
 export class LessonViewComponent implements OnInit {
+	icons = { faGraduationCap, faChevronRight };
 	lesson: Lesson;
 	course: Course;
 	badges: Badge[];
