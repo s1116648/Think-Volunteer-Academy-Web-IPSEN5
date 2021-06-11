@@ -8,6 +8,7 @@ import { UserRoutingModule } from "./user-routing.module";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { SetUserRoleComponent } from "./modals/set-user-role/set-user-role.component";
 import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SharedModule } from "../shared/shared.module";
 		ProfileCardComponent,
 		UserOverviewComponent,
 		UserRowComponent,
+		SetUserRoleComponent,
 	],
 	exports: [
 		UserSettingsComponent,

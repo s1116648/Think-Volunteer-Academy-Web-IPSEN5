@@ -4,6 +4,8 @@ import { User } from "../user.model";
 import { ModalService } from "../../shared/modal.service";
 import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
 import { PlaceholderDirective } from "../../shared/placeholder.directive";
+import { SetUserRoleComponent } from "../modals/set-user-role/set-user-role.component";
+import { UserRowComponent} from "../user-row/user-row.component";
 
 @Component({
 	selector: "app-user-overview",
@@ -16,8 +18,10 @@ export class UserOverviewComponent implements OnInit {
 
 	users: User[] = [];
 
-	constructor(private userService: UserService, private modalService: ModalService) {
-	}
+	constructor(
+		private userService: UserService,
+		private modalService: ModalService
+	) {}
 
 	ngOnInit(): void {
 		this.userService.fetchUsers().subscribe((users: User[]) => {
@@ -36,6 +40,19 @@ export class UserOverviewComponent implements OnInit {
 			}, (err) => {
 				console.error(err);
 			});
+		});
+	}
+
+	openSetRoleModal(user: User): void {
+		const modal = this.modalService.createModal(
+			SetUserRoleComponent,
+			this.modalHost
+		);
+		modal.instance.user = user;
+		modal.instance.set.subscribe((newUser: User) => {
+			const index = this.users.findIndex( u => u.id === user.id);
+			this.users.splice(index, 1);
+			this.users.push(newUser);
 		});
 	}
 }

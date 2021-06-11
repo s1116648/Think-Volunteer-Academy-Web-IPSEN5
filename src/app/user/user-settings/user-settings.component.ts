@@ -9,53 +9,82 @@ import { ModalService } from "../../shared/modal.service";
 import { PlaceholderDirective } from "../../shared/placeholder.directive";
 import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
 import { Router } from "@angular/router";
+import { UploadedFileResponse } from "../../file/UploadedFileResponse.model";
+import { FileService } from "../../file/file.service";
+import { ImageResizerService } from "../../file/image-resizer.service";
 
 @Component({
     selector: "app-user-settings",
     templateUrl: "./user-settings.component.html",
-    styleUrls: ["./user-settings.component.scss"]
+    styleUrls: ["./user-settings.component.scss"],
 })
 export class UserSettingsComponent implements OnInit {
-    @ViewChild(PlaceholderDirective, { static: false })
-	modalHost: PlaceholderDirective;
-
     @Output() set = new EventEmitter<User>();
 
-    firstname: string;
-    lastname: string;
-    email: string;
+    @ViewChild(PlaceholderDirective, { static: false })
+    modalHost: PlaceholderDirective;
+
+    currentUser: User;
+
+    isUploading: boolean = false;
     updateMessage: string;
     updateMessageShown: boolean;
     updatePasswordMessage: string;
     updatePasswordMessageShown: boolean;
-    user: User;
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
+        private fileService: FileService,
+        private resizeService: ImageResizerService,
         private modalService: ModalService,
-        private router: Router,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
-        this.user = JSON.parse(localStorage.getItem("loginInfo")).user;
-        this.setName(this.user.firstname, this.user.lastname);
-        this.setEmail(this.user.email);
+        this.currentUser = this.authService.loginInfo.getValue().user;
+        if (!this.currentUser.avatar) {
+            this.currentUser.avatar =
+                "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
+        }
+    }
+
+    onFileUpload(event: Event): void {
+        const acceptedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
+        const target = event.target as HTMLInputElement;
+        const files = target.files as FileList;
+        const file = files[0];
+        this.isUploading = true;
+
+        if (!acceptedImageTypes.includes(file?.type)) {
+            return;
+        }
+
+        this.resizeService
+            .resizeImage(file, 180, 180)
+            .subscribe((resizedImage: File) => {
+                this.fileService
+                    .upload(resizedImage)
+                    .subscribe((uploadedFileResponse: UploadedFileResponse) => {
+                        this.currentUser.avatar = uploadedFileResponse.url;
+                        this.isUploading = false;
+                    });
+            });
     }
 
     updateProfile(form: NgForm): void {
-        const id = JSON.parse(localStorage.getItem("loginInfo")).user.id;
         const values = form.value;
 
         const dto: UpdateProfileDto = {
             firstname: values.firstName,
             lastname: values.lastName,
-            email: values.email
+            email: values.email,
+            avatar: this.currentUser.avatar,
         };
 
-        this.userService.updateProfile(id, dto).subscribe(
+        this.userService.updateProfile(this.currentUser.id, dto).subscribe(
             (user: User) => {
-                this.set.emit(user);
+                user.avatar = this.currentUser.avatar;
                 this.updateUserInStorage(user);
                 this.setUpdateMessage("Profile saved.");
                 this.showUpdateMessage(true);
@@ -73,18 +102,18 @@ export class UserSettingsComponent implements OnInit {
             const dto: ChangePasswordDto = {
                 currentPassword: values.currentPassword,
                 newPassword: values.newPassword,
-                repeatPassword: values.repeatPassword
             };
 
             this.userService.changePassword(dto).subscribe(
                 (user: User) => {
-                    this.set.emit(user);
                     this.updateUserInStorage(user);
                     this.setPasswordMessage("Password has been changed.");
                     this.showPasswordMessage(true);
                 },
                 () => {
-                    this.setPasswordMessage("An error has occured. Check your password.");
+                    this.setPasswordMessage(
+                        "An error has occurred. Check your password."
+                    );
                     this.showPasswordMessage(true);
                 }
             );
@@ -102,7 +131,7 @@ export class UserSettingsComponent implements OnInit {
         modal.instance.title = "Are you sure you want to delete your account?";
 
         modal.instance.confirmed.subscribe(() => {
-            this.userService.delete(this.user.id).subscribe(() => {
+            this.userService.delete(this.currentUser.id).subscribe(() => {
                 this.authService.logout();
                 this.router.navigate(["login"]);
             });
@@ -110,10 +139,11 @@ export class UserSettingsComponent implements OnInit {
     }
 
     private updateUserInStorage(user: User): void {
-        const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
+        const loginInfo = this.authService.loginInfo.getValue();
         loginInfo.user.firstname = user.firstname;
         loginInfo.user.lastname = user.lastname;
         loginInfo.user.email = user.email;
+        loginInfo.user.avatar = user.avatar;
         this.authService.handleAuthentication(loginInfo);
     }
 
@@ -131,14 +161,5 @@ export class UserSettingsComponent implements OnInit {
 
     private showPasswordMessage(bool: boolean): void {
         this.updatePasswordMessageShown = bool;
-    }
-
-    private setName(firstname: string, lastname: string): void {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-
-    private setEmail(email: string): void {
-        this.email = email;
     }
 }

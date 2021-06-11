@@ -1,0 +1,10 @@
+@import "/src/app/shared/variables";
+
+.student-row {
+  padding: 20px;
+  background-color: $color-background-dark;
+
+  button {
+    color: orange;
+  }
+}

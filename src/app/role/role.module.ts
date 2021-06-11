@@ -6,10 +6,11 @@ import { RouterModule } from "@angular/router";
 import { SetRoleModalComponent } from "./modals/set-role-modal/set-role-modal.component";
 import { SharedModule } from "../shared/shared.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
 	declarations: [RoleComponent, RoleRowComponent, SetRoleModalComponent],
-	imports: [CommonModule, RouterModule, SharedModule, FontAwesomeModule],
+	imports: [CommonModule, RouterModule, SharedModule, FontAwesomeModule, FormsModule],
 	exports: [RoleComponent],
 })
 export class RoleModule {}

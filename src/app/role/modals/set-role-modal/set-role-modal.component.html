@@ -1,17 +1,61 @@
 <app-modal [title]="role ? 'Edit role' : 'Create role'" (closeModal)="close()">
   <ng-container body>
-    <div class="name">
-      <label style="margin-bottom: 3px">Role name</label>
-      <input class="input" value="{{ role?.name }}" style="width: 100%;">
-    </div>
-    <br>
-    <div class="permissions">
-      <label style="margin-bottom: 3px">Permissions</label>
-      <ul>
-        <li *ngFor="let permission of permissions">
-          {{ permission.value }}
-        </li>
-      </ul>
+    <form #roleForm="ngForm" id="set-role-form" (ngSubmit)="role ? update(roleForm) : create(roleForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Role name"
+            class="dark"
+            [ngModel]="role?.name"
+            ngModel
+            required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Description"
+            class="dark"
+            [ngModel]="role?.description"
+            ngModel
+            required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Permissions</label>
+        <div *ngFor="let permission of permissions">
+          <input type="checkbox" name="permissions" [checked]="permission.isChecked" [(ngModel)]="permission.isChecked" (change)="fetchSelectedItems()">{{permission.name}}
+        </div>
+      </div>
+
+    </form>
+  </ng-container>
+  <ng-container footer>
+    <div class="columns">
+      <div class="column grow">
+        <button class="button primary" form="set-role-form" [disabled]="roleForm.invalid">
+          Create role
+          <span class="icon"
+          ><fa-icon [icon]="icons.faCheck"></fa-icon
+          ></span>
+        </button>
+      </div>
+      <div class="column">
+        <button class="button hover-danger" [disabled]="roleForm.invalid">
+          Delete role
+          <span class="icon"
+          ><fa-icon [icon]="icons.faCheck"></fa-icon
+          ></span>
+        </button>
+      </div>
     </div>
   </ng-container>
 </app-modal>

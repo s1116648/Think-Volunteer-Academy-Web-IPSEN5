@@ -5,9 +5,10 @@ import { User } from "./user.model";
 import { UpdateProfileDto } from "./dto/update-profile.dto";
 import { ChangePasswordDto } from "./dto/change-password.dto";
 import { map } from "rxjs/operators";
+import { UpdateUserRoleDTO } from "./dto/update-user-role.dto";
 
 @Injectable({
-  providedIn: "root"
+    providedIn: "root"
 })
 export class UserService {
     constructor(private http: HttpClient){}
@@ -30,5 +31,9 @@ export class UserService {
 
     delete(id: string): Observable<void> {
         return this.http.delete<void>("/users/" + id);
+    }
+
+    setUserRole(userId: string, dto: UpdateUserRoleDTO): Observable<User>{
+        return this.http.patch<User>(`/users/${userId}`, dto);
     }
 }

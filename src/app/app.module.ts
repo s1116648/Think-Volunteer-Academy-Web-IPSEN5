@@ -16,6 +16,7 @@ import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
+import { Ng2ImgMaxModule } from "ng2-img-max";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { DragulaModule } from "ng2-dragula";
 		UserModule,
 		SharedModule,
 		DragulaModule.forRoot(),
+		Ng2ImgMaxModule,
 	],
 	providers: [
 		{
