@@ -7,9 +7,8 @@
             <h1>
                 Settings
             </h1>
-            <section class="avatar-section">
-                <img [src]="currentUser.avatar"
-                     alt="profile avatar" class="profile-avatar">
+            <section class="avatar-section columns">
+                <app-avatar [avatar]="currentUser.avatar" [size]="100"></app-avatar>
                 <input *ngIf="!isUploading" type="file" (change)="onFileUpload($event)" accept="image/*"/>
                 <p *ngIf="isUploading">Loading...</p>
             </section>

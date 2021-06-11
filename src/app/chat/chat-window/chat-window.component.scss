@@ -27,6 +27,12 @@
             .message {
                 max-width: 400px;
                 padding: 20px;
+                display: flex;
+                gap: 10px;
+                
+                .avatar {
+                    margin-top: 20px;
+                }
     
                 .date {
                     font-size: 12px;
@@ -41,9 +47,32 @@
                     padding: 15px;
                     border-radius: $border-radius;
                 }
+
+                &.first-message {
+                    .spacer {
+                        display: none;
+                    }
+                }
+
+                &:not(.first-message) {
+                    margin-top: -30px;
+
+                    .avatar {
+                        visibility: hidden;
+                    }
+
+                    &.sender .message-box {
+                        border-top-right-radius: $border-radius !important;
+                    }
+
+                    &.receiver .message-box {
+                        border-top-left-radius: $border-radius !important;
+                    }
+                }
     
                 &.sender {
                     margin-left: auto;
+                    flex-direction: row-reverse;
     
                     .date {
                         text-align: right;
@@ -51,6 +80,7 @@
         
                     .message-box {
                         border-top-right-radius: 2px;
+                        margin-left: auto;
                     }
                 }
         

@@ -8,7 +8,7 @@
                 <ul>
                     <li *ngFor="let chat of chats" [routerLink]="['/chats', chat.id]">
                         <div class="columns">
-                            <img src="assets/images/avatar-temp.jpg" alt="Profile avatar" class="avatar">
+                            <app-avatar [avatar]="getOtherUserOfChat(chat).avatar"></app-avatar>
                             <p>{{ getOtherUserOfChat(chat).firstname }}</p>
                         </div>
                     </li>
@@ -17,7 +17,11 @@
         </section>
     
         <section class="main-content">
-            <app-chat-window *ngIf="currentChat" [chat]="currentChat"></app-chat-window>
+            <app-chat-window *ngIf="currentChat; else noChatSelected" [chat]="currentChat"></app-chat-window>
+
+            <ng-template #noChatSelected>
+                <p>No chat selected</p>
+            </ng-template>
         </section>
     </div>    
 </div>

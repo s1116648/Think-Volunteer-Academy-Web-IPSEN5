@@ -3,16 +3,28 @@
 		<h1>Chat with {{ chatUser.firstname }}</h1>
 	</header>
 
-    <div class="messages-wrapper">
-        <ul class="messages">
-            <li class="message receiver" [class.sender]="isSender(message)" [class.receiver]="!isSender(message)" *ngFor="let message of messages">
-                <p class="date">{{ message.createdAt | date }}</p>
-                <div class="message-box">
-                    <p>{{ message.message }}</p>
-                </div>
-            </li>
-        </ul>
-    </div>
+	<div class="messages-wrapper">
+		<ul class="messages">
+			<li
+				class="message"
+				[class.sender]="isSender(message)"
+				[class.receiver]="!isSender(message)"
+                [class.first-message]="isFirstMessageOfUserInRow(index)"
+				*ngFor="let message of messages; let index = index"
+			>
+                <app-avatar
+                    class="avatar"
+                    [avatar]="message.sender.avatar"
+                ></app-avatar>
+				<div>
+					<p *ngIf="!dateIsSameAsPrevious(index) && isFirstMessageOfUserInRow(index)" class="date">{{ message.createdAt | date }}</p>
+					<div class="message-box">
+						<p>{{ message.message }}</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
 
 	<footer>
 		<form #form="ngForm" (ngSubmit)="sendMessage(form)">
@@ -20,9 +32,9 @@
 				type="text"
 				name="message"
 				placeholder="Type your message to {{ chatUser.firstname }}"
-                [disabled]="message == ''"
+				[disabled]="message == ''"
 				ngModel
-                required
+				required
 			/>
 			<button class="button primary" type="submit">
 				Send

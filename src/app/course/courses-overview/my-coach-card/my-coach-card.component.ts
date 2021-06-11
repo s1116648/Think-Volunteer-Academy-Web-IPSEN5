@@ -27,7 +27,6 @@ export class MyCoachCardComponent implements OnInit {
 
 	// ToDo if the coach binding works, update this so it would get it from a service.
 	initialiseCoach(): void {
-		this.coachImg = "assets/images/avatar-temp.jpg";
 		this.coachFirstName = "John";
 		this.coachLastName = "Doe";
 	}

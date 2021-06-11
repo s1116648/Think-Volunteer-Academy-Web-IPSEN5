@@ -69,4 +69,26 @@ export class ChatWindowComponent implements OnInit, OnChanges {
 
 	isSender = (message: ChatMessage): boolean =>
 		message.sender.id === this.currentUser.id;
+
+	isFirstMessageOfUserInRow(index: number): boolean {
+		if (index === 0) return true;
+		if (
+			this.messages[index].sender.id ===
+			this.messages[index - 1].sender.id
+		)
+			return false;
+
+		return true;
+	}
+
+	dateIsSameAsPrevious(index: number): boolean {
+		if (index === 0) return false;
+		if (
+			new Date(this.messages[index].createdAt) ===
+			new Date(this.messages[index - 1].createdAt)
+		)
+			return true;
+
+		return false;
+	}
 }

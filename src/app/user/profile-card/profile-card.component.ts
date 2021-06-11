@@ -17,9 +17,5 @@ export class ProfileCardComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.currentUser = this.authService.loginInfo.getValue().user;
-		if (!this.currentUser.avatar) {
-			this.currentUser.avatar =
-				"https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
-		}
 	}
 }
