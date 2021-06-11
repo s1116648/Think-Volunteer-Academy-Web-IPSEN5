@@ -8,6 +8,8 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 })
 export class LessonTestCardComponent implements OnInit {
 	icons = { faArrowRight };
+	testPath = "test";
+
 	constructor() {}
 
 	ngOnInit(): void {}

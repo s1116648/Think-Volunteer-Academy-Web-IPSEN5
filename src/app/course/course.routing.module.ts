@@ -7,6 +7,7 @@ import { CourseOverviewComponent } from "./course-overview/course-overview.compo
 import { CreateCourseComponent } from "./create-course/create-course.component";
 import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
+import { TestComponent } from "../test/test/test.component";
 
 const routes: Routes = [
 	{
@@ -38,7 +39,13 @@ const routes: Routes = [
       path: "courses",
       component: CoursesOverviewComponent,
       canActivate: [AuthGuard]
-    }
+    },
+	{
+	  path: "courses/:id/test",
+	  component: TestComponent,
+	  canActivate: [AuthGuard],
+	}
+
 ];
 
 @NgModule({

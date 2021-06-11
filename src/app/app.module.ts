@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { APIInterceptor } from "./shared/api.interceptor";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -17,9 +16,10 @@ import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
 import { Ng2ImgMaxModule } from "ng2-img-max";
+import { TestComponent } from "./test/test/test.component";
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, TestComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
