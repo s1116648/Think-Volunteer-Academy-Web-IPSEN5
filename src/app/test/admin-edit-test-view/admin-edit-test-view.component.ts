@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import {Lesson} from "../../lesson/lesson.model";
+import {LessonService} from "../../lesson/lesson.service";
+import {ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-admin-edit-test-view",
@@ -6,10 +9,19 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./admin-edit-test-view.component.scss"]
 })
 export class AdminEditTestViewComponent implements OnInit {
+  lesson: Lesson;
 
-  constructor() { }
+  constructor(private lessonService: LessonService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+      this.route.params.subscribe((params: Params) => {
+          this.lessonService
+              .getById(params.lessonId)
+              .subscribe((lesson: Lesson) => {
+                  this.lesson = lesson;
+              });
+      });
   }
 
 }
