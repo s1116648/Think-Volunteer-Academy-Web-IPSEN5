@@ -16,20 +16,23 @@ export class RegisterComponent implements OnInit {
 
 	error: HttpErrorResponse;
 
+	isLoading: boolean = false;
+
 	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {}
 
 	register(form: NgForm): void {
 		if (form.invalid) return;
+		this.isLoading = true;
 
 		const values: RegisterDTO = form.value;
 
 		this.authService.register(values).subscribe(
 			() => this.router.navigate(["/login"]),
 			(error: HttpErrorResponse) => {
-				console.log(error);
 				this.error = error;
+				this.isLoading = false;
 			}
 		);
 	}

@@ -17,18 +17,24 @@ export class LoginComponent implements OnInit {
 
 	error: HttpErrorResponse;
 
+	isLoading: boolean = false;
+
 	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {}
 
 	login(form: NgForm): void {
 		if (form.invalid) return;
+		this.isLoading = true;
 
 		const values: LoginDTO = form.value;
 
 		this.authService.login(values).subscribe(
 			() => this.router.navigate(["/courses"]),
-			(error: HttpErrorResponse) => (this.error = error)
+			(error: HttpErrorResponse) => {
+				this.isLoading = false;
+				this.error = error;
+			}
 		);
 	}
 }

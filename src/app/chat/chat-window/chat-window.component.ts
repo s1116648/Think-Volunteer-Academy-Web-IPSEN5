@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { AuthService } from "src/app/auth/auth.service";
 import { User } from "src/app/user/user.model";
 import { Chat } from "../chat.model";
@@ -14,7 +14,7 @@ import { CreateChatMessageDTO } from "../dto/create-chat-message.dto";
 	templateUrl: "./chat-window.component.html",
 	styleUrls: ["./chat-window.component.scss"],
 })
-export class ChatWindowComponent implements OnInit {
+export class ChatWindowComponent implements OnInit, OnChanges {
 	@Input() chat: Chat;
 
 	currentUser: User;
@@ -43,6 +43,10 @@ export class ChatWindowComponent implements OnInit {
 			.subscribe((result: HttpPaginatedResult<ChatMessage>) => {
 				this.messages = result.items;
 			});
+	}
+
+	ngOnChanges(): void {
+		this.ngOnInit();
 	}
 
 	sendMessage(form: NgForm): void {

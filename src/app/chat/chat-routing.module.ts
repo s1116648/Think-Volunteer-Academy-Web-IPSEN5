@@ -9,6 +9,11 @@ const routes: Routes = [
 		component: ChatComponent,
 		canActivate: [AuthGuard],
 	},
+	{
+		path: "chats/:id",
+		component: ChatComponent,
+		canActivate: [AuthGuard],
+	},
 ];
 
 @NgModule({

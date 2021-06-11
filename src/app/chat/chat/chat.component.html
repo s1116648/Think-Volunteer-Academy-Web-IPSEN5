@@ -2,15 +2,16 @@
     <div class="content-holder">
         <section class="left-sidebar">
             <app-profile-card></app-profile-card>
-            <section>
+            <section class="chats-sidebar-section">
                 <h3>Chats</h3>
     
                 <ul>
-                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
-                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
-                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
-                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
-                    <li *ngFor="let chat of chats">{{ getOtherUserOfChat(chat).firstname }}</li>
+                    <li *ngFor="let chat of chats" [routerLink]="['/chats', chat.id]">
+                        <div class="columns">
+                            <img src="assets/images/avatar-temp.jpg" alt="Profile avatar" class="avatar">
+                            <p>{{ getOtherUserOfChat(chat).firstname }}</p>
+                        </div>
+                    </li>
                 </ul>
             </section>
         </section>

@@ -15,4 +15,8 @@ export class ChatService {
 			`/users/${userID}/chats`
 		);
 	}
+
+	getByID(chatID: string): Observable<Chat> {
+		return this.http.get<Chat>(`/chats/${chatID}`);
+	}
 }

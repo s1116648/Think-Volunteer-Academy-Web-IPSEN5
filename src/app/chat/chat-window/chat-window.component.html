@@ -5,7 +5,7 @@
 
     <div class="messages-wrapper">
         <ul class="messages">
-            <li class="message receiver" [class.sender]="isSender(message)" *ngFor="let message of messages">
+            <li class="message receiver" [class.sender]="isSender(message)" [class.receiver]="!isSender(message)" *ngFor="let message of messages">
                 <p class="date">{{ message.createdAt | date }}</p>
                 <div class="message-box">
                     <p>{{ message.message }}</p>

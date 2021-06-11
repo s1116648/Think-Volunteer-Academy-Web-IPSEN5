@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
 import { AuthService } from "src/app/auth/auth.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { User } from "src/app/user/user.model";
@@ -19,17 +20,24 @@ export class ChatComponent implements OnInit {
 
 	constructor(
 		private chatService: ChatService,
-		private authService: AuthService
+		private authService: AuthService,
+		private route: ActivatedRoute
 	) {}
 
 	ngOnInit(): void {
 		this.currentUser = this.authService.loginInfo.getValue().user;
-		this.chatService
-			.get(this.currentUser.id)
-			.subscribe((result: HttpPaginatedResult<Chat>) => {
-				this.chats = result.items;
-				this.currentChat = this.chats[0];
+
+		this.route.params.subscribe((params: Params) => {
+			this.chatService
+				.get(this.currentUser.id)
+				.subscribe((result: HttpPaginatedResult<Chat>) => {
+					this.chats = result.items;
+				});
+
+			this.chatService.getByID(params.id).subscribe((chat: Chat) => {
+				this.currentChat = chat;
 			});
+		});
 	}
 
 	getOtherUserOfChat(chat: Chat): User {

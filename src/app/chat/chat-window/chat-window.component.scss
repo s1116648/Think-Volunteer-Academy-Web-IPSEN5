@@ -17,11 +17,11 @@
         overflow: auto; 
         display: flex; 
         flex-direction: column-reverse;
+        flex-grow: 1;
 
         .messages {
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
             width: 100%;
     
             .message {
