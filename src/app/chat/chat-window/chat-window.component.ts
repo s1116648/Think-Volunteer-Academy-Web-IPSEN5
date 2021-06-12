@@ -10,85 +10,78 @@ import { NgForm } from "@angular/forms";
 import { CreateChatMessageDTO } from "../dto/create-chat-message.dto";
 
 @Component({
-	selector: "app-chat-window",
-	templateUrl: "./chat-window.component.html",
-	styleUrls: ["./chat-window.component.scss"],
+    selector: "app-chat-window",
+    templateUrl: "./chat-window.component.html",
+    styleUrls: ["./chat-window.component.scss"]
 })
 export class ChatWindowComponent implements OnInit, OnChanges {
-	@Input() chat: Chat;
+    @Input() chat: Chat;
 
-	currentUser: User;
-	chatUser: User;
+    currentUser: User;
+    chatUser: User;
 
-	messages: ChatMessage[];
+    messages: ChatMessage[];
 
-	message: string;
+    message: string;
 
-	icons = { faPaperPlane };
+    icons = { faPaperPlane };
 
-	constructor(
-		private authService: AuthService,
-		private chatMessageService: ChatMessageService
-	) {}
+    constructor(
+        private authService: AuthService,
+        private chatMessageService: ChatMessageService
+    ) {
+    }
 
-	ngOnInit(): void {
-		this.currentUser = this.authService.loginInfo.getValue().user;
-		this.chatUser =
-			this.chat.user1.id === this.currentUser.id
-				? this.chat.user2
-				: this.chat.user1;
+    ngOnInit(): void {
+        this.currentUser = this.authService.loginInfo.getValue().user;
+        this.chatUser =
+            this.chat.user1.id === this.currentUser.id
+                ? this.chat.user2
+                : this.chat.user1;
 
-		this.chatMessageService
-			.get(this.chat.id)
-			.subscribe((result: HttpPaginatedResult<ChatMessage>) => {
-				this.messages = result.items;
-			});
-	}
+        this.chatMessageService
+            .get(this.chat.id)
+            .subscribe((result: HttpPaginatedResult<ChatMessage>) => {
+                this.messages = result.items;
+            });
+    }
 
-	ngOnChanges(): void {
-		this.ngOnInit();
-	}
+    ngOnChanges(): void {
+        this.ngOnInit();
+    }
 
-	sendMessage(form: NgForm): void {
-		const values = form.value;
+    sendMessage(form: NgForm): void {
+        const values = form.value;
 
-		const dto: CreateChatMessageDTO = {
-			message: values.message,
-			sender: this.currentUser.id,
-		};
+        const dto: CreateChatMessageDTO = {
+            message: values.message,
+            sender: this.currentUser.id
+        };
 
-		if (!values.message) return;
+        if (!values.message) return;
 
-		this.chatMessageService
-			.create(this.chat.id, dto)
-			.subscribe((message: ChatMessage) => {
-				this.messages.push(message);
-				form.reset();
-			});
-	}
+        this.chatMessageService
+            .create(this.chat.id, dto)
+            .subscribe((message: ChatMessage) => {
+                this.messages.push(message);
+                form.reset();
+            });
+    }
 
-	isSender = (message: ChatMessage): boolean =>
-		message.sender.id === this.currentUser.id;
+    isSender = (message: ChatMessage): boolean =>
+        message.sender.id === this.currentUser.id;
 
-	isFirstMessageOfUserInRow(index: number): boolean {
-		if (index === 0) return true;
-		if (
-			this.messages[index].sender.id ===
-			this.messages[index - 1].sender.id
-		)
-			return false;
+    isFirstMessageOfUserInRow(index: number): boolean {
+        if (index === 0) return true;
+        return this.messages[index].sender.id !== this.messages[index - 1].sender.id;
+    }
 
-		return true;
-	}
-
-	dateIsSameAsPrevious(index: number): boolean {
-		if (index === 0) return false;
-		if (
-			new Date(this.messages[index].createdAt) ===
-			new Date(this.messages[index - 1].createdAt)
-		)
-			return true;
-
-		return false;
-	}
+    dateIsSameAsPrevious(index: number): boolean {
+        if (index === 0) return false;
+        const message = new Date(this.messages[index].createdAt);
+        const previousMessage = new Date(this.messages[index - 1].createdAt);
+        return message.getDay() === previousMessage.getDay() &&
+            message.getMonth() === previousMessage.getMonth() &&
+            message.getFullYear() === previousMessage.getFullYear();
+    }
 }
