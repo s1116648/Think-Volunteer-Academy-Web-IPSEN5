@@ -1,20 +1,17 @@
-@import "/src/app/shared/variables";
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.bubble.css";
-@import "~quill/dist/quill.snow.css";
+.content-holder {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-bottom: 2px solid #405673;
+	padding-bottom: 20px;
+}
 
 .main-content {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-}
 
-.questions-holder {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-
-	> .add-button {
+	.add-button {
 		height: 50px;
 		width: 50px;
 		border-radius: 100%;
@@ -25,5 +22,19 @@
 			justify-content: center;
 			align-items: center;
 		}
+	}
+}
+
+.question-card-content {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	> label {
+		font-weight: 1;
+	}
+	> input {
+		max-width: 517px;
+		width: 100%;
 	}
 }

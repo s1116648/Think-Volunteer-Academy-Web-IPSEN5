@@ -1,15 +1,30 @@
 <main class="container content-holder">
-    <section class="left-sidebar">
-        <app-admin-side-nav></app-admin-side-nav>
-    </section>
+	<section class="left-sidebar">
+		<app-admin-side-nav></app-admin-side-nav>
+	</section>
 
-    <section class="main-content" *ngIf="lesson">
-        <h1>New test / edit test</h1>
-        <h3>Lesson: {{lesson.name}}</h3>
-
-<!--        Make question component-->
-<!--            Make answer component-->
-<!--        Make add question button-->
-<!--        Save button-->
-    </section>
+	<section class="main-content" *ngIf="lesson">
+		<h1>New test / edit test</h1>
+		<h3>Lesson: {{ lesson.name }}</h3>
+		<section class="questions-holder">
+			<app-admin-question-card></app-admin-question-card>
+			<button class="add-button">
+				<span>
+					<fa-icon
+						[icon]="icons.faPlus"
+						[styles]="{
+							stroke: 'white',
+							color: 'white',
+							width: '20',
+							height: '20'
+						}"
+					></fa-icon>
+				</span>
+			</button>
+		</section>
+		<!--        Make question component-->
+		<!--            Make answer component-->
+		<!--        Make add question button-->
+		<!--        Save button-->
+	</section>
 </main>
