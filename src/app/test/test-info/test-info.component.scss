@@ -1,0 +1,23 @@
+@import "/src/app/shared/variables";
+
+p {
+  display: flex;
+  column-count: 2;
+  gap: 120px;
+  width: 100%;
+  font-size: 90%;
+}
+
+.columns {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  gap: 0;
+}
+
+.test-info-wrapper {
+  background-color: $color-background-dark;
+}
+
+.text-right {
+  font-weight: bold;
+}

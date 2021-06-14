@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "../auth/auth.guard";
 import { LessonViewComponent } from "./lesson-view/lesson-view.component";
 import { AdminEditLessonViewComponent } from "./admin-edit-lesson-view/admin-edit-lesson-view.component";
-import { TestComponent } from "../test/test/test.component";
+import { TestComponent } from "../test/test.component";
 
 const routes: Routes = [
 	{
