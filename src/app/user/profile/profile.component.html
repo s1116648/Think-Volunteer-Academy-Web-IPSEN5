@@ -1,0 +1,24 @@
+<div class="container content-holder">
+    <section class="left-sidebar">
+        
+    </section>
+
+    <section class="main-content" *ngIf="user">
+        <section class="section columns">
+            <app-avatar [avatar]="user.avatar" [size]="100"></app-avatar>
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+        </section>
+
+        <section class="section">
+            <ul class="course-progressions" *ngIf="courses.length > 0; else noProgression">
+                <li class="course-progression" *ngFor="let course of courses">
+                    <app-course-progression-banner [user]="user" [course]="course"></app-course-progression-banner>
+                </li>
+            </ul>
+
+            <ng-template #noProgression>
+                <p>{{ user.firstname }} {{ user.lastname }} has not earned any badges.</p>
+            </ng-template>
+        </section>
+    </section>
+</div>

@@ -1,6 +1,7 @@
 <div class="chat-window">
-	<header>
-		<h1>Chat with {{ chatUser.firstname }}</h1>
+	<header class="columns">
+		<app-avatar [avatar]="chatUser.avatar" [size]="50"></app-avatar>
+		<h2>Chat with {{ chatUser.firstname }}</h2>
 	</header>
 
 	<div class="messages-wrapper">
@@ -9,17 +10,21 @@
 				class="message"
 				[class.sender]="isSender(message)"
 				[class.receiver]="!isSender(message)"
-                [class.first-message]="isFirstMessageOfUserInRow(index)"
+				[class.first-message]="isFirstMessageOfUserInRow(index)"
 				*ngFor="let message of messages; let index = index"
 			>
-                <app-avatar
-                    class="avatar"
-                    [avatar]="message.sender.avatar"
-                ></app-avatar>
+				<app-avatar
+					class="avatar"
+					[size]="30"
+					[avatar]="message.sender.avatar"
+				></app-avatar>
 				<div>
-					<p *ngIf="!dateIsSameAsPrevious(index) && isFirstMessageOfUserInRow(index)" class="date">{{ message.createdAt | date }}</p>
+					<p *ngIf="!dateIsSameAsPrevious(index) || isFirstMessageOfUserInRow(index)"
+					   class="date">{{ message.createdAt | date }}</p>
 					<div class="message-box">
-						<p>{{ message.message }}</p>
+						<p>{{ message.message }}
+
+						</p>
 					</div>
 				</div>
 			</li>
@@ -39,7 +44,7 @@
 			<button class="button primary" type="submit">
 				Send
 				<span class="icon"
-					><fa-icon [icon]="icons.faPaperPlane"></fa-icon
+				><fa-icon [icon]="icons.faPaperPlane"></fa-icon
 				></span>
 			</button>
 		</form>
