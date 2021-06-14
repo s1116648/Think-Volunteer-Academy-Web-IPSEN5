@@ -20,7 +20,7 @@
 						width: '15',
 						height: '15'
 					}"
-					(click)="deleteQuestion()"
+					(click)="openEditModal(question)"
 			></fa-icon>
 		</section>
 		<div class="question-card-content">
@@ -53,4 +53,5 @@
 <!--			</span>-->
 <!--		</button>-->
 	</section>
+	<ng-container appPlaceholder></ng-container>
 </main>

@@ -7,9 +7,10 @@ import { AdminQuestionCardComponent } from "./admin-edit-test-view/admin-questio
 import { AdminAnswerCardComponent } from "./admin-edit-test-view/admin-question-card/admin-answer-card/admin-answer-card.component";
 import {FormsModule} from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { EditQuestionModalComponent } from "./modals/edit-question-modal/edit-question-modal.component";
 
 @NgModule({
-    declarations: [AdminEditTestViewComponent, AdminQuestionCardComponent, AdminAnswerCardComponent],
+    declarations: [AdminEditTestViewComponent, AdminQuestionCardComponent, AdminAnswerCardComponent, EditQuestionModalComponent],
     imports: [
         CommonModule,
         SharedModule,

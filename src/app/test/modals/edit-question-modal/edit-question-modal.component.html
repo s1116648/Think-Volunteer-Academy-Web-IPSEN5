@@ -1,0 +1,30 @@
+<app-modal title="Edit question" (closeModal)="close()">
+    <ng-container body>
+        <form #questionForm="ngForm" id="set-lesson-form" (ngSubmit)="update(questionForm)">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input
+                        type="text"
+                        id="question"
+                        name="question"
+                        placeholder="Question content"
+                        class="dark"
+                        [ngModel]="question.text"
+                        ngModel
+                        required
+                />
+            </div>
+
+            <app-admin-answer-card></app-admin-answer-card>
+        </form>
+    </ng-container>
+
+    <ng-container footer>
+        <button class="button primary" form="set-lesson-form" [disabled]="questionForm.invalid">
+            Save question
+            <span class="icon"
+            ><fa-icon [icon]="icons.faCheck"></fa-icon
+            ></span>
+        </button>
+    </ng-container>
+</app-modal>
