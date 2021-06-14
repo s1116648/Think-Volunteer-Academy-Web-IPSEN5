@@ -3,7 +3,7 @@ import { Answer } from "./answer.model";
 export interface Question {
     id: string;
     text: string;
-    Answers: Answer[];
+    answers: Answer[];
     updatedAt: Date;
     createdAt: Date;
 }

@@ -1,6 +1,28 @@
 <main class="content-holder">
-	<section class="main-content">
-		<h3>Question 01</h3>
+	<section class="main-content" *ngIf="question">
+		<section class="title-trash-holder">
+			<h3>Question 01</h3>
+			<fa-icon
+					[icon]="icons.faTrash"
+					[styles]="{
+						stroke: 'white',
+						color: 'white',
+						width: '15',
+						height: '15'
+					}"
+					(click)="deleteQuestion()"
+			></fa-icon>
+			<fa-icon
+					[icon]="icons.faEdit"
+					[styles]="{
+						stroke: 'white',
+						color: 'white',
+						width: '15',
+						height: '15'
+					}"
+					(click)="deleteQuestion()"
+			></fa-icon>
+		</section>
 		<div class="question-card-content">
 			<label for="question">Question</label>
 			<input
@@ -9,21 +31,26 @@
 				name="question"
 				class="dark"
 				placeholder="Put question content in here..."
+				value="{{question.text}}"
+				disabled
 			/>
 		</div>
-		<app-admin-answer-card></app-admin-answer-card>
-		<button class="add-button">
-			<span>
-				<fa-icon
-					[icon]="icons.faPlus"
-					[styles]="{
-						stroke: 'white',
-						color: 'white',
-						width: '20',
-						height: '20'
-					}"
-				></fa-icon>
-			</span>
-		</button>
+		<app-admin-answer-card
+				*ngFor="let answer of question.answers"
+				[answer] = answer
+		></app-admin-answer-card>
+<!--		<button class="add-button">-->
+<!--			<span>-->
+<!--				<fa-icon-->
+<!--					[icon]="icons.faPlus"-->
+<!--					[styles]="{-->
+<!--						stroke: 'white',-->
+<!--						color: 'white',-->
+<!--						width: '20',-->
+<!--						height: '20'-->
+<!--					}"-->
+<!--				></fa-icon>-->
+<!--			</span>-->
+<!--		</button>-->
 	</section>
 </main>

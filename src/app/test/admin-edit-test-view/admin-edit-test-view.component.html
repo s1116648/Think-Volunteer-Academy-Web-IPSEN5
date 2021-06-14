@@ -7,8 +7,15 @@
 		<h1>New test / edit test</h1>
 		<h3>Lesson: {{ lesson.name }}</h3>
 		<section class="questions-holder">
-			<app-admin-question-card></app-admin-question-card>
-			<button class="add-button">
+
+			<app-admin-question-card
+					*ngFor="let question of questions"
+					[question] = question
+			></app-admin-question-card>
+
+			<button class="add-button"
+					(click)="addQuestion()"
+			>
 				<span>
 					<fa-icon
 						[icon]="icons.faPlus"

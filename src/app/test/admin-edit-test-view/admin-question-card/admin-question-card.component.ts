@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import {NgForm} from "@angular/forms";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {Component, Input, OnInit} from "@angular/core";
+import { faPlus, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { CreateQuestionDTO } from "../../dto/create-question.dto";
+import {UpdateQuestionDTO} from "../../dto/update-question.dto";
 
 
 @Component({
@@ -9,11 +10,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./admin-question-card.component.scss"]
 })
 export class AdminQuestionCardComponent implements OnInit {
-  icons = { faPlus };
+  icons = { faPlus, faTrash, faEdit };
+  @Input() question: CreateQuestionDTO | UpdateQuestionDTO;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  update(testForm: NgForm): void {}
+  deleteQuestion(): void {
+    console.log("Deleting question");
+  }
 }

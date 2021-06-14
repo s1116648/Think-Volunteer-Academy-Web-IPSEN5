@@ -5,6 +5,11 @@ import {AdminEditTestViewComponent} from "./admin-edit-test-view/admin-edit-test
 
 const routes: Routes = [
     {
+        path: "admin/courses/:courseId/lessons/:lessonId/tests/new",
+        component: AdminEditTestViewComponent,
+        canActivate: [AuthGuard],
+    },
+    {
         path: "admin/courses/:courseId/lessons/:lessonId/tests/:testId",
         component: AdminEditTestViewComponent,
         canActivate: [AuthGuard],

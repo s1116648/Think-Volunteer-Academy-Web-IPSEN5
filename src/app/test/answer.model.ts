@@ -1,10 +1,8 @@
-import { Question} from "./question.model";
-
 export interface Answer {
     id: string;
     text: string;
     correct: boolean;
-    Question: Question;
+    QuestionId: string;
     updatedAt: Date;
     createdAt: Date;
 }

@@ -23,6 +23,11 @@
 			align-items: center;
 		}
 	}
+
+	.title-trash-holder {
+		display: flex;
+		gap: 15px;
+	}
 }
 
 .question-card-content {
