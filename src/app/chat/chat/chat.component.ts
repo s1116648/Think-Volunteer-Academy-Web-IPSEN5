@@ -34,9 +34,11 @@ export class ChatComponent implements OnInit {
 					this.chats = result.items;
 				});
 
-			this.chatService.getByID(params.id).subscribe((chat: Chat) => {
-				this.currentChat = chat;
-			});
+			if (params.id) {
+				this.chatService.getByID(params.id).subscribe((chat: Chat) => {
+					this.currentChat = chat;
+				});
+			}
 		});
 	}
 
