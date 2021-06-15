@@ -12,14 +12,14 @@ import { MyStudentsComponent } from "./my-students/my-students.component";
 
 
 @NgModule({
-    declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent, MyStudentsComponent],
-    imports: [
-        CommonModule,
-        CoachingRoutingModule,
-        SharedModule,
-        FormsModule,
-        FontAwesomeModule
-    ]
+	declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent, MyStudentsComponent],
+	imports: [
+		CommonModule,
+		CoachingRoutingModule,
+		SharedModule,
+		FormsModule,
+		FontAwesomeModule
+	]
 })
 export class CoachingModule {
 }
