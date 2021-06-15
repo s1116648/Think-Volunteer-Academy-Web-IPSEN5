@@ -26,7 +26,7 @@ export class AuthService {
 	}
 
 	login(dto: LoginDTO): Observable<User> {
-		const observer: Observable<User> = this.http
+		return this.http
 			.post<LoginInfo>("/auth/login", {
 				email: dto.email,
 				password: dto.password,
@@ -37,7 +37,6 @@ export class AuthService {
 				}),
 				map((loginInfo: LoginInfo): User => loginInfo.user)
 			);
-		return observer;
 	}
 
 	register(dto: RegisterDTO): Observable<User> {
