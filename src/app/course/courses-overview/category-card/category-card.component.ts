@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { CourseCategory } from "../../../course-category/course-category.model";
 import { Course } from "../../course.model";
 import { CourseService } from "../../course.service";
+import { HttpPaginatedResult } from "../../../shared/http-paginated-result";
 
 @Component({
 	selector: "app-course-category-card",
@@ -18,7 +19,7 @@ export class CategoryCardComponent implements OnInit {
 	ngOnInit(): void {
 		this.courseService
 			.getCoursesByCategory(this.courseCategory.id)
-			.subscribe((courses) => {
+			.subscribe((courses: HttpPaginatedResult<Course>) => {
 				this.courses = courses.items;
 			});
 	}
