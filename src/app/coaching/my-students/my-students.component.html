@@ -15,7 +15,7 @@
 				<div class="student" *ngFor="let student of students">
 					<app-avatar [avatar]="student.user.avatar" [size]="90"></app-avatar>
 					<p>{{ student.user.firstname + " " + student.user.lastname}}</p>
-					<button class="button primary">Chat</button>
+					<button class="button primary" [routerLink]="['/chats/'] + student.user.id">Chat</button>
 				</div>
 			</div>
 		</section>
