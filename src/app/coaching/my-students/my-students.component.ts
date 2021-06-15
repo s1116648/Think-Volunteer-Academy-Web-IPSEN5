@@ -9,7 +9,7 @@ import { Student } from "../student/student.model";
 	styleUrls: ["./my-students.component.scss"]
 })
 export class MyStudentsComponent implements OnInit {
-	students: Student[];
+	students: Student[] = [];
 
 	constructor(private studentService: StudentService, private authService: AuthService) {
 	}
