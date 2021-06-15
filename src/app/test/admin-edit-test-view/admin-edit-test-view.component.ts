@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {Lesson} from "../../lesson/lesson.model";
 import {LessonService} from "../../lesson/lesson.service";
 import {ActivatedRoute, Params } from "@angular/router";
@@ -7,6 +7,9 @@ import {Question} from "../question.model";
 import {Test} from "../test.model";
 import {TestService} from "../test.service";
 import {CreateQuestionDTO} from "../dto/create-question.dto";
+import {PlaceholderDirective} from "../../shared/placeholder.directive";
+import {ModalService} from "../../shared/modal.service";
+import {AddQuestionModalComponent} from "../modals/add-question-modal/add-question-modal.component";
 
 @Component({
   selector: "app-admin-edit-test-view",
@@ -14,16 +17,20 @@ import {CreateQuestionDTO} from "../dto/create-question.dto";
   styleUrls: ["./admin-edit-test-view.component.scss"]
 })
 export class AdminEditTestViewComponent implements OnInit {
-  lesson: Lesson;
-  questions: Question[] = [];
-  newQuestions: CreateQuestionDTO[] = [];
-  test: Test;
+    @ViewChild(PlaceholderDirective, { static: false })
+    modalHost: PlaceholderDirective;
 
-  icons = { faPlus };
+    lesson: Lesson;
+    questions: Question[] = [];
+    newQuestions: CreateQuestionDTO[] = [];
+    test: Test;
+
+    icons = { faPlus };
 
   constructor(private lessonService: LessonService,
               private route: ActivatedRoute,
-              private testService: TestService) {}
+              private testService: TestService,
+              private modalService: ModalService) {}
 
   ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
@@ -39,11 +46,9 @@ export class AdminEditTestViewComponent implements OnInit {
   }
 
     addQuestion(): void {
-      // const defaultQuestion: CreateQuestionDTO = {
-      //     text: "new question",
-      //     answers: []
-      // };
-      //
-      // this.questions.push(defaultQuestion);
+        const modal = this.modalService.createModal(
+            AddQuestionModalComponent,
+            this.modalHost
+        );
     }
 }

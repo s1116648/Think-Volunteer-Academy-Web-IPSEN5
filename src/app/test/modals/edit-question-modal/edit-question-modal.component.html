@@ -2,7 +2,7 @@
 	<ng-container body>
 		<form
 			#questionForm="ngForm"
-			id="set-lesson-form"
+			id="question-form"
 			(ngSubmit)="update(questionForm)"
 		>
 			<div class="form-group">
@@ -21,10 +21,15 @@
 
 			<div class="form-group">
 				<div class="answer-array">
-					<app-admin-answer-card
-							*ngFor="let answer of question.answers"
-							[answer]="answer"
-					></app-admin-answer-card>
+<!--					<app-admin-answer-card-->
+<!--							*ngFor="let answer of question.answers"-->
+<!--							[answer]="answer"-->
+<!--					></app-admin-answer-card>-->
+
+					<app-admin-answer-card-created
+							*ngFor="let newAnswer of answerArray"
+							[newAnswer]="newAnswer"
+					></app-admin-answer-card-created>
 				</div>
 			</div>
 
@@ -37,7 +42,7 @@
 	<ng-container footer>
 		<button
 			class="button primary"
-			form="set-lesson-form"
+			form="question-form"
 			[disabled]="questionForm.invalid"
 		>
 			Save question

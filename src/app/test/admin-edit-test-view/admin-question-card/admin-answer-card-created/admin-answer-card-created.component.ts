@@ -1,16 +1,17 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {CreateAnswerDTO} from "../../../dto/create-answer.dto";
+import {ControlContainer, NgForm} from "@angular/forms";
+import {UpdateAnswerDTO} from "../../../dto/update-answer.dto";
 
 @Component({
   selector: "app-admin-answer-card-created",
   templateUrl: "./admin-answer-card-created.component.html",
-  styleUrls: ["./admin-answer-card-created.component.scss"]
+  styleUrls: ["./admin-answer-card-created.component.scss"],
+  viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
 })
 export class AdminAnswerCardCreatedComponent implements OnInit {
-  @Input() answer: CreateAnswerDTO;
+  @Input() newAnswer: UpdateAnswerDTO;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

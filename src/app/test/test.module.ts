@@ -5,11 +5,12 @@ import { AdminEditTestViewComponent } from "./admin-edit-test-view/admin-edit-te
 import {TestRoutingModule} from "./test-routing.module";
 import { AdminQuestionCardComponent } from "./admin-edit-test-view/admin-question-card/admin-question-card.component";
 import { AdminAnswerCardComponent } from "./admin-edit-test-view/admin-question-card/admin-answer-card/admin-answer-card.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { EditQuestionModalComponent } from "./modals/edit-question-modal/edit-question-modal.component";
 import { AddAnswerComponent } from "./admin-edit-test-view/admin-question-card/add-answer/add-answer.component";
 import { AdminAnswerCardCreatedComponent } from "./admin-edit-test-view/admin-question-card/admin-answer-card-created/admin-answer-card-created.component";
+import { AddQuestionModalComponent } from "./modals/add-question-modal/add-question-modal.component";
 
 @NgModule({
     declarations: [
@@ -19,13 +20,15 @@ import { AdminAnswerCardCreatedComponent } from "./admin-edit-test-view/admin-qu
         EditQuestionModalComponent,
         AddAnswerComponent,
         AdminAnswerCardCreatedComponent,
+        AddQuestionModalComponent,
     ],
     imports: [
         CommonModule,
         SharedModule,
         TestRoutingModule,
         FormsModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        ReactiveFormsModule
     ],
     exports: [],
     providers: []
