@@ -8,6 +8,7 @@ import { AddStudentModalComponent } from "./coach/modals/add-student-modal/add-s
 import { AddCoachModalComponent } from "./coach/modals/add-coach-modal/add-coach-modal.component";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { RoleModule } from "../role/role.module";
 
 
 
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		CoachingRoutingModule,
 		SharedModule,
 		FormsModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		RoleModule
 	]
 })
 export class CoachingModule { }
