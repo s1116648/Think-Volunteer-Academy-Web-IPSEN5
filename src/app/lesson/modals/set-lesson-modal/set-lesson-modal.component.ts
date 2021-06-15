@@ -30,7 +30,7 @@ export class SetLessonModalComponent implements OnInit {
 			name: values.name,
 			content: "Content will show up here.",
 			description: values.description,
-			image: "null",
+			image: values.image,
 			length: 0,
 			courseId: this.course.id,
 		};
