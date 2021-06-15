@@ -8,17 +8,18 @@ import { AddStudentModalComponent } from "./coach/modals/add-student-modal/add-s
 import { AddCoachModalComponent } from "./coach/modals/add-coach-modal/add-coach-modal.component";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-
+import { MyStudentsComponent } from "./my-students/my-students.component";
 
 
 @NgModule({
-  declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent],
-	imports: [
-		CommonModule,
-		CoachingRoutingModule,
-		SharedModule,
-		FormsModule,
-		FontAwesomeModule
-	]
+    declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent, MyStudentsComponent],
+    imports: [
+        CommonModule,
+        CoachingRoutingModule,
+        SharedModule,
+        FormsModule,
+        FontAwesomeModule
+    ]
 })
-export class CoachingModule { }
+export class CoachingModule {
+}

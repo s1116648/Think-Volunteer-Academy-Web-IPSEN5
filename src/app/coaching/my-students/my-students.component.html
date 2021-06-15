@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="content-holder">
+		<section class="left-sidebar">
+			<app-admin-side-nav></app-admin-side-nav>
+		</section>
+		<section class="main-content">
+			<div class="columns">
+				<h1 class="column grow" style="margin-bottom: 20px">My students</h1>
+			</div>
+			<div class="students">
+				<div class="student" *ngFor="let student of students">
+					<app-avatar [avatar]="" [size]="90"></app-avatar>
+					<p>{{ student.firstname + " " + student.lastname}}</p>
+					<button class="button primary">Chat</button>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+<ng-container appPlaceholder></ng-container>
+
