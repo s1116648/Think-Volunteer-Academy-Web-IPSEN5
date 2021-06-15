@@ -10,8 +10,12 @@ import {UpdateAnswerDTO} from "../../../dto/update-answer.dto";
 })
 export class AdminAnswerCardCreatedComponent implements OnInit {
   @Input() newAnswer: UpdateAnswerDTO;
+  @Input() index: number;
+
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("New Answer: ", this.newAnswer);
+  }
 
 }

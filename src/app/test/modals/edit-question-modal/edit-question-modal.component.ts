@@ -32,6 +32,7 @@ export class EditQuestionModalComponent implements OnInit {
       return answerDto;
     });
 
+    console.log("Answer array: ", this.answerArray);
     this.newAnswers = this.answerService.getAllNewAnswers();
     this.answerService.newAnswersChanged
         .subscribe((answers) => {

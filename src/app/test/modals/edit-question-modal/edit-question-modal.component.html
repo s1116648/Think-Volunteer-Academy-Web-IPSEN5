@@ -27,8 +27,9 @@
 <!--					></app-admin-answer-card>-->
 
 					<app-admin-answer-card-created
-							*ngFor="let newAnswer of answerArray"
+							*ngFor="let newAnswer of answerArray; let i = index"
 							[newAnswer]="newAnswer"
+							[index]="i"
 					></app-admin-answer-card-created>
 				</div>
 			</div>

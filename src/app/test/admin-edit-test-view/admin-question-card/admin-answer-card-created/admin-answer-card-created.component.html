@@ -3,17 +3,17 @@
     <div class="answer-content">
         <input
                 type="text"
-                name="answer"
+                name="answer{{index}}}"
                 class="dark"
                 id="answer"
                 placeholder="Put answer content in here"
-                [ngModel] = newAnswer.text
+                [ngModel]="newAnswer.text"
         />
         <div class="correct-answer-checkbox">
             <input
                     type="checkbox"
                     id="correctAnswer"
-                    name="correctAnswer"
+                    name="correctAnswer{{index}}"
                     [ngModel]="newAnswer.correct"
             />
             <label for="correctAnswer">Correct</label>
