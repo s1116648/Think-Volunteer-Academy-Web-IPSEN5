@@ -20,11 +20,11 @@ export class AddQuestionModalComponent implements OnInit {
   constructor(private answerService: AnswerService) { }
 
   ngOnInit(): void {
-    this.newAnswerArray = this.answerService.getAllNewAnswers();
-    this.answerService.newAnswersChanged
-        .subscribe((answers) => {
-          this.newAnswerArray = answers;
-        });
+    // this.newAnswerArray = this.answerService.getAllNewAnswers();
+    // this.answerService.newAnswersChanged
+    //     .subscribe((answers) => {
+    //       this.newAnswerArray = answers;
+    //     });
   }
 
   update(addQuestionForm: NgForm): void {

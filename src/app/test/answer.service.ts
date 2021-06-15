@@ -1,20 +1,20 @@
 import {Injectable} from "@angular/core";
-import {CreateAnswerDTO} from "./dto/create-answer.dto";
 import {Subject} from "rxjs";
+import {UpdateAnswerDTO} from "./dto/update-answer.dto";
 
 @Injectable({
     providedIn: "root",
 })
 export class AnswerService{
-    newAnswersChanged = new Subject<CreateAnswerDTO[]>();
-    newAnswers: CreateAnswerDTO[] = [];
+    newAnswersChanged = new Subject<UpdateAnswerDTO[]>();
+    newAnswers: UpdateAnswerDTO[] = [];
 
-    addNewLessonToArray(newAnswerDTO: CreateAnswerDTO): void {
+    addNewAnswerToArray(newAnswerDTO: UpdateAnswerDTO): void {
         this.newAnswers.push(newAnswerDTO);
         this.newAnswersChanged.next(this.newAnswers);
     }
 
-    getAllNewAnswers(): CreateAnswerDTO[] {
+    getAllNewAnswers(): UpdateAnswerDTO[] {
         return this.newAnswers.slice();
     }
 }

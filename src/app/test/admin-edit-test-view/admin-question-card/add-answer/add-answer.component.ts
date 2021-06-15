@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {AnswerService} from "../../../answer.service";
-import {CreateAnswerDTO} from "../../../dto/create-answer.dto";
+import {UpdateAnswerDTO} from "../../../dto/update-answer.dto";
 
 @Component({
 	selector: "app-add-answer",
@@ -19,13 +19,13 @@ export class AddAnswerComponent implements OnInit {
 	ngOnInit(): void {}
 
     addAnswer(): void {
-		const createAnswerDTO: CreateAnswerDTO = {
+		const updateAnswerDTO: UpdateAnswerDTO = {
 			text: this.newAnswerInput.nativeElement.value,
 			correct: this.newAnswerCheckbox.nativeElement.checked
 		};
-		console.log("DTO: ", createAnswerDTO);
+		console.log("DTO: ", updateAnswerDTO);
 		this.clearInputFields();
-		this.answerService.addNewLessonToArray(createAnswerDTO);
+		this.answerService.addNewAnswerToArray(updateAnswerDTO);
     }
 
     clearInputFields(): void {

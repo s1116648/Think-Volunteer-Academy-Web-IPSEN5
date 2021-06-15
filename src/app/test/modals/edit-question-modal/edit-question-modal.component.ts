@@ -3,7 +3,6 @@ import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
 import {Lesson} from "../../../lesson/lesson.model";
 import {Question} from "../../question.model";
-import {CreateAnswerDTO} from "../../dto/create-answer.dto";
 import {AnswerService} from "../../answer.service";
 import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
 
@@ -18,7 +17,6 @@ export class EditQuestionModalComponent implements OnInit {
   @Input() question: Question;
 
   icons = { faCheck, faPlus, faTrash };
-  newAnswers: CreateAnswerDTO[] = [];
   answerArray: UpdateAnswerDTO[] = [];
 
   constructor(private answerService: AnswerService) {}
@@ -33,12 +31,11 @@ export class EditQuestionModalComponent implements OnInit {
     });
 
     console.log("Answer array: ", this.answerArray);
-    this.newAnswers = this.answerService.getAllNewAnswers();
     this.answerService.newAnswersChanged
         .subscribe((answers) => {
           // console.log("New Answers: ", answers);
-          this.newAnswers = answers;
-          console.log(this.newAnswers);
+          this.answerArray.push(...answers);
+          console.log(this.answerArray);
         });
   }
 
