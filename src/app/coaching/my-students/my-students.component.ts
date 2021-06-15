@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { StudentService } from "../student/student.service";
+import { AuthService } from "../../auth/auth.service";
+import { Student } from "../student/student.model";
 
 @Component({
     selector: "app-my-students",
@@ -6,45 +9,17 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./my-students.component.scss"]
 })
 export class MyStudentsComponent implements OnInit {
-    students: [
-        { firstname: string; avatar: string; lastname: string },
-        { firstname: string; avatar: string; lastname: string },
-        { firstname: string; avatar: string; lastname: string },
-        { firstname: string; avatar: string; lastname: string },
-        { firstname: string; avatar: string; lastname: string }
-    ];
+    students: Student[];
 
-    constructor() {
+    constructor(private studentService: StudentService, private authService: AuthService) {
     }
 
     ngOnInit(): void {
-        this.students = [
-            {
-                firstname: "Noah",
-                lastname: "Slik",
-                avatar: "https://www.svgrepo.com/show/157053/avatar.svg"
-            },
-            {
-                firstname: "Bas",
-                lastname: "Janssen",
-                avatar: "https://www.svgrepo.com/show/17344/avatar.svg"
-            },
-            {
-                firstname: "Toshe",
-                lastname: "Laurine",
-                avatar: "https://www.svgrepo.com/show/169986/avatar.svg"
-            },
-            {
-                firstname: "Ragna",
-                lastname: "Lonny",
-                avatar: "https://www.svgrepo.com/show/169986/avatar.svg"
-            },
-            {
-                firstname: "Wendi",
-                lastname: "Leszek",
-                avatar: "https://www.svgrepo.com/show/169986/avatar.svg"
-            }
-        ];
+        const coachId = this.authService.loginInfo.getValue().user.id;
+        this.studentService.getStudentsByCoach(coachId).subscribe(
+            (students) => {
+                this.students = students;
+        });
     }
 
 }
