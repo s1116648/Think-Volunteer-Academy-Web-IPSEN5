@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
 import {Lesson} from "../../../lesson/lesson.model";
 import {Question} from "../../question.model";
@@ -14,7 +14,7 @@ export class EditQuestionModalComponent implements OnInit {
   @Output() set = new EventEmitter<Lesson>();
 
   @Input() question: Question;
-  icons = { faCheck };
+  icons = { faCheck, faPlus, faTrash };
   constructor() { }
 
   ngOnInit(): void {

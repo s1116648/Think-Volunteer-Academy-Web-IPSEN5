@@ -8,9 +8,18 @@ import { AdminAnswerCardComponent } from "./admin-edit-test-view/admin-question-
 import {FormsModule} from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { EditQuestionModalComponent } from "./modals/edit-question-modal/edit-question-modal.component";
+import { AddAnswerComponent } from "./admin-edit-test-view/admin-question-card/add-answer/add-answer.component";
+import { AdminAnswerCardCreatedComponent } from "./admin-edit-test-view/admin-question-card/admin-answer-card-created/admin-answer-card-created.component";
 
 @NgModule({
-    declarations: [AdminEditTestViewComponent, AdminQuestionCardComponent, AdminAnswerCardComponent, EditQuestionModalComponent],
+    declarations: [
+        AdminEditTestViewComponent,
+        AdminQuestionCardComponent,
+        AdminAnswerCardComponent,
+        EditQuestionModalComponent,
+        AddAnswerComponent,
+        AdminAnswerCardCreatedComponent,
+    ],
     imports: [
         CommonModule,
         SharedModule,

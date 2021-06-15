@@ -3,24 +3,24 @@
 		<section class="title-trash-holder">
 			<h3>Question 01</h3>
 			<fa-icon
-					[icon]="icons.faTrash"
-					[styles]="{
-						stroke: 'white',
-						color: 'white',
-						width: '15',
-						height: '15'
-					}"
-					(click)="deleteQuestion()"
+				[icon]="icons.faTrash"
+				[styles]="{
+					stroke: 'white',
+					color: 'white',
+					width: '15',
+					height: '15'
+				}"
+				(click)="deleteQuestion()"
 			></fa-icon>
 			<fa-icon
-					[icon]="icons.faEdit"
-					[styles]="{
-						stroke: 'white',
-						color: 'white',
-						width: '15',
-						height: '15'
-					}"
-					(click)="openEditModal(question)"
+				[icon]="icons.faEdit"
+				[styles]="{
+					stroke: 'white',
+					color: 'white',
+					width: '15',
+					height: '15'
+				}"
+				(click)="openEditModal(question)"
 			></fa-icon>
 		</section>
 		<div class="question-card-content">
@@ -31,27 +31,15 @@
 				name="question"
 				class="dark"
 				placeholder="Put question content in here..."
-				value="{{question.text}}"
+				value="{{ question.text }}"
 				disabled
 			/>
 		</div>
 		<app-admin-answer-card
-				*ngFor="let answer of question.answers"
-				[answer] = answer
+			*ngFor="let answer of question.answers"
+			[answer]="answer"
+			[disabled]="true"
 		></app-admin-answer-card>
-<!--		<button class="add-button">-->
-<!--			<span>-->
-<!--				<fa-icon-->
-<!--					[icon]="icons.faPlus"-->
-<!--					[styles]="{-->
-<!--						stroke: 'white',-->
-<!--						color: 'white',-->
-<!--						width: '20',-->
-<!--						height: '20'-->
-<!--					}"-->
-<!--				></fa-icon>-->
-<!--			</span>-->
-<!--		</button>-->
 	</section>
 	<ng-container appPlaceholder></ng-container>
 </main>

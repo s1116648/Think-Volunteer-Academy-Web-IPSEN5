@@ -2,7 +2,7 @@
 .question-answer-card {
 	display: flex;
 	flex-direction: column;
-	max-width: 517px;
+	max-width: 600px;
 	width: 100%;
 
 	> label {
@@ -13,11 +13,10 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 5px;
-		max-width: 517px;
+		//max-width: 517px;
 		width: 100%;
 
 		> input {
-			max-width: 385px;
 			width: 100%;
 		}
 
@@ -40,6 +39,7 @@
 				display: flex;
 				align-items: center;
 				font-weight: 1;
+				margin-bottom: 0 !important;
 			}
 
 			input[type="checkbox"] {

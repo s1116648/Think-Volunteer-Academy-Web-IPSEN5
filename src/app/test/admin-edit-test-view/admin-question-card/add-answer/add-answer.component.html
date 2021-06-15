@@ -1,0 +1,26 @@
+<div class="question-answer-card">
+	<label for="addAnswer">Add answer</label>
+	<div class="answer-content">
+		<input
+			type="text"
+			name="Add answer"
+			class="dark"
+			id="addAnswer"
+			placeholder="Type content of new question in here..."
+		/>
+		<div class="correct-answer-checkbox">
+			<input type="checkbox" id="correctAnswer" name="correctAnswer" />
+			<label for="correctAnswer">Correct</label>
+		</div>
+		<div class="plus-icon-wrapper">
+			<fa-icon
+					[icon]="icons.faPlus"
+					[styles]="{
+					 stroke: 'white',
+					 color: 'white',
+				     width: '15',
+				     height: '15'
+			}"></fa-icon>
+		</div>
+	</div>
+</div>

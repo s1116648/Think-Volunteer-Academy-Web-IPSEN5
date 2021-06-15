@@ -1,5 +1,5 @@
 <div class="question-answer-card">
-		<label for="answer">Answer</label>
+	<label for="answer">Answer</label>
 	<div class="answer-content">
 		<input
 			type="text"
@@ -7,8 +7,8 @@
 			class="dark"
 			id="answer"
 			placeholder="Put answer content in here"
-			value="{{answer.text}}"
-			disabled
+			value="{{ answer.text }}"
+			[disabled]="disabled"
 		/>
 		<div class="correct-answer-checkbox">
 			<input
@@ -16,7 +16,7 @@
 				id="correctAnswer"
 				name="correctAnswer"
 				[checked]="answer.correct"
-				disabled
+				[disabled]="disabled"
 			/>
 			<label for="correctAnswer">Correct</label>
 		</div>

@@ -9,6 +9,7 @@ import {Answer} from "../../../answer.model";
 })
 export class AdminAnswerCardComponent implements OnInit {
   icons = { faPlus, faTrash };
+  @Input() disabled: boolean;
   @Input() answer: Answer;
   constructor() { }
 

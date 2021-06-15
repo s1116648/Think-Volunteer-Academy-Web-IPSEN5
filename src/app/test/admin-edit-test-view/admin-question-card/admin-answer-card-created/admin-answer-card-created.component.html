@@ -1,0 +1,22 @@
+<div class="question-answer-card">
+    <label for="answer">Answer</label>
+    <div class="answer-content">
+        <input
+                type="text"
+                name="answer"
+                class="dark"
+                id="answer"
+                placeholder="Put answer content in here"
+                value="{{ answer.text }}"
+        />
+        <div class="correct-answer-checkbox">
+            <input
+                    type="checkbox"
+                    id="correctAnswer"
+                    name="correctAnswer"
+                    [checked]="answer.correct"
+            />
+            <label for="correctAnswer">Correct</label>
+        </div>
+    </div>
+</div>
