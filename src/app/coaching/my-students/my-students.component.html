@@ -8,6 +8,10 @@
 				<h1 class="column grow" style="margin-bottom: 20px">My students</h1>
 			</div>
 			<div class="students">
+				<div class="student" *ngIf="!students">
+					<app-avatar [avatar]="" [size]="90"></app-avatar>
+					<p>You have no students</p>
+				</div>
 				<div class="student" *ngFor="let student of students">
 					<app-avatar [avatar]="student.user.avatar" [size]="90"></app-avatar>
 					<p>{{ student.user.firstname + " " + student.user.lastname}}</p>
