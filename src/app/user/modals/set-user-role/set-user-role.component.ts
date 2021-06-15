@@ -6,6 +6,7 @@ import { User } from "../../user.model";
 import { NgForm } from "@angular/forms";
 import { Role } from "../../../role/role.model";
 import { UpdateUserRoleDTO} from "../../dto/update-user-role.dto";
+import { AuthService } from "../../../auth/auth.service";
 
 @Component({
   selector: "app-set-user-role",
@@ -18,6 +19,7 @@ export class SetUserRoleComponent implements OnInit {
   roles: Role[];
 
   constructor(
+      private authService: AuthService,
       private roleService: RoleService,
       private userService: UserService
   ) {}
@@ -40,6 +42,10 @@ export class SetUserRoleComponent implements OnInit {
       role: values.role.id
     };
     this.userService.setUserRole(this.user.id, updateUserRoleDTO).subscribe((user) => {
+      this.authService.handleAuthentication({
+        ...this.authService.loginInfo.getValue(),
+        user
+      });
       this.set.emit(user);
       this.close();
     });
