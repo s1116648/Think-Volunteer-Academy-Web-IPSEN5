@@ -18,7 +18,7 @@ import { DragulaModule } from "ng2-dragula";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { TestComponent } from "./test/test.component";
 import { TestInfoComponent } from "./test/test-info/test-info.component";
-import { QuestionComponent } from './test/test-info/question/question.component';
+import { QuestionComponent } from "./test/question/question.component";
 
 @NgModule({
 	declarations: [AppComponent, TestComponent, TestInfoComponent, QuestionComponent],

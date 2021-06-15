@@ -1,0 +1,43 @@
+<!--<h2>{{question.text}}</h2>-->
+<h2>What needs to be covered of your skin when you visit Muslim areas?</h2>
+<section *ngIf="!multipleCorrect">
+	<ul>
+<!--		<li *ngFor="let answer of question.answers">-->
+<!--		ToDo point box or something -->
+<!--			<label>{{answer.text}}</label>-->
+<!--		</li>-->
+	</ul>
+</section> <!-- single answer -->
+<!--<section *ngIf="multipleCorrect">-->
+<section>
+	<ul>
+<!--		<li *ngFor="let answer of question.answers">-->
+<!--			<input type="checkbox">-->
+<!--			<label>{{answer.text}}</label>-->
+<!--		</li>-->
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="1">
+			<label for="1">Feet</label>
+		</li>
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="2">
+			<label for="2">Nose</label>
+		</li>
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="3">
+			<label for="3">Legs</label>
+		</li>
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="4">
+			<label for="4">Arms</label>
+		</li>
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="5">
+			<label for="5">Ears</label>
+		</li>
+		<li>
+			<input class="inputCheckBox" type="checkbox" id="6">
+			<label for="6">Hair</label>
+		</li>
+	</ul>
+</section> <!-- multiple answers -->

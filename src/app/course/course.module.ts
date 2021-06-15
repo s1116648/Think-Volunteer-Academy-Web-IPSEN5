@@ -48,7 +48,7 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 		DragulaModule,
 		UserModule,
 	],
-	exports: [CourseOverviewComponent],
+    exports: [CourseOverviewComponent, LessonTestCardComponent],
 	providers: [CourseService],
 })
 export class CourseModule {}
