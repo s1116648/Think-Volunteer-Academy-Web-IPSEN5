@@ -11,7 +11,7 @@ import { CourseService } from "../../course.service";
 export class CategoryCardComponent implements OnInit {
 	@Input() courseCategory: CourseCategory;
 
-	courses: Course[];
+	courses: Course[] = [];
 
 	constructor(private courseService: CourseService) {}
 
