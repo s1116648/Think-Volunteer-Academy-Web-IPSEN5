@@ -15,7 +15,6 @@ export class ChatComponent implements OnInit {
 	chats: Chat[] = [];
 
 	currentUser: User;
-
 	currentChat: Chat;
 
 	constructor(
