@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
 import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
-import {Question} from "../../models/question.model";
+import {Question} from "../../model/question.model";
 import {AnswerService} from "../../services/answer.service";
 import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
-import {Test} from "../../models/test.model";
+import {UpdateQuestionDTO} from "../../dto/update-question.dto";
+import {QuestionService} from "../../services/question.service";
 
 @Component({
   selector: "app-edit-question-modal",
@@ -13,13 +14,15 @@ import {Test} from "../../models/test.model";
 })
 export class EditQuestionModalComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
-  @Output() set = new EventEmitter<Test>();
+  @Output() set = new EventEmitter<Question>();
   @Input() question: Question;
+  @ViewChild("editQuestionForm") form: NgForm;
 
   icons = { faCheck, faPlus, faTrash };
   answerArray: UpdateAnswerDTO[] = [];
 
-  constructor(private answerService: AnswerService) {}
+  constructor(private answerService: AnswerService,
+              private questionService: QuestionService) {}
 
   ngOnInit(): void {
     this.answerArray = this.question.answers.map((answer) => {
@@ -29,19 +32,36 @@ export class EditQuestionModalComponent implements OnInit {
       };
       return answerDto;
     });
-
+    this.answerService.updateGlobalAnswersArray(this.answerArray);
     this.answerService.newAnswersChanged
         .subscribe((answers) => {
-          // console.log("New Answers: ", answers);
-          this.answerArray.push(...answers);
-          console.log(this.answerArray);
+          this.answerArray = answers;
         });
   }
 
-  close = (): void => this.closeModal.emit();
-
   update(questionForm: NgForm): void {
     const values = questionForm.value;
-    console.log(values);
-  }
+
+    const dto: UpdateQuestionDTO = {
+        text: values.question,
+        answers: this.answerArray
+    };
+
+    this.questionService.update(this.question.id, dto)
+        .subscribe((question) => {
+            this.set.emit(question);
+        });
+
+    this.close();
+    }
+
+    close(): void {
+        this.resetPopup();
+        this.closeModal.emit();
+    }
+
+    resetPopup(): void {
+        this.form.reset();
+        this.answerService.updateGlobalAnswersArray([]);
+    }
 }

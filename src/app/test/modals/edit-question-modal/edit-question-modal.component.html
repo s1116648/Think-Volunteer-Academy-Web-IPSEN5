@@ -1,9 +1,9 @@
 <app-modal title="Edit question" (closeModal)="close()">
 	<ng-container body>
 		<form
-			#questionForm="ngForm"
+			#editQuestionForm="ngForm"
 			id="question-form"
-			(ngSubmit)="update(questionForm)"
+			(ngSubmit)="update(editQuestionForm)"
 		>
 			<div class="form-group">
 				<label for="question">Question</label>
@@ -39,7 +39,7 @@
 		<button
 			class="button primary"
 			form="question-form"
-			[disabled]="questionForm.invalid"
+			[disabled]="editQuestionForm.invalid"
 		>
 			Save question
 			<span class="icon"><fa-icon [icon]="icons.faCheck"></fa-icon></span>

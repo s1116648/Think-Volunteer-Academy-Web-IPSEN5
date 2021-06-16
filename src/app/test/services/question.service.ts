@@ -2,8 +2,9 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {CreateQuestionDTO} from "../dto/create-question.dto";
 import {Observable, Subject} from "rxjs";
-import {Question} from "../models/question.model";
+import {Question} from "../model/question.model";
 import {HttpPaginatedResult} from "../../shared/http-paginated-result";
+import {UpdateQuestionDTO} from "../dto/update-question.dto";
 
 @Injectable({
     providedIn: "root",
@@ -34,5 +35,9 @@ export class QuestionService {
 
     delete(id: string): Observable<void> {
         return this.http.delete<void>(`/questions/${id}`);
+    }
+
+    update(id: string, dto: UpdateQuestionDTO): Observable<Question> {
+        return this.http.patch<Question>(`/questions/${id}`, dto);
     }
 }

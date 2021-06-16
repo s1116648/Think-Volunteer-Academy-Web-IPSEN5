@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
 import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
 import {AnswerService} from "../../services/answer.service";
-import {Test} from "../../models/test.model";
+import {Test} from "../../model/test.model";
 import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
 import {QuestionService} from "../../services/question.service";
 import {CreateQuestionDTO} from "../../dto/create-question.dto";
-import {Question} from "../../models/question.model";
+import {Question} from "../../model/question.model";
 
 @Component({
     selector: "app-add-question-modal",
@@ -17,6 +17,7 @@ export class AddQuestionModalComponent implements OnInit {
     @Output() closeModal = new EventEmitter();
     @Output() set = new EventEmitter<Question>();
     @Input() test: Test;
+    @ViewChild("addQuestionForm") form: NgForm;
 
     icons = { faCheck, faPlus, faTrash };
     newAnswerArray: UpdateAnswerDTO[] = [];
@@ -41,9 +42,16 @@ export class AddQuestionModalComponent implements OnInit {
         };
         this.questionService.create(this.test.id, dto)
             .subscribe((question: Question) => this.set.emit(question));
-        this.newAnswerArray = [];
         this.close();
     }
 
-    close = (): void => this.closeModal.emit();
+    close(): void {
+        this.resetPopup();
+        this.closeModal.emit();
+    }
+
+    resetPopup(): void {
+        this.form.reset();
+        this.answerService.updateGlobalAnswersArray([]);
+    }
 }

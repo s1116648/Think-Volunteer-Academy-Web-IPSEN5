@@ -3,7 +3,7 @@ import { faPlus, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import {ModalService} from "../../../shared/modal.service";
 import {PlaceholderDirective} from "../../../shared/placeholder.directive";
 import {EditQuestionModalComponent} from "../../modals/edit-question-modal/edit-question-modal.component";
-import {Question} from "../../models/question.model";
+import {Question} from "../../model/question.model";
 import {QuestionService} from "../../services/question.service";
 
 
@@ -42,5 +42,11 @@ export class AdminQuestionCardComponent implements OnInit {
             this.modalHost
         );
         modal.instance.question = question;
+        modal.instance.set.subscribe((updatedQuestion: Question) => {
+            const questionsArray = this.questionService.getGlobalQuestionsArray();
+            const tempArray = questionsArray.filter(x => x.id !== updatedQuestion.id);
+            tempArray.push(updatedQuestion);
+            this.questionService.updateGlobalQuestionsArray(tempArray);
+        });
     }
 }
