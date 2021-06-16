@@ -1,11 +1,11 @@
 <div class="question-answer-card">
-	<label for="answer{{index}}">Answer</label>
+	<label for="answer{{ index }}">Answer</label>
 	<div class="answer-content">
 		<input
 			type="text"
-			name="answer{{index}}"
+			name="answer{{ index }}"
 			class="dark"
-			id="answer{{index}}"
+			id="answer{{ index }}"
 			placeholder="Put answer content in here"
 			value="{{ answer.text }}"
 			[disabled]="disabled"
@@ -13,12 +13,12 @@
 		<div class="correct-answer-checkbox">
 			<input
 				type="checkbox"
-				id="correctAnswer{{index}}"
-				name="correctAnswer{{index}}"
+				id="correctAnswer{{ index }}"
+				name="correctAnswer{{ index }}"
 				[checked]="answer.correct"
 				[disabled]="disabled"
 			/>
-			<label for="correctAnswer{{index}}">Correct</label>
+			<label for="correctAnswer{{ index }}">Correct</label>
 		</div>
 	</div>
 </div>

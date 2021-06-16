@@ -1,6 +1,6 @@
-import {UpdateAnswerDTO} from "./update-answer.dto";
+import { UpdateAnswerDTO } from "./update-answer.dto";
 
 export interface CreateQuestionDTO {
-    text: string;
-    answers: UpdateAnswerDTO[];
+	text: string;
+	answers: UpdateAnswerDTO[];
 }
