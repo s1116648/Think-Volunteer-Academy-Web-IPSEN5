@@ -21,14 +21,9 @@
 
 			<div class="form-group">
 				<div class="answer-array">
-<!--					<app-admin-answer-card-->
-<!--							*ngFor="let answer of question.answers"-->
-<!--							[answer]="answer"-->
-<!--					></app-admin-answer-card>-->
-
 					<app-admin-answer-card-created
 							*ngFor="let newAnswer of answerArray; let i = index"
-							[newAnswer]="newAnswer"
+							[newAnswers]="newAnswer"
 							[index]="i"
 					></app-admin-answer-card-created>
 				</div>

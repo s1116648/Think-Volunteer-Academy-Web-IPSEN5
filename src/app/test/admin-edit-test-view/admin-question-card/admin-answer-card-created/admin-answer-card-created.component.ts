@@ -9,13 +9,13 @@ import {UpdateAnswerDTO} from "../../../dto/update-answer.dto";
   viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
 })
 export class AdminAnswerCardCreatedComponent implements OnInit {
-  @Input() newAnswer: UpdateAnswerDTO;
+  @Input() newAnswers: UpdateAnswerDTO;
   @Input() index: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    console.log("New Answer: ", this.newAnswer);
+
   }
 
 }

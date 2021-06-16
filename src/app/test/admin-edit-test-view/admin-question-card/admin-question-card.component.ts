@@ -4,6 +4,7 @@ import {ModalService} from "../../../shared/modal.service";
 import {PlaceholderDirective} from "../../../shared/placeholder.directive";
 import {EditQuestionModalComponent} from "../../modals/edit-question-modal/edit-question-modal.component";
 import {Question} from "../../question.model";
+import {QuestionService} from "../../question.service";
 
 
 @Component({
@@ -18,13 +19,20 @@ export class AdminQuestionCardComponent implements OnInit {
     modalHost: PlaceholderDirective;
 
     @Input() question: Question;
-    constructor(private modalService: ModalService) { }
+    @Input() index: number;
+    testId: string;
+    constructor(private modalService: ModalService,
+                private questionService: QuestionService) {}
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     deleteQuestion(): void {
-        console.log("Deleting question");
+        this.questionService.delete(this.question.id)
+            .subscribe(() => {
+                const questionsArray = this.questionService.getGlobalQuestionsArray();
+                const tempArray = questionsArray.filter(x => x.id !== this.question.id);
+                this.questionService.updateGlobalQuestionsArray(tempArray);
+        });
     }
 
     openEditModal(question: Question): void {
@@ -33,6 +41,5 @@ export class AdminQuestionCardComponent implements OnInit {
             this.modalHost
         );
         modal.instance.question = question;
-        console.log(question);
     }
 }

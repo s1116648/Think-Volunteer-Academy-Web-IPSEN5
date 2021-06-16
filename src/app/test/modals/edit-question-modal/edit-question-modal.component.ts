@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
-import {Lesson} from "../../../lesson/lesson.model";
 import {Question} from "../../question.model";
 import {AnswerService} from "../../answer.service";
 import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
+import {Test} from "../../test.model";
 
 @Component({
   selector: "app-edit-question-modal",
@@ -13,7 +13,7 @@ import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
 })
 export class EditQuestionModalComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
-  @Output() set = new EventEmitter<Lesson>();
+  @Output() set = new EventEmitter<Test>();
   @Input() question: Question;
 
   icons = { faCheck, faPlus, faTrash };
@@ -30,7 +30,6 @@ export class EditQuestionModalComponent implements OnInit {
       return answerDto;
     });
 
-    console.log("Answer array: ", this.answerArray);
     this.answerService.newAnswersChanged
         .subscribe((answers) => {
           // console.log("New Answers: ", answers);

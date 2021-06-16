@@ -11,6 +11,7 @@ export class AdminAnswerCardComponent implements OnInit {
   icons = { faPlus, faTrash };
   @Input() disabled: boolean;
   @Input() answer: Answer;
+  @Input() index: number;
   constructor() { }
 
   ngOnInit(): void {

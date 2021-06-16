@@ -10,6 +10,7 @@ import {CreateQuestionDTO} from "../dto/create-question.dto";
 import {PlaceholderDirective} from "../../shared/placeholder.directive";
 import {ModalService} from "../../shared/modal.service";
 import {AddQuestionModalComponent} from "../modals/add-question-modal/add-question-modal.component";
+import {QuestionService} from "../question.service";
 
 @Component({
   selector: "app-admin-edit-test-view",
@@ -30,7 +31,8 @@ export class AdminEditTestViewComponent implements OnInit {
   constructor(private lessonService: LessonService,
               private route: ActivatedRoute,
               private testService: TestService,
-              private modalService: ModalService) {}
+              private modalService: ModalService,
+              private questionService: QuestionService) {}
 
   ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
@@ -38,11 +40,11 @@ export class AdminEditTestViewComponent implements OnInit {
               .getById(params.lessonId)
               .subscribe((lesson: Lesson) => {
                   this.lesson = lesson;
+                  this.setTestAndQuestions();
               });
-
-          this.test = this.testService.test;
-          this.questions = this.test.questions;
       });
+      this.questionService.questionsChanged
+          .subscribe((questions) => this.questions = questions);
   }
 
     addQuestion(): void {
@@ -50,5 +52,21 @@ export class AdminEditTestViewComponent implements OnInit {
             AddQuestionModalComponent,
             this.modalHost
         );
+
+        modal.instance.test = this.test;
+        modal.instance.set.subscribe((question: Question) => {
+            const newQuestionsArr = this.questionService.getGlobalQuestionsArray();
+            newQuestionsArr.push(question);
+            this.questionService.updateGlobalQuestionsArray(newQuestionsArr);
+        });
+    }
+
+    setTestAndQuestions(): void {
+        this.testService.getTestByID(this.lesson.quizId)
+            .subscribe((test) => {
+                this.test = test;
+                this.questions = this.test.questions;
+                this.questionService.updateGlobalQuestionsArray(this.questions);
+            });
     }
 }

@@ -1,7 +1,7 @@
 <main class="content-holder">
 	<section class="main-content" *ngIf="question">
 		<section class="title-trash-holder">
-			<h3>Question 01</h3>
+			<h3>Question {{index + 1}}</h3>
 			<fa-icon
 				[icon]="icons.faTrash"
 				[styles]="{
@@ -24,11 +24,11 @@
 			></fa-icon>
 		</section>
 		<div class="question-card-content">
-			<label for="question">Question</label>
+			<label for="question{{index}}">Question</label>
 			<input
 				type="text"
-				id="question"
-				name="question"
+				id="question{{index}}"
+				name="question{{index}}"
 				class="dark"
 				placeholder="Put question content in here..."
 				value="{{ question.text }}"
@@ -36,9 +36,10 @@
 			/>
 		</div>
 		<app-admin-answer-card
-			*ngFor="let answer of question.answers"
+			*ngFor="let answer of question.answers; let i = index"
 			[answer]="answer"
 			[disabled]="true"
+			[index]="i"
 		></app-admin-answer-card>
 	</section>
 

@@ -1,49 +1,23 @@
 import { Injectable } from "@angular/core";
 import {Test} from "./test.model";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {UpdateTestDTO} from "./dto/update-test.dto";
 
 @Injectable({
 	providedIn: "root",
 })
 export class TestService {
-	test: Test = {
-		id: "1",
-		questions: [{
-			id: "1",
-			text: "vraag 1",
-			answers: [{
-				id: "1",
-				text: "Antwoord 1",
-				correct: false,
-				QuestionId: "1",
-				updatedAt: new Date("1"),
-				createdAt: new Date("1"),
-			},
-				{
-					id: "2",
-					text: "Antwoord 2",
-					correct: false,
-					QuestionId: "1",
-					updatedAt: new Date("1"),
-					createdAt: new Date("1"),
-				}],
-			updatedAt: new Date("1"),
-			createdAt: new Date("1"),
-		},
-			{
-				id: "2",
-				text: "vraag 2",
-				answers: [{
-					id: "1",
-					text: "Antwoord 1 vraag 2",
-					correct: true,
-					QuestionId: "1",
-					updatedAt: new Date("1"),
-					createdAt: new Date("1"),
-				}],
-				updatedAt: new Date("1"),
-				createdAt: new Date("1"),
-			}],
-		updatedAt: new Date("1"),
-		createdAt: new Date("1"),
-	};
+
+	constructor(private http: HttpClient) {
+	}
+
+	getTestByID(id: string): Observable<Test> {
+		return this.http.get<Test>(`/tests/${id}`);
+	}
+
+	update(id: string, dto: UpdateTestDTO): Observable<Test> {
+		return this.http.patch<Test>(`/tests/${id}`, dto);
+	}
+
 }

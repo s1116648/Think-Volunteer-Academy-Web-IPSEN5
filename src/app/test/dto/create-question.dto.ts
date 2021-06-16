@@ -1,6 +1,6 @@
-import { Answer } from "../answer.model";
+import {UpdateAnswerDTO} from "./update-answer.dto";
 
 export interface CreateQuestionDTO {
     text: string;
-    answers: Answer[];
+    answers: UpdateAnswerDTO[];
 }

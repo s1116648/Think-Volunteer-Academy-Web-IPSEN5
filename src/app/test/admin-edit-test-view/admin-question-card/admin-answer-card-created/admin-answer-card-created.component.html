@@ -1,22 +1,22 @@
-<div class="question-answer-card" ngModelGroup="newAnswer" *ngIf="newAnswer">
-    <label for="answer">Answer</label>
+<div class="question-answer-card" ngModelGroup="newAnswers" *ngIf="newAnswers">
+    <label for="answer{{index}}">Answer</label>
     <div class="answer-content">
         <input
                 type="text"
                 name="answer{{index}}"
                 class="dark"
-                id="answer"
+                id="answer{{index}}"
                 placeholder="Put answer content in here"
-                [ngModel]="newAnswer.text"
+                [(ngModel)]="newAnswers.text"
         />
         <div class="correct-answer-checkbox">
             <input
                     type="checkbox"
-                    id="correctAnswer"
+                    id="correctAnswer{{index}}"
                     name="correctAnswer{{index}}"
-                    [ngModel]="newAnswer.correct"
+                    [(ngModel)]="newAnswers.correct"
             />
-            <label for="correctAnswer">Correct</label>
+            <label for="correctAnswer{{index}}">Correct</label>
         </div>
     </div>
 </div>

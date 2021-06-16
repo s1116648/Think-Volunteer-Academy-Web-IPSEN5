@@ -5,6 +5,7 @@ export interface Lesson {
 	content: string;
 	index: number;
 	description: string;
+	quizId: string;
 	length: number;
 	courseId: string;
 	updatedAt: Date;

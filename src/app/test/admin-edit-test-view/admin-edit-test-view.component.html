@@ -7,10 +7,13 @@
 		<h1>New test / edit test</h1>
 		<h3>Lesson: {{ lesson.name }}</h3>
 		<section class="questions-holder">
-			<app-admin-question-card
-				*ngFor="let question of questions"
-				[question]="question"
-			></app-admin-question-card>
+			<div class="question-array" *ngIf="questions">
+				<app-admin-question-card
+						*ngFor="let question of questions; let i = index"
+						[question]="question"
+						[index] = "i"
+				></app-admin-question-card>
+			</div>
 
 			<button class="add-button" (click)="addQuestion()">
 				<span>
