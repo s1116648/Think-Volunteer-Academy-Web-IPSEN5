@@ -2,6 +2,10 @@
 	<ng-container body>
 		<form #courseForm="ngForm" id="set-lesson-form" (ngSubmit)="create(courseForm)">
 			<div class="form-group">
+				<app-course-banner-uploader name="image" ngModel required></app-course-banner-uploader>
+			</div>
+
+			<div class="form-group">
 				<label for="name">Name</label>
 				<input
 					type="text"

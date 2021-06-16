@@ -10,8 +10,7 @@ const routes: Routes = [
   {
     path: "admin/manage/coaches",
     component: CoachOverviewComponent,
-    canActivate: [AuthGuard, PermissionGuard],
-    data: {permissions: ["coach.view", "student.view"]}
+    canActivate: [AuthGuard]
   },
   {
     path: "coach",
