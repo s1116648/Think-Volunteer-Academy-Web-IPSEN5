@@ -11,7 +11,6 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SetUserRoleComponent } from "./modals/set-user-role/set-user-role.component";
 import { SharedModule } from "../shared/shared.module";
 import { ProfileComponent } from "./profile/profile.component";
-import { CourseModule } from "../course/course.module";
 
 @NgModule({
 	declarations: [
@@ -22,14 +21,14 @@ import { CourseModule } from "../course/course.module";
 		SetUserRoleComponent,
 		ProfileComponent,
 	],
-	imports: [
-		CommonModule,
-		UserRoutingModule,
-		RouterModule,
-		FormsModule,
-		FontAwesomeModule,
-		SharedModule,
-	],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        RouterModule,
+        FormsModule,
+        FontAwesomeModule,
+        SharedModule,
+    ],
 	exports: [
 		UserSettingsComponent,
 		UserOverviewComponent,

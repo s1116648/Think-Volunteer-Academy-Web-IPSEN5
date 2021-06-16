@@ -9,6 +9,8 @@ import { Badge } from "src/app/shared/badge.model";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { User } from "../user.model";
 import { UserService } from "../user.service";
+import { Coach } from "../../coaching/coach/coach.model";
+import { CoachService } from "../../coaching/coach/coach.service";
 
 @Component({
 	selector: "app-profile",
@@ -17,6 +19,7 @@ import { UserService } from "../user.service";
 })
 export class ProfileComponent implements OnInit {
 	user: User;
+	coach?: Coach;
 
 	courses: Course[] = [];
 
@@ -24,10 +27,17 @@ export class ProfileComponent implements OnInit {
 		private userService: UserService,
 		private courseService: CourseService,
 		private route: ActivatedRoute,
-		private authService: AuthService
+		private authService: AuthService,
+		private coachService: CoachService
 	) {}
 
 	ngOnInit(): void {
+		const currentUser = this.authService.loginInfo.getValue().user;
+
+		this.coachService.getCoachOfUser(currentUser.id).subscribe((coach: Coach) => {
+			this.coach = coach;
+		});
+
 		this.route.params.subscribe((params: Params) => {
 			this.fetchUser(params).subscribe((user: User) => {
 				this.user = user;

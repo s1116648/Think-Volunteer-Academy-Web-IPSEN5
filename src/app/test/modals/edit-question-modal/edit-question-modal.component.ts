@@ -60,13 +60,13 @@ export class EditQuestionModalComponent implements OnInit {
         this.close();
     }
 
-    close(): void {
-        this.resetPopup();
-        this.closeModal.emit();
-    }
+	close(): void {
+		this.resetPopup();
+		this.closeModal.emit();
+	}
 
-    resetPopup(): void {
-        this.form.reset();
-        this.answerService.updateGlobalAnswersArray([]);
-    }
+	resetPopup(): void {
+		this.form.reset();
+		this.answerService.updateGlobalAnswersArray([]);
+	}
 }

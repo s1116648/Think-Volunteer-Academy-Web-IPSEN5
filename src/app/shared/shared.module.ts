@@ -18,6 +18,7 @@ import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
 import { AvatarComponent } from "./avatar/avatar.component";
 import { CourseProgressionBannerComponent } from "./course-progression-banner/course-progression-banner.component";
+import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
 
 @NgModule({
 	declarations: [
@@ -38,6 +39,7 @@ import { CourseProgressionBannerComponent } from "./course-progression-banner/co
 		CourseBannerUploaderComponent,
 		AvatarComponent,
 		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -58,6 +60,7 @@ import { CourseProgressionBannerComponent } from "./course-progression-banner/co
 		CourseBannerUploaderComponent,
 		AvatarComponent,
 		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 })
 export class SharedModule {}
