@@ -44,9 +44,9 @@ export class AdminQuestionCardComponent implements OnInit {
         modal.instance.question = question;
         modal.instance.set.subscribe((updatedQuestion: Question) => {
             const questionsArray = this.questionService.getGlobalQuestionsArray();
-            const tempArray = questionsArray.filter(x => x.id !== updatedQuestion.id);
-            tempArray.push(updatedQuestion);
-            this.questionService.updateGlobalQuestionsArray(tempArray);
+            const index = questionsArray.findIndex(x => x.id === updatedQuestion.id);
+            questionsArray[index] = updatedQuestion;
+            this.questionService.updateGlobalQuestionsArray(questionsArray);
         });
     }
 }

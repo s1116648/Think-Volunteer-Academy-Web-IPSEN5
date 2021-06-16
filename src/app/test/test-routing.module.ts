@@ -13,7 +13,7 @@ const routes: Routes = [
         path: "admin/courses/:courseId/lessons/:lessonId/tests/:testId",
         component: AdminEditTestViewComponent,
         canActivate: [AuthGuard]
-    }
+    },
 ];
 
 @NgModule({

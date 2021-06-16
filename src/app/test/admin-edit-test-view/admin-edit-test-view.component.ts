@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {Lesson} from "../../lesson/lesson.model";
-import {LessonService} from "../../lesson/lesson.service";
 import {ActivatedRoute, Params } from "@angular/router";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import {Question} from "../model/question.model";
@@ -21,14 +19,13 @@ export class AdminEditTestViewComponent implements OnInit {
     @ViewChild(PlaceholderDirective, { static: false })
     modalHost: PlaceholderDirective;
 
-    lesson: Lesson;
     questions: Question[] = [];
     newQuestions: CreateQuestionDTO[] = [];
     test: Test;
 
     icons = { faPlus };
 
-  constructor(private lessonService: LessonService,
+  constructor(
               private route: ActivatedRoute,
               private testService: TestService,
               private modalService: ModalService,
@@ -36,11 +33,12 @@ export class AdminEditTestViewComponent implements OnInit {
 
   ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
-          this.lessonService
-              .getById(params.lessonId)
-              .subscribe((lesson: Lesson) => {
-                  this.lesson = lesson;
-                  this.setTestAndQuestions();
+          this.testService
+              .getTestByID(params.testId)
+              .subscribe((test: Test) => {
+                  this.test = test;
+                  this.questions = this.test.questions;
+                  this.questionService.updateGlobalQuestionsArray(this.questions);
               });
       });
       this.questionService.questionsChanged
@@ -61,12 +59,4 @@ export class AdminEditTestViewComponent implements OnInit {
         });
     }
 
-    setTestAndQuestions(): void {
-        this.testService.getTestByID(this.lesson.quizId)
-            .subscribe((test) => {
-                this.test = test;
-                this.questions = this.test.questions;
-                this.questionService.updateGlobalQuestionsArray(this.questions);
-            });
-    }
 }

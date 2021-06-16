@@ -19,11 +19,13 @@
             </div>
 
             <div class="form-group">
+                <div class="answer-array">
                     <app-admin-answer-card-created
                             *ngFor="let newAnswer of newAnswerArray; let i = index"
                             [newAnswers]="newAnswer"
                             [index]="i"
                     ></app-admin-answer-card-created>
+                </div>
             </div>
 
             <div class="form-group">
