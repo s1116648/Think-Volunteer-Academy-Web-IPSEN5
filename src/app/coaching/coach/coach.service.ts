@@ -30,6 +30,10 @@ export class CoachService {
 		);
 	}
 
+	getCoachOfUser(userID: string): Observable<Coach> {
+		return this.http.get<Coach>(`/users/${userID}/coach`);
+	}
+
 	getCoachByUserId(userId: string): Observable<Coach> {
 		return this.http.get<any>(`/coaches/${userId}`);
 	}
