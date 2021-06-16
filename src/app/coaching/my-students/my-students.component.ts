@@ -28,6 +28,8 @@ export class MyStudentsComponent implements OnInit {
 	ngOnInit(): void {
 		this.coachService.getCoachByUserId(this.authService.loginInfo.getValue().user.id).subscribe(
 			(coach) => {
+				if (coach == null) return;
+
 				this.studentService.getStudentsByCoach(coach.id).subscribe(
 					(students) => {
 						this.students = students;

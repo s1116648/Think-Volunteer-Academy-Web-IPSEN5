@@ -3,9 +3,9 @@
 .students {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 15px;
 
 	.student {
-		margin: 10px;
 		padding: 20px;
 		background-color: $color-background-dark;
 		border-radius: $border-radius;
@@ -14,14 +14,18 @@
 		align-items: center;
 
 		p {
-			margin-top: 5px
+			margin: 10px 0;
+			font-weight: bold;
+			font-size: 16px;
 		}
 
-		button {
+		button.button {
 			margin-top: 10px;
-			padding-top: 5px;
-			padding-bottom: 5px;
-			margin-bottom: 0;
+			max-width: none;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			background-color: $color-background;
 		}
 	}
 }

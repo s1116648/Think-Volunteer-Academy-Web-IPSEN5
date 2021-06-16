@@ -11,7 +11,7 @@
 				<li class="student" *ngFor="let student of students">
 					<app-avatar [avatar]="student.user.avatar" [size]="90"></app-avatar>
 					<p>{{ student.user.firstname }} {{ student.user.lastname }}</p>
-					<button class="button primary" (click)="onOpenChat(student)">Chat</button>
+					<button class="button" (click)="onOpenChat(student)">Chat</button>
 				</li>
 			</ul>
 
