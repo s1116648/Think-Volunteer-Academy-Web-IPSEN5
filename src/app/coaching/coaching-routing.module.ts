@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CoachOverviewComponent } from "./coach/coach-overview/coach-overview.component";
 import { AuthGuard } from "../auth/auth.guard";
 import { PermissionGuard } from "../role/permission/permission.guard";
+import { MyStudentsComponent } from "./my-students/my-students.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,11 @@ const routes: Routes = [
     component: CoachOverviewComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "coach",
+    component: MyStudentsComponent,
+    canActivate: [AuthGuard],
+  }
 ];
 
 @NgModule({
