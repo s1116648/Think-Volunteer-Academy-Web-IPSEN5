@@ -16,6 +16,7 @@ const routes: Routes = [
   {
     path: "coach",
     component: MyStudentsComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
