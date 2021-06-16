@@ -9,12 +9,12 @@ export class AnswerService{
     newAnswersChanged = new Subject<UpdateAnswerDTO[]>();
     newAnswers: UpdateAnswerDTO[] = [];
 
-    addNewAnswerToArray(newAnswerDTO: UpdateAnswerDTO): void {
-        this.newAnswers.push(newAnswerDTO);
+    updateGlobalAnswersArray(answers: UpdateAnswerDTO[]): void {
+        this.newAnswers = answers;
         this.newAnswersChanged.next(this.newAnswers);
     }
 
-    getAllNewAnswers(): UpdateAnswerDTO[] {
+    getGlobalAnswersArray(): UpdateAnswerDTO[] {
         return this.newAnswers.slice();
     }
 }

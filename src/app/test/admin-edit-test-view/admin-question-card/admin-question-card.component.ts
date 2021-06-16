@@ -13,13 +13,14 @@ import {QuestionService} from "../../question.service";
     styleUrls: ["./admin-question-card.component.scss"]
 })
 export class AdminQuestionCardComponent implements OnInit {
-    icons = { faPlus, faTrash, faEdit };
+
+    @Input() question: Question;
+    @Input() index: number;
 
     @ViewChild(PlaceholderDirective, { static: false })
     modalHost: PlaceholderDirective;
 
-    @Input() question: Question;
-    @Input() index: number;
+    icons = { faPlus, faTrash, faEdit };
     testId: string;
     constructor(private modalService: ModalService,
                 private questionService: QuestionService) {}

@@ -25,7 +25,7 @@ export class AddQuestionModalComponent implements OnInit {
                 private questionService: QuestionService) {}
 
     ngOnInit(): void {
-        this.newAnswerArray = this.answerService.getAllNewAnswers();
+        this.newAnswerArray = this.answerService.getGlobalAnswersArray();
         this.answerService.newAnswersChanged
             .subscribe((answers) => {
                 this.newAnswerArray = answers;
