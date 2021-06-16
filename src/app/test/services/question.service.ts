@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {CreateQuestionDTO} from "./dto/create-question.dto";
+import {CreateQuestionDTO} from "../dto/create-question.dto";
 import {Observable, Subject} from "rxjs";
-import {Question} from "./question.model";
-import {HttpPaginatedResult} from "../shared/http-paginated-result";
+import {Question} from "../models/question.model";
+import {HttpPaginatedResult} from "../../shared/http-paginated-result";
 
 @Injectable({
     providedIn: "root",

@@ -3,14 +3,14 @@ import {Lesson} from "../../lesson/lesson.model";
 import {LessonService} from "../../lesson/lesson.service";
 import {ActivatedRoute, Params } from "@angular/router";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import {Question} from "../question.model";
-import {Test} from "../test.model";
-import {TestService} from "../test.service";
+import {Question} from "../models/question.model";
+import {Test} from "../models/test.model";
+import {TestService} from "../services/test.service";
 import {CreateQuestionDTO} from "../dto/create-question.dto";
 import {PlaceholderDirective} from "../../shared/placeholder.directive";
 import {ModalService} from "../../shared/modal.service";
 import {AddQuestionModalComponent} from "../modals/add-question-modal/add-question-modal.component";
-import {QuestionService} from "../question.service";
+import {QuestionService} from "../services/question.service";
 
 @Component({
   selector: "app-admin-edit-test-view",

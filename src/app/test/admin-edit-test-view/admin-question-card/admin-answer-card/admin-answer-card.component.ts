@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {Answer} from "../../../answer.model";
+import {Answer} from "../../../models/answer.model";
 
 @Component({
   selector: "app-admin-answer-card",

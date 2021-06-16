@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {faCheck, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {NgForm} from "@angular/forms";
-import {AnswerService} from "../../answer.service";
-import {Test} from "../../test.model";
+import {AnswerService} from "../../services/answer.service";
+import {Test} from "../../models/test.model";
 import {UpdateAnswerDTO} from "../../dto/update-answer.dto";
-import {QuestionService} from "../../question.service";
+import {QuestionService} from "../../services/question.service";
 import {CreateQuestionDTO} from "../../dto/create-question.dto";
-import {Question} from "../../question.model";
+import {Question} from "../../models/question.model";
 
 @Component({
     selector: "app-add-question-modal",

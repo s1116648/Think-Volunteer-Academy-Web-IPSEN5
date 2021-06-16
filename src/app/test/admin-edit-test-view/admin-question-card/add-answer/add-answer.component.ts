@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {AnswerService} from "../../../answer.service";
+import {AnswerService} from "../../../services/answer.service";
 import {UpdateAnswerDTO} from "../../../dto/update-answer.dto";
 
 @Component({
