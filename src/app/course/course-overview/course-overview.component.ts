@@ -9,6 +9,7 @@ import { CourseService } from "../course.service";
 import { BadgeService } from "../../shared/badge.service";
 import { AuthService } from "../../auth/auth.service";
 import { Badge } from "../../shared/badge.model";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-course-overview",
@@ -22,6 +23,10 @@ export class CourseOverviewComponent implements OnInit {
 	lessons: Lesson[] = [];
 	userBadges: Badge[] = [];
 	similarCourses: Course[] = [];
+
+	icons = {
+		faGraduationCap
+	};
 
 	get totalLessonLength(): number {
 		return this.lessons.reduce((acc, lesson) => acc + lesson.length, 0);

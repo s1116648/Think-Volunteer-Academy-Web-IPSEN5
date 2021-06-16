@@ -1,3 +1,4 @@
 <section class="{{completed ? completedBackground : defaultBackground}}">
-	<h1>{{ convertNumberToRoman(number) }}</h1>
+	<ng-content #content></ng-content>
+	<h1 *ngIf="!content">{{ convertNumberToRoman(number) }}</h1>
 </section>
