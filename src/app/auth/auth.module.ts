@@ -8,9 +8,11 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RegisterComponent } from "./register/register.component";
+import { CreateResetPasswordComponent } from './create-reset-password/create-reset-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-	declarations: [LoginComponent, RegisterComponent],
+	declarations: [LoginComponent, RegisterComponent, CreateResetPasswordComponent, ResetPasswordComponent],
 	imports: [
 		CommonModule,
 		FontAwesomeModule,
