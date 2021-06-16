@@ -10,7 +10,7 @@ const routes: Routes = [
 		path: "admin/courses/:courseId/lessons/:lessonId",
 		component: AdminEditLessonViewComponent,
 		canActivate: [AuthGuard, PermissionGuard],
-		data: {permissions: ["lesson.view"]}
+		data: {permissions: []}
 	},
 	{
 		path: "courses/:courseId/lessons/:lessonId",
