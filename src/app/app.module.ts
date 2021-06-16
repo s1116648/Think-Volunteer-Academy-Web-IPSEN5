@@ -19,6 +19,7 @@ import { DragulaModule } from "ng2-dragula";
 import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { CoachingModule } from "./coaching/coaching.module";
+import {TestModule} from "./test/test.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { CoachingModule } from "./coaching/coaching.module";
 		ChatModule,
 		Ng2ImgMaxModule,
 		CoachingModule,
+		TestModule
 	],
 	providers: [
 		{

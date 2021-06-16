@@ -47,6 +47,10 @@
 			gap: 20px;
 			justify-self: center;
 			flex-wrap: wrap;
+
+			.graduation-icon {
+				font-size: 25px;
+			}
 		}
 	}
 
@@ -56,13 +60,3 @@
 		gap: 30px;
 	}
 }
-
-// @media only screen and (max-width: 900px) {
-// 	.content-holder {
-// 		flex-direction: column;
-// 	}
-// 	.left-content {
-// 		display: flex;
-// 		flex-direction: row;
-// 	}
-// }

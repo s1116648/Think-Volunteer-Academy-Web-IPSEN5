@@ -1,0 +1,34 @@
+<div class="question-answer-card" ngModelGroup="newAnswers=" *ngIf="newAnswers">
+    <div class="label-and-trash-holder">
+        <label for="answer{{index}}">Answer</label>
+        <fa-icon
+                (click)="deleteAnswer()"
+                [icon]="icons.faTrash"
+                [styles]="{
+						 stroke: 'white',
+						 color: 'white',
+						 width: '13',
+						 height: '13'
+				}"
+        ></fa-icon>
+    </div>
+    <div class="answer-content">
+        <input
+                type="text"
+                name="answer{{index}}"
+                class="dark"
+                id="answer{{index}}"
+                placeholder="Put answer content in here"
+                [(ngModel)]="newAnswers.text"
+        />
+        <div class="correct-answer-checkbox">
+            <input
+                    type="checkbox"
+                    id="correctAnswer{{index}}"
+                    name="correctAnswer{{index}}"
+                    [(ngModel)]="newAnswers.correct"
+            />
+            <label for="correctAnswer{{index}}">Correct</label>
+        </div>
+    </div>
+</div>

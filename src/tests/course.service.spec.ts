@@ -34,6 +34,7 @@ describe("Course service", () => {
                 description: "Introduction",
                 image: "google.com",
                 active: true,
+                examId: "1",
                 category: {
                     id: "1",
                     name: "Category 1",

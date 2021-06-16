@@ -28,7 +28,9 @@
 							><fa-icon [icon]="icons.faPen"></fa-icon
 						></span>
 					</button>
-					<button class="column button primary">
+					<button class="column button primary"
+					[routerLink]="['tests',course.examId]"
+					>
 						Edit test
 						<span class="icon"
 							><fa-icon [icon]="icons.faPen"></fa-icon

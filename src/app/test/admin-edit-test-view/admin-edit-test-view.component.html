@@ -1,0 +1,35 @@
+<main class="container content-holder">
+	<section class="left-sidebar">
+		<app-admin-side-nav></app-admin-side-nav>
+	</section>
+
+	<section class="main-content">
+		<h1>New test / edit test</h1>
+		<!--		<h3>Lesson: {{ lesson.name }}</h3>-->
+		<section class="questions-holder">
+			<div class="question-array" *ngIf="questions">
+				<app-admin-question-card
+					*ngFor="let question of questions; let i = index"
+					[question]="question"
+					[index]="i"
+				></app-admin-question-card>
+			</div>
+
+			<button class="add-button" (click)="addQuestion()">
+				<span>
+					<fa-icon
+						[icon]="icons.faPlus"
+						[styles]="{
+							stroke: 'white',
+							color: 'white',
+							width: '20',
+							height: '20'
+						}"
+					></fa-icon>
+				</span>
+			</button>
+		</section>
+	</section>
+
+	<ng-container appPlaceholder></ng-container>
+</main>
