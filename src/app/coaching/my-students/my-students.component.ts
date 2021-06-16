@@ -2,8 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { StudentService } from "../student/student.service";
 import { AuthService } from "../../auth/auth.service";
 import { Student } from "../student/student.model";
-import { Coach } from "../coach/coach.model";
 import { CoachService } from "../coach/coach.service";
+import { Chat } from "../../chat/chat.model";
+import { HttpPaginatedResult } from "../../shared/http-paginated-result";
+import { ChatService } from "../../chat/chat.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-my-students",
@@ -12,8 +15,14 @@ import { CoachService } from "../coach/coach.service";
 })
 export class MyStudentsComponent implements OnInit {
 	students: Student[] = [];
+	chats: Chat[] = [];
 
-	constructor(private coachService: CoachService, private studentService: StudentService, private authService: AuthService) {
+	constructor(
+		private coachService: CoachService,
+		private studentService: StudentService,
+		private authService: AuthService,
+		private chatService: ChatService,
+		private router: Router) {
 	}
 
 	ngOnInit(): void {
@@ -22,10 +31,21 @@ export class MyStudentsComponent implements OnInit {
 				this.studentService.getStudentsByCoach(coach.id).subscribe(
 					(students) => {
 						this.students = students;
-						console.log(students);
+					});
+				this.chatService
+					.get(coach.user.id)
+					.subscribe((result: HttpPaginatedResult<Chat>) => {
+						this.chats = result.items;
 					});
 			}
 		);
 	}
 
+	onOpenChat(student: Student): void {
+		for (const chat of this.chats) {
+			if (chat.user2.id === student.user.id) {
+				this.router.navigate(["chats", chat.id]);
+			}
+		}
+	}
 }
