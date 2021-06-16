@@ -16,7 +16,7 @@
 					><fa-icon [icon]="icons.faArrowRight"></fa-icon
 				></span>
 			</button>
-			<button class="button">
+			<button class="button" [routerLink]="['lessons', lesson.id, 'tests',lesson.quizId]">
 				Edit test
 				<span class="icon"
 					><fa-icon [icon]="icons.faArrowRight"></fa-icon

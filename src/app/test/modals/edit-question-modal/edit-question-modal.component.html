@@ -1,0 +1,48 @@
+<app-modal title="Edit question" (closeModal)="close()">
+	<ng-container body>
+		<form
+			#questionForm="ngForm"
+			id="question-form"
+			(ngSubmit)="update(questionForm)"
+		>
+			<div class="form-group">
+				<label for="question">Question</label>
+				<input
+					type="text"
+					id="question"
+					name="question"
+					placeholder="Question content"
+					class="dark"
+					[ngModel]="question.text"
+					ngModel
+					required
+				/>
+			</div>
+
+			<div class="form-group">
+				<div class="answer-array">
+					<app-admin-answer-card-created
+							*ngFor="let newAnswer of answerArray; let i = index"
+							[newAnswers]="newAnswer"
+							[index]="i"
+					></app-admin-answer-card-created>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<app-add-answer></app-add-answer>
+			</div>
+		</form>
+	</ng-container>
+
+	<ng-container footer>
+		<button
+			class="button primary"
+			form="question-form"
+			[disabled]="questionForm.invalid"
+		>
+			Save question
+			<span class="icon"><fa-icon [icon]="icons.faCheck"></fa-icon></span>
+		</button>
+	</ng-container>
+</app-modal>

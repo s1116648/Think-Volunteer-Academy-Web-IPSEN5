@@ -1,0 +1,47 @@
+<main class="content-holder">
+	<section class="main-content" *ngIf="question">
+		<section class="title-trash-holder">
+			<h3>Question {{index + 1}}</h3>
+			<fa-icon
+				[icon]="icons.faTrash"
+				[styles]="{
+					stroke: 'white',
+					color: 'white',
+					width: '15',
+					height: '15'
+				}"
+				(click)="deleteQuestion()"
+			></fa-icon>
+			<fa-icon
+				[icon]="icons.faEdit"
+				[styles]="{
+					stroke: 'white',
+					color: 'white',
+					width: '15',
+					height: '15'
+				}"
+				(click)="openEditModal(question)"
+			></fa-icon>
+		</section>
+		<div class="question-card-content">
+			<label for="question{{index}}">Question</label>
+			<input
+				type="text"
+				id="question{{index}}"
+				name="question{{index}}"
+				class="dark"
+				placeholder="Put question content in here..."
+				value="{{ question.text }}"
+				disabled
+			/>
+		</div>
+		<app-admin-answer-card
+			*ngFor="let answer of question.answers; let i = index"
+			[answer]="answer"
+			[disabled]="true"
+			[index]="i"
+		></app-admin-answer-card>
+	</section>
+
+	<ng-container appPlaceholder></ng-container>
+</main>
