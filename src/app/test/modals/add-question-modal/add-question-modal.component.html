@@ -38,7 +38,7 @@
         <button
                 class="button primary"
                 form="add-question-form"
-                [disabled]="addQuestionForm.invalid"
+                [disabled]="addQuestionForm.invalid || !isValid"
         >
             Save question
             <span class="icon"><fa-icon [icon]="icons.faCheck"></fa-icon></span>

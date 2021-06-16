@@ -39,7 +39,7 @@
 		<button
 			class="button primary"
 			form="question-form"
-			[disabled]="editQuestionForm.invalid"
+			[disabled]="editQuestionForm.invalid || !isValid"
 		>
 			Save question
 			<span class="icon"><fa-icon [icon]="icons.faCheck"></fa-icon></span>

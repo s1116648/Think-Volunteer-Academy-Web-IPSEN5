@@ -22,6 +22,10 @@ export class AddQuestionModalComponent implements OnInit {
     icons = { faCheck, faPlus, faTrash };
     newAnswerArray: UpdateAnswerDTO[] = [];
 
+    get isValid(): boolean {
+        return this.newAnswerArray.length >= 2 && this.newAnswerArray.filter(answer => answer.correct).length > 0;
+    }
+
     constructor(private answerService: AnswerService,
                 private questionService: QuestionService) {}
 
