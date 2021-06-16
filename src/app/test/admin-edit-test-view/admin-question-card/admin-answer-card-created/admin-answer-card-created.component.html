@@ -2,6 +2,7 @@
     <div class="label-and-trash-holder">
         <label for="answer{{index}}">Answer</label>
         <fa-icon
+                (click)="deleteAnswer()"
                 [icon]="icons.faTrash"
                 [styles]="{
 						 stroke: 'white',

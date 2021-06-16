@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs";
-import {UpdateAnswerDTO} from "./dto/update-answer.dto";
+import {UpdateAnswerDTO} from "../dto/update-answer.dto";
 
 @Injectable({
     providedIn: "root",

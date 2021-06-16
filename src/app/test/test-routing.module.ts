@@ -7,12 +7,12 @@ const routes: Routes = [
     {
         path: "admin/courses/:courseId/tests/:testId",
         component: AdminEditTestViewComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     },
     {
         path: "admin/courses/:courseId/lessons/:lessonId/tests/:testId",
         component: AdminEditTestViewComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     }
 ];
 

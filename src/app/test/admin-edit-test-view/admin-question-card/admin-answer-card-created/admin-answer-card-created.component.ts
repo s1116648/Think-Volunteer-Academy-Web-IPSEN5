@@ -19,4 +19,7 @@ export class AdminAnswerCardCreatedComponent implements OnInit {
 
   }
 
+  deleteAnswer(): void {
+
+  }
 }

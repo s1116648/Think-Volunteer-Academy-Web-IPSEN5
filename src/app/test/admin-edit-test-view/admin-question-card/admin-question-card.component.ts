@@ -3,8 +3,8 @@ import { faPlus, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import {ModalService} from "../../../shared/modal.service";
 import {PlaceholderDirective} from "../../../shared/placeholder.directive";
 import {EditQuestionModalComponent} from "../../modals/edit-question-modal/edit-question-modal.component";
-import {Question} from "../../question.model";
-import {QuestionService} from "../../question.service";
+import {Question} from "../../models/question.model";
+import {QuestionService} from "../../services/question.service";
 
 
 @Component({

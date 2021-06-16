@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import {Test} from "./test.model";
+import {Test} from "../models/test.model";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {UpdateTestDTO} from "./dto/update-test.dto";
+import {UpdateTestDTO} from "../dto/update-test.dto";
 
 @Injectable({
 	providedIn: "root",
