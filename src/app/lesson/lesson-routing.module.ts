@@ -3,12 +3,13 @@ import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "../auth/auth.guard";
 import { LessonViewComponent } from "./lesson-view/lesson-view.component";
 import { AdminEditLessonViewComponent } from "./admin-edit-lesson-view/admin-edit-lesson-view.component";
+import { PermissionGuard } from "../role/permission/permission.guard";
 
 const routes: Routes = [
 	{
 		path: "admin/courses/:courseId/lessons/:lessonId",
 		component: AdminEditLessonViewComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard]
 	},
 	{
 		path: "courses/:courseId/lessons/:lessonId",
