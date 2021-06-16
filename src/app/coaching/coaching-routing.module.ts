@@ -9,8 +9,7 @@ const routes: Routes = [
   {
     path: "admin/manage/coaches",
     component: CoachOverviewComponent,
-    canActivate: [AuthGuard, PermissionGuard],
-    data: {permissions: []}
+    canActivate: [AuthGuard]
   },
 ];
 
