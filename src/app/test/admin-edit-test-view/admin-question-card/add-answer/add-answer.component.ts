@@ -24,9 +24,8 @@ export class AddAnswerComponent implements OnInit {
 			correct: this.newAnswerCheckbox.nativeElement.checked
 		};
 
-		const tempArr = this.answerService.getGlobalAnswersArray();
-		tempArr.push(updateAnswerDTO);
-		this.answerService.updateGlobalAnswersArray(tempArr);
+		const answers = this.answerService.getGlobalAnswersArray();
+		this.answerService.updateGlobalAnswersArray([...answers, updateAnswerDTO]);
 		this.clearInputFields();
     }
 
