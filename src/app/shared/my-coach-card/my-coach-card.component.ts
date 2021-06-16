@@ -3,11 +3,11 @@ import {
 	faArrowRight,
 	faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Coach } from "../../../coaching/coach/coach.model";
-import { ChatService } from "../../../chat/chat.service";
-import { AuthService } from "../../../auth/auth.service";
-import { HttpPaginatedResult } from "../../../shared/http-paginated-result";
-import { Chat } from "../../../chat/chat.model";
+import { Coach } from "../../coaching/coach/coach.model";
+import { ChatService } from "../../chat/chat.service";
+import { AuthService } from "../../auth/auth.service";
+import { HttpPaginatedResult } from "../http-paginated-result";
+import { Chat } from "../../chat/chat.model";
 
 @Component({
 	selector: "app-my-coach-card",
