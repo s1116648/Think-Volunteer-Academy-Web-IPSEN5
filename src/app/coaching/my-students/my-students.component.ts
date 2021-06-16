@@ -11,7 +11,7 @@ import { CoachService } from "../coach/coach.service";
 	styleUrls: ["./my-students.component.scss"]
 })
 export class MyStudentsComponent implements OnInit {
-	students: Student[];
+	students: Student[] = [];
 
 	constructor(private coachService: CoachService, private studentService: StudentService, private authService: AuthService) {
 	}
