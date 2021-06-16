@@ -3,8 +3,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { HttpErrorResponse } from "@angular/common/http";
 import { AuthService } from "../auth.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { FormGroup, NgForm } from "@angular/forms";
-import { CreateResetPasswordDTO } from "../dto/create-reset-password.dto";
+import { NgForm } from "@angular/forms";
 import { ResetPasswordDTO } from "../dto/reset-password.dto";
 
 @Component({
