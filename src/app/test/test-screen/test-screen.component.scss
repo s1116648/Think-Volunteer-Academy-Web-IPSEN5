@@ -1,5 +1,25 @@
 @import "../../shared/variables";
 
+.chevronRight {
+  margin-left: 10px;
+  font-size: small;
+}
+
+.check-test-button {
+  background-color: $color-orange-500;
+  max-width: 100%;
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 64px;
+}
+
+.graduationCap {
+  margin-right: 5px;
+}
+
 h1 {
   margin-bottom: 20px;
 }

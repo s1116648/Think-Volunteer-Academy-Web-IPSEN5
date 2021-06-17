@@ -6,6 +6,7 @@ import { CourseService } from "../../course/course.service";
 import { LessonService } from "../../lesson/lesson.service";
 import { Course } from "../../course/course.model";
 import { Lesson } from "../../lesson/lesson.model";
+import { faChevronRight, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-screen-test",
@@ -13,6 +14,7 @@ import { Lesson } from "../../lesson/lesson.model";
   styleUrls: ["./test-screen.component.scss"]
 })
 export class TestScreenComponent implements OnInit {
+  icons = { faGraduationCap, faChevronRight };
 
   testId: string;
   courseName: string;

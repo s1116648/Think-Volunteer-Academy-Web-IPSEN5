@@ -11,6 +11,11 @@
 		<div *ngFor="let question of test.questions">
 			<app-test-question [question]="question"></app-test-question>
 		</div>
+		<button class="check-test-button button">
+			<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
+			Check the test
+			<fa-icon [icon]="icons.faChevronRight" class="chevronRight"></fa-icon>
+		</button>
 	</section>
 </div>
 
