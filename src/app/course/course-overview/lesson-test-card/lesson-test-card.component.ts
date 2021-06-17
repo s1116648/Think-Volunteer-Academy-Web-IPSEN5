@@ -9,6 +9,8 @@ import { Course } from "../../course.model";
 })
 export class LessonTestCardComponent implements OnInit {
 
+	@Input() course;
+
 	icons = { faArrowRight };
 	testPath = "test";
 

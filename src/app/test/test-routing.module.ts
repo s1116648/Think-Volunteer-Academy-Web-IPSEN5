@@ -16,12 +16,12 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 	},
 	{
-		path: "courses/:courseId/test/:examId",
+		path: "courses/:courseId/test/:testId",
 		component: TestScreenComponent,
 		canActivate: [AuthGuard],
 	},
 	{
-		path: "courses/:courseId/lessons/:lessonId/test/:quizId",
+		path: "courses/:courseId/lessons/:lessonId/test/:testId",
 		component: TestScreenComponent,
 		canActivate: [AuthGuard],
 	}
