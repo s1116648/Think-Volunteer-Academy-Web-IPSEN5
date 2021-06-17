@@ -99,7 +99,7 @@ export class UserSettingsComponent implements OnInit {
 					this.updateUserInStorage(user);
 				},
 				(e: HttpErrorResponse) => {
-					this.notifierService.notify("error", e.status === 401 ? "Password incorrect" : "Something went wrong");
+					this.notifierService.notify("error", e.status === 401 ? "Password incorrect." : "Something went wrong.");
 				}
 			);
 		} else {

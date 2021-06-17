@@ -43,7 +43,13 @@ import { NotifierModule } from "angular-notifier";
 		Ng2ImgMaxModule,
 		CoachingModule,
 		TestModule,
-		NotifierModule,
+		NotifierModule.withConfig({
+			position : {
+				horizontal: {
+					position: "middle"
+				}
+			}
+		})
 	],
 	providers: [
 		{
