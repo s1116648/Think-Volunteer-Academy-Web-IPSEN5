@@ -43,13 +43,7 @@ const routes: Routes = [
       path: "courses",
       component: CoursesOverviewComponent,
       canActivate: [AuthGuard]
-    },
-	{
-	  path: "courses/:id/test",
-	  component: TestScreenComponent,
-	  canActivate: [AuthGuard],
-	}
-
+    }
 ];
 
 @NgModule({
