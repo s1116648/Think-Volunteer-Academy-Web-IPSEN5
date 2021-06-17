@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Test } from "../model/test.model";
 import { ActivatedRoute, Params } from "@angular/router";
 import { TestService } from "../services/test.service";
@@ -9,6 +9,8 @@ import { Lesson } from "../../lesson/lesson.model";
 import { faChevronRight, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { SubmitAnswerDTO } from "../dto/submit-answer.dto";
 import { Question } from "../model/question.model";
+import { SubmitTestDto } from "../dto/submit-test.dto";
+import { TestResultModel } from "../model/test-result.model";
 
 @Component({
     selector: "app-screen-test",
@@ -69,6 +71,7 @@ export class TestScreenComponent implements OnInit {
     checkTestButtonClicked(): void {
         this.generateGivenAnswersFromDocument();
         console.log(this.givenAnswers);
+        this.submitAnswers();
     }
 
     generateGivenAnswersFromDocument(): void {
@@ -85,16 +88,25 @@ export class TestScreenComponent implements OnInit {
         for (let i = 0; i < question.answers.length; i++) {
             const currentAnswerId = question.answers[i].id;
             if (this.isCheckedInDocument(currentAnswerId)) {
-                const answer: SubmitAnswerDTO = {
+                this.givenAnswers[this.givenAnswers.length] = {
                     answerId: currentAnswerId,
                     questionId: question.id
                 };
-                this.givenAnswers[this.givenAnswers.length] = answer;
             }
         }
     }
 
     isCheckedInDocument(answerId): boolean {
         return document.getElementById(answerId).checked;
+    }
+
+    submitAnswers(): void {
+        const submitTestDTO: SubmitTestDto = {
+            answers: this.givenAnswers
+        };
+        this.testService.submitAnswers(this.test.id, submitTestDTO)
+            .subscribe((testResultModel: TestResultModel) => {
+                console.log(testResultModel);
+            });
     }
 }

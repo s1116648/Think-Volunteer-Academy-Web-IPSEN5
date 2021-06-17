@@ -3,6 +3,7 @@
 	<ul>
 		<li *ngFor="let answer of question.answers">
 			<input type="radio" [id]="answer.id" [name]="question.id">
+<!--			<input [(ngModel)]="answer.check">-->
 			<label [for]="answer.id">{{answer.text}}</label>
 		</li>
 	</ul>
