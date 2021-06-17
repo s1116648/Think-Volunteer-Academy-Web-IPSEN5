@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { User } from "../user.model";
 import { NgForm } from "@angular/forms";
 import { UpdateProfileDto } from "../dto/update-profile.dto";
@@ -8,6 +8,8 @@ import { ChangePasswordDto } from "../dto/change-password.dto";
 import { UploadedFileResponse } from "../../file/UploadedFileResponse.model";
 import { FileService } from "../../file/file.service";
 import { ImageResizerService } from "../../file/image-resizer.service";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
 	selector: "app-user-settings",
@@ -18,16 +20,13 @@ export class UserSettingsComponent implements OnInit {
 	currentUser: User;
 
 	isUploading: boolean = false;
-	updateMessage: string;
-	updateMessageShown: boolean;
-	updatePasswordMessage: string;
-	updatePasswordMessageShown: boolean;
 
 	constructor(
 		private userService: UserService,
 		private authService: AuthService,
 		private fileService: FileService,
-		private resizeService: ImageResizerService
+		private resizeService: ImageResizerService,
+		private notifierService: NotifierService
 	) {}
 
 	ngOnInit(): void {
@@ -35,13 +34,15 @@ export class UserSettingsComponent implements OnInit {
 	}
 
 	onFileUpload(event: Event): void {
-		const acceptedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
+		const acceptedImageTypes = ["image/jpeg", "image/jpg"];
 		const target = event.target as HTMLInputElement;
 		const files = target.files as FileList;
 		const file = files[0];
 		this.isUploading = true;
 
 		if (!acceptedImageTypes.includes(file?.type)) {
+			this.isUploading = false;
+			this.notifierService.notify("error", "File type not supported.");
 			return;
 		}
 
@@ -53,6 +54,10 @@ export class UserSettingsComponent implements OnInit {
 					.subscribe((uploadedFileResponse: UploadedFileResponse) => {
 						this.currentUser.avatar = uploadedFileResponse.path;
 						this.isUploading = false;
+						this.notifierService.notify("success", "Avatar uploaded.");
+					},
+					(e: HttpErrorResponse) => {
+						this.notifierService.notify("error", "Uploading avatar failed.");
 					});
 			});
 	}
@@ -71,11 +76,10 @@ export class UserSettingsComponent implements OnInit {
 			(user: User) => {
 				user.avatar = this.currentUser.avatar;
 				this.updateUserInStorage(user);
-				this.setUpdateMessage("Profile saved.");
-				this.showUpdateMessage(true);
+				this.notifierService.notify("success", "Profile changed.");
 			},
-			(error) => {
-				this.updateMessage = error;
+			(e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "Profile change failed.");
 			}
 		);
 	}
@@ -91,20 +95,15 @@ export class UserSettingsComponent implements OnInit {
 
 			this.userService.changePassword(dto).subscribe(
 				(user: User) => {
+					this.notifierService.notify("success", "Password has been changed.");
 					this.updateUserInStorage(user);
-					this.setPasswordMessage("Password has been changed.");
-					this.showPasswordMessage(true);
 				},
-				() => {
-					this.setPasswordMessage(
-						"An error has occurred. Check your password."
-					);
-					this.showPasswordMessage(true);
+				(e: HttpErrorResponse) => {
+					this.notifierService.notify("error", e.status === 401 ? "Password incorrect" : "Something went wrong");
 				}
 			);
 		} else {
-			this.setPasswordMessage("Passwords don't match.");
-			this.showPasswordMessage(true);
+			this.notifierService.notify("error", "Passwords don't match.");
 		}
 	}
 
@@ -115,21 +114,5 @@ export class UserSettingsComponent implements OnInit {
 		loginInfo.user.email = user.email;
 		loginInfo.user.avatar = user.avatar;
 		this.authService.handleAuthentication(loginInfo);
-	}
-
-	private setUpdateMessage(message: string): void {
-		this.updateMessage = message;
-	}
-
-	private showUpdateMessage(bool: boolean): void {
-		this.updateMessageShown = bool;
-	}
-
-	private setPasswordMessage(message: string): void {
-		this.updatePasswordMessage = message;
-	}
-
-	private showPasswordMessage(bool: boolean): void {
-		this.updatePasswordMessageShown = bool;
 	}
 }

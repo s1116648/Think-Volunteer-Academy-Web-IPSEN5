@@ -22,6 +22,8 @@ import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { UpdateLessonDTO } from "../dto/update-lesson.dto";
 import { forkJoin, Observable } from "rxjs";
 import { defaultIfEmpty, tap } from "rxjs/operators";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
 	selector: "app-admin-edit-lesson-view",
@@ -59,7 +61,8 @@ export class AdminEditLessonViewComponent implements OnInit {
 		private router: Router,
 		private lessonService: LessonService,
 		private lessonAttachmentService: LessonAttachmentService,
-		private fileService: FileService
+		private fileService: FileService,
+		private notifierService: NotifierService
 	) {}
 
 	ngOnInit(): void {
@@ -114,9 +117,12 @@ export class AdminEditLessonViewComponent implements OnInit {
 
 		update.subscribe(() => {
 			this.isUpdating = false;
+			this.notifierService.notify("success", "Lesson updated.");
 			this.router
 				.navigate(["../.."], { relativeTo: this.route })
 				.catch((err) => console.log(err));
+		}, (e: HttpErrorResponse) => {
+			this.notifierService.notify("error", "An error occurred while updating lesson.");
 		});
 	}
 
