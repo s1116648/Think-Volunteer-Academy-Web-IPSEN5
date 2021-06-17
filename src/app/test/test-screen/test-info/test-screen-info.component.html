@@ -17,11 +17,11 @@
 				</p>
 			</div>
 		</li>
-		<li>
+		<li *ngIf="lessonLength">
 			<div class="columns">
 				<p>
 					<span class="text-left"> Length </span>
-					<span class="text-right"> {{testLength}}</span>
+					<span class="text-right"> {{lessonLength}}</span>
 				</p>
 			</div>
 		</li>

@@ -17,6 +17,7 @@ export class TestScreenComponent implements OnInit {
   testId: string;
   courseName: string;
   lessonName: string;
+  lessonLength: number;
   test: Test;
 
   constructor(
@@ -27,16 +28,16 @@ export class TestScreenComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initialiseTest();
+    this.initialiseFromRoute();
   }
 
-  initialiseTest(): void {
+  initialiseFromRoute(): void {
     this.route.params.subscribe((params: Params) => {
       this.initialiseCourseName(params.courseId);
       if (params.lessonId) {
-        this.initialiseLessonName(params.lessonId);
+        this.initialiseLessonInformation(params.lessonId);
       }
-      // this.testService.getTestByID(params.testId);
+      this.initialiseTest(params.testId);
     });
   }
 
@@ -46,9 +47,16 @@ export class TestScreenComponent implements OnInit {
     });
   }
 
-  initialiseLessonName(lessonId: string): void {
+  initialiseLessonInformation(lessonId: string): void {
     this.lessonService.getById(lessonId).subscribe((lesson: Lesson) => {
       this.lessonName = lesson.name;
+      this.lessonLength = lesson.length;
+    });
+  }
+
+  initialiseTest(testId: string): void {
+    this.testService.getTestByID(testId).subscribe((test: Test) => {
+      this.test = test;
     });
   }
 }

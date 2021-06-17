@@ -9,7 +9,7 @@ export class TestScreenInfoComponent implements OnInit {
 
   @Input() courseName;
   @Input() lessonName;
-  @Input() testLength;
+  @Input() lessonLength;
 
   constructor() { }
 

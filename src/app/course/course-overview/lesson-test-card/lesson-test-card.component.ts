@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Course } from "../../course.model";
 
 @Component({
 	selector: "app-lesson-test-card",
