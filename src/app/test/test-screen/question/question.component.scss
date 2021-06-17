@@ -2,6 +2,18 @@
 
 label {
   display: inline;
+  width: 100%;
+  padding: 10px;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+input {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 ul {
@@ -14,7 +26,7 @@ ul {
 li {
   display: flex;
   width: 40%;
-  padding: 10px;
+  //padding: 10px;
   background-color: $color-background-dark;
   border-radius: $border-radius;
 }
@@ -26,10 +38,6 @@ li {
 
   display: inline;
   background-color: red;
-  //background-color: $color-background-dark;
-  width: 20px;
-  height: 20px;
-  margin-right: 20px;
 }
 
 .checkContainer {

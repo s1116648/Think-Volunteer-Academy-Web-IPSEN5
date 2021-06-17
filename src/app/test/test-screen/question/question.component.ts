@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Answer } from "../../model/answer.model";
 
 @Component({
   selector: "app-test-question",
@@ -14,11 +15,13 @@ export class QuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.multipleCorrect = true; // ToDo replace with below.
-    // this.initialiseMultipleCorrect();
+    // this.multipleCorrect = true; // ToDo replace with below.
+    console.log(this.question);
+    this.initialiseMultipleCorrect();
   }
 
   initialiseMultipleCorrect(): void {
+    console.log(this.getNumberOfAnswers());
     if (this.getNumberOfAnswers() > 1) {
       this.multipleCorrect = true;
     } else {
@@ -28,9 +31,11 @@ export class QuestionComponent implements OnInit {
 
   getNumberOfAnswers(): number {
     let numberOfAnswers = 0;
-    for (let i = 0; i < this.question.answers; i++) {
+    const answers: Answer[] = this.question.answers;
+    for (let i = 0; i < this.question.answers.length; i++) {
       if (this.question.answers[i].correct === true) {
         numberOfAnswers++;
+      } else {
       }
     }
     return numberOfAnswers;
