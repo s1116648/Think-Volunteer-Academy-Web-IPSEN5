@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { CreateQuestionDTO } from "../dto/create-question.dto";
 import { Observable, Subject } from "rxjs";
 import { Question } from "../model/question.model";
-import { HttpPaginatedResult } from "../../shared/http-paginated-result";
 import { UpdateQuestionDTO } from "../dto/update-question.dto";
 
 @Injectable({
@@ -22,10 +21,6 @@ export class QuestionService {
 	updateGlobalQuestionsArray(questions: Question[]): void {
 		this.questionsArray = questions;
 		this.questionsChanged.next(this.questionsArray);
-	}
-
-	get(id: string): Observable<HttpPaginatedResult<Question>> {
-		return this.http.get<HttpPaginatedResult<Question>>(`/questions/${id}`);
 	}
 
 	create(id: string, dto: CreateQuestionDTO): Observable<Question> {
