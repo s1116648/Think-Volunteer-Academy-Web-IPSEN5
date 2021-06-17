@@ -16,7 +16,6 @@ import { LessonModule } from "../lesson/lesson.module";
 import { AdminCourseInfoComponent } from "./admin-course-overview/admin-course-info/admin-course-info.component";
 import { DragulaModule } from "ng2-dragula";
 import { CategoryCardComponent } from "./courses-overview/category-card/category-card.component";
-import { MyCoachCardComponent } from "./courses-overview/my-coach-card/my-coach-card.component";
 import { CourseCardComponent } from "./courses-overview/course-card/course-card.component";
 import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
 import { UserModule } from "../user/user.module";
