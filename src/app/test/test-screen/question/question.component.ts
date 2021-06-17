@@ -15,13 +15,10 @@ export class QuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.multipleCorrect = true; // ToDo replace with below.
-    console.log(this.question);
     this.initialiseMultipleCorrect();
   }
 
   initialiseMultipleCorrect(): void {
-    console.log(this.getNumberOfAnswers());
     if (this.getNumberOfAnswers() > 1) {
       this.multipleCorrect = true;
     } else {
