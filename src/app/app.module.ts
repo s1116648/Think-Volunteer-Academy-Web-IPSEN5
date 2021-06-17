@@ -16,12 +16,12 @@ import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
 import { Ng2ImgMaxModule } from "ng2-img-max";
-import { TestComponent } from "./test/test.component";
-import { TestInfoComponent } from "./test/test-info/test-info.component";
-import { QuestionComponent } from "./test/question/question.component";
+import { TestScreenComponent } from "./test/test-screen/test-screen.component";
+import { TestScreenInfoComponent } from "./test/test-screen/test-info/test-screen-info.component";
+import { QuestionComponent } from "./test/test-screen/question/question.component";
 
 @NgModule({
-	declarations: [AppComponent, TestComponent, TestInfoComponent, QuestionComponent],
+	declarations: [AppComponent, TestScreenComponent, TestScreenInfoComponent, QuestionComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
