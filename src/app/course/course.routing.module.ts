@@ -8,6 +8,7 @@ import { CreateCourseComponent } from "./create-course/create-course.component";
 import { EditCourseComponent } from "./edit-course/edit-course.component";
 import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
 import { TestScreenComponent } from "../test/test-screen/test-screen.component";
+import { PermissionGuard } from "../role/permission/permission.guard";
 
 const routes: Routes = [
 	{
@@ -18,22 +19,25 @@ const routes: Routes = [
 	{
 		path: "admin",
 		component: AdminOverviewComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard, PermissionGuard],
+		data: {permissions: []}
 	},
 	{
 		path: "admin/courses/new",
 		component: CreateCourseComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard, PermissionGuard],
+		data: {permissions: []}
 	},
 	{
 		path: "admin/courses/:id/edit",
 		component: EditCourseComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard, PermissionGuard],
+		data: {permissions: []}
 	},
 	{
 		path: "admin/courses/:id",
 		component: AdminCourseOverviewComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard]
 	},
     {
       path: "courses",

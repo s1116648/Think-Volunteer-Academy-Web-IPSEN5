@@ -25,7 +25,7 @@ export class StudentOverviewComponent implements OnInit {
     this.studentService.getStudentsByCoach(this.coach.id).subscribe((students: Student[]) => {
       this.students = students;
     });
-    // tslint:disable-next-line:max-line-length
+
     this.newStudentSubscription = this.studentService.addedStudentsToCoach.subscribe((students: Student[]) => {
       this.students.push(...students.filter(student => student.coach.id === this.coach.id));
     });

@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+
 import { APIInterceptor } from "./shared/api.interceptor";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -15,10 +16,13 @@ import { CourseCategoryModule } from "./course-category/course-category.module";
 import { ManageModule } from "./manage/manage.module";
 import { SharedModule } from "./shared/shared.module";
 import { DragulaModule } from "ng2-dragula";
+import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { TestScreenComponent } from "./test/test-screen/test-screen.component";
 import { TestScreenInfoComponent } from "./test/test-screen/test-info/test-screen-info.component";
 import { QuestionComponent } from "./test/test-screen/question/question.component";
+import { CoachingModule } from "./coaching/coaching.module";
+import {TestModule} from "./test/test.module";
 
 @NgModule({
 	declarations: [AppComponent, TestScreenComponent, TestScreenInfoComponent, QuestionComponent],
@@ -37,7 +41,10 @@ import { QuestionComponent } from "./test/test-screen/question/question.componen
 		UserModule,
 		SharedModule,
 		DragulaModule.forRoot(),
+		ChatModule,
 		Ng2ImgMaxModule,
+		CoachingModule,
+		TestModule
 	],
 	providers: [
 		{

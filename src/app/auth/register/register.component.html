@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-group columns last">
-                <button class="button primary" [disabled]="loginForm.invalid">Sign up <span class="icon"><fa-icon [icon]="icons.faArrowRight"></fa-icon></span></button>
+                <button class="button primary" [disabled]="loginForm.invalid || isLoading">Sign up <span class="icon"><fa-icon [icon]="icons.faArrowRight"></fa-icon></span></button>
                 <p class="link" routerLink="/login">Sign in</p>
             </div>
         </form>

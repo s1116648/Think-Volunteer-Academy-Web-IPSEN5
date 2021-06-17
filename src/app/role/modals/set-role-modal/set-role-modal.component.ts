@@ -37,6 +37,7 @@ export class SetRoleModalComponent implements OnInit, Modal {
       this.permissions = permissions.map(permission => {
         return { name: permission.name, isChecked: permissionStrings.includes(permission.name) };
       });
+      console.log(this.permissions);
     });
   }
 
@@ -44,6 +45,7 @@ export class SetRoleModalComponent implements OnInit, Modal {
     this.selectedPermissions = this.permissions.filter((value, index) => {
       return value.isChecked;
     });
+    console.log(this.selectedPermissions);
   }
 
   create(form: NgForm): void {

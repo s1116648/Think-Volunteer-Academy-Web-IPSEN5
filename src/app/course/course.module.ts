@@ -32,7 +32,6 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 		CreateCourseComponent,
 		AdminCourseOverviewComponent,
 		CoursesOverviewComponent,
-		MyCoachCardComponent,
 		CourseCardComponent,
 		CategoryCardComponent,
 		AdminCourseInfoComponent,

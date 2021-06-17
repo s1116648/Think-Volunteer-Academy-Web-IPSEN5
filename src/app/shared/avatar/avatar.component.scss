@@ -1,0 +1,7 @@
+@import "/src/app/shared/variables";
+
+.avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: $color-background;
+}

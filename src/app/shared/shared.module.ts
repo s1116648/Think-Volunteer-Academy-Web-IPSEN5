@@ -16,6 +16,9 @@ import { ProgressCircleComponent } from "./progress-circle/progress-circle.compo
 import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
+import { AvatarComponent } from "./avatar/avatar.component";
+import { CourseProgressionBannerComponent } from "./course-progression-banner/course-progression-banner.component";
+import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
 
 @NgModule({
 	declarations: [
@@ -34,6 +37,9 @@ import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-b
 		PlaceholderDirective,
 		ModalComponent,
 		CourseBannerUploaderComponent,
+		AvatarComponent,
+		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -52,6 +58,9 @@ import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-b
 		TopNavComponent,
 		TruncatePipe,
 		CourseBannerUploaderComponent,
+		AvatarComponent,
+		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 })
 export class SharedModule {}

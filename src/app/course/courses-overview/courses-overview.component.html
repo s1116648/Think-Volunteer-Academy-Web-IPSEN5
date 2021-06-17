@@ -2,7 +2,7 @@
 
     <section class="left-sidebar">
         <app-profile-card></app-profile-card>
-        <app-my-coach-card></app-my-coach-card>
+        <app-my-coach-card *ngIf="coach" [coach]="coach"></app-my-coach-card>
     </section>
 
     <section class="main-content">

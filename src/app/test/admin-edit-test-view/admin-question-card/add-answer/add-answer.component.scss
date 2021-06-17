@@ -1,0 +1,16 @@
+@import "/src/app/test/admin-edit-test-view/admin-question-card/admin-answer-card/admin-answer-card.component.scss";
+@import "/src/app/shared/variables";
+.answer-content {
+
+  > .plus-icon-wrapper{
+      display: flex;
+      align-content: center;
+      border-radius: 7px;
+      padding: 5px 10px;
+      align-items: center;
+      background-color: $color-background-dark;
+      border: 1px solid $color-gray-700;
+      cursor: pointer;
+  }
+
+}
