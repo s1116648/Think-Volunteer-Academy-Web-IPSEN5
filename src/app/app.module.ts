@@ -20,6 +20,7 @@ import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { CoachingModule } from "./coaching/coaching.module";
 import {TestModule} from "./test/test.module";
+import { environment } from "../environments/environment";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -52,4 +53,6 @@ import {TestModule} from "./test/test.module";
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}

@@ -8,7 +8,7 @@
                 <h4 *ngIf="error.status == 409">An account with {{ loginForm.value.email }} already exists.</h4>
             </div>
 
-            <div class="columns">
+            <div class="columns wrap">
                 <div class="form-group">
                     <label for="firstname">Firstname</label>
                     <input type="text" id="firstname" name="firstname" placeholder="Firstname" ngModel required>
