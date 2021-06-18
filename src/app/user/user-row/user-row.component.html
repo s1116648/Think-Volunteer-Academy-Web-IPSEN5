@@ -1,13 +1,4 @@
 <div class="role-row">
-<<<<<<< HEAD
-	<div class="role-info columns">
-		<h3 class="title column grow">{{ user.firstname }} {{ user.lastname }}</h3>
-		<div class="column">
-			<button (click)="openEditRoleModal()"><fa-icon [icon]="icons.faPen"></fa-icon></button>
-		</div>
-		<div class="column" *ngIf="!isCurrentUser(user)">
-			<button (click)="remove()"><fa-icon [icon]="icons.faTrash"></fa-icon></button>
-=======
 	<div class="role-info">
 		<div class="columns">
             <app-avatar [avatar]="user.avatar"></app-avatar>
@@ -16,7 +7,6 @@
 			<div class="column">
 				<button (click)="openEditRoleModal()"><fa-icon [icon]="icons.faPen"></fa-icon></button>
 			</div>
->>>>>>> dev
 		</div>
 	</div>
 </div>
