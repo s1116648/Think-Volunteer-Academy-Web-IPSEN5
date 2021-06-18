@@ -1,61 +1,68 @@
 <app-modal [title]="role ? 'Edit role' : 'Create role'" (closeModal)="close()">
-  <ng-container body>
-    <form #roleForm="ngForm" id="set-role-form" (ngSubmit)="role ? update(roleForm) : create(roleForm)">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Role name"
-            class="dark"
-            [ngModel]="role?.name"
-            ngModel
-            required
-        />
-      </div>
+	<ng-container body>
+		<form #roleForm="ngForm" id="set-role-form" (ngSubmit)="role ? update(roleForm) : create(roleForm)">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Role name"
+					class="dark"
+					[ngModel]="role?.name"
+					ngModel
+					required
+				/>
+			</div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input
-            type="text"
-            id="description"
-            name="description"
-            placeholder="Description"
-            class="dark"
-            [ngModel]="role?.description"
-            ngModel
-            required
-        />
-      </div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<input
+					type="text"
+					id="description"
+					name="description"
+					placeholder="Description"
+					class="dark"
+					[ngModel]="role?.description"
+					ngModel
+					required
+				/>
+			</div>
 
-      <div class="form-group">
-        <label>Permissions</label>
-        <div *ngFor="let permission of permissions">
-          <input type="checkbox" [name]="permission.name" [(ngModel)]="permission.isChecked" (change)="fetchSelectedItems()">{{permission.name}}
-        </div>
-      </div>
+			<div class="form-group">
+				<div class="columns">
+					<label class="column grow">Permissions</label>
+					<p class="link" (click)="selectAll(true)" *ngIf="AllPermissionsAreSelected">Select all</p>
+					<p class="link" (click)="selectAll(false)" *ngIf="!AllPermissionsAreSelected">Select none</p>
+				</div>
+				<ul class="permissions">
+					<li *ngFor="let permission of permissions">
+						<input type="checkbox" [name]="permission.name" [(ngModel)]="permission.isChecked"
+							   >{{ permission.description }}
+					</li>
+				</ul>
+			</div>
 
-    </form>
-  </ng-container>
-  <ng-container footer>
-    <div class="columns">
-      <div class="column grow">
-        <button class="button primary" form="set-role-form" [disabled]="roleForm.invalid">
-          Create role
-          <span class="icon"
-          ><fa-icon [icon]="icons.faCheck"></fa-icon
-          ></span>
-        </button>
-      </div>
-      <div class="column">
-        <button class="button hover-danger" [disabled]="roleForm.invalid">
-          Delete role
-          <span class="icon"
-          ><fa-icon [icon]="icons.faCheck"></fa-icon
-          ></span>
-        </button>
-      </div>
-    </div>
-  </ng-container>
+		</form>
+	</ng-container>
+	<ng-container footer>
+		<div class="columns">
+			<div class="column grow">
+				<button class="button primary" form="set-role-form" [disabled]="roleForm.invalid">
+					Save
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+			<div class="column" *ngIf="role">
+				<button class="button hover-danger" [disabled]="roleForm.invalid">
+					Delete role
+					<span class="icon"
+					><fa-icon [icon]="icons.faCheck"></fa-icon
+					></span>
+				</button>
+			</div>
+		</div>
+	</ng-container>
 </app-modal>

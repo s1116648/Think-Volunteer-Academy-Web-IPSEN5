@@ -13,83 +13,100 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { NotifierService } from "angular-notifier";
 
 @Component({
-  selector: "app-set-role-modal",
-  templateUrl: "./set-role-modal.component.html",
-  styleUrls: ["./set-role-modal.component.scss"],
+    selector: "app-set-role-modal",
+    templateUrl: "./set-role-modal.component.html",
+    styleUrls: ["./set-role-modal.component.scss"],
 })
 export class SetRoleModalComponent implements OnInit, Modal {
 
-  constructor(
-    private roleService: RoleService,
-    private permissionService: PermissionService,
-    private notifierService: NotifierService
-  ) {}
-  @Output() closeModal = new EventEmitter();
-  @Output() set = new EventEmitter<Role>();
+    constructor(
+        private roleService: RoleService,
+        private permissionService: PermissionService,
+        private notifierService: NotifierService
+    ) {}
+    @Output() closeModal = new EventEmitter();
+    @Output() set = new EventEmitter<Role>();
 
-  @Input() role?: Role;
+    @Input() role?: Role;
 
-  icons = { faCheck };
-  permissions: PermissionCheckbox[];
-  selectedPermissions: PermissionCheckbox[];
+    icons = { faCheck };
+    permissions: PermissionCheckbox[] = [];
 
-  ngOnInit(): void {
-    const permissionStrings = this.role?.permissions.map(permission => permission.name) ?? [];
-    this.permissionService.fetchPermissions().subscribe((permissions: Permission[]) => {
-      this.permissions = permissions.map(permission => {
-        return { name: permission.name, isChecked: permissionStrings.includes(permission.name) };
-      });
-      console.log(this.permissions);
-    });
-  }
+    get AllPermissionsAreSelected(): boolean {
+        return this.permissions.every(permission => !permission.isChecked);
+    }
 
-  fetchSelectedItems(): void {
-    this.selectedPermissions = this.permissions.filter((value, index) => {
-      return value.isChecked;
-    });
-    console.log(this.selectedPermissions);
-  }
+    get selectedPermissions(): PermissionCheckbox[] {
+        return this.permissions.filter(permission => permission.isChecked);
+    }
 
-  create(form: NgForm): void {
-    const values = form.value;
-
-    const roleDTO: CreateRoleDTO = {
-      name: values.name,
-      description: values.description,
-      permissions: this.selectedPermissions.map(permission => permission.name)
-    };
-
-    this.roleService
-        .create(roleDTO)
-        .subscribe((role: Role) => {
-          this.notifierService.notify("success", "Role created.");
-          this.set.emit(role);
-        }, (error: HttpErrorResponse) => {
-          this.notifierService.notify("error", "An error occurred while creating role.");
+    ngOnInit(): void {
+        const permissionStrings = this.role?.permissions.map(permission => permission.name) ?? [];
+        this.permissionService.fetchPermissions().subscribe((permissions: Permission[]) => {
+            this.permissions = permissions.map(permission => {
+                return {
+                    name: permission.name,
+                    description: permission.description,
+                    isChecked: permissionStrings.includes(permission.name),
+                    createdAt: permission.createdAt,
+                    updatedAt: permission.updatedAt
+                };
+            });
         });
-  }
+    }
 
-  update(form: NgForm): void {
-    const values = form.value;
+    selectAll(select: boolean): void {
+        this.permissions.forEach(permission => permission.isChecked = select);
+    }
 
-    const tempPermissions: string[] = this.selectedPermissions.map(permission => permission.name) || [];
+    create(form: NgForm): void {
+        const values = form.value;
 
-    const roleDTO: UpdateRoleDTO = {
-      name: values.name,
-      description: values.description,
-      permissions: tempPermissions
-    };
+        const roleDTO: CreateRoleDTO = {
+            name: values.name,
+            description: values.description,
+            permissions: this.selectedPermissions.map(permission => permission.name)
+        };
 
-    this.roleService
-        .update(this.role.id, roleDTO)
-        .subscribe((role: Role) => {
-          this.notifierService.notify("success", "Role updated.");
-          this.set.emit(role);
-          this.close();
-        }, (error: HttpErrorResponse) => {
-          this.notifierService.notify("error", "An error occurred while updating role.");
-        });
-  }
+        this.roleService
+            .create(roleDTO)
+            .subscribe((role: Role) => {
+                this.notifierService.notify("success", "Role created.");
+                this.set.emit(role);
+            }, () => {
+                this.notifierService.notify("error", "An error occurred while creating role.");
+            });
+    }
 
-  close = (): void => this.closeModal.emit();
+    update(form: NgForm): void {
+        const values = form.value;
+
+        const tempPermissions: string[] = this.selectedPermissions.map(permission => permission.name) || [];
+
+        const roleDTO: UpdateRoleDTO = {
+            name: values.name,
+            description: values.description,
+            permissions: tempPermissions
+        };
+
+        this.roleService
+            .update(this.role.id, roleDTO)
+            .subscribe((role: Role) => {
+                this.role.permissions = this.selectedPermissions.map(permission => {
+                    return {
+                        name: permission.name,
+                        description: permission.description,
+                        createdAt: permission.createdAt,
+                        updatedAt: permission.updatedAt
+                    };
+                });
+                this.notifierService.notify("success", "Role updated.");
+                this.set.emit(role);
+                this.close();
+            }, () => {
+                this.notifierService.notify("error", "An error occurred while updating role.");
+            });
+    }
+
+    close = (): void => this.closeModal.emit();
 }

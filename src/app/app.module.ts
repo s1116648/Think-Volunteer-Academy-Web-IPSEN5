@@ -60,4 +60,6 @@ import { NotifierModule } from "angular-notifier";
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}
