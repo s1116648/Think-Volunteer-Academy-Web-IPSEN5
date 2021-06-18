@@ -9,7 +9,7 @@ const routes: Routes = [
 		path: "admin/manage",
 		component: ManageComponent,
 		canActivate: [AuthGuard, PermissionGuard],
-		data: {permissions: []}
+		data: {permissions: ["manage.view"]}
 	},
 ];
 
