@@ -6,6 +6,8 @@ import { AnswerService } from "../../services/answer.service";
 import { UpdateAnswerDTO } from "../../dto/update-answer.dto";
 import { UpdateQuestionDTO } from "../../dto/update-question.dto";
 import { QuestionService } from "../../services/question.service";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
     selector: "app-edit-question-modal",
@@ -26,7 +28,8 @@ export class EditQuestionModalComponent implements OnInit {
     }
 
     constructor(private answerService: AnswerService,
-                private questionService: QuestionService) {
+                private questionService: QuestionService,
+                private notifierService: NotifierService) {
     }
 
     ngOnInit(): void {
@@ -55,6 +58,9 @@ export class EditQuestionModalComponent implements OnInit {
         this.questionService.update(this.question.id, dto)
             .subscribe((question) => {
                 this.set.emit(question);
+                this.notifierService.notify("success", "Questions updated.");
+            }, (e: HttpErrorResponse) => {
+                this.notifierService.notify("error", "An error occured while updating questions.");
             });
 
         this.close();

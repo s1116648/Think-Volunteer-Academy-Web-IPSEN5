@@ -9,7 +9,8 @@ import { UpdateRoleDTO } from "../../dto/update-role-dto";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { PermissionCheckbox } from "../../permission/permission-checkbox.model";
 import { Permission } from "../../permission/permission.model";
-import { assertNotNull } from "@angular/compiler/src/output/output_ast";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NotifierService } from "angular-notifier";
 
 @Component({
   selector: "app-set-role-modal",
@@ -20,7 +21,8 @@ export class SetRoleModalComponent implements OnInit, Modal {
 
   constructor(
     private roleService: RoleService,
-    private permissionService: PermissionService
+    private permissionService: PermissionService,
+    private notifierService: NotifierService
   ) {}
   @Output() closeModal = new EventEmitter();
   @Output() set = new EventEmitter<Role>();
@@ -60,7 +62,10 @@ export class SetRoleModalComponent implements OnInit, Modal {
     this.roleService
         .create(roleDTO)
         .subscribe((role: Role) => {
+          this.notifierService.notify("success", "Role created.");
           this.set.emit(role);
+        }, (error: HttpErrorResponse) => {
+          this.notifierService.notify("error", "An error occurred while creating role.");
         });
   }
 
@@ -78,8 +83,11 @@ export class SetRoleModalComponent implements OnInit, Modal {
     this.roleService
         .update(this.role.id, roleDTO)
         .subscribe((role: Role) => {
+          this.notifierService.notify("success", "Role updated.");
           this.set.emit(role);
           this.close();
+        }, (error: HttpErrorResponse) => {
+          this.notifierService.notify("error", "An error occurred while updating role.");
         });
   }
 

@@ -1,4 +1,4 @@
-import { HttpEvent, HttpEventType } from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -7,24 +7,24 @@ import {
 	faPlus,
 	faTimes,
 	faPen,
-	faImage,
+	faImage
 } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
 import { SetCourseCategoryModalComponent } from "src/app/course-category/set-course-category-modal/set-course-category-modal.component";
 import { FileService } from "src/app/file/file.service";
-import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { ModalService } from "src/app/shared/modal.service";
 import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
 import { CreateCourseDTO } from "../dto/create-course.dto";
+import { NotifierService } from "angular-notifier";
 
 @Component({
 	selector: "app-create-course",
 	templateUrl: "./create-course.component.html",
-	styleUrls: ["./create-course.component.scss"],
+	styleUrls: ["./create-course.component.scss"]
 })
 export class CreateCourseComponent implements OnInit {
 	icons = { faCheck, faPlus, faTimes, faPen, faImage };
@@ -40,8 +40,10 @@ export class CreateCourseComponent implements OnInit {
 		private fileService: FileService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private modalService: ModalService
-	) {}
+		private modalService: ModalService,
+		private notifierService: NotifierService
+	) {
+	}
 
 	ngOnInit(): void {
 		this.courseCategoryService
@@ -58,13 +60,16 @@ export class CreateCourseComponent implements OnInit {
 			name: values.name,
 			description: values.description,
 			image: values.image,
-			categoryId: values.category.id,
+			categoryId: values.category.id
 		};
 
 		this.courseService.create(dto).subscribe((course: Course) => {
+			this.notifierService.notify("success", "Course has been created.");
 			this.router.navigate(["../", course.id], {
-				relativeTo: this.route,
+				relativeTo: this.route
 			});
+		}, (e: HttpErrorResponse) => {
+			this.notifierService.notify("error", "An error occurred while creating the course.");
 		});
 	}
 
