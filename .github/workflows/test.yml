@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Test
 
 on:
@@ -32,3 +33,39 @@ jobs:
 
       - name: Test app
         run: npm run test:prod
+=======
+name: Test
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+jobs:
+  run-tests:
+    name: Test application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Node.js dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Test app
+        run: npm run test:prod
+>>>>>>> dev
