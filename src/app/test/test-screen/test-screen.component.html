@@ -9,9 +9,9 @@
 	<div *ngIf="test">
 		<section class="main-content">
 			<h1>{{lessonName}} test</h1>
-				<div *ngFor="let question of test.questions">
-					<app-test-question [question]="question"></app-test-question>
-				</div>
+			<div *ngFor="let question of test.questions">
+				<app-test-question [question]="question"></app-test-question>
+			</div>
 			<button class="check-test-button button" (click)="checkTestButtonClicked()">
 				<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
 				Check the test
