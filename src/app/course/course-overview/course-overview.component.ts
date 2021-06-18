@@ -55,7 +55,7 @@ export class CourseOverviewComponent implements OnInit {
 				.subscribe((course: Course) => {
 					this.course = course;
 					this.certificateService
-						.getCertificateByUser(this.authService.loginInfo.getValue().user.id, this.course.id)
+						.getCertificatesByUser(this.authService.loginInfo.getValue().user.id, this.course.id)
 						.subscribe((result: HttpPaginatedResult<Certificate>) => {
 							this.certificates = result.items;
 						});

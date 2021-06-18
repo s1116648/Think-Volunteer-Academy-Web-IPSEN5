@@ -10,7 +10,7 @@ import { HttpPaginatedResult } from "./http-paginated-result";
 export class CertificateService {
 	constructor(private http: HttpClient) {}
 
-	getCertificateByUser(
+	getCertificatesByUser(
 		userID: string,
 		courseID?: string
 	): Observable<HttpPaginatedResult<Certificate>> {
