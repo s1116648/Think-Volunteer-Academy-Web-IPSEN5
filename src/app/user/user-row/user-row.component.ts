@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
 import { User } from "../user.model";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
 	selector: "app-user-row",
@@ -10,13 +11,19 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 export class UserRowComponent implements OnInit {
 	@Input() user: User;
 	@Output() updateUserRole = new EventEmitter<User>();
-	constructor() {}
+	@Output() removeButtonClickedEvent = new EventEmitter<User>();
 
-	icons = { faPen };
+	icons = {
+		faTrash, faPen
+	};
+
+	constructor(private authService: AuthService) {}
 
 	ngOnInit(): void {}
 
-	openEditRoleModal(): void {
-		this.updateUserRole.emit(this.user);
-	}
+	remove = (): void => this.removeButtonClickedEvent.emit(this.user);
+
+	openEditRoleModal = (): void => this.updateUserRole.emit(this.user);
+
+	isCurrentUser = (user: User): boolean => this.authService.loginInfo.getValue().user.id === user.id;
 }

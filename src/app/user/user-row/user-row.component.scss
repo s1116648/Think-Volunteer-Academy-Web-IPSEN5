@@ -6,8 +6,7 @@
 
 	.role-info {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		flex-direction: row;
 
 		.description {
 			font-size: 13px;
@@ -30,6 +29,10 @@
 		&:hover {
 			filter: brightness(95%);
 		}
+	}
+
+	.title {
+		flex-grow: 1;
 	}
 
     button {

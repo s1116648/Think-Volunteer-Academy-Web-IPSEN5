@@ -4,9 +4,8 @@
             <app-avatar [avatar]="user.avatar"></app-avatar>
 			<h3 class="column grow">{{ user.firstname }} {{user.lastname}}</h3>
 
-			<div class="column">
-				<button (click)="openEditRoleModal()"><fa-icon [icon]="icons.faPen"></fa-icon></button>
-			</div>
+			<button (click)="openEditRoleModal()" class="column"><fa-icon [icon]="icons.faPen"></fa-icon></button>
+			<button *ngIf="!isCurrentUser(user)" (click)="remove()" class="column"><fa-icon [icon]="icons.faTrash"></fa-icon></button>
 		</div>
 	</div>
 </div>
