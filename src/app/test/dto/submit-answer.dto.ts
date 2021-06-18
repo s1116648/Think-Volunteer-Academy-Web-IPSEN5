@@ -1,4 +1,4 @@
 export interface SubmitAnswerDTO {
     questionId: string;
-    answerId: string;
+    answers: string[]; // answerIds
 }

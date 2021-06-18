@@ -6,19 +6,19 @@
 			[lessonLength]="lessonLength"
 		></app-test-screen-info>
 	</section>
-	<section class="main-content">
-		<h1>{{lessonName}} test</h1>
-		<div *ngIf="test.questions">
-			<div *ngFor="let question of test.questions">
-				<app-test-question [question]="question"></app-test-question>
-			</div>
-		</div>
-		<button class="check-test-button button" (click)="checkTestButtonClicked()">
-			<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
-			Check the test
-			<fa-icon [icon]="icons.faChevronRight" class="chevronRight"></fa-icon>
-		</button>
-	</section>
+	<div *ngIf="test">
+		<section class="main-content">
+			<h1>{{lessonName}} test</h1>
+				<div *ngFor="let question of test.questions">
+					<app-test-question [question]="question"></app-test-question>
+				</div>
+			<button class="check-test-button button" (click)="checkTestButtonClicked()">
+				<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
+				Check the test
+				<fa-icon [icon]="icons.faChevronRight" class="chevronRight"></fa-icon>
+			</button>
+		</section>
+	</div>
 </div>
 
 

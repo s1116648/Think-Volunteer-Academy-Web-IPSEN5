@@ -8,8 +8,7 @@ import { Course } from "../../course/course.model";
 import { Lesson } from "../../lesson/lesson.model";
 import { faChevronRight, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { SubmitAnswerDTO } from "../dto/submit-answer.dto";
-import { Question } from "../model/question.model";
-import { SubmitTestDto } from "../dto/submit-test.dto";
+import { SubmitTestDTO } from "../dto/submit-test.dto";
 import { TestResultModel } from "../model/test-result.model";
 
 @Component({
@@ -25,7 +24,6 @@ export class TestScreenComponent implements OnInit {
     lessonName: string;
     lessonLength: number;
     test: Test;
-    givenAnswers: SubmitAnswerDTO[] = [];
 
     constructor(
         private route: ActivatedRoute,
@@ -69,44 +67,25 @@ export class TestScreenComponent implements OnInit {
     }
 
     checkTestButtonClicked(): void {
-        this.generateGivenAnswersFromDocument();
-        console.log(this.givenAnswers);
-        this.submitAnswers();
+        this.submitAnswers(this.generateSubmitAnswerDTO());
     }
 
-    generateGivenAnswersFromDocument(): void {
-        this.checkQuestionsForGivenAnswers();
-    }
-
-    checkQuestionsForGivenAnswers(): void {
-        for (let i = 0; i < this.test.questions.length; i++) {
-            this.checkQuestionForGivenAnswers(this.test.questions[i]);
-        }
-    }
-
-    checkQuestionForGivenAnswers(question: Question): void {
-        for (let i = 0; i < question.answers.length; i++) {
-            const currentAnswerId = question.answers[i].id;
-            if (this.isCheckedInDocument(currentAnswerId)) {
-                this.givenAnswers[this.givenAnswers.length] = {
-                    answerId: currentAnswerId,
-                    questionId: question.id
-                };
-            }
-        }
-    }
-
-    isCheckedInDocument(answerId): boolean {
-        return document.getElementById(answerId).checked;
-    }
-
-    submitAnswers(): void {
-        const submitTestDTO: SubmitTestDto = {
-            answers: this.givenAnswers
-        };
+    submitAnswers(submitTestDTO: SubmitTestDTO): void {
+        console.log(submitTestDTO);
         this.testService.submitAnswers(this.test.id, submitTestDTO)
             .subscribe((testResultModel: TestResultModel) => {
                 console.log(testResultModel);
             });
+    }
+
+    generateSubmitAnswerDTO(): SubmitTestDTO {
+        return SubmitTestDTO = {
+            answers: this.test.questions.map((question) => {
+                return {
+                    questionId: question.id,
+                    answers: question.answers.filter((answer) => answer.checked).map((answer) => answer.id)
+                } as SubmitAnswerDTO;
+            })
+        };
     }
 }

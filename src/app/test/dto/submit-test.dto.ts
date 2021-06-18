@@ -1,5 +1,5 @@
 import { SubmitAnswerDTO } from "./submit-answer.dto";
 
-export interface SubmitTestDto {
+export interface SubmitTestDTO {
     answers: SubmitAnswerDTO[];
 }
