@@ -36,7 +36,7 @@
 						[completed]="lessonIsCompleted(index)"
 					></app-progress-circle>
 
-					<app-progress-circle>
+					<app-progress-circle [completed]="courseIsCompleted()">
 						<fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
 					</app-progress-circle>
 				</section>

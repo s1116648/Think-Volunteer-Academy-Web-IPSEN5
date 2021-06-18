@@ -6,11 +6,14 @@ import { BadgeService } from "src/app/shared/badge.service";
 import { HttpPaginatedResult } from "src/app/shared/http-paginated-result";
 import { User } from "src/app/user/user.model";
 import { Course } from "../../course/course.model";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { Certificate } from "../certificate.model";
+import { CertificateService } from "../certificate.service";
 
 @Component({
 	selector: "app-course-progression-banner",
 	templateUrl: "./course-progression-banner.component.html",
-	styleUrls: ["./course-progression-banner.component.scss"],
+	styleUrls: ["./course-progression-banner.component.scss"]
 })
 export class CourseProgressionBannerComponent implements OnInit {
 	@Input() user: User;
@@ -18,11 +21,18 @@ export class CourseProgressionBannerComponent implements OnInit {
 
 	badges: Badge[] = [];
 	lessons: Lesson[] = [];
+	certificates: Certificate[] = [];
+
+	icons = {
+		faGraduationCap
+	};
 
 	constructor(
 		private badgeService: BadgeService,
-		private lessonService: LessonService
-	) {}
+		private lessonService: LessonService,
+		private certificateService: CertificateService
+	) {
+	}
 
 	ngOnInit(): void {
 		this.badgeService
@@ -30,14 +40,22 @@ export class CourseProgressionBannerComponent implements OnInit {
 			.subscribe((result: HttpPaginatedResult<Badge>) => {
 				this.badges = result.items;
 			});
-
 		this.lessonService
 			.get(this.course.id)
 			.subscribe((result: HttpPaginatedResult<Lesson>) => {
 				this.lessons = result.items;
 			});
+		this.certificateService
+			.getCertificateByUser(this.user.id, this.course.id)
+			.subscribe((result: HttpPaginatedResult<Certificate>) => {
+				this.certificates = result.items;
+				console.log(this.certificates);
+			});
 	}
 
-	isCompleted = (lesson: Lesson): boolean =>
+	isLessonCompleted = (lesson: Lesson): boolean =>
 		this.badges.map((badge) => badge.lesson.id).includes(lesson.id);
+
+	isCourseCompleted = (course: Course): boolean =>
+		this.certificates.map((certificate) => certificate.course.id).includes(course.id);
 }
