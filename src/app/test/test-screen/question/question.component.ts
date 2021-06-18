@@ -20,13 +20,6 @@ export class QuestionComponent implements OnInit {
   initialiseMultipleCorrect = (): boolean => this.multipleCorrect = this.getNumberOfAnswers() > 1;
 
   getNumberOfAnswers(): number {
-    let numberOfAnswers = 0;
-    for (let i = 0; i < this.question.answers.length; i++) {
-      if (this.question.answers[i].correct === true) {
-        numberOfAnswers++;
-      } else {
-      }
-    }
-    return numberOfAnswers;
+    return this.question.answers.filter((answer) => answer.correct).length;
   }
 }
