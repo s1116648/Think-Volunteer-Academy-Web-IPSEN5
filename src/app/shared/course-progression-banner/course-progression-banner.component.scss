@@ -1,0 +1,14 @@
+@import "/src/app/shared/variables";
+
+.course-progression {
+    padding: 20px;
+    border-radius: $border-radius;
+    background-color: $color-background-dark;
+
+    .badges {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+}

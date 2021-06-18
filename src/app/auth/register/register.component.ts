@@ -5,31 +5,37 @@ import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { RegisterDTO } from "../dto/register.dto";
+import { NotifierService } from "angular-notifier";
 
 @Component({
 	selector: "app-register",
 	templateUrl: "./register.component.html",
-	styleUrls: ["./register.component.scss", "../login/login.component.scss"],
+	styleUrls: ["./register.component.scss", "../login/login.component.scss"]
 })
 export class RegisterComponent implements OnInit {
 	icons = { faArrowRight };
 
-	error: HttpErrorResponse;
+	isLoading: boolean = false;
 
-	constructor(private authService: AuthService, private router: Router) {}
+	constructor(private authService: AuthService, private router: Router, private notifierService: NotifierService) {
+	}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+	}
 
 	register(form: NgForm): void {
 		if (form.invalid) return;
+		this.isLoading = true;
 
 		const values: RegisterDTO = form.value;
 
 		this.authService.register(values).subscribe(
-			() => this.router.navigate(["/login"]),
-			(error: HttpErrorResponse) => {
-				console.log(error);
-				this.error = error;
+			() => {
+				this.notifierService.notify("success", "Account registered.");
+				this.router.navigate(["/login"]);
+			}, (e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "An error occurred while registering account.");
+				this.isLoading = false;
 			}
 		);
 	}

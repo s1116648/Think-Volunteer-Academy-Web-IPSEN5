@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="content-holder">
+        <section class="left-sidebar">
+            <app-profile-card></app-profile-card>
+            <section class="chats-sidebar-section">
+                <h3>Chats</h3>
+    
+                <ul *ngIf="chats.length > 0; else noChats">
+                    <li *ngFor="let chat of chats" [routerLink]="['/chats', chat.id]">
+                        <div class="columns">
+                            <app-avatar [avatar]="getOtherUserOfChat(chat).avatar"></app-avatar>
+                            <p>{{ getOtherUserOfChat(chat).firstname }}</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <ng-template #noChats>
+                    <p>No chats</p>
+                </ng-template>
+            </section>
+        </section>
+    
+        <section class="main-content">
+            <app-chat-window *ngIf="currentChat; else noChatSelected" [chat]="currentChat"></app-chat-window>
+
+            <ng-template #noChatSelected>
+                <p>No chat selected</p>
+            </ng-template>
+        </section>
+    </div>    
+</div>

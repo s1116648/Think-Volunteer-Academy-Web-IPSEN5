@@ -7,36 +7,45 @@ import { HttpClient } from "@angular/common/http";
 import { User } from "../../user/user.model";
 
 @Injectable({
-  providedIn: "root"
+	providedIn: "root"
 })
 export class CoachService {
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) {
+	}
 
-  getCoaches(): Observable<Coach[]>{
-    return this.http.get<any>("/coaches").pipe(
-        map((responseData: { items: Coach[] }) => {
-          return responseData.items;
-        })
-    );
-  }
+	getCoaches(): Observable<Coach[]> {
+		return this.http.get<any>("/coaches").pipe(
+			map((responseData: { items: Coach[] }) => {
+				return responseData.items;
+			})
+		);
+	}
 
-  getCoachByID(id: string): Observable<Coach>{
-      return this.http.get<any>(`/coaches/${id}`).pipe(
-          map((responseData: { coach: Coach }) => {
-              return responseData.coach;
-          })
-      );
-  }
+	getCoachByID(id: string): Observable<Coach> {
+		return this.http.get<any>(`/coaches/${id}`).pipe(
+			map((responseData: { coach: Coach }) => {
+				return responseData.coach;
+			})
+		);
+	}
 
-  create(user: User): Observable<Coach> {
-      return this.http
-          .post<Coach>("/coaches", {
-              userId: user.id,
-          });
-  }
+	getCoachOfUser(userID: string): Observable<Coach> {
+		return this.http.get<Coach>(`/users/${userID}/coach`);
+	}
 
-  delete(coachId: string): Observable<void>{
-      return this.http.delete<void>(`/coaches/${coachId}`);
-  }
+	getCoachByUserId(userId: string): Observable<Coach> {
+		return this.http.get<any>(`/coaches/${userId}`);
+	}
+
+	create(user: User): Observable<Coach> {
+		return this.http
+			.post<Coach>("/coaches", {
+				userId: user.id
+			});
+	}
+
+	delete(coachId: string): Observable<void> {
+		return this.http.delete<void>(`/coaches/${coachId}`);
+	}
 }

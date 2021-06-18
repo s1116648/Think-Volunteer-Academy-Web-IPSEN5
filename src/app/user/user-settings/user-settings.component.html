@@ -7,9 +7,8 @@
             <h1>
                 Settings
             </h1>
-            <section class="avatar-section">
-                <img [src]="currentUser.avatar"
-                     alt="profile avatar" class="profile-avatar">
+            <section class="avatar-section columns">
+                <app-avatar [avatar]="currentUser.avatar" [size]="100"></app-avatar>
                 <input *ngIf="!isUploading" type="file" (change)="onFileUpload($event)" accept="image/*"/>
                 <p *ngIf="isUploading">Loading...</p>
             </section>
@@ -36,7 +35,6 @@
                     <button class="button" (submit)="updateProfile(profileForm)" [disabled]="!profileForm.valid">
                         Update profile
                     </button>
-                    <p *ngIf="updateMessageShown">{{ updateMessage }}</p>
                 </div>
             </form>
             <br>
@@ -60,10 +58,9 @@
                 </div>
                 <div class="columns">
                     <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
-                        Update profile
+                        Change password
                     </button>
                     <button class="button danger" (click)="showRemoveModal()">Delete Account</button>
-                    <p *ngIf="updatePasswordMessageShown">{{ updatePasswordMessage }}</p>
                 </div>
             </form>
         </section>

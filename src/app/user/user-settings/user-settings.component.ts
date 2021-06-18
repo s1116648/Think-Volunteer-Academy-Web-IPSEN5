@@ -12,6 +12,8 @@ import { Router } from "@angular/router";
 import { UploadedFileResponse } from "../../file/UploadedFileResponse.model";
 import { FileService } from "../../file/file.service";
 import { ImageResizerService } from "../../file/image-resizer.service";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
     selector: "app-user-settings",
@@ -26,102 +28,104 @@ export class UserSettingsComponent implements OnInit {
 
     currentUser: User;
 
-    isUploading: boolean = false;
-    updateMessage: string;
-    updateMessageShown: boolean;
-    updatePasswordMessage: string;
-    updatePasswordMessageShown: boolean;
+	isUploading: boolean = false;
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
         private fileService: FileService,
         private resizeService: ImageResizerService,
+        private notifierService: NotifierService,
         private modalService: ModalService,
         private router: Router
     ) {}
 
-    ngOnInit(): void {
-        this.currentUser = this.authService.loginInfo.getValue().user;
-        if (!this.currentUser.avatar) {
-            this.currentUser.avatar =
-                "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
-        }
-    }
+	ngOnInit(): void {
+		this.currentUser = this.authService.loginInfo.getValue().user;
+	}
 
-    onFileUpload(event: Event): void {
-        const acceptedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
-        const target = event.target as HTMLInputElement;
-        const files = target.files as FileList;
-        const file = files[0];
-        this.isUploading = true;
+	onFileUpload(event: Event): void {
+		const acceptedImageTypes = ["image/jpeg", "image/jpg"];
+		const target = event.target as HTMLInputElement;
+		const files = target.files as FileList;
+		const file = files[0];
+		this.isUploading = true;
 
-        if (!acceptedImageTypes.includes(file?.type)) {
-            return;
-        }
+		if (!acceptedImageTypes.includes(file?.type)) {
+			this.isUploading = false;
+			this.notifierService.notify("error", "File type not supported.");
+			return;
+		}
 
-        this.resizeService
-            .resizeImage(file, 180, 180)
-            .subscribe((resizedImage: File) => {
-                this.fileService
-                    .upload(resizedImage)
-                    .subscribe((uploadedFileResponse: UploadedFileResponse) => {
-                        this.currentUser.avatar = uploadedFileResponse.url;
-                        this.isUploading = false;
-                    });
-            });
-    }
+		this.resizeService
+			.resizeImage(file, 180, 180)
+			.subscribe((resizedImage: File) => {
+				this.fileService
+					.upload(resizedImage)
+					.subscribe((uploadedFileResponse: UploadedFileResponse) => {
+						this.currentUser.avatar = uploadedFileResponse.path;
+						this.isUploading = false;
+						this.notifierService.notify("success", "Avatar uploaded.");
+					},
+					(e: HttpErrorResponse) => {
+						this.notifierService.notify("error", "Uploading avatar failed.");
+					});
+			});
+	}
 
-    updateProfile(form: NgForm): void {
-        const values = form.value;
+	updateProfile(form: NgForm): void {
+		const values = form.value;
 
-        const dto: UpdateProfileDto = {
-            firstname: values.firstName,
-            lastname: values.lastName,
-            email: values.email,
-            avatar: this.currentUser.avatar,
-        };
+		const dto: UpdateProfileDto = {
+			firstname: values.firstName,
+			lastname: values.lastName,
+			email: values.email,
+			avatar: this.currentUser.avatar,
+		};
 
-        this.userService.updateProfile(this.currentUser.id, dto).subscribe(
-            (user: User) => {
-                user.avatar = this.currentUser.avatar;
-                this.updateUserInStorage(user);
-                this.setUpdateMessage("Profile saved.");
-                this.showUpdateMessage(true);
-            },
-            (error) => {
-                this.updateMessage = error;
-            }
-        );
-    }
+		this.userService.updateProfile(this.currentUser.id, dto).subscribe(
+			(user: User) => {
+				user.avatar = this.currentUser.avatar;
+				this.updateUserInStorage(user);
+				this.notifierService.notify("success", "Profile changed.");
+			},
+			(e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "Profile change failed.");
+			}
+		);
+	}
 
-    changePassword(form: NgForm): void {
-        const values = form.value;
+	changePassword(form: NgForm): void {
+		const values = form.value;
 
-        if (values.newPassword === values.repeatPassword) {
-            const dto: ChangePasswordDto = {
-                currentPassword: values.currentPassword,
-                newPassword: values.newPassword,
-            };
+		if (values.newPassword === values.repeatPassword) {
+			const dto: ChangePasswordDto = {
+				currentPassword: values.currentPassword,
+				newPassword: values.newPassword,
+			};
 
-            this.userService.changePassword(dto).subscribe(
-                (user: User) => {
-                    this.updateUserInStorage(user);
-                    this.setPasswordMessage("Password has been changed.");
-                    this.showPasswordMessage(true);
-                },
-                () => {
-                    this.setPasswordMessage(
-                        "An error has occurred. Check your password."
-                    );
-                    this.showPasswordMessage(true);
-                }
-            );
-        } else {
-            this.setPasswordMessage("Passwords don't match.");
-            this.showPasswordMessage(true);
-        }
-    }
+			this.userService.changePassword(dto).subscribe(
+				(user: User) => {
+					this.notifierService.notify("success", "Password has been changed.");
+					this.updateUserInStorage(user);
+				},
+				(e: HttpErrorResponse) => {
+					this.notifierService.notify("error", e.status === 401 ? "Password incorrect." : "Something went wrong.");
+				}
+			);
+		} else {
+			this.notifierService.notify("error", "Passwords don't match.");
+		}
+	}
+
+	private updateUserInStorage(user: User): void {
+		const loginInfo = this.authService.loginInfo.getValue();
+		loginInfo.user.firstname = user.firstname;
+		loginInfo.user.lastname = user.lastname;
+		loginInfo.user.email = user.email;
+		loginInfo.user.avatar = user.avatar;
+		this.authService.handleAuthentication(loginInfo);
+	}
 
     showRemoveModal(): void {
         const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
@@ -136,30 +140,5 @@ export class UserSettingsComponent implements OnInit {
                 this.router.navigate(["login"]);
             });
         });
-    }
-
-    private updateUserInStorage(user: User): void {
-        const loginInfo = this.authService.loginInfo.getValue();
-        loginInfo.user.firstname = user.firstname;
-        loginInfo.user.lastname = user.lastname;
-        loginInfo.user.email = user.email;
-        loginInfo.user.avatar = user.avatar;
-        this.authService.handleAuthentication(loginInfo);
-    }
-
-    private setUpdateMessage(message: string): void {
-        this.updateMessage = message;
-    }
-
-    private showUpdateMessage(bool: boolean): void {
-        this.updateMessageShown = bool;
-    }
-
-    private setPasswordMessage(message: string): void {
-        this.updatePasswordMessage = message;
-    }
-
-    private showPasswordMessage(bool: boolean): void {
-        this.updatePasswordMessageShown = bool;
     }
 }

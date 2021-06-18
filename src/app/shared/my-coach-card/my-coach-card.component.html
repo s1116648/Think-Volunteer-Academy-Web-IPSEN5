@@ -4,16 +4,12 @@
 	<ul>
 		<li>
 			<div class="columns">
-				<img
-					class="avatar"
-					[src]="coachImg"
-					alt="Coach profile avatar"
-				/>
-				<p class="name">{{ coachFirstName }} {{ coachLastName }}</p>
+                <app-avatar [avatar]="coach.user.avatar"></app-avatar>
+				<p class="name">{{ coach.user.firstname }} {{ coach.user.lastname }}</p>
 			</div>
 		</li>
 
-		<li>
+		<li *ngIf="chat" class="link" [routerLink]="['/chats', chat.id]">
 			<div class="columns">
 				<p class="column grow">Chat</p>
 				<span class="chevron-icon">
@@ -23,7 +19,7 @@
 		</li>
 	</ul>
 
-	<button class="button">
+	<button class="button" [routerLink]="['/profile', coach.user.id]">
 		My coach
 		<span class="icon">
 			<fa-icon [icon]="icons.faArrowRight"></fa-icon>

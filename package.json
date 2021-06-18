@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "angular-draggable-droppable": "^4.6.0",
+    "angular-notifier": "^9.0.1",
     "jwt-decode": "^3.1.2",
     "ng2-dragula": "^2.1.1",
     "ng2-img-max": "^2.2.4",

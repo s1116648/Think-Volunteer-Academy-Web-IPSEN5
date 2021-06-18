@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SetUserRoleComponent } from "./modals/set-user-role/set-user-role.component";
 import { SharedModule } from "../shared/shared.module";
+import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
 	declarations: [
@@ -18,19 +19,20 @@ import { SharedModule } from "../shared/shared.module";
 		UserOverviewComponent,
 		UserRowComponent,
 		SetUserRoleComponent,
+		ProfileComponent,
 	],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        RouterModule,
+        FormsModule,
+        FontAwesomeModule,
+        SharedModule,
+    ],
 	exports: [
 		UserSettingsComponent,
 		UserOverviewComponent,
 		ProfileCardComponent,
-	],
-	imports: [
-		CommonModule,
-		UserRoutingModule,
-		RouterModule,
-		FormsModule,
-		FontAwesomeModule,
-		SharedModule
 	],
 })
 export class UserModule {}

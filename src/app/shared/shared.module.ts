@@ -17,6 +17,9 @@ import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
 import { ConfirmModalComponent } from "./modals/confirm-modal/confirm-modal.component";
+import { AvatarComponent } from "./avatar/avatar.component";
+import { CourseProgressionBannerComponent } from "./course-progression-banner/course-progression-banner.component";
+import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
 
 @NgModule({
 	declarations: [
@@ -36,6 +39,9 @@ import { ConfirmModalComponent } from "./modals/confirm-modal/confirm-modal.comp
 		PlaceholderDirective,
 		ModalComponent,
 		CourseBannerUploaderComponent,
+		AvatarComponent,
+		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 	imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
 	exports: [
@@ -55,6 +61,9 @@ import { ConfirmModalComponent } from "./modals/confirm-modal/confirm-modal.comp
 		TopNavComponent,
 		TruncatePipe,
 		CourseBannerUploaderComponent,
+		AvatarComponent,
+		CourseProgressionBannerComponent,
+		MyCoachCardComponent
 	],
 })
 export class SharedModule {}
