@@ -79,7 +79,7 @@ export class TestScreenComponent implements OnInit {
     }
 
     generateSubmitAnswerDTO(): SubmitTestDTO {
-        return SubmitTestDTO = {
+        return {
             answers: this.test.questions.map((question) => {
                 return {
                     questionId: question.id,
