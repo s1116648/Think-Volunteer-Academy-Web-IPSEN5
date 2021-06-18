@@ -49,7 +49,6 @@ export class CourseProgressionBannerComponent implements OnInit {
 			.getCertificateByUser(this.user.id, this.course.id)
 			.subscribe((result: HttpPaginatedResult<Certificate>) => {
 				this.certificates = result.items;
-				console.log(this.certificates);
 			});
 	}
 
