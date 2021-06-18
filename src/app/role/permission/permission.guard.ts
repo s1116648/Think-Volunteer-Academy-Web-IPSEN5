@@ -17,7 +17,7 @@ export class PermissionGuard implements CanActivate {
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
 		const requiredPermissions = route.data.permissions as Array<string>;
 		return this.userService.getByID(this.authService.loginInfo.getValue().user.id).pipe(map((user: User) => {
-			const userPermissions = user.role.permissions;
+			const userPermissions = user.role?.permissions ?? [];
 			const hasPermissions = requiredPermissions.every(permission => userPermissions.map(p => p.name).includes(permission));
 
 			if (!hasPermissions) return this.router.createUrlTree([".."]);

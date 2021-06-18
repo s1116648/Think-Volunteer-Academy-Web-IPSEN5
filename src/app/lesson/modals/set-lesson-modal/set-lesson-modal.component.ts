@@ -5,6 +5,8 @@ import { NgForm } from "@angular/forms";
 import { CreateLessonDTO } from "../../dto/create-lesson.dto";
 import { Course } from "../../../course/course.model";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
 	selector: "app-set-lesson-modal",
@@ -19,7 +21,7 @@ export class SetLessonModalComponent implements OnInit {
 
 	icons = { faCheck };
 
-	constructor(private lessonService: LessonService) {}
+	constructor(private lessonService: LessonService, private notifierService: NotifierService) {}
 
 	ngOnInit(): void {}
 
@@ -30,7 +32,7 @@ export class SetLessonModalComponent implements OnInit {
 			name: values.name,
 			content: "Content will show up here.",
 			description: values.description,
-			image: "null",
+			image: values.image,
 			length: 0,
 			courseId: this.course.id,
 		};
@@ -39,6 +41,9 @@ export class SetLessonModalComponent implements OnInit {
 			.create(this.course.id, dto)
 			.subscribe((lesson: Lesson) => {
 				this.set.emit(lesson);
+				this.notifierService.notify("success", "Lesson created.");
+			}, (e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "An error occured while creating lesson.");
 			});
 	}
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserService } from "../user.service";
 import { User } from "../user.model";
-import { PlaceholderDirective } from "../../shared/placeholder.directive";
 import { ModalService } from "../../shared/modal.service";
-import { Role } from "../../role/role.model";
-import { SetRoleModalComponent } from "../../role/modals/set-role-modal/set-role-modal.component";
+import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
+import { PlaceholderDirective } from "../../shared/placeholder.directive";
 import { SetUserRoleComponent } from "../modals/set-user-role/set-user-role.component";
+import { UserRowComponent} from "../user-row/user-row.component";
 
 @Component({
 	selector: "app-user-overview",
@@ -16,7 +16,7 @@ export class UserOverviewComponent implements OnInit {
 	@ViewChild(PlaceholderDirective, { static: false })
 	modalHost: PlaceholderDirective;
 
-	users: User[];
+	users: User[] = [];
 
 	constructor(
 		private userService: UserService,
@@ -26,6 +26,20 @@ export class UserOverviewComponent implements OnInit {
 	ngOnInit(): void {
 		this.userService.fetchUsers().subscribe((users: User[]) => {
 			this.users = users;
+		});
+	}
+
+	showRemoveUserModal(user: User): void {
+		const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
+		modal.instance.description = "This action can <b>not</b> be reverted!";
+
+		modal.instance.confirmed.subscribe(() => {
+			this.userService.delete(user.id).subscribe(() => {
+				const index = this.users.findIndex((u) => u.id === user.id);
+				this.users.splice(index, 1);
+			}, (err) => {
+				console.error(err);
+			});
 		});
 	}
 

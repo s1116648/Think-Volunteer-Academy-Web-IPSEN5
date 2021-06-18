@@ -1,10 +1,12 @@
-.checkbox  {
-  display: inline;
-  width: 20px;
-  height: 20px;
-  margin-right: 20px;
+.permissions {
+    display: grid;
+    gap: 15px;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    li {
+        display: flex;
+        gap: 10px;
+    }
 }
 
-.checkbox:checked {
-  color: red;
-}

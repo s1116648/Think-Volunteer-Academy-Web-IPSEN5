@@ -9,11 +9,11 @@ import { AddCoachModalComponent } from "./coach/modals/add-coach-modal/add-coach
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RoleModule } from "../role/role.module";
-
+import { MyStudentsComponent } from "./my-students/my-students.component";
 
 
 @NgModule({
-  declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent],
+	declarations: [CoachOverviewComponent, StudentOverviewComponent, AddStudentModalComponent, AddCoachModalComponent, MyStudentsComponent],
 	imports: [
 		CommonModule,
 		CoachingRoutingModule,
@@ -23,4 +23,5 @@ import { RoleModule } from "../role/role.module";
 		RoleModule
 	]
 })
-export class CoachingModule { }
+export class CoachingModule {
+}

@@ -6,6 +6,7 @@ export interface Course {
 	description: string;
 	image: string;
 	active: boolean;
+	examId: string;
 	category: CourseCategory;
 	createdAt: Date;
 	updatedAt: Date;

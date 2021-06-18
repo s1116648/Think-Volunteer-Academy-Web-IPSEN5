@@ -6,7 +6,7 @@ import {
 	faTrash,
 	faPlus,
 	faTimes,
-	faPen,
+	faPen
 } from "@fortawesome/free-solid-svg-icons";
 import { CourseCategory } from "src/app/course-category/course-category.model";
 import { CourseCategoryService } from "src/app/course-category/course-category.service";
@@ -17,11 +17,13 @@ import { PlaceholderDirective } from "src/app/shared/placeholder.directive";
 import { Course } from "../course.model";
 import { CourseService } from "../course.service";
 import { UpdateCourseDTO } from "../dto/update-course.dto";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NotifierService } from "angular-notifier";
 
 @Component({
 	selector: "app-create-course",
 	templateUrl: "./edit-course.component.html",
-	styleUrls: ["./edit-course.component.scss"],
+	styleUrls: ["./edit-course.component.scss"]
 })
 export class EditCourseComponent implements OnInit {
 	icons = { faCheck, faTrash, faPlus, faTimes, faPen };
@@ -38,8 +40,10 @@ export class EditCourseComponent implements OnInit {
 		private courseCategoryService: CourseCategoryService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private modalService: ModalService
-	) {}
+		private modalService: ModalService,
+		private notifierService: NotifierService
+	) {
+	}
 
 	ngOnInit(): void {
 		this.courseService
@@ -63,14 +67,18 @@ export class EditCourseComponent implements OnInit {
 			description: values.description,
 			image: values.image,
 			categoryId: values.category.id,
-			active: values.active,
+			active: values.active
 		};
 
 		this.courseService
 			.update(this.course.id, dto)
-			.subscribe(() =>
-				this.router.navigate(["../"], { relativeTo: this.route })
-			);
+			.subscribe(() => {
+				this.router.navigate(["../"], { relativeTo: this.route });
+				this.notifierService.notify("success", "Course has been updated.");
+			}, (e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "An error occurred while updating course.");
+
+			});
 	}
 
 	remove(): void {
