@@ -4,7 +4,7 @@ import {
 	Input,
 	OnInit,
 	Output,
-	ViewChild,
+	ViewChild
 } from "@angular/core";
 import { faCheck, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { NgForm } from "@angular/forms";
@@ -14,55 +14,65 @@ import { UpdateAnswerDTO } from "../../dto/update-answer.dto";
 import { QuestionService } from "../../services/question.service";
 import { CreateQuestionDTO } from "../../dto/create-question.dto";
 import { Question } from "../../model/question.model";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
 	selector: "app-add-question-modal",
 	templateUrl: "./add-question-modal.component.html",
-	styleUrls: ["./add-question-modal.component.scss"],
+	styleUrls: ["./add-question-modal.component.scss"]
 })
 export class AddQuestionModalComponent implements OnInit {
-    @Output() closeModal = new EventEmitter();
-    @Output() set = new EventEmitter<Question>();
-    @Input() test: Test;
-    @ViewChild("addQuestionForm") form: NgForm;
+	@Output() closeModal = new EventEmitter();
+	@Output() set = new EventEmitter<Question>();
+	@Input() test: Test;
+	@ViewChild("addQuestionForm") form: NgForm;
 
-    icons = { faCheck, faPlus, faTrash };
-    newAnswerArray: UpdateAnswerDTO[] = [];
+	icons = { faCheck, faPlus, faTrash };
+	newAnswerArray: UpdateAnswerDTO[] = [];
 
-    get isValid(): boolean {
-        return this.newAnswerArray.length >= 2 && this.newAnswerArray.filter(answer => answer.correct).length > 0;
-    }
+	get isValid(): boolean {
+		return this.newAnswerArray.length >= 2 && this.newAnswerArray.filter(answer => answer.correct).length > 0;
+	}
 
-    constructor(private answerService: AnswerService,
-                private questionService: QuestionService) {}
+	constructor(
+		private answerService: AnswerService,
+		private questionService: QuestionService,
+		private notifierService: NotifierService) {
+	}
 
-    ngOnInit(): void {
-        this.newAnswerArray = this.answerService.getGlobalAnswersArray();
-        this.answerService.newAnswersChanged
-            .subscribe((answers) => {
-                this.newAnswerArray = answers;
-            });
-    }
+	ngOnInit(): void {
+		this.newAnswerArray = this.answerService.getGlobalAnswersArray();
+		this.answerService.newAnswersChanged
+			.subscribe((answers) => {
+				this.newAnswerArray = answers;
+			});
+	}
 
-    create(addQuestionForm: NgForm): void {
-        const values = addQuestionForm.value;
+	create(addQuestionForm: NgForm): void {
+		const values = addQuestionForm.value;
 
-        const dto: CreateQuestionDTO = {
-            text: values.question,
-            answers: this.newAnswerArray
-        };
-        this.questionService.create(this.test.id, dto)
-            .subscribe((question: Question) => this.set.emit(question));
-        this.close();
-    }
+		const dto: CreateQuestionDTO = {
+			text: values.question,
+			answers: this.newAnswerArray
+		};
+		this.questionService.create(this.test.id, dto)
+			.subscribe((question: Question) => {
+				this.set.emit(question);
+				this.notifierService.notify("success", "Questions created.");
+			}, (e: HttpErrorResponse) => {
+				this.notifierService.notify("error", "An error occurred while creating questions.");
+			});
+		this.close();
+	}
 
-    close(): void {
-        this.resetPopup();
-        this.closeModal.emit();
-    }
+	close(): void {
+		this.resetPopup();
+		this.closeModal.emit();
+	}
 
-    resetPopup(): void {
-        this.form.reset();
-        this.answerService.updateGlobalAnswersArray([]);
-    }
+	resetPopup(): void {
+		this.form.reset();
+		this.answerService.updateGlobalAnswersArray([]);
+	}
 }

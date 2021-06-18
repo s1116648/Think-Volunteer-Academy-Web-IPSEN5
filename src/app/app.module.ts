@@ -20,7 +20,7 @@ import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { CoachingModule } from "./coaching/coaching.module";
 import {TestModule} from "./test/test.module";
-import { environment } from "../environments/environment";
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -42,7 +42,14 @@ import { environment } from "../environments/environment";
 		ChatModule,
 		Ng2ImgMaxModule,
 		CoachingModule,
-		TestModule
+		TestModule,
+		NotifierModule.withConfig({
+			position : {
+				horizontal: {
+					position: "middle"
+				}
+			}
+		})
 	],
 	providers: [
 		{

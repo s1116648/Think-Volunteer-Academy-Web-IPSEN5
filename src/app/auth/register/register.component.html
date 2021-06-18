@@ -3,10 +3,6 @@
         <h1>Sign up</h1>
 
         <form #loginForm="ngForm" (ngSubmit)="register(loginForm)">
-            <div class="form-group" *ngIf="error">
-                <h4 *ngIf="error.status == 500">Something went wrong, try again.</h4>
-                <h4 *ngIf="error.status == 409">An account with {{ loginForm.value.email }} already exists.</h4>
-            </div>
 
             <div class="columns wrap">
                 <div class="form-group">

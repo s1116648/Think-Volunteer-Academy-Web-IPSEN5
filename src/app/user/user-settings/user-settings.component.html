@@ -35,7 +35,6 @@
                     <button class="button" (submit)="updateProfile(profileForm)" [disabled]="!profileForm.valid">
                         Update profile
                     </button>
-                    <p *ngIf="updateMessageShown">{{ updateMessage }}</p>
                 </div>
             </form>
             <br>
@@ -59,9 +58,8 @@
                 </div>
                 <div class="columns">
                     <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
-                        Update profile
+                        Change password
                     </button>
-                    <p *ngIf="updatePasswordMessageShown">{{ updatePasswordMessage }}</p>
                 </div>
             </form>
         </section>
