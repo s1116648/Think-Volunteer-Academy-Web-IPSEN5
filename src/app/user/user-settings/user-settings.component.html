@@ -7,30 +7,38 @@
             <h1>
                 Settings
             </h1>
-            <section class="avatar-section columns">
+            <section class="avatar-section">
                 <app-avatar [avatar]="currentUser.avatar" [size]="100"></app-avatar>
                 <input *ngIf="!isUploading" type="file" (change)="onFileUpload($event)" accept="image/*"/>
                 <p *ngIf="isUploading">Loading...</p>
             </section>
             <form #profileForm="ngForm" id="update-profile-form" (ngSubmit)="updateProfile(profileForm)">
                 <div class="columns">
-                    <div class="form-group">
-                        <label for="firstName">First name</label>
-                        <input ngModel name="firstName" id="firstName" class="dark" [(ngModel)]="currentUser.firstname"
-                               placeholder="Enter your first name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last name</label>
-                        <input ngModel name="lastName" id="lastName" class="dark" [(ngModel)]="currentUser.lastname"
-                               placeholder="Enter your last name" required>
+                    <div class="personal-info-wrapper">
+                        <div class="name-wrapper">
+                            <div class="form-group">
+                                <label for="firstName">First name</label>
+                                <input ngModel name="firstName" id="firstName" class="dark"
+                                       [(ngModel)]="currentUser.firstname"
+                                       placeholder="Enter your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last name</label>
+                                <input ngModel name="lastName" id="lastName" class="dark"
+                                       [(ngModel)]="currentUser.lastname"
+                                       placeholder="Enter your last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" ngModel name="email" id="email" class="dark"
+                                   [(ngModel)]="currentUser.email"
+                                   placeholder="Enter your email"
+                                   email required>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" ngModel name="email" id="email" class="dark" [(ngModel)]="currentUser.email"
-                           placeholder="Enter your email"
-                           email required>
-                </div>
+
                 <div class="columns">
                     <button class="button" (submit)="updateProfile(profileForm)" [disabled]="!profileForm.valid">
                         Update profile
@@ -47,16 +55,21 @@
                            name="currentPassword" ngModel required>
                 </div>
                 <div class="columns">
-                    <div class="form-group">
-                        <label for="newPassword">New password</label>
-                        <input type="password" id="newPassword" class="dark" placeholder="Enter a new password" name="newPassword" ngModel required>
-                    </div>
-                    <div class="form-group">
-                        <label for="repeatPassword">Repeat new password</label>
-                        <input type="password" id="repeatPassword" class="dark" placeholder="Repeat the new password" name="repeatPassword" ngModel required>
+                    <div class="update-password-wrapper">
+                        <div class="form-group">
+                            <label for="newPassword">New password</label>
+                            <input type="password" id="newPassword" class="dark" placeholder="Enter a new password"
+                                   name="newPassword" ngModel required>
+                        </div>
+                        <div class="form-group">
+                            <label for="repeatPassword">Repeat new password</label>
+                            <input type="password" id="repeatPassword" class="dark"
+                                   placeholder="Repeat the new password"
+                                   name="repeatPassword" ngModel required>
+                        </div>
                     </div>
                 </div>
-                <div class="columns">
+                <div class="button-wrapper">
                     <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
                         Change password
                     </button>

@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
+    gap: 20px;
     .profile-avatar {
         height: 100px;
         width: 100px;
@@ -37,3 +38,60 @@ form {
 .btn:disabled {
     opacity: 50%;
 }
+
+.personal-info-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .name-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+    }
+}
+.content-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.update-password-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    .personal-info-wrapper > .name-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .update-password-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .avatar-section {
+        flex-direction: column;
+        gap: 20px;
+
+        > input {
+            width: 100%;
+        }
+    }
+
+    .button-wrapper {
+        justify-content: space-between;
+        gap: 0;
+    }
+}
+
