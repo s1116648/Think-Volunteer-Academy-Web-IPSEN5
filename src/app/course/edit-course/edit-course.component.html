@@ -84,7 +84,7 @@
                             ></span>
                         </button>
                     </div>
-                    <button type="button" class="column button hover-danger" (click)="remove()">
+                    <button type="button" class="column button hover-danger" (click)="remove()" *appHasPermissions="['course.delete']">
                         Delete course
                         <span class="icon"
                             ><fa-icon [icon]="icons.faTrash"></fa-icon

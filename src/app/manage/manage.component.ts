@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PermissionService } from "../role/permission/permission.service";
 
 @Component({
 	selector: "app-manage",
@@ -6,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./manage.component.scss"],
 })
 export class ManageComponent implements OnInit {
-	constructor() {}
+	constructor(public permissionsService: PermissionService) {}
 
 	ngOnInit(): void {}
 }

@@ -11,6 +11,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SetUserRoleComponent } from "./modals/set-user-role/set-user-role.component";
 import { SharedModule } from "../shared/shared.module";
 import { ProfileComponent } from "./profile/profile.component";
+import { RoleModule } from "../role/role.module";
 
 @NgModule({
 	declarations: [
@@ -28,6 +29,7 @@ import { ProfileComponent } from "./profile/profile.component";
         FormsModule,
         FontAwesomeModule,
         SharedModule,
+        RoleModule
     ],
 	exports: [
 		UserSettingsComponent,
