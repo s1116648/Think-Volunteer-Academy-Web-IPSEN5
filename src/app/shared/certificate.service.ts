@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Certificate } from "./certificate.model";
 import { HttpPaginatedResult } from "./http-paginated-result";
@@ -10,16 +10,9 @@ import { HttpPaginatedResult } from "./http-paginated-result";
 export class CertificateService {
 	constructor(private http: HttpClient) {}
 
-	getCertificatesByUser(
-		userID: string,
-		courseID?: string
-	): Observable<HttpPaginatedResult<Certificate>> {
-		const params = new HttpParams();
-		if (courseID) params.set(courseID, courseID);
-
+	getCertificatesByUser(userID: string): Observable<HttpPaginatedResult<Certificate>> {
 		return this.http.get<HttpPaginatedResult<Certificate>>(
-			`/users/${userID}/certificates`,
-			{ params }
+			`/users/${userID}/certificates`
 		);
 	}
 }

@@ -54,13 +54,12 @@ export class CourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
-					this.certificateService
-						.getCertificatesByUser(this.authService.loginInfo.getValue().user.id, this.course.id)
-						.subscribe((result: HttpPaginatedResult<Certificate>) => {
-							this.certificates = result.items;
-						});
 				});
-
+			this.certificateService
+				.getCertificatesByUser(this.authService.loginInfo.getValue().user.id)
+				.subscribe((result: HttpPaginatedResult<Certificate>) => {
+					this.certificates = result.items;
+				});
 			this.lessonService.get(params.id).subscribe((result) => {
 				this.lessons = result.items;
 			});
