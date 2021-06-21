@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, Input, OnInit, TemplateRef, ViewContainerRef } from "@angular/core";
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from "@angular/core";
 import { PermissionService } from "./permission.service";
 
 @Directive({

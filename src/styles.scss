@@ -136,7 +136,6 @@ form {
 		}
 
 		label {
-			font-size: 11px;
 			margin-bottom: 5px;
 			color: $color-gray-500;
 			font-size: 14px;
@@ -286,6 +285,11 @@ textarea {
 		grid-template-columns: 1fr !important;
 	}
 }
+
+.vertical-gap {
+	gap: 15px;
+}
+
 
 /* in-flight clone */
 .gu-mirror {
