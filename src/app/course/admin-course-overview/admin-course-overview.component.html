@@ -23,22 +23,21 @@
 				<div class="columns wrap vertical-gap">
 					<h1 class="column grow">{{ course.name }}</h1>
 					<div class="button-wrapper">
-						<button class="column button primary" routerLink="edit">
-							Edit course
-							<span class="icon"
+					<button class="column button primary" routerLink="edit" *appHasPermissions="['course.edit']">
+						Edit course
+						<span class="icon"
 							><fa-icon [icon]="icons.faPen"></fa-icon
-							></span>
-						</button>
-						<button class="column button primary"
-								[routerLink]="['tests',course.examId]"
-						>
-							Edit test
-							<span class="icon"
+						></span>
+					</button>
+					<button class="column button primary"
+					[routerLink]="['tests',course.examId]" *appHasPermissions="['test.edit']"
+					>
+						Edit test
+						<span class="icon"
 							><fa-icon [icon]="icons.faPen"></fa-icon
-							></span>
-						</button>
+						></span>
+					</button>
 					</div>
-
 				</div>
 				<p class="course-description">{{ course.description }}</p>
 			</section>

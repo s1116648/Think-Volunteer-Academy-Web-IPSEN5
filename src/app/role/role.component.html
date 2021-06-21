@@ -1,6 +1,6 @@
 <div class="columns title-container">
     <h2 class="column grow">Roles</h2>
-    <button class="button primary" (click)="openNewRoleModal()">
+    <button class="button primary" (click)="openNewRoleModal()" *appHasPermissions="['role.create']">
         Nieuwe rol
         <span class="icon">
             <fa-icon [icon]="icons.faPlus"></fa-icon>

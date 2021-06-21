@@ -7,10 +7,11 @@ import { SetRoleModalComponent } from "./modals/set-role-modal/set-role-modal.co
 import { SharedModule } from "../shared/shared.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { FormsModule } from "@angular/forms";
+import { HasPermissionsDirective } from "./permission/has-permissions.directive";
 
 @NgModule({
-	declarations: [RoleComponent, RoleRowComponent, SetRoleModalComponent],
+	declarations: [RoleComponent, RoleRowComponent, SetRoleModalComponent, HasPermissionsDirective],
 	imports: [CommonModule, RouterModule, SharedModule, FontAwesomeModule, FormsModule],
-	exports: [RoleComponent],
+	exports: [RoleComponent, HasPermissionsDirective]
 })
 export class RoleModule {}

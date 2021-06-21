@@ -8,7 +8,7 @@
 			<section class="section">
                 <div class="columns title">
                     <h1 class="column grow">Courses</h1>
-                    <button class="column button primary" [routerLink]="['courses', 'new']">
+                    <button class="column button primary" [routerLink]="['courses', 'new']" *appHasPermissions="['course.create']">
 						New course
 						<span class="icon"
 							><fa-icon [icon]="icons.faPlus"></fa-icon
