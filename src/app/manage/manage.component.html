@@ -7,11 +7,11 @@
 		<section class="main-content">
 			<h1 style="margin-bottom: 20px">Manage</h1>
 
-            <section class="section">
+            <section class="section" *appHasPermissions="['user.view']">
                 <app-user-overview></app-user-overview>
             </section>
 
-            <section class="section">
+            <section class="section" *appHasPermissions="['role.view']" style="margin-bottom: 10px">
                 <app-role></app-role>
             </section>
 		</section>

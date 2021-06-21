@@ -2,7 +2,8 @@
 <div class="content">
 	<ul>
 		<li *ngFor="let user of users">
-		<app-user-row [user]="user" (updateUserRole)="openSetRoleModal($event)" (removeButtonClickedEvent)="showRemoveUserModal($event)"></app-user-row>
+			<app-user-row [user]="user" (updateUserRole)="openSetRoleModal($event)"
+						  (removeButtonClickedEvent)="showRemoveUserModal($event)"></app-user-row>
 		</li>
 	</ul>
 	<ng-container appPlaceholder></ng-container>

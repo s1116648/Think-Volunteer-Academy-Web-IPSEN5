@@ -135,7 +135,7 @@
                     </button>
                 </div>
 
-                <div class="column">
+                <div class="column" *appHasPermissions="['lesson.delete']">
                     <button class="button hover-danger" [disabled]="isUpdating" (click)="remove()">
                         Delete lesson
                         <span class="icon"
