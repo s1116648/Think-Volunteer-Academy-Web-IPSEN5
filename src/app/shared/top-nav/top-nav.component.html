@@ -1,14 +1,14 @@
 <div class="outside-container">
     <section class="nav-wrapper container">
         <li class="phone-bars">
-            <fa-icon class="icon" [icon]="icons.faBars" (click)="hamburgerClicked()"></fa-icon>
+            <fa-icon [icon]="icons.faBars" (click)="hamburgerClicked()"></fa-icon>
         </li>
         <div id="options">
             <ul>
                 <li [routerLink]="coursesPath">Courses</li>
             </ul>
             <ul class="right-side-wrapper">
-                <li [routerLink]="adminPanelPath" *ngIf="this.isAdmin">Adminpanel</li>
+                <li [routerLink]="adminPanelPath" *ngIf="this.canSeeAdminPanel">Adminpanel</li>
                 <li [routerLink]="settingsPath">Settings</li>
                 <li (click)="logout()" [routerLink]="logoutPath">Logout</li>
             </ul>
