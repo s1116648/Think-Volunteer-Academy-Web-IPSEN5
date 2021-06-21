@@ -3,7 +3,7 @@
     <div class="columns">
         <h3 class="column grow">{{ role.name }}</h3>
 
-        <div class="column">
+        <div class="column" *appHasPermissions="['role.edit']">
             <button (click)="open()"><fa-icon [icon]="icons.faPen"></fa-icon></button>
         </div>
     </div>

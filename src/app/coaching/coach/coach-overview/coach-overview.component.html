@@ -16,10 +16,10 @@
 					<div class="columns" id="coach_row">
 						<h3 class="column grow">{{ coach.user.firstname }} {{ coach.user.lastname }}</h3>
 
-						<div class="column">
+						<div class="column" *appHasPermissions="['student.create']">
 							<button (click)="openAddStudentModal(coach)">Add students</button>
 						</div>
-						<div class="column">
+						<div class="column" *appHasPermissions="['coach.delete']">
 							<button (click)="removeCoach(coach)">Remove coach</button>
 						</div>
 					</div>

@@ -20,6 +20,7 @@ import { CourseCardComponent } from "./courses-overview/course-card/course-card.
 import { CoursesOverviewComponent } from "./courses-overview/courses-overview.component";
 import { UserModule } from "../user/user.module";
 import { AdminOverviewComponent } from "./admin-overview/admin-overview.component";
+import { RoleModule } from "../role/role.module";
 
 @NgModule({
 	declarations: [
@@ -45,6 +46,7 @@ import { AdminOverviewComponent } from "./admin-overview/admin-overview.componen
 		LessonModule,
 		DragulaModule,
 		UserModule,
+		RoleModule
 	],
     exports: [CourseOverviewComponent],
 	providers: [CourseService],
