@@ -10,15 +10,15 @@ import { BadgeService } from "../../shared/badge.service";
 import { AuthService } from "../../auth/auth.service";
 import { Badge } from "../../shared/badge.model";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import {TestService} from "../../test/services/test.service";
-import {Test} from "../../test/model/test.model";
+import { TestService } from "../../test/services/test.service";
+import { Test } from "../../test/model/test.model";
 import { CertificateService } from "../../shared/certificate.service";
-import {Certificate} from "../../shared/certificate.model";
+import { Certificate } from "../../shared/certificate.model";
 
 @Component({
 	selector: "app-course-overview",
 	templateUrl: "./course-overview.component.html",
-	styleUrls: ["./course-overview.component.scss"],
+	styleUrls: ["./course-overview.component.scss"]
 })
 export class CourseOverviewComponent implements OnInit {
 	readonly MAX_SIMILAR_COURSES = 10;
@@ -50,7 +50,8 @@ export class CourseOverviewComponent implements OnInit {
 		private authService: AuthService,
 		private certificateService: CertificateService,
 		private testService: TestService
-	) {}
+	) {
+	}
 
 	ngOnInit(): void {
 		this.route.params.subscribe((params: Params) => {
@@ -105,9 +106,9 @@ export class CourseOverviewComponent implements OnInit {
 			.map((certificate) => certificate.course.id)
 			.includes(this.course.id);
 
-    testIsCompleted(): boolean {
+	testIsCompleted(): boolean {
 		return this.certificates
 			.map((certificate) => certificate.course.id)
 			.includes(this.course.id);
-    }
+	}
 }
