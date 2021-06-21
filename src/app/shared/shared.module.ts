@@ -16,6 +16,7 @@ import { ProgressCircleComponent } from "./progress-circle/progress-circle.compo
 import { RouterModule } from "@angular/router";
 import { TopNavComponent } from "./top-nav/top-nav.component";
 import { CourseBannerUploaderComponent } from "./course-banner-uploader/course-banner-uploader.component";
+import { ConfirmModalComponent } from "./modals/confirm-modal/confirm-modal.component";
 import { AvatarComponent } from "./avatar/avatar.component";
 import { CourseProgressionBannerComponent } from "./course-progression-banner/course-progression-banner.component";
 import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
@@ -32,6 +33,7 @@ import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
 		ToggleComponent,
 		AdminSideNavComponent,
 		ModalComponent,
+		ConfirmModalComponent,
 		PlaceholderDirective,
 		TopNavComponent,
 		PlaceholderDirective,
@@ -49,6 +51,7 @@ import { MyCoachCardComponent } from "./my-coach-card/my-coach-card.component";
 		DropdownSelectedDirective,
 		GeneralCourseInfoComponent,
 		ModalComponent,
+		ConfirmModalComponent,
 		ModalComponent,
 		PadStartPipe,
 		PlaceholderDirective,

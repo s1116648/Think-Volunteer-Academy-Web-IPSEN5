@@ -60,8 +60,10 @@
                     <button class="button" (submit)="changePassword(passwordForm)" [disabled]="!passwordForm.valid">
                         Change password
                     </button>
+                    <button class="button danger" (click)="showRemoveModal()">Delete Account</button>
                 </div>
             </form>
         </section>
+        <ng-container appPlaceholder></ng-container>
     </div>
 </div>

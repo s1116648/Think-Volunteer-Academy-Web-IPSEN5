@@ -70,8 +70,8 @@
 			</div>
 
             <div class="form-group">
-                <label for="active">Actief</label>
-                <app-toggle name="active" [ngModel]="course.active" [dark]="true" required></app-toggle>
+                <label for="active">Active</label>
+                <app-toggle id="active" name="active" [ngModel]="course.active" [dark]="true" required></app-toggle>
             </div>
 
 			<div class="form-group">
@@ -84,7 +84,7 @@
                             ></span>
                         </button>
                     </div>
-                    <button type="button" class="column button hover-danger" (click)="remove()">
+                    <button type="button" class="column button hover-danger" (click)="remove()" *appHasPermissions="['course.delete']">
                         Delete course
                         <span class="icon"
                             ><fa-icon [icon]="icons.faTrash"></fa-icon

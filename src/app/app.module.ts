@@ -19,7 +19,7 @@ import { DragulaModule } from "ng2-dragula";
 import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { CoachingModule } from "./coaching/coaching.module";
-import {TestModule} from "./test/test.module";
+import { TestModule } from "./test/test.module";
 import { NotifierModule } from "angular-notifier";
 
 @NgModule({
@@ -60,4 +60,6 @@ import { NotifierModule } from "angular-notifier";
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}

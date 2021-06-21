@@ -1,0 +1,11 @@
+<app-modal [title]="title" [showBody]="description != null" (closeModal)="close()">
+    <ng-container body *ngIf="description">
+        <p [innerHTML]="description"></p>
+    </ng-container>
+    <ng-container footer>
+        <div class="columns">
+            <button class="button danger confirm" (click)="confirm()">Yes</button>
+            <button class="button primary reject" (click)="reject()">No</button>
+        </div>
+    </ng-container>
+</app-modal>

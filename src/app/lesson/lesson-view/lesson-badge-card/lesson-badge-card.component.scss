@@ -1,4 +1,5 @@
 @import "src/app/shared/variables";
+
 div.badge-information {
     display: flex;
     gap: 10px;
@@ -32,7 +33,7 @@ div.badge-information {
             }
         }
 
-        .badge-holder{
+        .badge-holder {
             display: flex;
             flex-wrap: wrap;
         }

@@ -1,10 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
 import { User } from "../user.model";
 import { NgForm } from "@angular/forms";
 import { UpdateProfileDto } from "../dto/update-profile.dto";
 import { UserService } from "../user.service";
 import { AuthService } from "../../auth/auth.service";
 import { ChangePasswordDto } from "../dto/change-password.dto";
+import { ModalService } from "../../shared/modal.service";
+import { PlaceholderDirective } from "../../shared/placeholder.directive";
+import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
+import { Router } from "@angular/router";
 import { UploadedFileResponse } from "../../file/UploadedFileResponse.model";
 import { FileService } from "../../file/file.service";
 import { ImageResizerService } from "../../file/image-resizer.service";
@@ -12,22 +16,29 @@ import { NotifierService } from "angular-notifier";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-	selector: "app-user-settings",
-	templateUrl: "./user-settings.component.html",
-	styleUrls: ["./user-settings.component.scss"],
+    selector: "app-user-settings",
+    templateUrl: "./user-settings.component.html",
+    styleUrls: ["./user-settings.component.scss"],
 })
 export class UserSettingsComponent implements OnInit {
-	currentUser: User;
+    @Output() set = new EventEmitter<User>();
+
+    @ViewChild(PlaceholderDirective, { static: false })
+    modalHost: PlaceholderDirective;
+
+    currentUser: User;
 
 	isUploading: boolean = false;
 
-	constructor(
-		private userService: UserService,
-		private authService: AuthService,
-		private fileService: FileService,
-		private resizeService: ImageResizerService,
-		private notifierService: NotifierService
-	) {}
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private fileService: FileService,
+        private resizeService: ImageResizerService,
+        private notifierService: NotifierService,
+        private modalService: ModalService,
+        private router: Router
+    ) {}
 
 	ngOnInit(): void {
 		this.currentUser = this.authService.loginInfo.getValue().user;
@@ -115,4 +126,19 @@ export class UserSettingsComponent implements OnInit {
 		loginInfo.user.avatar = user.avatar;
 		this.authService.handleAuthentication(loginInfo);
 	}
+
+    showRemoveModal(): void {
+        const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
+        modal.instance.description = `
+            You are about to delete your account <b>indefinitely</b>!<br>
+            This action can <b>not</b> be reverted!`;
+        modal.instance.title = "Are you sure you want to delete your account?";
+
+        modal.instance.confirmed.subscribe(() => {
+            this.userService.delete(this.currentUser.id).subscribe(() => {
+                this.authService.logout();
+                this.router.navigate(["login"]);
+            });
+        });
+    }
 }
