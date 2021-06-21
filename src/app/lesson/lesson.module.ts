@@ -13,6 +13,7 @@ import { LessonViewComponent } from "./lesson-view/lesson-view.component";
 import { LessonInfoCardComponent } from "./lesson-view/lesson-info-card/lesson-info-card.component";
 import { LessonBadgeCardComponent } from "./lesson-view/lesson-badge-card/lesson-badge-card.component";
 import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-card/lesson-documents-card.component";
+import { RoleModule } from "../role/role.module";
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { LessonDocumentsCardComponent } from "./lesson-view/lesson-documents-car
 		FormsModule,
 		FontAwesomeModule,
 		QuillModule.forRoot(),
+		RoleModule
 	],
 	exports: [AdminLessonCardComponent],
 	providers: [CourseService],

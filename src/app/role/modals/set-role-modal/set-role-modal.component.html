@@ -29,6 +29,7 @@
 				/>
 			</div>
 
+
 			<div class="form-group">
 				<div class="columns">
 					<label class="column grow">Permissions</label>
@@ -36,13 +37,12 @@
 					<p class="link" (click)="selectAll(false)" *ngIf="!AllPermissionsAreSelected">Select none</p>
 				</div>
 				<ul class="permissions">
-					<li *ngFor="let permission of permissions">
+					<li class="checkbox"  *ngFor="let permission of permissions">
 						<input type="checkbox" [name]="permission.name" [(ngModel)]="permission.isChecked"
 							   >{{ permission.description }}
 					</li>
 				</ul>
 			</div>
-
 		</form>
 	</ng-container>
 	<ng-container footer>

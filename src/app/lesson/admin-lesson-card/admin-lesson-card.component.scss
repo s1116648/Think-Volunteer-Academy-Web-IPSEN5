@@ -59,3 +59,10 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 550px) {
+
+	.lesson-card > figure {
+		display: none;
+	}
+}

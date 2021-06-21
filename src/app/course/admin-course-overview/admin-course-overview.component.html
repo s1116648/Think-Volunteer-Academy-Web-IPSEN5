@@ -20,22 +20,24 @@
 
 		<section class="main-content">
 			<section class="section">
-				<div class="columns">
+				<div class="columns wrap vertical-gap">
 					<h1 class="column grow">{{ course.name }}</h1>
-					<button class="column button primary" routerLink="edit">
+					<div class="button-wrapper">
+					<button class="column button primary" routerLink="edit" *appHasPermissions="['course.edit']">
 						Edit course
 						<span class="icon"
 							><fa-icon [icon]="icons.faPen"></fa-icon
 						></span>
 					</button>
 					<button class="column button primary"
-					[routerLink]="['tests',course.examId]"
+					[routerLink]="['tests',course.examId]" *appHasPermissions="['test.edit']"
 					>
 						Edit test
 						<span class="icon"
 							><fa-icon [icon]="icons.faPen"></fa-icon
 						></span>
 					</button>
+					</div>
 				</div>
 				<p class="course-description">{{ course.description }}</p>
 			</section>
