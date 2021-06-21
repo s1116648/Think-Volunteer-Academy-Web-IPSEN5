@@ -51,7 +51,7 @@
 					</button>
 				</div>
 
-				<ul class="lessons" [dragula]="dragulaLessonGroupName" [dragulaModel]="lessonsInOrder">
+				<ul class="lessons" [dragula]="dragulaLessonGroupName" [dragulaModel]="lessonsInOrder" *ngIf="lessonsInOrder.length > 0; else noLessons">
 					<li
 						*ngFor="let lesson of lessonsInOrder; let index = index" 
 					>
@@ -61,6 +61,10 @@
 						></app-admin-lesson-card>
 					</li>
 				</ul>
+
+				<ng-template #noLessons>
+					<p class="paragraph">There are no lessons in this course.</p>
+				</ng-template>
 			</section>
 		</section>
 	</div>
