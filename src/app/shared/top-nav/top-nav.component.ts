@@ -30,7 +30,6 @@ export class TopNavComponent implements OnInit {
 		this.checkIfAdmin();
 	}
 
-	// ToDo If permissions are finished, make this method useful.
 	checkIfAdmin(): void {
 		this.permissionService.hasPermissions(["course.view"]).subscribe((canSeeAdminPanel: boolean) => {
 			this.canSeeAdminPanel = canSeeAdminPanel;
