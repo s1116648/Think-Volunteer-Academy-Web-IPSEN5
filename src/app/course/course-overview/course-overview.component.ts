@@ -100,9 +100,13 @@ export class CourseOverviewComponent implements OnInit {
 	}
 
 	courseIsCompleted = (): boolean =>
-		this.certificates.map((certificate) => certificate.course.id).includes(this.course.id);
+		this.certificates
+			.map((certificate) => certificate.course.id)
+			.includes(this.course.id);
 
-    testIsCompleted(): void {
-
+    testIsCompleted(): boolean {
+		return this.certificates
+			.map((certificate) => certificate.course.id)
+			.includes(this.course.id);
     }
 }
