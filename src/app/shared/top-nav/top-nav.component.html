@@ -1,5 +1,8 @@
 <div class="outside-container">
     <section class="nav-wrapper container">
+        <li class="phone-bars">
+            <fa-icon class="icon" [icon]="icons.faBars" (click)="hamburgerClicked()"></fa-icon>
+        </li>
         <div id="options">
             <ul>
                 <li [routerLink]="coursesPath">Courses</li>
@@ -10,8 +13,5 @@
                 <li (click)="logout()" [routerLink]="logoutPath">Logout</li>
             </ul>
         </div>
-        <li class="phone-bars">
-          <fa-icon [icon]="icons.faBars" (click)="hamburgerClicked()"></fa-icon>
-        </li>
     </section>
 </div>
