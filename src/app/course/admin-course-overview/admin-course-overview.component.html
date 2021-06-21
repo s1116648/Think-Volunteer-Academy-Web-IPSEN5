@@ -20,8 +20,9 @@
 
 		<section class="main-content">
 			<section class="section">
-				<div class="columns">
+				<div class="columns wrap vertical-gap">
 					<h1 class="column grow">{{ course.name }}</h1>
+					<div class="button-wrapper">
 					<button class="column button primary" routerLink="edit" *appHasPermissions="['course.edit']">
 						Edit course
 						<span class="icon"
@@ -36,6 +37,7 @@
 							><fa-icon [icon]="icons.faPen"></fa-icon
 						></span>
 					</button>
+					</div>
 				</div>
 				<p class="course-description">{{ course.description }}</p>
 			</section>
@@ -43,7 +45,7 @@
 			<section class="section">
 				<div class="columns">
 					<h1 class="column grow">Lessons</h1>
-					<button class="column button primary" (click)="openNewLessonModal()" *appHasPermissions="['lesson.create']">
+					<button class="column button primary" (click)="openNewLessonModal()">
 						New lesson
 						<span class="icon"
 							><fa-icon [icon]="icons.faPlus"></fa-icon
@@ -51,7 +53,7 @@
 					</button>
 				</div>
 
-				<ul class="lessons" [dragula]="dragulaLessonGroupName" [dragulaModel]="lessonsInOrder">
+				<ul class="lessons" [dragula]="dragulaLessonGroupName" [dragulaModel]="lessonsInOrder" *ngIf="lessonsInOrder.length > 0; else noLessons">
 					<li
 						*ngFor="let lesson of lessonsInOrder; let index = index" 
 					>
@@ -61,6 +63,10 @@
 						></app-admin-lesson-card>
 					</li>
 				</ul>
+
+				<ng-template #noLessons>
+					<p class="paragraph">There are no lessons in this course.</p>
+				</ng-template>
 			</section>
 		</section>
 	</div>

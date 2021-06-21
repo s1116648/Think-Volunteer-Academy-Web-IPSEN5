@@ -136,7 +136,7 @@
                 </div>
 
                 <div class="column" *appHasPermissions="['lesson.delete']">
-                    <button class="button hover-danger" [disabled]="isUpdating" (click)="remove()">
+                    <button class="button hover-danger" type="button" [disabled]="isUpdating" (click)="remove()">
                         Delete lesson
                         <span class="icon"
                             ><fa-icon [icon]="icons.faTrash"></fa-icon
@@ -147,4 +147,6 @@
 
 		</form>
 	</section>
+
+	<ng-container appPlaceholder></ng-container>
 </main>
