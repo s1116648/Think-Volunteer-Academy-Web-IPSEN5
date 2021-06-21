@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Course } from "../../course.model";
 
 @Component({
 	selector: "app-lesson-test-card",
@@ -8,7 +7,7 @@ import { Course } from "../../course.model";
 	styleUrls: ["./lesson-test-card.component.scss"],
 })
 export class LessonTestCardComponent implements OnInit {
-
+	@Input() completed: boolean;
 	icons = { faArrowRight };
 	constructor() {}
 

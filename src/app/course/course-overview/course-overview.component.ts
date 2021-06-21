@@ -10,6 +10,8 @@ import { BadgeService } from "../../shared/badge.service";
 import { AuthService } from "../../auth/auth.service";
 import { Badge } from "../../shared/badge.model";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import {TestService} from "../../test/services/test.service";
+import {Test} from "../../test/model/test.model";
 
 @Component({
 	selector: "app-course-overview",
@@ -20,6 +22,7 @@ export class CourseOverviewComponent implements OnInit {
 	readonly MAX_SIMILAR_COURSES = 10;
 
 	course: Course;
+	test: Test;
 	lessons: Lesson[] = [];
 	userBadges: Badge[] = [];
 	similarCourses: Course[] = [];
@@ -41,7 +44,8 @@ export class CourseOverviewComponent implements OnInit {
 		private courseService: CourseService,
 		private lessonService: LessonService,
 		private badgeService: BadgeService,
-		private authService: AuthService
+		private authService: AuthService,
+		private testService: TestService
 	) {}
 
 	ngOnInit(): void {
@@ -72,6 +76,11 @@ export class CourseOverviewComponent implements OnInit {
 				.subscribe((result: HttpPaginatedResult<Badge>) => {
 					this.userBadges = result.items;
 				});
+
+			this.testService.getTestByID(this.course.examId)
+				.subscribe((test) => {
+					this.test = test;
+				});
 		});
 	}
 
@@ -81,4 +90,8 @@ export class CourseOverviewComponent implements OnInit {
 			.map((badge) => badge.lesson.id)
 			.includes(lesson.id);
 	}
+
+    testIsCompleted(): void {
+
+    }
 }
