@@ -12,8 +12,8 @@ import { Badge } from "../../shared/badge.model";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import {TestService} from "../../test/services/test.service";
 import {Test} from "../../test/model/test.model";
-import { Certificate } from "../../shared/certificate.model";
 import { CertificateService } from "../../shared/certificate.service";
+import {Certificate} from "../../shared/certificate.model";
 
 @Component({
 	selector: "app-course-overview",
@@ -58,11 +58,12 @@ export class CourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
-					this.certificateService
-						.getCertificatesByUser(this.authService.loginInfo.getValue().user.id, this.course.id)
-						.subscribe((result: HttpPaginatedResult<Certificate>) => {
-							this.certificates = result.items;
-						});
+				});
+
+			this.certificateService
+				.getCertificatesByUser(this.authService.loginInfo.getValue().user.id)
+				.subscribe((result: HttpPaginatedResult<Certificate>) => {
+					this.certificates = result.items;
 				});
 
 			this.lessonService.get(params.id).subscribe((result) => {
