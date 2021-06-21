@@ -88,4 +88,20 @@ export class TestScreenComponent implements OnInit {
             })
         };
     }
+
+    allQuestionsAreAnswered(): boolean {
+        return true; // ToDo
+    }
+
+    showNotEverythingIsAnswered(): void {
+        // ToDo
+    }
+
+    showFailedTest(): void {
+        // ToDo
+    }
+
+    showTestCompleted(): void {
+        // ToDo
+    }
 }

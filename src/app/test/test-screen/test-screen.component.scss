@@ -1,5 +1,9 @@
 @import "../../shared/variables";
 
+h1 {
+  margin-bottom: 20px;
+}
+
 .chevronRight {
   margin-left: 10px;
   font-size: small;
@@ -20,6 +24,25 @@
   margin-right: 5px;
 }
 
-h1 {
-  margin-bottom: 20px;
+.invalid-ansers {
+
+}
+
+.earned-badge {
+  display: none;
+}
+
+.earned-certificate {
+  display: none;
+}
+
+.pop-up-wrapper {
+  display: none;
+  //display: block;
+  position: fixed;
+  z-index: 1;
+  width: 540px;
+  height: 310px;
+  border-radius: $border-radius;
+  background-color: lightblue;
 }
