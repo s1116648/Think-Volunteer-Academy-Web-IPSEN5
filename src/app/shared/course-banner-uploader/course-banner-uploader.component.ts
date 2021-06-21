@@ -4,6 +4,7 @@ import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { environment } from "../../../environments/environment";
+import { NotifierService } from "angular-notifier";
 
 @Component({
 	selector: "app-course-banner-uploader",
@@ -32,7 +33,7 @@ export class CourseBannerUploaderComponent
 		return environment.S3_ENDPOINT + this.imagePath;
 	}
 
-	constructor(private fileService: FileService) {}
+	constructor(private fileService: FileService, private notifierService: NotifierService) {}
 
 	ngOnInit(): void {}
 
@@ -77,6 +78,7 @@ export class CourseBannerUploaderComponent
 		const file = files[0];
 
 		if (!acceptedImageTypes.includes(file?.type)) {
+			this.notifierService.notify("error", "File type not supported.");
 			return;
 		}
 
