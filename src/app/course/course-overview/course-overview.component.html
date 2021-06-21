@@ -38,11 +38,11 @@
                             [completed]="lessonIsCompleted(index)"
                     ></app-progress-circle>
 
-                    <app-progress-circle>
-                        <fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
-                    </app-progress-circle>
-                </section>
-            </section>
+					<app-progress-circle [completed]="courseIsCompleted()">
+						<fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
+					</app-progress-circle>
+				</section>
+			</section>
 
             <section class="cards-holder" *ngIf="lessons">
                 <app-course-overview-card

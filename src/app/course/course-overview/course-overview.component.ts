@@ -12,6 +12,8 @@ import { Badge } from "../../shared/badge.model";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import {TestService} from "../../test/services/test.service";
 import {Test} from "../../test/model/test.model";
+import { Certificate } from "../../shared/certificate.model";
+import { CertificateService } from "../../shared/certificate.service";
 
 @Component({
 	selector: "app-course-overview",
@@ -25,6 +27,7 @@ export class CourseOverviewComponent implements OnInit {
 	test: Test;
 	lessons: Lesson[] = [];
 	userBadges: Badge[] = [];
+	certificates: Certificate[] = [];
 	similarCourses: Course[] = [];
 
 	icons = {
@@ -45,6 +48,7 @@ export class CourseOverviewComponent implements OnInit {
 		private lessonService: LessonService,
 		private badgeService: BadgeService,
 		private authService: AuthService,
+		private certificateService: CertificateService,
 		private testService: TestService
 	) {}
 
@@ -54,12 +58,16 @@ export class CourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
+					this.certificateService
+						.getCertificatesByUser(this.authService.loginInfo.getValue().user.id, this.course.id)
+						.subscribe((result: HttpPaginatedResult<Certificate>) => {
+							this.certificates = result.items;
+						});
 				});
 
 			this.lessonService.get(params.id).subscribe((result) => {
 				this.lessons = result.items;
 			});
-
 			this.courseService
 				.getSimilar(params.id)
 				.subscribe((result: HttpPaginatedResult<Course>) => {
@@ -90,6 +98,9 @@ export class CourseOverviewComponent implements OnInit {
 			.map((badge) => badge.lesson.id)
 			.includes(lesson.id);
 	}
+
+	courseIsCompleted = (): boolean =>
+		this.certificates.map((certificate) => certificate.course.id).includes(this.course.id);
 
     testIsCompleted(): void {
 
