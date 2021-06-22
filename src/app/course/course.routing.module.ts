@@ -20,24 +20,25 @@ const routes: Routes = [
 		path: "admin",
 		component: AdminOverviewComponent,
 		canActivate: [AuthGuard, PermissionGuard],
-		data: {permissions: []}
+		data: {permissions: ["courses.view"]}
 	},
 	{
 		path: "admin/courses/new",
 		component: CreateCourseComponent,
 		canActivate: [AuthGuard, PermissionGuard],
-		data: {permissions: []}
+		data: {permissions: ["course.create"]}
 	},
 	{
 		path: "admin/courses/:id/edit",
 		component: EditCourseComponent,
 		canActivate: [AuthGuard, PermissionGuard],
-		data: {permissions: []}
+		data: {permissions: ["course.edit"]}
 	},
 	{
 		path: "admin/courses/:id",
 		component: AdminCourseOverviewComponent,
-		canActivate: [AuthGuard]
+		canActivate: [AuthGuard, PermissionGuard],
+		data: {permissions: ["course.view"]}
 	},
     {
       path: "courses",

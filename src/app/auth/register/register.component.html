@@ -3,20 +3,16 @@
         <h1>Sign up</h1>
 
         <form #loginForm="ngForm" (ngSubmit)="register(loginForm)">
-            <div class="form-group" *ngIf="error">
-                <h4 *ngIf="error.status == 500">Something went wrong, try again.</h4>
-                <h4 *ngIf="error.status == 409">An account with {{ loginForm.value.email }} already exists.</h4>
-            </div>
 
-            <div class="columns">
+            <div class="columns wrap">
                 <div class="form-group">
                     <label for="firstname">Firstname</label>
-                    <input type="firstname" id="firstname" name="firstname" placeholder="Firstname" ngModel required>
+                    <input type="text" id="firstname" name="firstname" placeholder="Firstname" ngModel required>
                 </div>
 
                 <div class="form-group">
                     <label for="lastname">Lastname</label>
-                    <input type="lastname" id="lastname" name="lastname" placeholder="Lastname" ngModel required>
+                    <input type="text" id="lastname" name="lastname" placeholder="Lastname" ngModel required>
                 </div>
             </div>
 
@@ -27,7 +23,7 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" ngModel required>
+                <input type="password" id="password" name="password" placeholder="Password" ngModel required [minlength]="8">
             </div>
 
             <div class="form-group columns last">

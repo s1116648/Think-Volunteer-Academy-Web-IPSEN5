@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Lesson } from "../lesson.model";
 import {
@@ -22,6 +22,11 @@ import { UploadedFileResponse } from "src/app/file/UploadedFileResponse.model";
 import { UpdateLessonDTO } from "../dto/update-lesson.dto";
 import { forkJoin, Observable } from "rxjs";
 import { defaultIfEmpty, tap } from "rxjs/operators";
+import { NotifierService } from "angular-notifier";
+import { HttpErrorResponse } from "@angular/common/http";
+import { PlaceholderDirective } from "../../shared/placeholder.directive";
+import { ModalService } from "../../shared/modal.service";
+import { ConfirmModalComponent } from "../../shared/modals/confirm-modal/confirm-modal.component";
 
 @Component({
 	selector: "app-admin-edit-lesson-view",
@@ -54,12 +59,17 @@ export class AdminEditLessonViewComponent implements OnInit {
 
 	isUpdating = false;
 
+	@ViewChild(PlaceholderDirective, { static: false })
+	private modalHost: PlaceholderDirective;
+
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
 		private lessonService: LessonService,
 		private lessonAttachmentService: LessonAttachmentService,
-		private fileService: FileService
+		private fileService: FileService,
+		private notifierService: NotifierService,
+		private modalService: ModalService
 	) {}
 
 	ngOnInit(): void {
@@ -114,9 +124,12 @@ export class AdminEditLessonViewComponent implements OnInit {
 
 		update.subscribe(() => {
 			this.isUpdating = false;
+			this.notifierService.notify("success", "Lesson updated.");
 			this.router
 				.navigate(["../.."], { relativeTo: this.route })
 				.catch((err) => console.log(err));
+		}, (e: HttpErrorResponse) => {
+			this.notifierService.notify("error", "An error occurred while updating lesson.");
 		});
 	}
 
@@ -183,9 +196,8 @@ export class AdminEditLessonViewComponent implements OnInit {
 		return forkJoin(observables).pipe(defaultIfEmpty([]));
 	}
 
-	deleteAttachmentFromUploadList(index: number): void {
+	deleteAttachmentFromUploadList = (index: number) =>
 		this.attachmentsToUpload.splice(index, 1);
-	}
 
 	addToAttachmentsToDelete(
 		attachment: LessonAttachment,
@@ -196,8 +208,11 @@ export class AdminEditLessonViewComponent implements OnInit {
 	}
 
 	remove(): void {
-		this.lessonService.delete(this.lesson.id).subscribe(() => {
-			this.router.navigate(["../.."], { relativeTo: this.route });
-		});
+		const modal = this.modalService.createModal(ConfirmModalComponent, this.modalHost);
+		modal.instance.description = `Are you sure you want to delete '${this.lesson.name}'? This cannot be undone.`;
+		modal.instance.confirmed.subscribe(() =>
+			this.lessonService.delete(this.lesson.id).subscribe(() =>
+				this.router.navigate(["../.."], { relativeTo: this.route }))
+		);
 	}
 }

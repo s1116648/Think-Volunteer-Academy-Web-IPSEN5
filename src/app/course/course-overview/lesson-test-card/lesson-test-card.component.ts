@@ -7,12 +7,8 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 	styleUrls: ["./lesson-test-card.component.scss"],
 })
 export class LessonTestCardComponent implements OnInit {
-
-	@Input() course;
-
+	@Input() completed: boolean;
 	icons = { faArrowRight };
-	testPath = "test";
-
 	constructor() {}
 
 	ngOnInit(): void {}

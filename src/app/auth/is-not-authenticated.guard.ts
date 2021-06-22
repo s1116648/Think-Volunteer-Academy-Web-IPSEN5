@@ -10,7 +10,7 @@ export class IsNotAuthenticatedGuard implements CanActivate {
     canActivate(): boolean | UrlTree {
         const authGuard = new AuthGuard(this.authService, this.router);
         const canActivate = authGuard.canActivate() !== true;
-        if (!canActivate) return this.router.createUrlTree(["/"]);
+        if (!canActivate) return this.router.createUrlTree(["/courses"]);
         return true;
     }
 }

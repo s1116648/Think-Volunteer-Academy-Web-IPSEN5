@@ -10,18 +10,24 @@ import { BadgeService } from "../../shared/badge.service";
 import { AuthService } from "../../auth/auth.service";
 import { Badge } from "../../shared/badge.model";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { TestService } from "../../test/services/test.service";
+import { Test } from "../../test/model/test.model";
+import { CertificateService } from "../../shared/certificate.service";
+import { Certificate } from "../../shared/certificate.model";
 
 @Component({
 	selector: "app-course-overview",
 	templateUrl: "./course-overview.component.html",
-	styleUrls: ["./course-overview.component.scss"],
+	styleUrls: ["./course-overview.component.scss"]
 })
 export class CourseOverviewComponent implements OnInit {
 	readonly MAX_SIMILAR_COURSES = 10;
 
 	course: Course;
+	test: Test;
 	lessons: Lesson[] = [];
 	userBadges: Badge[] = [];
+	certificates: Certificate[] = [];
 	similarCourses: Course[] = [];
 
 	icons = {
@@ -41,8 +47,11 @@ export class CourseOverviewComponent implements OnInit {
 		private courseService: CourseService,
 		private lessonService: LessonService,
 		private badgeService: BadgeService,
-		private authService: AuthService
-	) {}
+		private authService: AuthService,
+		private certificateService: CertificateService,
+		private testService: TestService
+	) {
+	}
 
 	ngOnInit(): void {
 		this.route.params.subscribe((params: Params) => {
@@ -52,10 +61,15 @@ export class CourseOverviewComponent implements OnInit {
 					this.course = course;
 				});
 
+			this.certificateService
+				.getCertificatesByUser(this.authService.loginInfo.getValue().user.id)
+				.subscribe((result: HttpPaginatedResult<Certificate>) => {
+					this.certificates = result.items;
+				});
+
 			this.lessonService.get(params.id).subscribe((result) => {
 				this.lessons = result.items;
 			});
-
 			this.courseService
 				.getSimilar(params.id)
 				.subscribe((result: HttpPaginatedResult<Course>) => {
@@ -72,6 +86,11 @@ export class CourseOverviewComponent implements OnInit {
 				.subscribe((result: HttpPaginatedResult<Badge>) => {
 					this.userBadges = result.items;
 				});
+
+			this.testService.getTestByID(this.course.examId)
+				.subscribe((test) => {
+					this.test = test;
+				});
 		});
 	}
 
@@ -80,5 +99,16 @@ export class CourseOverviewComponent implements OnInit {
 		return this.userBadges
 			.map((badge) => badge.lesson.id)
 			.includes(lesson.id);
+	}
+
+	courseIsCompleted = (): boolean =>
+		this.certificates
+			.map((certificate) => certificate.course.id)
+			.includes(this.course.id);
+
+	testIsCompleted(): boolean {
+		return this.certificates
+			.map((certificate) => certificate.course.id)
+			.includes(this.course.id);
 	}
 }

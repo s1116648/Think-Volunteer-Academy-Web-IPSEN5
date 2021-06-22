@@ -3,7 +3,10 @@
 
     <ul class="badges" *ngIf="lessons.length > 0">
         <li *ngFor="let lesson of lessons; let index = index">
-            <app-progress-circle [number]="lesson.index + 1" [completed]="isCompleted(lesson)"></app-progress-circle>
+            <app-progress-circle [number]="lesson.index + 1" [completed]="isLessonCompleted(lesson)"></app-progress-circle>
         </li>
+        <app-progress-circle [completed]="isCourseCompleted(course)">
+            <fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
+        </app-progress-circle>
     </ul>
 </div>

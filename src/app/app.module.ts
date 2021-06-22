@@ -19,7 +19,8 @@ import { DragulaModule } from "ng2-dragula";
 import { ChatModule } from "./chat/chat.module";
 import { Ng2ImgMaxModule } from "ng2-img-max";
 import { CoachingModule } from "./coaching/coaching.module";
-import {TestModule} from "./test/test.module";
+import { TestModule } from "./test/test.module";
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -41,7 +42,14 @@ import {TestModule} from "./test/test.module";
 		ChatModule,
 		Ng2ImgMaxModule,
 		CoachingModule,
-		TestModule
+		TestModule,
+		NotifierModule.withConfig({
+			position : {
+				horizontal: {
+					position: "middle"
+				}
+			}
+		})
 	],
 	providers: [
 		{
@@ -52,4 +60,6 @@ import {TestModule} from "./test/test.module";
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+}

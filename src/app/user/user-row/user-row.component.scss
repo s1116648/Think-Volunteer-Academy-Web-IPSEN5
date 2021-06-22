@@ -4,19 +4,6 @@
 	padding: 20px;
 	background-color: $color-background-dark;
 
-	.role-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-		.description {
-			font-size: 13px;
-			color: $color-gray-600;
-			max-width: 400px;
-			margin-top: 5px;
-		}
-	}
-
 	.walk-through-button {
 		border: none;
 		width: 40px;
@@ -30,6 +17,10 @@
 		&:hover {
 			filter: brightness(95%);
 		}
+	}
+
+	.title {
+		flex-grow: 1;
 	}
 
     button {

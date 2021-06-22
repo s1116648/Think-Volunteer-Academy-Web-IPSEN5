@@ -1,6 +1,7 @@
 <section class="lesson-card">
 	<section class="status-and-line">
-		<div class="status-bubble" style="background-color: #22e63c"></div>
+		<div class="status-bubble" [class.completed]="completed" [class.default]="!completed"></div>
+
 	</section>
 	<section class="lesson-content">
 		<h1>Test</h1>
