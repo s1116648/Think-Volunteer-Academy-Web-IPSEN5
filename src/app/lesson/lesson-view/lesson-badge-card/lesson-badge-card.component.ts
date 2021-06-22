@@ -16,5 +16,6 @@ export class LessonBadgeCardComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.badge = this.badges.find(badge => badge.lesson.id === this.lesson.id);
+		console.log(this.badges);
 	}
 }

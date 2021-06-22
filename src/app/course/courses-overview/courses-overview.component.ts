@@ -19,7 +19,7 @@ export class CoursesOverviewComponent implements OnInit {
 	myCourses: MyCourse[] = [];
 	courseCategories: CourseCategory[] = [];
 
-	coach: Coach;
+	coach?: Coach;
 
 	get categoriesWithCourses(): CourseCategory[] {
 		return this.courseCategories.filter(

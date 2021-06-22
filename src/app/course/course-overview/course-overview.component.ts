@@ -59,6 +59,11 @@ export class CourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
+
+					this.testService.getTestByID(course.examId)
+						.subscribe((test: Test) => {
+							this.test = test;
+						});
 				});
 
 			this.certificateService
@@ -70,6 +75,7 @@ export class CourseOverviewComponent implements OnInit {
 			this.lessonService.get(params.id).subscribe((result) => {
 				this.lessons = result.items;
 			});
+
 			this.courseService
 				.getSimilar(params.id)
 				.subscribe((result: HttpPaginatedResult<Course>) => {
@@ -78,6 +84,7 @@ export class CourseOverviewComponent implements OnInit {
 						this.MAX_SIMILAR_COURSES
 					);
 				});
+
 			this.badgeService
 				.getBadgesByUser(
 					this.authService.loginInfo.getValue().user.id,
@@ -86,24 +93,19 @@ export class CourseOverviewComponent implements OnInit {
 				.subscribe((result: HttpPaginatedResult<Badge>) => {
 					this.userBadges = result.items;
 				});
-
-			this.testService.getTestByID(this.course.examId)
-				.subscribe((test) => {
-					this.test = test;
-				});
 		});
 	}
 
 	lessonIsCompleted(index: number): boolean {
 		const lesson = this.lessons[index];
 		return this.userBadges
-			.map((badge) => badge.lesson.id)
+			.map((badge: Badge) => badge.lesson.id)
 			.includes(lesson.id);
 	}
 
 	courseIsCompleted = (): boolean =>
 		this.certificates
-			.map((certificate) => certificate.course.id)
+			.map((certificate: Certificate) => certificate.course.id)
 			.includes(this.course.id);
 
 	testIsCompleted(): boolean {

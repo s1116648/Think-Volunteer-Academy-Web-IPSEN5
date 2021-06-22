@@ -17,7 +17,7 @@
 		<section *ngIf="lesson" class="main-content">
 			<h1>{{ lesson.name }}</h1>
 			<section class="lesson-content" [innerHTML]="getSafeHTML()"></section>
-			<button class="go-to-test-button button" [routerLink]="'test/' + lesson.quizId">
+			<button class="go-to-test-button button" [routerLink]="'test/' + lesson.quizId" *ngIf="!isCompleted()">
 				<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
 				Do the test
 				<fa-icon [icon]="icons.faChevronRight" class="chevronRight"></fa-icon>
