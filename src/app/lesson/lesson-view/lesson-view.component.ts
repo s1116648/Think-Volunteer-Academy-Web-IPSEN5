@@ -86,14 +86,14 @@ export class LessonViewComponent implements OnInit {
         this.lessonService.get(this.course.id).subscribe((value) => {
             const lessons = value.items;
             let foundCurrentLesson = false;
-            for (let i = 0; i < lessons.length; i++) {
+            for (const lesson of lessons) {
                 if (foundCurrentLesson) {
-                    this.nextLesson = lessons[i];
+                    this.nextLesson = lesson;
                     this.nextLessonExists = true;
                     console.log("next lesson exists!");
                     return;
                 }
-                if (this.lesson.id === lessons[i].id) {
+                if (this.lesson.id === lesson.id) {
                     foundCurrentLesson = true;
                 }
             }
