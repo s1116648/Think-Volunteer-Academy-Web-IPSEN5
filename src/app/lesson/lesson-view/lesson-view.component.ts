@@ -23,6 +23,7 @@ export class LessonViewComponent implements OnInit {
 	lesson: Lesson;
 	course: Course;
 	badges: Badge[];
+	lessons: Lesson[] = [];
 	index: number;
 	attachments: LessonAttachment[] = [];
 
@@ -39,6 +40,10 @@ export class LessonViewComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.params.subscribe((params: Params) => {
+			this.lessonService.get(params.courseId).subscribe((result: HttpPaginatedResult<Lesson>) => {
+				this.lessons = result.items;
+			});
+
 			this.lessonService
 				.getById(params.lessonId)
 				.subscribe((lesson: Lesson) => {
@@ -48,6 +53,10 @@ export class LessonViewComponent implements OnInit {
 					this.getBadgesFromCourseId();
 				});
 		});
+	}
+
+	isCompleted(): boolean {
+		return this.badges?.find(badge => badge.lesson.id === this.lesson.id) !== undefined;
 	}
 
 	getSafeHTML = (): SafeHtml =>
