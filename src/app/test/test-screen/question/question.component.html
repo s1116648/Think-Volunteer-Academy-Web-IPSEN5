@@ -1,0 +1,10 @@
+<h2>{{question.text}}</h2>
+
+<section>
+	<ul>
+		<li *ngFor="let answer of question.answers">
+			<input class="inputCheckBox" [(ngModel)]="answer.checked" type="checkbox" [name]="question.id" [id]="answer.id">
+			<label [for]="answer.id">{{answer.text}}</label>
+		</li>
+	</ul>
+</section>

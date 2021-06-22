@@ -48,7 +48,7 @@ import { RoleModule } from "../role/role.module";
 		UserModule,
 		RoleModule
 	],
-    exports: [CourseOverviewComponent],
+    exports: [CourseOverviewComponent, LessonTestCardComponent],
 	providers: [CourseService],
 })
 export class CourseModule {}

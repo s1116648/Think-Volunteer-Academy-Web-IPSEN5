@@ -16,7 +16,7 @@ const routes: Routes = [
 		path: "courses/:courseId/lessons/:lessonId",
 		component: LessonViewComponent,
 		canActivate: [AuthGuard],
-	},
+	}
 ];
 
 @NgModule({

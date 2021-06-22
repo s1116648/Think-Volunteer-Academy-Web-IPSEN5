@@ -1,0 +1,104 @@
+@import "../../shared/variables";
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.chevronRight {
+  margin-left: 10px;
+  font-size: small;
+}
+
+.check-test-button {
+  background-color: $color-orange-500;
+  max-width: 100%;
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 64px;
+}
+
+.circle-image {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  transform: translateX(40%);
+}
+
+.close-button {
+  position: absolute;
+  display: block;
+  bottom: 20px;
+  left: 20px;
+  background-color: $color-orange-500;
+}
+
+.graduationCap {
+  margin-right: 5px;
+}
+
+.graduationCap-icon {
+  font-size: 25px;
+}
+
+#earned-badge {
+  display: none;
+}
+
+#earned-certificate {
+  display: none;
+}
+
+#failed-test {
+  display: none;
+}
+
+#pop-up-wrapper {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 540px;
+  height: 310px;
+  border-radius: $border-radius;
+  background-color: $color-background;
+
+  section {
+    position: absolute;
+    left: 10%;
+    top: 20px;
+    width: 80%;
+  }
+
+  p {
+    display: block;
+    font-weight: bold;
+    font-size: 180%;
+  }
+}
+
+#shadow-background {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: $border-radius;
+  background-color: $color-black;
+  opacity: $blur-opacity-ratio;
+}
+
+@media only screen and (max-width: 600px){
+  #pop-up-wrapper {
+    width: 360px;
+    height: 270px;
+  }
+
+  .circle-image {
+    margin-top: 8px;
+  }
+}

@@ -6,4 +6,5 @@ export interface Question {
 	answers: Answer[];
 	updatedAt: Date;
 	createdAt: Date;
+	testId: string;
 }

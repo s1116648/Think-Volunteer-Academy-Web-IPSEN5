@@ -1,0 +1,56 @@
+@import "../../../shared/variables";
+
+label {
+  display: inline;
+  width: 100%;
+  padding: 10px;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+input {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+li {
+  display: flex;
+  width: 40%;
+  background-color: $color-background-dark;
+  border-radius: $border-radius;
+}
+
+.inputCheckBox  {
+  cursor: pointer;
+  display: inline;
+  background-color: red;
+}
+
+.checkContainer {
+  cursor: pointer;
+}
+
+.checkContainer:hover input ~ .inputCheckBox {
+   background-color: $color-background;
+}
+
+.inputCheckBox:checked {
+  color: red;
+}
+
+@media only screen and (max-width: 900px){
+  li {
+    width: 90%;
+    margin-left: 5%;
+  }
+}

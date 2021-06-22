@@ -16,7 +16,7 @@
 					If you have finished all lessons in this course, you are ready to do the test. Good luck!
 				</p>
 				<section class="button-eta-holder">
-					<button class="button" routerLink="test">
+					<button class="button" [routerLink]="'test' + '/' + course.examId">
 						To test
 						<span class="icon"
 							><fa-icon [icon]="icons.faArrowRight"></fa-icon

@@ -1,0 +1,29 @@
+<section class="test-info-wrapper">
+	<h3> General information </h3>
+	<ul>
+		<li>
+			<div class="columns">
+				<p>
+					<span class="text-left"> Course </span>
+					<span class="text-right"> {{courseName}}</span>
+				</p>
+			</div>
+		</li>
+		<li *ngIf="lessonName">
+			<div class="columns">
+				<p>
+					<span class="text-left"> Lesson </span>
+					<span class="text-right"> {{lessonName}}</span>
+				</p>
+			</div>
+		</li>
+		<li *ngIf="lessonLength">
+			<div class="columns">
+				<p>
+					<span class="text-left"> Length </span>
+					<span class="text-right"> {{lessonLength}}</span>
+				</p>
+			</div>
+		</li>
+	</ul>
+</section>

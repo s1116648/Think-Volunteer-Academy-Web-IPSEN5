@@ -5,4 +5,5 @@ export interface Answer {
 	questionId: string;
 	updatedAt: Date;
 	createdAt: Date;
+	checked?: boolean;
 }

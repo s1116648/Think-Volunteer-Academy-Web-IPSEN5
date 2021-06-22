@@ -1,0 +1,44 @@
+<div class="container content-holder">
+	<section class="left-sidebar">
+		<app-test-screen-info
+			[courseName]="courseName"
+			[lessonName]="lessonName"
+			[lessonLength]="lessonLength"
+		></app-test-screen-info>
+	</section>
+	<div *ngIf="test">
+		<section class="main-content">
+			<h1>{{lessonName}} test</h1>
+			<div *ngFor="let question of test.questions">
+				<app-test-question [question]="question"></app-test-question>
+			</div>
+			<button class="check-test-button button" (click)="checkTestButtonClicked()">
+				<fa-icon [icon]="icons.faGraduationCap" class="graduationCap"></fa-icon>
+				Check the test
+				<fa-icon [icon]="icons.faChevronRight" class="chevronRight"></fa-icon>
+			</button>
+		</section>
+	</div>
+	<div id="shadow-background">
+	</div>
+	<div id="pop-up-wrapper">
+		<section id="earned-badge">
+			<div class="circle-image">
+				<app-progress-circle [number]="lessonIndex + 1" [completed]="true"></app-progress-circle>
+			</div>
+			<p>Congratulations! You earned a badge!</p>
+		</section>
+		<section id="earned-certificate">
+			<div class="circle-image">
+				<app-progress-circle [completed]="true">
+					<fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
+				</app-progress-circle>
+			</div>
+			<p>Congratulations! You earned a certificate!</p>
+		</section>
+		<section id="failed-test">
+			<p>Not all answers where answered correctly</p>
+		</section>
+		<button class="button close-button" (click)="hidePopUp()">close</button>
+	</div>
+</div>

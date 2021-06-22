@@ -11,6 +11,9 @@ import { EditQuestionModalComponent } from "./modals/edit-question-modal/edit-qu
 import { AddAnswerComponent } from "./admin-edit-test-view/admin-question-card/add-answer/add-answer.component";
 import { AdminAnswerCardCreatedComponent } from "./admin-edit-test-view/admin-question-card/admin-answer-card-created/admin-answer-card-created.component";
 import { AddQuestionModalComponent } from "./modals/add-question-modal/add-question-modal.component";
+import { TestScreenComponent } from "./test-screen/test-screen.component";
+import { TestScreenInfoComponent } from "./test-screen/test-info/test-screen-info.component";
+import { QuestionComponent } from "./test-screen/question/question.component";
 
 @NgModule({
 	declarations: [
@@ -21,6 +24,9 @@ import { AddQuestionModalComponent } from "./modals/add-question-modal/add-quest
 		AddAnswerComponent,
 		AdminAnswerCardCreatedComponent,
 		AddQuestionModalComponent,
+		TestScreenComponent,
+		TestScreenInfoComponent,
+		QuestionComponent
 	],
 	imports: [
 		CommonModule,

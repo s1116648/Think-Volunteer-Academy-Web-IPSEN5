@@ -1,13 +1,30 @@
 @import "/src/app/shared/variables";
 @import "/src/app/shared/general-course-info/general-course-info.component";
 @import "/src/app/course/course-overview/course-overview.component";
-//@import "/src/styles";
+@import "/src/styles";
+
+.chevronRight {
+    margin-left: 10px;
+    font-size: small;
+}
+
+.go-to-test-button {
+    background-color: $color-orange-500;
+    max-width: 100%;
+    text-align: left;
+    padding: 20px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.graduationCap {
+    margin-right: 5px;
+}
 
 .left-sidebar {
     display: flex;
     flex-direction: column;
 }
-
 
 .lesson-content{
 
