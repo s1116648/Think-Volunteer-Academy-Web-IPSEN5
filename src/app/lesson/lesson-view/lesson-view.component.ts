@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Course } from "../../course/course.model";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { LessonService } from "../lesson.service";
@@ -19,14 +19,15 @@ import { faGraduationCap, faChevronRight } from "@fortawesome/free-solid-svg-ico
     styleUrls: ["./lesson-view.component.scss"]
 })
 export class LessonViewComponent implements OnInit {
-
-    icons = { faGraduationCap, faChevronRight };
-    lesson: Lesson;
-    course: Course;
-    badges: Badge[];
-    attachments: LessonAttachment[] = [];
-    nextLesson: Lesson;
-    nextLessonExists: boolean;
+	icons = { faGraduationCap, faChevronRight };
+	lesson: Lesson;
+	course: Course;
+	badges: Badge[];
+	lessons: Lesson[] = [];
+	index: number;
+	attachments: LessonAttachment[] = [];
+	nextLesson: Lesson;
+	nextLessonExists: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -40,21 +41,29 @@ export class LessonViewComponent implements OnInit {
     ) {
     }
 
-    ngOnInit(): void {
-        this.route.params.subscribe((params: Params) => {
-            this.lessonService
-                .getById(params.lessonId)
-                .subscribe((lesson: Lesson) => {
-                    this.lesson = lesson;
-                    this.getCourseFromId();
-                    this.getAttachmentsByLessonId();
-                    this.getBadgesFromCourseId();
-                });
-        });
-    }
+	ngOnInit(): void {
+		this.route.params.subscribe((params: Params) => {
+			this.lessonService.get(params.courseId).subscribe((result: HttpPaginatedResult<Lesson>) => {
+				this.lessons = result.items;
+			});
 
-    getSafeHTML = (): SafeHtml =>
-        this.sanitizer.bypassSecurityTrustHtml(this.lesson.content);
+			this.lessonService
+				.getById(params.lessonId)
+				.subscribe((lesson: Lesson) => {
+					this.lesson = lesson;
+					this.getCourseFromId();
+					this.getAttachmentsByLessonId();
+					this.getBadgesFromCourseId();
+				});
+		});
+	}
+
+	isCompleted(): boolean {
+		return this.badges?.find(badge => badge.lesson.id === this.lesson.id) !== undefined;
+	}
+
+	getSafeHTML = (): SafeHtml =>
+		this.sanitizer.bypassSecurityTrustHtml(this.lesson.content);
 
     getAttachmentsByLessonId(): void {
         this.lessonAttachmentService

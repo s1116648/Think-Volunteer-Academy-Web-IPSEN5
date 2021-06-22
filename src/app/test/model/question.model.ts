@@ -1,5 +1,4 @@
 import { Answer } from "./answer.model";
-import { Test } from "./test.model";
 
 export interface Question {
 	id: string;
@@ -7,6 +6,5 @@ export interface Question {
 	answers: Answer[];
 	updatedAt: Date;
 	createdAt: Date;
-	test: Test;
 	testId: string;
 }

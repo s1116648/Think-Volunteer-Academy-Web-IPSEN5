@@ -30,6 +30,7 @@ describe("Question service", () => {
                 updatedAt: new Date("1"),
                 createdAt: new Date("1")
             }],
+        testId: "1",
         updatedAt: new Date("1"),
         createdAt: new Date("1")
     };
@@ -54,6 +55,7 @@ describe("Question service", () => {
                 updatedAt: new Date("1"),
                 createdAt: new Date("1")
             }],
+        testId: "1",
         updatedAt: new Date("1"),
         createdAt: new Date("1")
     };
