@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../../auth/auth.service";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { PermissionService } from "../../role/permission/permission.service";
 
 @Component({
 	selector: "app-top-nav",
@@ -13,21 +14,26 @@ export class TopNavComponent implements OnInit {
 	settingsPath = "user/settings";
 	logoutPath = "/login";
 
-	isAdmin: boolean;
+	canSeeAdminPanel: boolean;
 
 	collapsedOnPhone = true;
 
 	icons = { faBars };
 
-	constructor(private authService: AuthService) {}
+
+	constructor(
+		private authService: AuthService,
+		private permissionService: PermissionService
+	) {}
 
 	ngOnInit(): void {
-		this.isAdmin = this.checkIfAdmin();
+		this.checkIfAdmin();
 	}
 
-	// ToDo If permissions are finished, make this method useful.
-	checkIfAdmin(): boolean {
-		return true;
+	checkIfAdmin(): void {
+		this.permissionService.hasPermissions(["course.view"]).subscribe((canSeeAdminPanel: boolean) => {
+			this.canSeeAdminPanel = canSeeAdminPanel;
+		});
 	}
 
 	hamburgerClicked(): void {
