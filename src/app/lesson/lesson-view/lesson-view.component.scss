@@ -29,3 +29,20 @@
 .lesson-content{
 
 }
+
+.next-lesson{
+    padding: 20px;
+    background-color: $color-background-dark;
+    border-radius: $border-radius;
+}
+
+.next-lesson-button {
+    color: $color-white;
+    font-size: 160%;
+    margin-bottom: 10px;
+}
+
+.next-lesson-content {
+    overflow: hidden;
+    max-height: 50px;
+}
