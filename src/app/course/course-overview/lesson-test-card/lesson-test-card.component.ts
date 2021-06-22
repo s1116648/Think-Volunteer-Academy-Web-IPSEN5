@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Course } from "../../course.model";
 
 @Component({
 	selector: "app-lesson-test-card",
@@ -8,6 +9,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 })
 export class LessonTestCardComponent implements OnInit {
 	@Input() completed: boolean;
+	@Input() course: Course;
 	icons = { faArrowRight };
 	constructor() {}
 
