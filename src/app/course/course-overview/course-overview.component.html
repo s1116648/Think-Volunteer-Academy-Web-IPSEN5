@@ -1,57 +1,61 @@
 <main class="container" *ngIf="course">
-	<figure>
-		<img
-			class="header-image"
-			[src]="image"
-			alt="Course banner"
-		/>
-	</figure>
+    <figure>
+        <img
+                class="header-image"
+                [src]="image"
+                alt="Course banner"
+        />
+    </figure>
 
-	<div class="content-holder">
-		<section class="left-sidebar">
-            <app-general-course-info [course]="course" [lessonCount]="lessons.length" [length]="totalLessonLength"></app-general-course-info>
+    <div class="content-holder">
+        <section class="left-sidebar">
+            <app-general-course-info [course]="course" [lessonCount]="lessons.length"
+                                     [length]="totalLessonLength"></app-general-course-info>
 
-			<section *ngIf="similarCourses?.length > 0">
-				<h3>Similar Courses</h3>
+            <section *ngIf="similarCourses?.length > 0">
+                <h3>Similar Courses</h3>
                 <ul>
                     <li *ngFor="let course of similarCourses">
-                        <app-recommendation-card routerLink="../{{ course.id }}" [course]="course"></app-recommendation-card>
+                        <app-recommendation-card routerLink="../{{ course.id }}"
+                                                 [course]="course"></app-recommendation-card>
                     </li>
                 </ul>
-			</section>
-		</section>
+            </section>
+        </section>
 
-		<section class="main-content">
-			<h1>{{ course.name }}</h1>
-			<p class="course-description">
-				{{ course.description }}
-			</p>
+        <section class="main-content">
+            <h1>{{ course.name }}</h1>
+            <p class="course-description">
+                {{ course.description }}
+            </p>
 
-			<section class="course-progress">
-				<h2>My progress</h2>
-				<section class="progress-circles">
-					<app-progress-circle
-						*ngFor="let lesson of lessons; let index = index"
-						[number]="index + 1"
-						[completed]="lessonIsCompleted(index)"
-					></app-progress-circle>
+            <section class="course-progress">
+                <h2>My progress</h2>
+                <section class="progress-circles">
+                    <app-progress-circle
+                            *ngFor="let lesson of lessons; let index = index"
+                            [number]="index + 1"
+                            [completed]="lessonIsCompleted(index)"
+                    ></app-progress-circle>
 
-					<app-progress-circle>
+					<app-progress-circle [completed]="courseIsCompleted()">
 						<fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
 					</app-progress-circle>
 				</section>
 			</section>
 
-			<section class="cards-holder" *ngIf="lessons">
-				<app-course-overview-card
-					*ngFor="let lesson of lessons; let index = index"
-					[lesson]="lesson"
-                    [lessonNumber]="index + 1"
-					[completed]="lessonIsCompleted(index)"
-				></app-course-overview-card>
+            <section class="cards-holder" *ngIf="lessons">
+                <app-course-overview-card
+                        *ngFor="let lesson of lessons; let index = index"
+                        [lesson]="lesson"
+                        [lessonNumber]="index + 1"
+                        [completed]="lessonIsCompleted(index)"
+                ></app-course-overview-card>
 
-				<app-lesson-test-card></app-lesson-test-card>
-			</section>
-		</section>
-	</div>
+                <app-lesson-test-card
+						[completed]="testIsCompleted()"
+                ></app-lesson-test-card>
+            </section>
+        </section>
+    </div>
 </main>
