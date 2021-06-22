@@ -19,12 +19,26 @@
 			</button>
 		</section>
 	</div>
-	<div class="pop-up-wrapper">
-		<p class="invalid-ansers">Not all questions have a answer</p>
-		<p class="earned-badge">Congratulations! You earned a badge!</p>
-		<p class="earned-certificate">Congratulations! You earned a certificate!</p>
-		<button class="button">close</button>
+	<div id="shadow-background">
+	</div>
+	<div id="pop-up-wrapper">
+		<section id="earned-badge">
+			<div class="circle-image">
+				<app-progress-circle [number]="lessonIndex + 1" [completed]="true"></app-progress-circle>
+			</div>
+			<p>Congratulations! You earned a badge!</p>
+		</section>
+		<section id="earned-certificate">
+			<div class="circle-image">
+				<app-progress-circle [completed]="true">
+					<fa-icon [icon]="icons.faGraduationCap" class="graduation-icon"></fa-icon>
+				</app-progress-circle>
+			</div>
+			<p>Congratulations! You earned a certificate!</p>
+		</section>
+		<section id="failed-test">
+			<p>Not all answers where answered correctly</p>
+		</section>
+		<button class="button close-button" (click)="hidePopUp()">close</button>
 	</div>
 </div>
-
-

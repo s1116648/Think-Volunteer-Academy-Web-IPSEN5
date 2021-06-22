@@ -3,7 +3,7 @@ import { Test } from "../model/test.model";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { SubmitTestDTO } from "../dto/submit-test.dto";
-import { TestResultModel } from "../model/test-result.model";
+import { TestResultsModel } from "../model/test-results.model";
 
 @Injectable({
 	providedIn: "root",
@@ -15,7 +15,7 @@ export class TestService {
 		return this.http.get<Test>(`/tests/${id}`);
 	}
 
-	submitAnswers(testId: string, submitTestDto: SubmitTestDTO): Observable<TestResultModel> {
-		return this.http.post<TestResultModel>(`/tests/${testId}/submit`, submitTestDto);
+	submitAnswers(testId: string, submitTestDto: SubmitTestDTO): Observable<TestResultsModel> {
+		return this.http.post<TestResultsModel>(`/tests/${testId}/submit`, submitTestDto);
 	}
 }

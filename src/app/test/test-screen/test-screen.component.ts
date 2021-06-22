@@ -9,7 +9,7 @@ import { Lesson } from "../../lesson/lesson.model";
 import { faChevronRight, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { SubmitAnswerDTO } from "../dto/submit-answer.dto";
 import { SubmitTestDTO } from "../dto/submit-test.dto";
-import { TestResultModel } from "../model/test-result.model";
+import { TestResultsModel } from "../model/test-results.model";
 
 @Component({
     selector: "app-screen-test",
@@ -23,6 +23,7 @@ export class TestScreenComponent implements OnInit {
     courseName: string;
     lessonName: string;
     lessonLength: number;
+    lessonIndex: number;
     test: Test;
 
     constructor(
@@ -57,6 +58,7 @@ export class TestScreenComponent implements OnInit {
         this.lessonService.getById(lessonId).subscribe((lesson: Lesson) => {
             this.lessonName = lesson.name;
             this.lessonLength = lesson.length;
+            this.lessonIndex = lesson.index;
         });
     }
 
@@ -73,8 +75,8 @@ export class TestScreenComponent implements OnInit {
     submitAnswers(submitTestDTO: SubmitTestDTO): void {
         console.log(submitTestDTO);
         this.testService.submitAnswers(this.test.id, submitTestDTO)
-            .subscribe((testResultModel: TestResultModel) => {
-                console.log(testResultModel);
+            .subscribe((testResultsModel: TestResultsModel) => {
+                this.processTestResult(testResultsModel);
             });
     }
 
@@ -89,19 +91,54 @@ export class TestScreenComponent implements OnInit {
         };
     }
 
-    allQuestionsAreAnswered(): boolean {
-        return true; // ToDo
-    }
-
-    showNotEverythingIsAnswered(): void {
-        // ToDo
+    processTestResult(testResultsModel: TestResultsModel): void {
+        if (!testResultsModel.passed) {
+            this.showFailedTest();
+            return;
+        }
+        this.showTestCompleted();
     }
 
     showFailedTest(): void {
-        // ToDo
+        this.showPopUp();
+        this.setDisplayOfElement("failed-test", "initial");
     }
 
     showTestCompleted(): void {
-        // ToDo
+        this.showPopUp();
+        if (this.lessonName) {
+            this.setDisplayOfElement("earned-badge", "initial");
+            return;
+        }
+        this.setDisplayOfElement("earned-certificate", "initial");
+    }
+
+    showPopUp(): void {
+        this.showBlur();
+        this.setDisplayOfElement("pop-up-wrapper", "block");
+    }
+
+    hidePopUp(): void {
+        this.hideBlur();
+        this.hideText();
+        this.setDisplayOfElement("pop-up-wrapper", "none");
+    }
+
+    showBlur(): void {
+        this.setDisplayOfElement("shadow-background", "block");
+    }
+
+    hideBlur(): void {
+        this.setDisplayOfElement("shadow-background", "none");
+    }
+
+    hideText(): void {
+        this.setDisplayOfElement("earned-badge", "none");
+        this.setDisplayOfElement("earned-certificate", "none");
+        this.setDisplayOfElement("failed-test", "none");
+    }
+
+    setDisplayOfElement(elementId, displayValue): void {
+        document.getElementById(elementId).style.display = displayValue;
     }
 }
