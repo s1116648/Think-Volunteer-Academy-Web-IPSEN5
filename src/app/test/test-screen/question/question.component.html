@@ -1,14 +1,5 @@
 <h2>{{question.text}}</h2>
 
-<!--<section *ngIf="!multipleCorrect">-->
-<!--	<ul>-->
-<!--		<li *ngFor="let answer of question.answers; let i = index">-->
-<!--			<input [(ngModel)]="answer.checked" type="radio" [name]="question.id" [id]="answer.id" [value]="false">-->
-<!--			<label [for]="answer.id">{{answer.text}}</label>-->
-<!--		</li>-->
-<!--	</ul>-->
-<!--</section> &lt;!&ndash; single answer &ndash;&gt;-->
-<!--<section *ngIf="multipleCorrect">-->
 <section>
 	<ul>
 		<li *ngFor="let answer of question.answers">
@@ -16,4 +7,4 @@
 			<label [for]="answer.id">{{answer.text}}</label>
 		</li>
 	</ul>
-</section> <!-- multiple answers -->
+</section>

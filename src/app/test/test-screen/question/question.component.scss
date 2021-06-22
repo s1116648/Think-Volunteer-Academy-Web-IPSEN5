@@ -26,16 +26,12 @@ ul {
 li {
   display: flex;
   width: 40%;
-  //padding: 10px;
   background-color: $color-background-dark;
   border-radius: $border-radius;
 }
 
 .inputCheckBox  {
-  //position: absolute;
-  //opacity: 0;
   cursor: pointer;
-
   display: inline;
   background-color: red;
 }
@@ -50,4 +46,11 @@ li {
 
 .inputCheckBox:checked {
   color: red;
+}
+
+@media only screen and (max-width: 900px){
+  li {
+    width: 90%;
+    margin-left: 5%;
+  }
 }

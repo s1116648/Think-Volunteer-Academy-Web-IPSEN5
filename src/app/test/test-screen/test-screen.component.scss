@@ -91,3 +91,14 @@ h1 {
   background-color: $color-black;
   opacity: $blur-opacity-ratio;
 }
+
+@media only screen and (max-width: 600px){
+  #pop-up-wrapper {
+    width: 360px;
+    height: 270px;
+  }
+
+  .circle-image {
+    margin-top: 8px;
+  }
+}
