@@ -281,6 +281,13 @@ textarea {
 		border-color: white;
 	}
 
+	.ql-video {
+		width: 831px;
+		height: 562px;
+		max-width: 100%;
+		max-height: calc((100vw - 40px) / (16/9));
+	}
+
 	@media only screen and (max-width: 900px) {
 		grid-template-columns: 1fr !important;
 	}
