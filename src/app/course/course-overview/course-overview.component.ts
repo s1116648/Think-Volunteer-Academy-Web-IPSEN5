@@ -59,6 +59,11 @@ export class CourseOverviewComponent implements OnInit {
 				.getByID(params.id)
 				.subscribe((course: Course) => {
 					this.course = course;
+
+					this.testService.getTestByID(course.examId)
+						.subscribe((test: Test) => {
+							this.test = test;
+						});
 				});
 
 			this.certificateService
@@ -87,11 +92,6 @@ export class CourseOverviewComponent implements OnInit {
 				)
 				.subscribe((result: HttpPaginatedResult<Badge>) => {
 					this.userBadges = result.items;
-				});
-
-			this.testService.getTestByID(params.id)
-				.subscribe((test: Test) => {
-					this.test = test;
 				});
 		});
 	}
