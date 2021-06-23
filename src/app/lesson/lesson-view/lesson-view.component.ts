@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import { Course } from "../../course/course.model";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { LessonService } from "../lesson.service";
@@ -16,7 +16,8 @@ import { faGraduationCap, faChevronRight } from "@fortawesome/free-solid-svg-ico
 @Component({
     selector: "app-lesson-view",
     templateUrl: "./lesson-view.component.html",
-    styleUrls: ["./lesson-view.component.scss"]
+    styleUrls: ["./lesson-view.component.scss"],
+    encapsulation: ViewEncapsulation.None
 })
 export class LessonViewComponent implements OnInit {
 	icons = { faGraduationCap, faChevronRight };
