@@ -42,10 +42,12 @@ export class SetUserRoleComponent implements OnInit {
       role: values.role.id
     };
     this.userService.setUserRole(this.user.id, updateUserRoleDTO).subscribe((user) => {
-      this.authService.handleAuthentication({
-        ...this.authService.loginInfo.getValue(),
-        user
-      });
+      if (this.authService.loginInfo.getValue().user.id === user.id) {
+        this.authService.handleAuthentication({
+          ...this.authService.loginInfo.getValue(),
+          user
+        });
+      }
       this.set.emit(user);
       this.close();
     });
