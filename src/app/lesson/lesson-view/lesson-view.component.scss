@@ -8,6 +8,10 @@
     font-size: small;
 }
 
+.lesson-content > p > img {
+    max-width: 100%;
+}
+
 .go-to-test-button {
     background-color: $color-orange-500;
     max-width: 100%;
