@@ -112,5 +112,5 @@ export class LessonViewComponent implements OnInit {
     }
 
     getSafeHTMLNextLesson = (): SafeHtml =>
-        this.sanitizer.bypassSecurityTrustHtml(this.nextLesson.content);
+        this.sanitizer.bypassSecurityTrustHtml(this.nextLesson.description);
 }
