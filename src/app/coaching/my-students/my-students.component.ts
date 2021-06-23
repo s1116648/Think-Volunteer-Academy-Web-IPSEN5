@@ -50,4 +50,8 @@ export class MyStudentsComponent implements OnInit {
 			}
 		}
 	}
+
+	onOpenProfile(student: Student): void {
+		this.router.navigate(["profile", student.user.id]);
+	}
 }
